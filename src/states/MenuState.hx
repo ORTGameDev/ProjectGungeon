@@ -1,14 +1,14 @@
 package states;
-import flash.display.GraphicsPath;
-import flash.display.SpreadMethod;
 import flixel.FlxG;
-import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.graphics.atlas.FlxAtlas;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxAxes;
-import flixel.util.FlxColor;
 import gameObjects.Pointer;
+
 
 /**
  * ...
@@ -16,7 +16,6 @@ import gameObjects.Pointer;
  */
 class MenuState extends FlxState
 {
-
 	//Cursor
 	private var gamePointer:Pointer;
 	
@@ -25,22 +24,18 @@ class MenuState extends FlxState
 	private var btnPlay: FlxButton;
 	private var btnSettings: FlxButton;
 	
+
 	public function new()
 	{
 		super();
-		
 	}
 	
-	private function changeGamePointer(){
-		gamePointer = new Pointer();
-		FlxG.mouse.visible = false;
-		FlxG.mouse.hideSystemCursor();
-		add(gamePointer);
-	}
 	
 	override public function create():Void
 	{
 		super.create();
+		
+		
 		
 		//Set Texts
 		txtGameTitle = new FlxText(0, 30, 500, "<Replace with GameName (when u have one)>", 25);
@@ -71,5 +66,15 @@ class MenuState extends FlxState
 		FlxG.switchState(new PlayerSelectState());
 		//FlxG.switchState(new SettingState());
 	}
+	
+
+	
+	private function changeGamePointer(){
+		gamePointer = new Pointer();
+		FlxG.mouse.visible = false;
+		FlxG.mouse.hideSystemCursor();
+		add(gamePointer);
+	}
+	
 	
 }

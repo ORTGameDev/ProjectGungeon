@@ -2,8 +2,8 @@ package gameObjects;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.system.FlxAssets.FlxGraphicAsset;
-import flixel.util.FlxColor;
+import flixel.graphics.atlas.FlxAtlas;
+import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.Assets;
 
 /**
@@ -30,6 +30,11 @@ class Player extends FlxSprite
 	public function new(X:Float = 0, Y:Float = 0, aGun:Gun /* aGraphic:FlxGraphicAsset*/)
 	{
 		super(X, Y);
+		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/test.png", "img/atlas/test.json");
+		this.frames = anAtlas;
+		this.animation.addByPrefix("idle", "frame", 30, true);
+		this.animation.play("idle");
+		/*
 		makeGraphic(50, 50, FlxColor.CYAN);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		loadGraphic(Assets.getBitmapData("characters/start1.png"), false, 20, 24);
@@ -44,7 +49,8 @@ class Player extends FlxSprite
 		//animation.add("dl", [0, 1, 2, 3], 4);
 		animation.add("l", [0, 1, 2, 3], 4);
 		drag.set(playerDrag, playerDrag);
-		playerGun = aGun;
+		
+		*/playerGun = aGun;
 	}
 		
 	
