@@ -17,10 +17,10 @@ class Player extends FlxSprite
 	public var playerLife:Int = 10;
 	
 	//Movement
-	static private inline var playerAcceleration: Float = 300;
+	static private inline var playerAcceleration: Float = 150;
 	static private inline var playerXMaxSpeed: Float = 250;
 	static private inline var playerYMaxSpeed: Float = 200;
-	static private inline var playerDrag: Int = 1800;
+	static private inline var playerDrag: Int = 2500;
 	
 	//Gun
 	public var playerGun:Gun;
@@ -28,13 +28,21 @@ class Player extends FlxSprite
 	public function new(X:Float = 0, Y:Float = 0, aGun:Gun /* aGraphic:FlxGraphicAsset*/)
 	{
 		super(X, Y);
-		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/test.png", "img/atlas/test.json");
+		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
-		this.animation.addByPrefix("idle", "frame", 30, true);
-		this.animation.play("idle");
+		this.animation.addByPrefix("north1", "north1_", 10, true);
+		this.animation.addByPrefix("south1", "south1_", 10, true);
+		this.animation.addByPrefix("right1", "side1_", 10, true);
+		this.animation.addByPrefix("left1", "side1_", 10, true, true);
+		this.animation.addByPrefix("diagDown1", "diagDown1_", 10, true);
+		this.animation.addByPrefix("diagUp1", "diagUp1_", 30, true);
+		this.animation.addByPrefix("start1", "start1_", 30, true);
+		this.animation.play("start");
+		drag.set(playerDrag, playerDrag);
+		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		/*
 		makeGraphic(50, 50, FlxColor.CYAN);
-		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
+		
 		loadGraphic(Assets.getBitmapData("characters/start1.png"), false, 20, 24);
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
@@ -46,7 +54,7 @@ class Player extends FlxSprite
 		//animation.add("dr", [0, 1, 2, 3], 4);
 		//animation.add("dl", [0, 1, 2, 3], 4);
 		animation.add("l", [0, 1, 2, 3], 4);
-		drag.set(playerDrag, playerDrag);
+		
 		
 		*/playerGun = aGun;
 	}
@@ -102,20 +110,17 @@ class Player extends FlxSprite
 			switch (facing)
 			{
 				case FlxObject.LEFT:
-					loadGraphic(Assets.getBitmapData("characters/side1.png"), true, 20, 24);
-					animation.play("l");
+					animation.play("left1");
 				
 				case FlxObject.RIGHT:
-					loadGraphic(Assets.getBitmapData("characters/side1.png"), true, 20, 24);
-					animation.play("r");
+					
+					animation.play("right1");
 					
 				case FlxObject.UP:
-					loadGraphic(Assets.getBitmapData("characters/north1.png"), true, 20, 24);
-					animation.play("u");
+					animation.play("north1");
 					
 				case FlxObject.DOWN:
-					loadGraphic(Assets.getBitmapData("characters/south1.png"), true, 20, 24);
-					animation.play("d");
+					animation.play("south1");
 				
 			}
 			

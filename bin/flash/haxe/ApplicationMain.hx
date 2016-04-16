@@ -50,6 +50,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/atlas/spritemap.json");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/atlas/spritesheet.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/atlas/test.json");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -351,7 +359,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "219",
+			build: "223",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

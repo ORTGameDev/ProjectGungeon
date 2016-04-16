@@ -117,6 +117,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -131,6 +133,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("flixel/fonts/monsterrat.ttf", AssetType.FONT);
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		className.set ("img/atlas/spritemap.json", __ASSET__img_atlas_spritemap_json);
+		type.set ("img/atlas/spritemap.json", AssetType.TEXT);
+		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
+		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
 		className.set ("img/atlas/test.json", __ASSET__img_atlas_test_json);
 		type.set ("img/atlas/test.json", AssetType.TEXT);
 		className.set ("img/atlas/test.png", __ASSET__img_atlas_test_png);
@@ -273,6 +279,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.FONT);
 		id = "flixel/images/ui/button.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/atlas/spritemap.json";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "img/atlas/spritesheet.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -548,6 +562,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("flixel/images/ui/button.png", __ASSET__flixel_images_ui_button_png);
 		type.set ("flixel/images/ui/button.png", AssetType.IMAGE);
+		
+		className.set ("img/atlas/spritemap.json", __ASSET__img_atlas_spritemap_json);
+		type.set ("img/atlas/spritemap.json", AssetType.TEXT);
+		
+		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
+		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
 		
 		className.set ("img/atlas/test.json", __ASSET__img_atlas_test_json);
 		type.set ("img/atlas/test.json", AssetType.TEXT);
@@ -1377,6 +1397,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends flash.text.Font { }
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_atlas_spritemap_json extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__img_atlas_spritesheet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_test_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_test_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1508,6 +1530,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #else
 
 
@@ -1520,6 +1544,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
 @:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
+@:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/test.json") #if display private #end class __ASSET__img_atlas_test_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/test.png") #if display private #end class __ASSET__img_atlas_test_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown1.png") #if display private #end class __ASSET__img_characters_diagdown1_png extends lime.graphics.Image {}
