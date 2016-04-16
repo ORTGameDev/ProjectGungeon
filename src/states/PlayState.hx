@@ -8,6 +8,7 @@ import gameObjects.Enemy;
 import gameObjects.Gun;
 import gameObjects.Player;
 import gameObjects.Pointer;
+import GlobalGameData;
 
 /**
  * ...
@@ -49,6 +50,9 @@ class PlayState extends FlxState
 		aGun.y = gamePlayer.y + (gamePlayer.height / 2);
 		this.add(aGun);
 		this.add(gamePlayer);
+		
+		GlobalGameData.player = gamePlayer;
+		
 		txtLevelNumber = new FlxText(0, 25, 200, "Level: " + this.lvlNumber , 12);
 		txtLevelNumber.screenCenter(FlxAxes.X);
 		this.add(txtLevelNumber);
@@ -74,12 +78,9 @@ class PlayState extends FlxState
 	}
 	
 	private function loadEnemies(){
-		enemies.add(new Enemy(150, 250));
-		enemies.add(new Enemy(75, 520));
-		enemies.add(new Enemy(351, 350));
-		enemies.add(new Enemy(700, 800));
-		enemies.add(new Enemy(900, 50));
-		enemies.add(new Enemy(900, 900));
+		enemies.add(new Enemy(150, 250, 20, 20, 5, 5, "characters/jason.png"));
+		enemies.add(new Enemy(300, 400, 20, 20, 5, 5, "characters/jason.png"));
+		enemies.add(new Enemy(550, 505, 20, 20, 5, 5, "characters/jason.png"));
 		add(enemies);
 	}
 	

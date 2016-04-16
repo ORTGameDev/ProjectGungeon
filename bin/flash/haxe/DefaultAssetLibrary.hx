@@ -115,6 +115,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -145,6 +147,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/characters/diagup2.png", AssetType.IMAGE);
 		className.set ("img/characters/diagup3.png", __ASSET__img_characters_diagup3_png);
 		type.set ("img/characters/diagup3.png", AssetType.IMAGE);
+		className.set ("img/characters/jason.png", __ASSET__img_characters_jason_png);
+		type.set ("img/characters/jason.png", AssetType.IMAGE);
 		className.set ("img/characters/north1.png", __ASSET__img_characters_north1_png);
 		type.set ("img/characters/north1.png", AssetType.IMAGE);
 		className.set ("img/characters/north2.png", __ASSET__img_characters_north2_png);
@@ -215,6 +219,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("characters/diagup2.png", AssetType.IMAGE);
 		className.set ("characters/diagup3.png", __ASSET__characters_diagup3_png);
 		type.set ("characters/diagup3.png", AssetType.IMAGE);
+		className.set ("characters/jason.png", __ASSET__characters_jason_png);
+		type.set ("characters/jason.png", AssetType.IMAGE);
 		className.set ("characters/north1.png", __ASSET__characters_north1_png);
 		type.set ("characters/north1.png", AssetType.IMAGE);
 		className.set ("characters/north2.png", __ASSET__characters_north2_png);
@@ -299,6 +305,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/characters/diagup3.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/characters/jason.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -442,6 +452,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "characters/jason.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "characters/north1.png";
 		path.set (id, id);
 		
@@ -559,6 +573,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/characters/diagup3.png", __ASSET__img_characters_diagup3_png);
 		type.set ("img/characters/diagup3.png", AssetType.IMAGE);
 		
+		className.set ("img/characters/jason.png", __ASSET__img_characters_jason_png);
+		type.set ("img/characters/jason.png", AssetType.IMAGE);
+		
 		className.set ("img/characters/north1.png", __ASSET__img_characters_north1_png);
 		type.set ("img/characters/north1.png", AssetType.IMAGE);
 		
@@ -663,6 +680,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("characters/diagup3.png", __ASSET__characters_diagup3_png);
 		type.set ("characters/diagup3.png", AssetType.IMAGE);
+		
+		className.set ("characters/jason.png", __ASSET__characters_jason_png);
+		type.set ("characters/jason.png", AssetType.IMAGE);
 		
 		className.set ("characters/north1.png", __ASSET__characters_north1_png);
 		type.set ("characters/north1.png", AssetType.IMAGE);
@@ -1365,6 +1385,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagup1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagup2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagup3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_characters_jason_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_north1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_north2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_north3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1400,6 +1421,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__characters_diagup1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_diagup2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_diagup3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__characters_jason_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_north1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_north2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_north3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1484,6 +1506,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #else
 
 
@@ -1504,6 +1528,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/characters/diagup1.png") #if display private #end class __ASSET__img_characters_diagup1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagup2.png") #if display private #end class __ASSET__img_characters_diagup2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagup3.png") #if display private #end class __ASSET__img_characters_diagup3_png extends lime.graphics.Image {}
+@:image("assets/img/characters/jason.png") #if display private #end class __ASSET__img_characters_jason_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north1.png") #if display private #end class __ASSET__img_characters_north1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north2.png") #if display private #end class __ASSET__img_characters_north2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north3.png") #if display private #end class __ASSET__img_characters_north3_png extends lime.graphics.Image {}
@@ -1539,6 +1564,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/characters/diagup1.png") #if display private #end class __ASSET__characters_diagup1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagup2.png") #if display private #end class __ASSET__characters_diagup2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagup3.png") #if display private #end class __ASSET__characters_diagup3_png extends lime.graphics.Image {}
+@:image("assets/img/characters/jason.png") #if display private #end class __ASSET__characters_jason_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north1.png") #if display private #end class __ASSET__characters_north1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north2.png") #if display private #end class __ASSET__characters_north2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/north3.png") #if display private #end class __ASSET__characters_north3_png extends lime.graphics.Image {}

@@ -16,7 +16,6 @@ class Player extends FlxSprite
 	//Player
 	public var playerLife:Int = 10;
 	
-	
 	//Movement
 	static private inline var playerAcceleration: Float = 300;
 	static private inline var playerXMaxSpeed: Float = 250;
@@ -25,8 +24,7 @@ class Player extends FlxSprite
 	
 	//Gun
 	public var playerGun:Gun;
-	
-		
+			
 	public function new(X:Float = 0, Y:Float = 0, aGun:Gun /* aGraphic:FlxGraphicAsset*/)
 	{
 		super(X, Y);
@@ -82,7 +80,7 @@ class Player extends FlxSprite
 		playerGun.y = this.y + (this.height / 2);
 	}
 	
-		override public function draw():Void
+	override public function draw():Void
 	{
 		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE)
 		{

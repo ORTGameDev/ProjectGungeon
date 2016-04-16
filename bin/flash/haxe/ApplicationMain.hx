@@ -82,6 +82,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/characters/jason.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/characters/north1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -222,6 +226,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("characters/jason.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("characters/north1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -343,7 +351,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "203",
+			build: "219",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
