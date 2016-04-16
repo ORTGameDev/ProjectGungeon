@@ -33,50 +33,78 @@ ApplicationMain.create = function() {
 	types.push("FONT");
 	urls.push("flixel/images/ui/button.png");
 	types.push("IMAGE");
-	urls.push("img/characters/1.png");
-	types.push("IMAGE");
-	urls.push("img/characters/1_diagup.png");
-	types.push("IMAGE");
-	urls.push("img/characters/1_north.png");
-	types.push("IMAGE");
-	urls.push("img/characters/1_side.png");
-	types.push("IMAGE");
-	urls.push("img/characters/1_south.png");
-	types.push("IMAGE");
-	urls.push("img/characters/1_south2.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_diagdown.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_diagup.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_north.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_side.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_south.png");
-	types.push("IMAGE");
-	urls.push("img/characters/2_south2.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_diagdown.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_diagup.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_north.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_side.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_south.png");
-	types.push("IMAGE");
-	urls.push("img/characters/3_south2.png");
-	types.push("IMAGE");
-	urls.push("img/characters/diagdown.png");
-	types.push("IMAGE");
-	urls.push("img/characters/readme.txt");
+	urls.push("img/atlas/spritemap.json");
 	types.push("TEXT");
+	urls.push("img/atlas/spritesheet.png");
+	types.push("IMAGE");
+	urls.push("img/atlas/test.json");
+	types.push("TEXT");
+	urls.push("img/atlas/test.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagdown1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagdown2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagdown3.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagup1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagup2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/diagup3.png");
+	types.push("IMAGE");
+	urls.push("img/characters/jason.png");
+	types.push("IMAGE");
+	urls.push("img/characters/north1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/north2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/north3.png");
+	types.push("IMAGE");
+	urls.push("img/characters/side1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/side2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/side3.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south21.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south22.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south23.png");
+	types.push("IMAGE");
+	urls.push("img/characters/south3.png");
+	types.push("IMAGE");
+	urls.push("img/characters/start1.png");
+	types.push("IMAGE");
+	urls.push("img/characters/start2.png");
+	types.push("IMAGE");
+	urls.push("img/characters/start3.png");
+	types.push("IMAGE");
+	urls.push("img/guns/pistol/p_diagdown.png");
+	types.push("IMAGE");
+	urls.push("img/guns/pistol/p_diagup.png");
+	types.push("IMAGE");
+	urls.push("img/guns/pistol/p_down.png");
+	types.push("IMAGE");
+	urls.push("img/guns/pistol/p_side.png");
+	types.push("IMAGE");
+	urls.push("img/guns/pistol/p_up.png");
+	types.push("IMAGE");
+	urls.push("img/guns/shotgun/shot_diagdown.png");
+	types.push("IMAGE");
+	urls.push("img/guns/shotgun/shot_diagup.png");
+	types.push("IMAGE");
+	urls.push("img/guns/shotgun/shot_down.png");
+	types.push("IMAGE");
+	urls.push("img/guns/shotgun/shot_side.png");
+	types.push("IMAGE");
+	urls.push("img/guns/shotgun/shot_up.png");
+	types.push("IMAGE");
 	urls.push("img/pointer/crosshairBig.png");
 	types.push("IMAGE");
 	urls.push("img/pointer/crosshairSmall.png");
@@ -85,50 +113,50 @@ ApplicationMain.create = function() {
 	types.push("IMAGE");
 	urls.push("pointer/crosshairSmall.png");
 	types.push("IMAGE");
-	urls.push("characters/1.png");
+	urls.push("characters/diagdown1.png");
 	types.push("IMAGE");
-	urls.push("characters/1_diagup.png");
+	urls.push("characters/diagdown2.png");
 	types.push("IMAGE");
-	urls.push("characters/1_north.png");
+	urls.push("characters/diagdown3.png");
 	types.push("IMAGE");
-	urls.push("characters/1_side.png");
+	urls.push("characters/diagup1.png");
 	types.push("IMAGE");
-	urls.push("characters/1_south.png");
+	urls.push("characters/diagup2.png");
 	types.push("IMAGE");
-	urls.push("characters/1_south2.png");
+	urls.push("characters/diagup3.png");
 	types.push("IMAGE");
-	urls.push("characters/2.png");
+	urls.push("characters/jason.png");
 	types.push("IMAGE");
-	urls.push("characters/2_diagdown.png");
+	urls.push("characters/north1.png");
 	types.push("IMAGE");
-	urls.push("characters/2_diagup.png");
+	urls.push("characters/north2.png");
 	types.push("IMAGE");
-	urls.push("characters/2_north.png");
+	urls.push("characters/north3.png");
 	types.push("IMAGE");
-	urls.push("characters/2_side.png");
+	urls.push("characters/side1.png");
 	types.push("IMAGE");
-	urls.push("characters/2_south.png");
+	urls.push("characters/side2.png");
 	types.push("IMAGE");
-	urls.push("characters/2_south2.png");
+	urls.push("characters/side3.png");
 	types.push("IMAGE");
-	urls.push("characters/3.png");
+	urls.push("characters/south1.png");
 	types.push("IMAGE");
-	urls.push("characters/3_diagdown.png");
+	urls.push("characters/south2.png");
 	types.push("IMAGE");
-	urls.push("characters/3_diagup.png");
+	urls.push("characters/south21.png");
 	types.push("IMAGE");
-	urls.push("characters/3_north.png");
+	urls.push("characters/south22.png");
 	types.push("IMAGE");
-	urls.push("characters/3_side.png");
+	urls.push("characters/south23.png");
 	types.push("IMAGE");
-	urls.push("characters/3_south.png");
+	urls.push("characters/south3.png");
 	types.push("IMAGE");
-	urls.push("characters/3_south2.png");
+	urls.push("characters/start1.png");
 	types.push("IMAGE");
-	urls.push("characters/diagdown.png");
+	urls.push("characters/start2.png");
 	types.push("IMAGE");
-	urls.push("characters/readme.txt");
-	types.push("TEXT");
+	urls.push("characters/start3.png");
+	types.push("IMAGE");
 	if(ApplicationMain.config.assetsPrefix != null) {
 		var _g1 = 0;
 		var _g = urls.length;
@@ -151,7 +179,7 @@ ApplicationMain.init = function() {
 	if(total == 0) ApplicationMain.start();
 };
 ApplicationMain.main = function() {
-	ApplicationMain.config = { build : "130", company : "GastonIgnacio", file : "Obligatorio", fps : 60, name : "Obligatorio", orientation : "", packageName : "Obligatorio", version : "1.0.0", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : false, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "Obligatorio", vsync : false, width : 800, x : null, y : null}]};
+	ApplicationMain.config = { build : "225", company : "GastonIgnacio", file : "Obligatorio", fps : 60, name : "Obligatorio", orientation : "", packageName : "Obligatorio", version : "1.0.0", windows : [{ antialiasing : 0, background : 0, borderless : false, depthBuffer : false, display : 0, fullscreen : false, hardware : false, height : 480, parameters : "{}", resizable : true, stencilBuffer : true, title : "Obligatorio", vsync : false, width : 800, x : null, y : null}]};
 };
 ApplicationMain.start = function() {
 	var hasMain = false;
@@ -1676,72 +1704,114 @@ var DefaultAssetLibrary = function() {
 	id = "flixel/images/ui/button.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "img/characters/1.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/1_diagup.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/1_north.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/1_side.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/1_south.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/1_south2.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_diagdown.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_diagup.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_north.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_side.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_south.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/2_south2.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_diagdown.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_diagup.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_north.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_side.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_south.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/3_south2.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/diagdown.png";
-	this.path.set(id,id);
-	this.type.set(id,"IMAGE");
-	id = "img/characters/readme.txt";
+	id = "img/atlas/spritemap.json";
 	this.path.set(id,id);
 	this.type.set(id,"TEXT");
+	id = "img/atlas/spritesheet.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/atlas/test.json";
+	this.path.set(id,id);
+	this.type.set(id,"TEXT");
+	id = "img/atlas/test.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagdown1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagdown2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagdown3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagup1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagup2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/diagup3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/jason.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/north1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/north2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/north3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/side1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/side2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/side3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south21.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south22.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south23.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/south3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/start1.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/start2.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/characters/start3.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/pistol/p_diagdown.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/pistol/p_diagup.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/pistol/p_down.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/pistol/p_side.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/pistol/p_up.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/shotgun/shot_diagdown.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/shotgun/shot_diagup.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/shotgun/shot_down.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/shotgun/shot_side.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
+	id = "img/guns/shotgun/shot_up.png";
+	this.path.set(id,id);
+	this.type.set(id,"IMAGE");
 	id = "img/pointer/crosshairBig.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
@@ -1754,72 +1824,72 @@ var DefaultAssetLibrary = function() {
 	id = "pointer/crosshairSmall.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1.png";
+	id = "characters/diagdown1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1_diagup.png";
+	id = "characters/diagdown2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1_north.png";
+	id = "characters/diagdown3.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1_side.png";
+	id = "characters/diagup1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1_south.png";
+	id = "characters/diagup2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/1_south2.png";
+	id = "characters/diagup3.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2.png";
+	id = "characters/jason.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_diagdown.png";
+	id = "characters/north1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_diagup.png";
+	id = "characters/north2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_north.png";
+	id = "characters/north3.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_side.png";
+	id = "characters/side1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_south.png";
+	id = "characters/side2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/2_south2.png";
+	id = "characters/side3.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3.png";
+	id = "characters/south1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_diagdown.png";
+	id = "characters/south2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_diagup.png";
+	id = "characters/south21.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_north.png";
+	id = "characters/south22.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_side.png";
+	id = "characters/south23.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_south.png";
+	id = "characters/south3.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/3_south2.png";
+	id = "characters/start1.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/diagdown.png";
+	id = "characters/start2.png";
 	this.path.set(id,id);
 	this.type.set(id,"IMAGE");
-	id = "characters/readme.txt";
+	id = "characters/start3.png";
 	this.path.set(id,id);
-	this.type.set(id,"TEXT");
+	this.type.set(id,"IMAGE");
 	var assetsPrefix = null;
 	if(ApplicationMain.config != null && Object.prototype.hasOwnProperty.call(ApplicationMain.config,"assetsPrefix")) assetsPrefix = ApplicationMain.config.assetsPrefix;
 	if(assetsPrefix != null) {
@@ -2134,6 +2204,13 @@ EReg.prototype = {
 		return s.replace(this.r,by);
 	}
 	,__class__: EReg
+};
+var GlobalGameData = function() { };
+$hxClasses["GlobalGameData"] = GlobalGameData;
+GlobalGameData.__name__ = ["GlobalGameData"];
+GlobalGameData.player = null;
+GlobalGameData.clear = function() {
+	GlobalGameData.player = null;
 };
 var HxOverrides = function() { };
 $hxClasses["HxOverrides"] = HxOverrides;
@@ -32036,17 +32113,79 @@ flixel_util_helpers_FlxRangeBounds.prototype = {
 	}
 	,__class__: flixel_util_helpers_FlxRangeBounds
 };
-var gameObjects_Enemy = function(X,Y) {
+var gameObjects_Enemy = function(X,Y,aWidth,aHeight,aXOffset,aYOffset,aBitmapData) {
 	if(Y == null) Y = 0;
 	if(X == null) X = 0;
+	this.dead = false;
+	this.life = 3;
 	flixel_FlxSprite.call(this,X,Y);
-	this.makeGraphic(50,50,-65536);
+	this.loadGraphic(openfl_Assets.getBitmapData(aBitmapData),true,55,70);
+	this.animation.addByPrefix("north3","north3_",10,true);
+	this.animation.addByPrefix("south3","south3_",10,true);
+	this.animation.addByPrefix("right3","side3_",10,true);
+	this.animation.addByPrefix("left3","side3_",10,true,true);
+	this.animation.addByPrefix("diagDown3","diagDown3_",10,true);
+	this.animation.addByPrefix("diagUp3","diagUp3_",30,true);
+	this.animation.addByPrefix("start3","start3_",30,true);
+	this.drag.set_x(this.drag.set_y(1000));
+	this.maxVelocity.set(500,300);
+	this.set_width(aWidth);
+	this.set_height(aHeight);
+	this.offset.set(aXOffset,aYOffset);
 };
 $hxClasses["gameObjects.Enemy"] = gameObjects_Enemy;
 gameObjects_Enemy.__name__ = ["gameObjects","Enemy"];
 gameObjects_Enemy.__super__ = flixel_FlxSprite;
 gameObjects_Enemy.prototype = $extend(flixel_FlxSprite.prototype,{
-	__class__: gameObjects_Enemy
+	life: null
+	,dead: null
+	,update: function(elapsed) {
+		if(this.animation._curAnim.name == "x") {
+			flixel_FlxSprite.prototype.update.call(this,elapsed);
+			if(this.animation._curAnim.finished) this.kill();
+			return;
+		}
+		flixel_FlxSprite.prototype.update.call(this,elapsed);
+		var player = GlobalGameData.player;
+		var dX = player.x - this.x;
+		var dY = player.y - this.y;
+		var length = Math.sqrt(dX * dX + dY * dY);
+		dX /= length;
+		dY /= length;
+		this.velocity.set_x(dX * 100);
+		this.velocity.set_y(dY * 100);
+	}
+	,damage: function(aDamage) {
+		if(this.life <= 0) {
+			this.animation.play("x");
+			this.velocity.set(0,0);
+			this.set_allowCollisions(0);
+		} else this.life -= aDamage;
+	}
+	,draw: function() {
+		if((this.velocity.x != 0 || this.velocity.y != 0) && this.touching == 0) {
+			if(Math.abs(this.velocity.x) > Math.abs(this.velocity.y)) {
+				if(this.velocity.x < 0) this.set_facing(1); else this.set_facing(16);
+			} else if(this.velocity.y < 0) this.set_facing(256); else this.set_facing(4096);
+			var _g = this.facing;
+			switch(_g) {
+			case 1:
+				this.animation.play("left3");
+				break;
+			case 16:
+				this.animation.play("rigth3");
+				break;
+			case 256:
+				this.animation.play("north3");
+				break;
+			case 4096:
+				this.animation.play("south3");
+				break;
+			}
+		}
+		flixel_FlxSprite.prototype.draw.call(this);
+	}
+	,__class__: gameObjects_Enemy
 });
 var gameObjects_Gun = function(X,Y) {
 	if(Y == null) Y = 0;
@@ -32069,12 +32208,18 @@ var gameObjects_Player = function(X,Y,aGun) {
 	if(X == null) X = 0;
 	this.playerLife = 10;
 	flixel_FlxSprite.call(this,X,Y);
-	this.makeGraphic(50,50,-16711681);
-	this.maxVelocity.set(200,200);
-	this.loadGraphic("characters/1_side.png",true,20,24);
-	this.animation.add("r",[0,1,2,3],4);
-	this.animation.play("r");
-	this.drag.set(1800,1800);
+	var anAtlas = flixel_graphics_frames_FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png","img/atlas/spritemap.json");
+	this.set_frames(anAtlas);
+	this.animation.addByPrefix("north1","north1_",10,true);
+	this.animation.addByPrefix("south1","south1_",10,true);
+	this.animation.addByPrefix("right1","side1_",10,true);
+	this.animation.addByPrefix("left1","side1_",10,true,true);
+	this.animation.addByPrefix("diagDown1","diagDown1_",10,true);
+	this.animation.addByPrefix("diagUp1","diagUp1_",30,true);
+	this.animation.addByPrefix("start1","start1_",30,true);
+	this.animation.play("start");
+	this.drag.set(2500,2500);
+	this.maxVelocity.set(250,200);
 	this.playerGun = aGun;
 };
 $hxClasses["gameObjects.Player"] = gameObjects_Player;
@@ -32087,23 +32232,46 @@ gameObjects_Player.prototype = $extend(flixel_FlxSprite.prototype,{
 		this.acceleration.set();
 		if(flixel_FlxG.keys.pressed.get_LEFT() || flixel_FlxG.keys.pressed.get_A()) {
 			var _g = this.acceleration;
-			_g.set_x(_g.x - 800);
+			_g.set_x(_g.x - 150);
 		}
 		if(flixel_FlxG.keys.pressed.get_RIGHT() || flixel_FlxG.keys.pressed.get_D()) {
 			var _g1 = this.acceleration;
-			_g1.set_x(_g1.x + 800);
+			_g1.set_x(_g1.x + 150);
 		}
 		if(flixel_FlxG.keys.pressed.get_DOWN() || flixel_FlxG.keys.pressed.get_S()) {
 			var _g2 = this.acceleration;
-			_g2.set_y(_g2.y + 800);
+			_g2.set_y(_g2.y + 150);
 		}
 		if(flixel_FlxG.keys.pressed.get_UP() || flixel_FlxG.keys.pressed.get_W()) {
 			var _g3 = this.acceleration;
-			_g3.set_y(_g3.y - 800);
+			_g3.set_y(_g3.y - 150);
 		}
 		flixel_FlxSprite.prototype.update.call(this,elapsed);
 		this.playerGun.set_x(this.x + 10);
 		this.playerGun.set_y(this.y + this.get_height() / 2);
+	}
+	,draw: function() {
+		if((this.velocity.x != 0 || this.velocity.y != 0) && this.touching == 0) {
+			if(Math.abs(this.velocity.x) > Math.abs(this.velocity.y)) {
+				if(this.velocity.x < 0) this.set_facing(1); else this.set_facing(16);
+			} else if(this.velocity.y < 0) this.set_facing(256); else this.set_facing(4096);
+			var _g = this.facing;
+			switch(_g) {
+			case 1:
+				this.animation.play("left1");
+				break;
+			case 16:
+				this.animation.play("right1");
+				break;
+			case 256:
+				this.animation.play("north1");
+				break;
+			case 4096:
+				this.animation.play("south1");
+				break;
+			}
+		}
+		flixel_FlxSprite.prototype.draw.call(this);
 	}
 	,__class__: gameObjects_Player
 });
@@ -66575,12 +66743,6 @@ states_MenuState.prototype = $extend(flixel_FlxState.prototype,{
 	,txtGameTitle: null
 	,btnPlay: null
 	,btnSettings: null
-	,changeGamePointer: function() {
-		this.gamePointer = new gameObjects_Pointer();
-		flixel_FlxG.mouse.set_visible(false);
-		flixel_FlxG.mouse.hideSystemCursor();
-		this.add(this.gamePointer);
-	}
 	,create: function() {
 		flixel_FlxState.prototype.create.call(this);
 		this.txtGameTitle = new flixel_text_FlxText(0,30,500,"<Replace with GameName (when u have one)>",25);
@@ -66602,6 +66764,12 @@ states_MenuState.prototype = $extend(flixel_FlxState.prototype,{
 	}
 	,clickSettings: function() {
 		flixel_FlxG.switchState(new states_PlayerSelectState());
+	}
+	,changeGamePointer: function() {
+		this.gamePointer = new gameObjects_Pointer();
+		flixel_FlxG.mouse.set_visible(false);
+		flixel_FlxG.mouse.hideSystemCursor();
+		this.add(this.gamePointer);
 	}
 	,__class__: states_MenuState
 });
@@ -66630,6 +66798,7 @@ states_PlayState.prototype = $extend(flixel_FlxState.prototype,{
 		aGun.set_y(this.gamePlayer.y + this.gamePlayer.get_height() / 2);
 		this.add(aGun);
 		this.add(this.gamePlayer);
+		GlobalGameData.player = this.gamePlayer;
 		this.txtLevelNumber = new flixel_text_FlxText(0,25,200,"Level: " + this.lvlNumber,12);
 		this.txtLevelNumber.screenCenter(flixel_util_FlxAxes.X);
 		this.add(this.txtLevelNumber);
@@ -66640,17 +66809,15 @@ states_PlayState.prototype = $extend(flixel_FlxState.prototype,{
 		this.add(this.txtPlayerLife);
 		this.loadEnemies();
 		this.changeGamePointer();
+		flixel_FlxG.camera.set_zoom(2);
 	}
 	,update: function(elapsed) {
 		flixel_FlxState.prototype.update.call(this,elapsed);
 	}
 	,loadEnemies: function() {
-		this.enemies.add(new gameObjects_Enemy(150,250));
-		this.enemies.add(new gameObjects_Enemy(75,520));
-		this.enemies.add(new gameObjects_Enemy(351,350));
-		this.enemies.add(new gameObjects_Enemy(700,800));
-		this.enemies.add(new gameObjects_Enemy(900,50));
-		this.enemies.add(new gameObjects_Enemy(900,900));
+		this.enemies.add(new gameObjects_Enemy(150,250,20,20,5,5,"characters/jason.png"));
+		this.enemies.add(new gameObjects_Enemy(300,400,20,20,5,5,"characters/jason.png"));
+		this.enemies.add(new gameObjects_Enemy(550,505,20,20,5,5,"characters/jason.png"));
 		this.add(this.enemies);
 	}
 	,changeGamePointer: function() {
@@ -66668,10 +66835,27 @@ $hxClasses["states.PlayerSelectState"] = states_PlayerSelectState;
 states_PlayerSelectState.__name__ = ["states","PlayerSelectState"];
 states_PlayerSelectState.__super__ = flixel_FlxState;
 states_PlayerSelectState.prototype = $extend(flixel_FlxState.prototype,{
-	txtTitle: null
+	gamePointer: null
+	,txtTitle: null
 	,btnPlay: null
 	,btnBack: null
-	,update: function(elapsed) {
+	,characterOne: null
+	,characterTwo: null
+	,create: function() {
+		flixel_FlxState.prototype.create.call(this);
+		this.changeGamePointer();
+		this.characterOne = new flixel_ui_FlxButton(250,250,"Naevia",$bind(this,this.selectedOne));
+		this.characterOne.label.setPosition(100,0);
+		this.characterOne.scale.set_x(this.characterOne.scale.set_y(3));
+		this.characterOne.animation.add("side",[0,1,2,3],5,true);
+		this.characterOne.statusAnimations = ["normal","side","pressed"];
+		this.add(this.characterOne);
+		this.characterTwo = new flixel_ui_FlxButton(500,250,"Krixo",$bind(this,this.selectedOne));
+		this.characterTwo.setSize(200,200);
+		this.characterTwo.loadGraphic(openfl_Assets.getBitmapData("img/characters/side2.png"),true,20,24);
+		this.characterTwo.animation.add("side",[0,1,2,3],5,true);
+		this.characterTwo.statusAnimations = ["normal","side","pressed"];
+		this.add(this.characterTwo);
 		this.txtTitle = new flixel_text_FlxText(0,50,500,"Select your character...",24);
 		this.txtTitle.screenCenter(flixel_util_FlxAxes.X);
 		this.add(this.txtTitle);
@@ -66679,6 +66863,8 @@ states_PlayerSelectState.prototype = $extend(flixel_FlxState.prototype,{
 		this.add(this.btnPlay);
 		this.btnBack = new flixel_ui_FlxButton(80,500,"Back to Menu",$bind(this,this.BackToMenu));
 		this.add(this.btnBack);
+	}
+	,update: function(elapsed) {
 		flixel_FlxState.prototype.update.call(this,elapsed);
 	}
 	,playGame: function() {
@@ -66686,6 +66872,15 @@ states_PlayerSelectState.prototype = $extend(flixel_FlxState.prototype,{
 	}
 	,BackToMenu: function() {
 		flixel_FlxG.switchState(new states_MenuState());
+	}
+	,selectedOne: function() {
+		return;
+	}
+	,changeGamePointer: function() {
+		this.gamePointer = new gameObjects_Pointer();
+		flixel_FlxG.mouse.set_visible(false);
+		flixel_FlxG.mouse.hideSystemCursor();
+		this.add(this.gamePointer);
 	}
 	,__class__: states_PlayerSelectState
 });
@@ -67688,14 +67883,14 @@ flixel_util_FlxSort.DESCENDING = 1;
 flixel_util_FlxSpriteUtil.flashGfxSprite = new openfl_display_Sprite();
 flixel_util_FlxSpriteUtil.flashGfx = flixel_util_FlxSpriteUtil.flashGfxSprite.get_graphics();
 flixel_util_LabelValuePair._pool = new flixel_util_FlxPool_$flixel_$util_$LabelValuePair(flixel_util_LabelValuePair);
-gameObjects_Enemy.EnemyAcceleration = 800;
-gameObjects_Enemy.EnemyXMaxSpeed = 500;
-gameObjects_Enemy.EnemyYMaxSpeed = 300;
-gameObjects_Enemy.EnemyDrag = 1000;
-gameObjects_Player.playerAcceleration = 800;
-gameObjects_Player.playerXMaxSpeed = 200;
+gameObjects_Enemy.enemySpeed = 100;
+gameObjects_Enemy.enemyXMaxSpeed = 500;
+gameObjects_Enemy.enemyYMaxSpeed = 300;
+gameObjects_Enemy.enemyDrag = 1000;
+gameObjects_Player.playerAcceleration = 150;
+gameObjects_Player.playerXMaxSpeed = 250;
 gameObjects_Player.playerYMaxSpeed = 200;
-gameObjects_Player.playerDrag = 1800;
+gameObjects_Player.playerDrag = 2500;
 haxe_Serializer.USE_CACHE = false;
 haxe_Serializer.USE_ENUM_INDEX = false;
 haxe_Serializer.BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:";

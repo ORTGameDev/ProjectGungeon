@@ -1,6 +1,7 @@
 package gameObjects;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
 import openfl.Assets;
 
@@ -26,13 +27,22 @@ class Enemy extends FlxSprite
 	{
 		super(X, Y);
 		loadGraphic(Assets.getBitmapData(aBitmapData), true, 55, 70);
-		animation.add("d", [0]);
-		animation.add("l", [1]);
-		animation.add("u", [2]);
-		animation.add("r", [3]);
-		animation.add("x", [4, 5, 6, 7, 7, 7, 7], 7, false);
-		animation.play("d");
-		
+		//animation.add("d", [0]);
+		//animation.add("l", [1]);
+		//animation.add("u", [2]);
+		//animation.add("r", [3]);
+		//animation.add("x", [4, 5, 6, 7, 7, 7, 7], 7, false);
+		//animation.play("d");
+		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
+		this.frames = anAtlas;
+		this.animation.addByPrefix("north3", "north3_", 10, true);
+		this.animation.addByPrefix("south3", "south3_", 10, true);
+		this.animation.addByPrefix("right3", "side3_", 10, true);
+		this.animation.addByPrefix("left3", "side3_", 10, true, true);
+		this.animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
+		this.animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
+		this.animation.addByPrefix("start3", "start3_", 30, false);
+		animation.play("start3");
 		drag.x = drag.y = enemyDrag;
 		maxVelocity.set(enemyXMaxSpeed, enemyYMaxSpeed);
 		width = aWidth;
@@ -44,16 +54,16 @@ class Enemy extends FlxSprite
 	
 	override public function update (elapsed: Float):Void
 	{
-		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
-		{
-			super.update(elapsed);
-			if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
-			{
-				//Falta agregar el enemigo Dummy
-				kill();
-			}
-			return;
-		}
+		//if (animation.curAnim.name == "x") // Si la animación actual es de muerte
+		//{
+			//super.update(elapsed);
+			//if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
+			//{
+				////Falta agregar el enemigo Dummy
+				//kill();
+			//}
+			//return;
+		//}
 		super.update(elapsed);
 		//Comienza captura del player
 		var player = GlobalGameData.player;
@@ -104,16 +114,16 @@ class Enemy extends FlxSprite
 			switch (facing)
 			{
 				case FlxObject.LEFT:
-					animation.play("l");
+					animation.play("left3");
 				
 				case FlxObject.RIGHT:
-					animation.play("r");
+					animation.play("right3");
 					
 				case FlxObject.UP:
-					animation.play("u");
+					animation.play("north3");
 					
 				case FlxObject.DOWN:
-					animation.play("d");
+					animation.play("south3");
 				
 			}
 			

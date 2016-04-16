@@ -50,6 +50,22 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/atlas/spritemap.json");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/atlas/spritesheet.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/atlas/test.json");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/atlas/test.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/characters/diagdown1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -71,6 +87,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("img/characters/diagup3.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/characters/jason.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -214,6 +234,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("characters/jason.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("characters/north1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -335,7 +359,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "163",
+			build: "225",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
