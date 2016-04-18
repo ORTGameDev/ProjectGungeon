@@ -12,43 +12,44 @@ import openfl.Assets;
 class Enemy extends FlxSprite
 {
 	
-	//Movement
-	static private inline var enemySpeed: Float = 100;
-	static private inline var enemyXMaxSpeed: Float = 500;
+	//Movement  
+	private  var enemySpeed: Float = 100;
+	
+	/*static private inline var enemyXMaxSpeed: Float = 500;
+	
 	static private inline var enemyYMaxSpeed: Float = 300;
 	static private inline var enemyDrag: Int = 1000;
-	
+	//Image properties
+	static private inline var enemyWidth: Float = 20;
+	static private inline var enemyHeight: Float = 20;
+	static private inline var enemyXOffset: Float = 5;
+	static private inline var enemyYOffset: Float = 5;
+	*/
 	
 	//Generics
-	private var life: Int = 3;
-	private var dead: Bool = false;
+	private var enemyLife: Int = 3;
+	private var enemyDamage: Int = 2;
+	private var EnemyIsdead: Bool = false;
+	
 
-	public function new(X:Float = 0, Y:Float = 0, aWidth:Float, aHeight:Float, aXOffset:Float, aYOffset:Float, aBitmapData:String) 
+	public function new(X:Float = 0, Y:Float = 0) 
 	{
 		super(X, Y);
-		loadGraphic(Assets.getBitmapData(aBitmapData), true, 55, 70);
-		//animation.add("d", [0]);
-		//animation.add("l", [1]);
-		//animation.add("u", [2]);
-		//animation.add("r", [3]);
-		//animation.add("x", [4, 5, 6, 7, 7, 7, 7], 7, false);
-		//animation.play("d");
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		this.frames = anAtlas;
-		this.animation.addByPrefix("north3", "north3_", 10, true);
-		this.animation.addByPrefix("south3", "south3_", 10, true);
-		this.animation.addByPrefix("right3", "side3_", 10, true);
-		this.animation.addByPrefix("left3", "side3_", 10, true, true);
-		this.animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
-		this.animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
-		this.animation.addByPrefix("start3", "start3_", 30, false);
+		frames = anAtlas;
+		animation.addByPrefix("north3", "north3_", 10, true);
+		animation.addByPrefix("south3", "south3_", 10, true);
+		animation.addByPrefix("right3", "side3_", 10, true);
+		animation.addByPrefix("left3", "side3_", 10, true, true);
+		animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
+		animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
+		animation.addByPrefix("start3", "start3", 30, false);
 		animation.play("start3");
-		drag.x = drag.y = enemyDrag;
-		maxVelocity.set(enemyXMaxSpeed, enemyYMaxSpeed);
-		width = aWidth;
-		height = aHeight;
-		offset.set(aXOffset, aYOffset);
-		
+		drag.x = drag.y = 1500;
+		maxVelocity.set(500, 300);
+		width = 20;
+		height = 20;
+		offset.set(5, 5);
 	}
 	
 	
@@ -70,7 +71,6 @@ class Enemy extends FlxSprite
 		var dX:Float = player.x - x;
 		var dY:Float = player.y - y;
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 
-		
 		dX /= length;
 		dY /= length;
 		velocity.x = dX * enemySpeed;
@@ -80,14 +80,14 @@ class Enemy extends FlxSprite
 	
 	public function damage(aDamage:Int) 
 	{
-		if (life <= 0){
+		if (enemyLife <= 0){
 			animation.play("x");
 			velocity.set(0, 0);
 			allowCollisions = FlxObject.NONE;	//Deja de colisionar contra CUALQUIER objeto
 		}
 		else
 		{
-			life -= aDamage;
+			enemyLife -= aDamage;
 		}
 		
 	}		

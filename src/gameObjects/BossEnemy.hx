@@ -10,7 +10,7 @@ import openfl.Assets;
  * ...
  * @author Gastón Marichal
  */
-class HunterEnemy extends Enemy
+class BossEnemy extends Enemy
 {
 
 	public function new(X:Float, Y:Float) 
@@ -29,9 +29,9 @@ class HunterEnemy extends Enemy
 		animation.addByPrefix("start3", "start3", 30, false);
 		animation.play("start3");
 		drag.x = drag.y = 1500;
-		enemySpeed = 200;
-		enemyDamage = 3;
-		enemyLife = 2;
+		enemySpeed = 20;
+		enemyDamage = 5;
+		enemyLife = 25;
 		maxVelocity.set(500, 300);
 		width = 20;
 		height = 20;

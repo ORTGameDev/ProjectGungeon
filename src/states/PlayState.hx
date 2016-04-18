@@ -4,8 +4,11 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxAxes;
+import gameObjects.BossEnemy;
+import gameObjects.Bullet;
 import gameObjects.Enemy;
 import gameObjects.Gun;
+import gameObjects.HunterEnemy;
 import gameObjects.Player;
 import gameObjects.Pointer;
 import GlobalGameData;
@@ -44,14 +47,17 @@ class PlayState extends FlxState
 	
 	override public function create():Void 
 	{	
-		var aGun = new Gun(0, 0);	
-		gamePlayer = new Player(100, 100, aGun); 
-		aGun.x = gamePlayer.x + 10;
-		aGun.y = gamePlayer.y + (gamePlayer.height / 2);
-		this.add(aGun);
-		this.add(gamePlayer);
-		
+		gamePlayer = new Player(100, 100);
 		GlobalGameData.player = gamePlayer;
+		//gamePlayer.width = 16;
+		//gamePlayer.height = 22;
+		//gamePlayer.playerGun.x += 15;
+		//gamePlayer.playerGun.y += 10;
+		this.add(gamePlayer);
+		this.add(gamePlayer.playerGun);
+		this.add(gamePlayer.playerGun.bullets);
+		
+		
 		
 		txtLevelNumber = new FlxText(0, 25, 200, "Level: " + this.lvlNumber , 12);
 		txtLevelNumber.screenCenter(FlxAxes.X);
@@ -66,8 +72,8 @@ class PlayState extends FlxState
 		this.loadEnemies();
 		this.changeGamePointer();
 		
-		//FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
-		FlxG.camera.zoom = 2;
+		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
+		//FlxG.camera.zoom = 2;
 		
 	}
 	
@@ -78,10 +84,10 @@ class PlayState extends FlxState
 	}
 	
 	private function loadEnemies(){
-		enemies.add(new Enemy(150, 250, 20, 20, 5, 5, "characters/jason.png"));
-		enemies.add(new Enemy(300, 400, 20, 20, 5, 5, "characters/jason.png"));
-		enemies.add(new Enemy(550, 505, 20, 20, 5, 5, "characters/jason.png"));
-		add(enemies);
+		/*enemies.add(new Enemy(150, 250));
+		enemies.add(new HunterEnemy(300, 400));
+		enemies.add(new BossEnemy(550, 550));
+		add(enemies);*/
 	}
 	
 	private function changeGamePointer()
