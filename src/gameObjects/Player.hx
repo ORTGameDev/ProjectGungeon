@@ -4,6 +4,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import openfl.Assets;
 
 /**
@@ -26,41 +27,30 @@ class Player extends FlxSprite
 	//Gun
 	public var playerGun:Gun;
 			
-	public function new(X:Float = 0, Y:Float = 0, aGun:Gun /* aGraphic:FlxGraphicAsset*/)
+	public function new(X:Float = 0, Y:Float = 0)
 	{
 		super(X, Y);
+		this.updateHitbox();
+		var aBullets = new FlxTypedGroup<Bullet>();
+		playerGun = new Gun(X, Y, aBullets);
+		
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north1", "north1_", 10, true);
 		this.animation.addByPrefix("south1", "south1_", 10, true);
 		this.animation.addByPrefix("right1", "side1_", 10, true);
 		this.animation.addByPrefix("left1", "side1_", 10, true, true);
-		this.animation.addByPrefix("diagDown1", "diagDown1_", 10, true);
-		this.animation.addByPrefix("diagUp1", "diagUp1_", 30, true);
-		this.animation.addByPrefix("start1", "start1", 30, false);
+		this.animation.addByPrefix("diagDown1_right", "diagdown1_", 10, true);
+		this.animation.addByPrefix("diagUp1_right", "diagup1_", 10, true);
+		this.animation.addByPrefix("diagDown1_left", "diagdown1_", 10, true, true);
+		this.animation.addByPrefix("diagUp1_left", "diagup1_", 10, true, true);
+		this.animation.addByPrefix("start1", "start1", 10, false);
 		this.animation.play("start1");
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
-		/*
-		makeGraphic(50, 50, FlxColor.CYAN);
-		
-		loadGraphic(Assets.getBitmapData("characters/start1.png"), false, 20, 24);
-		setFacingFlip(FlxObject.LEFT, true, false);
-		setFacingFlip(FlxObject.RIGHT, false, false);
-		animation.add("u", [0, 1, 2, 3], 4);
-		//animation.add("ur", [0, 1, 2, 3], 4);
-		//animation.add("ul", [0, 1, 2, 3], 4);
-		animation.add("r", [0, 1, 2, 3], 4);
-		animation.add("d", [0, 1, 2, 3], 4);
-		//animation.add("dr", [0, 1, 2, 3], 4);
-		//animation.add("dl", [0, 1, 2, 3], 4);
-		animation.add("l", [0, 1, 2, 3], 4);
-		
-		
-		*/playerGun = aGun;
+			
 	}
 		
-	
 	override public function update(elapsed:Float):Void 
 	{
 		acceleration.set();
@@ -80,10 +70,10 @@ class Player extends FlxSprite
 		{
 			acceleration.y -= playerAcceleration;
 		}
-	/*	if (FlxG.keys.justPressed.SPACE)
+		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
 		{
-			gun.shoot(x + width, y + height/2);
-		}*/
+			playerGun.shoot(x + width, y + height/2);
+		}
 		super.update(elapsed);
 		playerGun.x = this.x + 10;
 		playerGun.y = this.y + (this.height / 2);
@@ -91,41 +81,40 @@ class Player extends FlxSprite
 	
 	override public function draw():Void
 	{
-		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE)
+		var dX = FlxG.mouse.x - this.x;
+		var dY = FlxG.mouse.y - this.y;
+		var angle = Math.atan2(dY, dX) * 180 / Math.PI;
+		if (angle < 0)
 		{
-			if (Math.abs(velocity.x) > Math.abs(velocity.y))
-			{
-				if (velocity.x < 0)
-					facing = FlxObject.LEFT;
-				else
-					facing = FlxObject.RIGHT;
-			}
-			else
-			{
-				if (velocity.y < 0)
-					facing = FlxObject.UP;
-				else
-					facing = FlxObject.DOWN;
-			}
-			
-			switch (facing)
-			{
-				case FlxObject.LEFT:
-					animation.play("left1");
-				
-				case FlxObject.RIGHT:
-					
-					animation.play("right1");
-					
-				case FlxObject.UP:
-					animation.play("north1");
-					
-				case FlxObject.DOWN:
-					animation.play("south1");
-				
-			}
-			
+		 angle += 360;
 		}
+		if (angle <= (0 + 20) || angle > (360 - 20)){
+			animation.play("right1");
+			playerGun.alpha = 1;
+		} else if (angle  <=  (90 - 20) && angle > (0 + 20)){
+			animation.play("diagDown1_right");
+			playerGun.alpha = 1;
+		} else if (angle  <=  (90 + 20) && angle > (90 - 20)){
+			animation.play("south1");
+			playerGun.alpha = 1;
+		} else if (angle <= (180 - 20) && angle > (90 + 20)){
+			animation.play("diagDown1_left");
+			playerGun.alpha = 1;
+		} else if (angle <= (180 + 20) && angle > (180 - 20)){
+			animation.play("left1");
+			playerGun.alpha = 1;
+		} else if (angle <= (270 - 20) && angle > (180 + 20)){
+			animation.play("diagUp1_left");
+			playerGun.alpha = 0;
+		} else if (angle <= (270 + 20) && angle > (270 - 20)){
+			animation.play("north1");
+			playerGun.alpha = 0;
+		} else if (angle <= (360 - 20) && angle > (270 + 20)){
+			animation.play("diagUp1_right");
+			playerGun.alpha = 0;
+		}
+		if(velocity.x == 0 && velocity.y == 0)
+			animation.stop();
 		super.draw();
 	}
 	

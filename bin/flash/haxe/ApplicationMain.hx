@@ -82,6 +82,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/characters/enemyDead.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/characters/jason.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -226,6 +230,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("characters/enemyDead.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("characters/jason.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -351,7 +359,11 @@ class ApplicationMain {
 		
 		config = {
 			
+<<<<<<< HEAD
 			build: "239",
+=======
+			build: "312",
+>>>>>>> origin/master
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
