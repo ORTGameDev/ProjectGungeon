@@ -27,12 +27,6 @@ class Enemy extends FlxSprite
 	{
 		super(X, Y);
 		loadGraphic(Assets.getBitmapData(aBitmapData), true, 55, 70);
-		//animation.add("d", [0]);
-		//animation.add("l", [1]);
-		//animation.add("u", [2]);
-		//animation.add("r", [3]);
-		//animation.add("x", [4, 5, 6, 7, 7, 7, 7], 7, false);
-		//animation.play("d");
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north3", "north3_", 10, true);
@@ -41,7 +35,7 @@ class Enemy extends FlxSprite
 		this.animation.addByPrefix("left3", "side3_", 10, true, true);
 		this.animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
 		this.animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
-		this.animation.addByPrefix("start3", "start3_", 30, false);
+		this.animation.addByPrefix("start3", "start3", 30, false);
 		animation.play("start3");
 		drag.x = drag.y = enemyDrag;
 		maxVelocity.set(enemyXMaxSpeed, enemyYMaxSpeed);

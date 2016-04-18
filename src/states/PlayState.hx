@@ -33,6 +33,10 @@ class PlayState extends FlxState
 	//Enemies
 	private var enemies:FlxGroup;
 	
+	//HUD
+	private var hud:HUD;
+	
+	
 	public function new(aLvlNumber:Int, aLvlDesc:String) 
 	{
 		super();
@@ -51,6 +55,9 @@ class PlayState extends FlxState
 		this.add(aGun);
 		this.add(gamePlayer);
 		
+		hud = new HUD();
+		add(hud);
+		
 		GlobalGameData.player = gamePlayer;
 		
 		txtLevelNumber = new FlxText(0, 25, 200, "Level: " + this.lvlNumber , 12);
@@ -66,9 +73,10 @@ class PlayState extends FlxState
 		this.loadEnemies();
 		this.changeGamePointer();
 		
-		//FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
-		FlxG.camera.zoom = 2;
+		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
+		//FlxG.camera.zoom = 2;
 		
+		hud.update(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 	}
 	
 	override public function update(elapsed:Float):Void 

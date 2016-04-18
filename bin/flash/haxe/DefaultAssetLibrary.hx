@@ -117,8 +117,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
 		#end
 		
 		#if flash
@@ -137,10 +135,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/atlas/spritemap.json", AssetType.TEXT);
 		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
 		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
-		className.set ("img/atlas/test.json", __ASSET__img_atlas_test_json);
-		type.set ("img/atlas/test.json", AssetType.TEXT);
-		className.set ("img/atlas/test.png", __ASSET__img_atlas_test_png);
-		type.set ("img/atlas/test.png", AssetType.IMAGE);
 		className.set ("img/characters/diagdown1.png", __ASSET__img_characters_diagdown1_png);
 		type.set ("img/characters/diagdown1.png", AssetType.IMAGE);
 		className.set ("img/characters/diagdown2.png", __ASSET__img_characters_diagdown2_png);
@@ -287,14 +281,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "img/atlas/spritesheet.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "img/atlas/test.json";
-		path.set (id, id);
-		
-		type.set (id, AssetType.TEXT);
-		id = "img/atlas/test.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -568,12 +554,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
 		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
-		
-		className.set ("img/atlas/test.json", __ASSET__img_atlas_test_json);
-		type.set ("img/atlas/test.json", AssetType.TEXT);
-		
-		className.set ("img/atlas/test.png", __ASSET__img_atlas_test_png);
-		type.set ("img/atlas/test.png", AssetType.IMAGE);
 		
 		className.set ("img/characters/diagdown1.png", __ASSET__img_characters_diagdown1_png);
 		type.set ("img/characters/diagdown1.png", AssetType.IMAGE);
@@ -1399,8 +1379,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritemap_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritesheet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__img_atlas_test_json extends flash.utils.ByteArray { }
-@:keep @:bind #if display private #end class __ASSET__img_atlas_test_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1530,8 +1508,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
-
-
 #else
 
 
@@ -1546,8 +1522,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
-@:file("assets/img/atlas/test.json") #if display private #end class __ASSET__img_atlas_test_json extends lime.utils.Bytes {}
-@:image("assets/img/atlas/test.png") #if display private #end class __ASSET__img_atlas_test_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown1.png") #if display private #end class __ASSET__img_characters_diagdown1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown2.png") #if display private #end class __ASSET__img_characters_diagdown2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown3.png") #if display private #end class __ASSET__img_characters_diagdown3_png extends lime.graphics.Image {}

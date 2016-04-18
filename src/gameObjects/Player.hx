@@ -14,7 +14,8 @@ class Player extends FlxSprite
 {
 
 	//Player
-	public var playerLife:Int = 10;
+	public var playerLife:Int = 7;
+	public var totalLife:Int = 8;
 	
 	//Movement
 	static private inline var playerAcceleration: Float = 150;
@@ -36,7 +37,7 @@ class Player extends FlxSprite
 		this.animation.addByPrefix("left1", "side1_", 10, true, true);
 		this.animation.addByPrefix("diagDown1", "diagDown1_", 10, true);
 		this.animation.addByPrefix("diagUp1", "diagUp1_", 30, true);
-		this.animation.addByPrefix("start1", "start1_", 30, false);
+		this.animation.addByPrefix("start1", "start1", 30, false);
 		this.animation.play("start1");
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
