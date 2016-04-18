@@ -83,7 +83,7 @@ class PlayState extends FlxState
 		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
 		//FlxG.camera.zoom = 2;
 		
-		hud.update(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
+		hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 	}
 	
 	override public function update(elapsed:Float):Void 

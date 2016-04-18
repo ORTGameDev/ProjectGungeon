@@ -359,11 +359,7 @@ class ApplicationMain {
 		
 		config = {
 			
-<<<<<<< HEAD
-			build: "239",
-=======
-			build: "312",
->>>>>>> origin/master
+			build: "4",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

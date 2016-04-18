@@ -2,6 +2,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.group.FlxGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
@@ -57,7 +58,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			sprHealth.add(sprLife);
 			healthX += sprLife.width + 2;
 		}
-		add(sprHealth);
+		//this.add(sprHealth);
 		
 	}
 	
