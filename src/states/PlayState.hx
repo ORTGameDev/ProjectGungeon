@@ -1,9 +1,13 @@
 package states;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxState;
+import flixel.addons.editors.ogmo.FlxOgmoLoader;
+import flixel.addons.editors.tiled.TiledMap;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
+import openfl.display.Tile;
 
 import flixel.util.FlxAxes;
 import gameObjects.BossEnemy;
@@ -38,6 +42,10 @@ class PlayState extends FlxState
 	private var tileWidth:  Int = 16;
 	private var tileHeight: Int = 16;
 	
+	//OGMO
+	private var _map:FlxOgmoLoader;
+	private var _mWalls:FlxTilemap;
+	
 	//Player
 	private var gamePlayer:Player;
 		
@@ -56,16 +64,24 @@ class PlayState extends FlxState
 	
 	override public function create():Void 
 	{	
-		map = new FlxTilemap();
+		_map = new FlxOgmoLoader("img/maps/level1.oel");
+		_mWalls = _map.loadTilemap("img/maps/tilemap.png", 16, 16, "walls");
+		_mWalls.follow();
+		_mWalls.setTileProperties(1, FlxObject.ANY);
+		_mWalls.setTileProperties(2, FlxObject.NONE);
+		add(_mWalls);
+		
+		
+		/*map = new FlxTilemap();
 		map.loadMapFromCSV(Assets.getText("img/maps/tilemapdata.csv"), Assets.getBitmapData("img/maps/tilemap.png"), tileWidth, tileHeight,1,1);
-		add(map);
+		add(map);*/
 		
 		gamePlayer = new Player(100, 100);
 		GlobalGameData.player = gamePlayer;
-		//gamePlayer.width = 16;
-		//gamePlayer.height = 22;
-		//gamePlayer.playerGun.x += 15;
-		//gamePlayer.playerGun.y += 10;
+		gamePlayer.width = 16;
+		gamePlayer.height = 22;
+		gamePlayer.playerGun.x += 15;
+		gamePlayer.playerGun.y += 10;
 		this.add(gamePlayer);
 		this.add(gamePlayer.playerGun);
 		this.add(gamePlayer.playerGun.bullets);
@@ -90,7 +106,7 @@ class PlayState extends FlxState
 		this.changeGamePointer();
 		
 		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
-		FlxG.camera.zoom = 2;
+		//FlxG.camera.zoom = 2;
 		
 		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 	}
@@ -98,15 +114,26 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		FlxG.collide(map, gamePlayer);
-		FlxG.collide(map, gamePlayer.playerGun.bullets);
+		
+		FlxG.collide(_mWalls, gamePlayer);
+		FlxG.collide(_mWalls, gamePlayer.playerGun.bullets, destroyBullet);
+		FlxG.collide(_mWalls, enemies);
+		//FlxG.collide(map, gamePlayer);
+		//FlxG.collide(map, gamePlayer.playerGun.bullets);
+	}
+	
+	private function destroyBullet(t:FlxTilemap, b:Bullet):Void
+	{
+		if (t.exists && t.alive && b.exists && b.alive){
+			b.kill();
+		}
 	}
 	
 	private function loadEnemies(){
-		/*enemies.add(new Enemy(150, 250));
+		enemies.add(new Enemy(150, 250));
 		enemies.add(new HunterEnemy(300, 400));
 		enemies.add(new BossEnemy(550, 550));
-		add(enemies);*/
+		add(enemies);
 	}
 	
 	private function changeGamePointer()
