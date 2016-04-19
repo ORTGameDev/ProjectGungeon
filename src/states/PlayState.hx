@@ -3,6 +3,8 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.text.FlxText;
+import flixel.tile.FlxTilemap;
+
 import flixel.util.FlxAxes;
 import gameObjects.BossEnemy;
 import gameObjects.Bullet;
@@ -12,6 +14,7 @@ import gameObjects.HunterEnemy;
 import gameObjects.Player;
 import gameObjects.Pointer;
 import GlobalGameData;
+import openfl.Assets;
 
 /**
  * ...
@@ -22,22 +25,24 @@ class PlayState extends FlxState
 	//Cursor
 	private var gamePointer:Pointer;
 	
-	//Player
-	private var gamePlayer:Player;
+	//HUD + UI
+	private var hud:HUD;
 	private var lvlNumber:Int;
 	private var lvlDesc:String;
 	private var txtPlayerLife: FlxText;
 	private var txtLevelNumber: FlxText;
 	private var txtLevelDescription: FlxText;
-	
+
 	//Map
+	private var map:FlxTilemap;
+	private var tileWidth:  Int = 16;
+	private var tileHeight: Int = 16;
 	
-	
+	//Player
+	private var gamePlayer:Player;
+		
 	//Enemies
 	private var enemies:FlxGroup;
-	
-	//HUD
-	private var hud:HUD;
 	
 	
 	public function new(aLvlNumber:Int, aLvlDesc:String) 
@@ -51,6 +56,10 @@ class PlayState extends FlxState
 	
 	override public function create():Void 
 	{	
+		map = new FlxTilemap();
+		map.loadMapFromCSV(Assets.getText("img/maps/tilemapdata.csv"), Assets.getBitmapData("img/maps/tilemap.png"), tileWidth, tileHeight,1,1);
+		add(map);
+		
 		gamePlayer = new Player(100, 100);
 		GlobalGameData.player = gamePlayer;
 		//gamePlayer.width = 16;
@@ -62,10 +71,10 @@ class PlayState extends FlxState
 		this.add(gamePlayer.playerGun.bullets);
 		
 		
+		/*
 		hud = new HUD();
 		add(hud);
-		
-		GlobalGameData.player = gamePlayer;
+		*/
 		
 		txtLevelNumber = new FlxText(0, 25, 200, "Level: " + this.lvlNumber , 12);
 		txtLevelNumber.screenCenter(FlxAxes.X);
@@ -81,15 +90,16 @@ class PlayState extends FlxState
 		this.changeGamePointer();
 		
 		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
-		//FlxG.camera.zoom = 2;
+		FlxG.camera.zoom = 2;
 		
-		hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
+		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		
+		FlxG.collide(map, gamePlayer);
+		FlxG.collide(map, gamePlayer.playerGun.bullets);
 	}
 	
 	private function loadEnemies(){

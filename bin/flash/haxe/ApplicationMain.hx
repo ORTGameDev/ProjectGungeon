@@ -190,6 +190,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/maps/tilemap.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/maps/tilemapdata.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		urls.push ("img/pointer/crosshairBig.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -359,7 +367,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "4",
+			build: "24",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
