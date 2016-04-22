@@ -1,4 +1,5 @@
 package gameObjects;
+import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -15,9 +16,7 @@ class HunterEnemy extends Enemy
 
 	public function new(X:Float, Y:Float) 
 	{
-		
 		super(X, Y);
-		//loadGraphic(Assets.getBitmapData(aBitmapData), true, 55, 70);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
 		animation.addByPrefix("north3", "north3_", 10, true);
@@ -27,6 +26,7 @@ class HunterEnemy extends Enemy
 		animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
 		animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
 		animation.addByPrefix("start3", "start3", 30, false);
+		animation.addByPrefix("x", "start3", 30, false, false, true);
 		animation.play("start3");
 		drag.x = drag.y = 1500;
 		enemySpeed = 200;

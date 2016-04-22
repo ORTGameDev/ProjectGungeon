@@ -1,9 +1,13 @@
 package gameObjects;
+import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
+import gameObjects.DeadEnemy;
 import openfl.Assets;
+import states.PlayState;
 
 /**
  * ...
@@ -11,27 +15,14 @@ import openfl.Assets;
  */
 class Enemy extends FlxSprite
 {
-	
 	//Movement  
 	private  var enemySpeed: Float = 100;
-	
-	/*static private inline var enemyXMaxSpeed: Float = 500;
-	
-	static private inline var enemyYMaxSpeed: Float = 300;
-	static private inline var enemyDrag: Int = 1000;
-	//Image properties
-	static private inline var enemyWidth: Float = 20;
-	static private inline var enemyHeight: Float = 20;
-	static private inline var enemyXOffset: Float = 5;
-	static private inline var enemyYOffset: Float = 5;
-	*/
-	
 	//Generics
-	private var enemyLife: Int = 3;
+	private var enemyLife: Int = 6;
 	private var enemyDamage: Int = 2;
-	private var EnemyIsdead: Bool = false;
 	
-
+	
+	
 	public function new(X:Float = 0, Y:Float = 0) 
 	{
 		super(X, Y);
@@ -44,6 +35,7 @@ class Enemy extends FlxSprite
 		animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
 		animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
 		animation.addByPrefix("start3", "start3", 30, false);
+		animation.addByPrefix("x", "start3", 30, false, false, true);
 		animation.play("start3");
 		drag.x = drag.y = 1500;
 		maxVelocity.set(500, 300);
@@ -55,16 +47,18 @@ class Enemy extends FlxSprite
 	
 	override public function update (elapsed: Float):Void
 	{
-		//if (animation.curAnim.name == "x") // Si la animación actual es de muerte
-		//{
-			//super.update(elapsed);
-			//if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
-			//{
-				////Falta agregar el enemigo Dummy
-				//kill();
-			//}
-			//return;
-		//}
+		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
+		{
+		super.update(elapsed);
+		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
+			{
+				//Falta agregar el enemigo Dummy
+				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
+				FlxG.state.add(deadEnemy);
+				kill();
+			}
+			return;
+		}
 		super.update(elapsed);
 		//Comienza captura del player
 		var player = GlobalGameData.player;
@@ -75,23 +69,9 @@ class Enemy extends FlxSprite
 		dY /= length;
 		velocity.x = dX * enemySpeed;
 		velocity.y = dY * enemySpeed;
-		
 	}
 	
-	public function damage(aDamage:Int) 
-	{
-		if (enemyLife <= 0){
-			animation.play("x");
-			velocity.set(0, 0);
-			allowCollisions = FlxObject.NONE;	//Deja de colisionar contra CUALQUIER objeto
-		}
-		else
-		{
-			enemyLife -= aDamage;
-		}
 		
-	}		
-	
 	override public function draw():Void
 	{
 		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE)
@@ -129,6 +109,16 @@ class Enemy extends FlxSprite
 			
 		}
 		super.draw();
+	}
+	
+	public function receiveDamage(damage:Int):Void
+	{
+		enemyLife -= damage;
+		if (enemyLife <= 0)
+		{
+			velocity.set(0, 0);
+			animation.play("x");
+		}	
 	}
 	
 }

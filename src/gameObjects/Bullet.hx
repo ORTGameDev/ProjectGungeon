@@ -11,6 +11,7 @@ class Bullet extends FlxSprite
 {
 	
 	var bulletSpeed:Int = 500;
+	public var damage:Int = 2;
 
 	public function new() 
 	{

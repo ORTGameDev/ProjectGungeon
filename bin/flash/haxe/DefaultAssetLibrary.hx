@@ -123,6 +123,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		#end
 		
 		#if flash
@@ -207,6 +208,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/guns/shotgun/shot_side.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
+		className.set ("img/maps/level1.csv", __ASSET__img_maps_level1_csv);
+		type.set ("img/maps/level1.csv", AssetType.TEXT);
 		className.set ("img/maps/level1.oel", __ASSET__img_maps_level1_oel);
 		type.set ("img/maps/level1.oel", AssetType.TEXT);
 		className.set ("img/maps/levelOne.oel", __ASSET__img_maps_levelone_oel);
@@ -434,6 +437,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/maps/level1.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
 		id = "img/maps/level1.oel";
 		path.set (id, id);
 		
@@ -695,6 +702,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
+		
+		className.set ("img/maps/level1.csv", __ASSET__img_maps_level1_csv);
+		type.set ("img/maps/level1.csv", AssetType.TEXT);
 		
 		className.set ("img/maps/level1.oel", __ASSET__img_maps_level1_oel);
 		type.set ("img/maps/level1.oel", AssetType.TEXT);
@@ -1472,6 +1482,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_maps_level1_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_level1_oel extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_levelone_oel extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_tilemap_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1580,6 +1591,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
 #else
 
 
@@ -1587,11 +1599,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
-@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown1.png") #if display private #end class __ASSET__img_characters_diagdown1_png extends lime.graphics.Image {}
@@ -1627,6 +1639,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/guns/shotgun/shot_down.png") #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_side.png") #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_up.png") #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends lime.graphics.Image {}
+@:file("assets/img/maps/level1.csv") #if display private #end class __ASSET__img_maps_level1_csv extends lime.utils.Bytes {}
 @:file("assets/img/maps/level1.oel") #if display private #end class __ASSET__img_maps_level1_oel extends lime.utils.Bytes {}
 @:file("assets/img/maps/levelOne.oel") #if display private #end class __ASSET__img_maps_levelone_oel extends lime.utils.Bytes {}
 @:image("assets/img/maps/tilemap.png") #if display private #end class __ASSET__img_maps_tilemap_png extends lime.graphics.Image {}

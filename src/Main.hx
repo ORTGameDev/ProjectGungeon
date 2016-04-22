@@ -19,7 +19,7 @@ class Main extends Sprite
 	public function new() 
 	{
 		super();
-		addChild(new FlxGame(900, 600, MenuState));
+		addChild(new FlxGame(900, 600, MenuState, 1, 60, 60, false, true));
 		
 		// Assets:
 		// openfl.Assets.getBitmapData("img/assetname.jpg");

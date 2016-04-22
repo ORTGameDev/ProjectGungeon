@@ -105,8 +105,7 @@ class PlayState extends FlxState
 		this.loadEnemies();
 		this.changeGamePointer();
 		
-		FlxG.camera.follow(gamePlayer, NO_DEAD_ZONE, 1);
-		//FlxG.camera.zoom = 2;
+		
 		
 		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 	}
@@ -114,17 +113,34 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		
+		FlxG.worldBounds.setPosition(gamePlayer.x-400, gamePlayer.y-240);
 		FlxG.collide(_mWalls, gamePlayer);
 		FlxG.collide(_mWalls, gamePlayer.playerGun.bullets, destroyBullet);
 		FlxG.collide(_mWalls, enemies);
+		FlxG.overlap(gamePlayer.playerGun.bullets, enemies, bulletVsEnemy);
 		//FlxG.collide(map, gamePlayer);
 		//FlxG.collide(map, gamePlayer.playerGun.bullets);
+		
+		FlxG.camera.follow(gamePlayer, LOCKON, 2);
+		FlxG.camera.target = gamePlayer;
+		//FlxG.camera.zoom = 4;
+		
+		
+		FlxG.worldBounds.set(0, 0, FlxG.camera.width, FlxG.camera.height);
+		
 	}
 	
 	private function destroyBullet(t:FlxTilemap, b:Bullet):Void
 	{
 		if (t.exists && t.alive && b.exists && b.alive){
+			b.kill();
+		}
+	}
+	
+	private function bulletVsEnemy(b:Bullet, e:Enemy):Void
+	{
+		if (e.exists && e.alive && b.exists && b.alive){
+			e.receiveDamage(b.damage);			
 			b.kill();
 		}
 	}
