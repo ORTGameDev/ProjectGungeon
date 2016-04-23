@@ -202,6 +202,18 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("img/maps/lvl1.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/maps/mapTiles.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/maps/mapTiles_olg.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/maps/tilemap.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -318,6 +330,22 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("sounds/music/01_labyrinth.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/ShotgunShot.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/simpleGunShot.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("music/01_labyrinth.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
 		
 		if (config.assetsPrefix != null) {
 			
@@ -379,7 +407,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "93",
+			build: "120",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

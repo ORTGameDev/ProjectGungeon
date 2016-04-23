@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
+import openfl.Assets;
 import openfl.display.Sprite;
 import openfl.Lib;
 import states.MenuState;
@@ -21,8 +22,13 @@ class Main extends Sprite
 		super();
 		addChild(new FlxGame(900, 600, MenuState, 1, 60, 60, false, true));
 		
-		// Assets:
-		// openfl.Assets.getBitmapData("img/assetname.jpg");
+		//Cambiar esto por AssethPath
+		FlxG.sound.playMusic("music/01_labyrinth.mp3", 0.2, true);
+		
 	}
+	
+	
+	
+	
 
 }

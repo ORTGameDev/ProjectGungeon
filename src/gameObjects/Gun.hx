@@ -1,7 +1,9 @@
 package gameObjects;
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import gameObjects.Bullet;
 import openfl.Assets;
@@ -15,14 +17,14 @@ import openfl.Assets;
 class Gun extends FlxSprite
 {
 	public var bullets: FlxTypedGroup<Bullet>;
+	private var gunSound: FlxSound;
 	
 	public function new(aX:Float, aY:Float, aBullets:FlxTypedGroup<Bullet>) 
 	{
 		super(aX + 10, aY + 10);
+		gunSound = FlxG.sound.load("sounds/simpleGunShot.mp3", 0.4, false);
 		bullets = aBullets;
 		bullets.maxSize = 50;
-		
-		
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "p_up", 10, true);
@@ -43,6 +45,7 @@ class Gun extends FlxSprite
 		if (!bullet.alive)
 		{
 			bullet.reset(aX, aY);
+			gunSound.play(true);
 		}
 		
 	}

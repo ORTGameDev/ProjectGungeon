@@ -39,8 +39,8 @@ class PlayState extends FlxState
 
 	//Map
 	private var map:FlxTilemap;
-	private var tileWidth:  Int = 16;
-	private var tileHeight: Int = 16;
+	private var tileWidth:  Int = 32;
+	private var tileHeight: Int = 32;
 	
 	//OGMO
 	private var _map:FlxOgmoLoader;
@@ -64,19 +64,28 @@ class PlayState extends FlxState
 	
 	override public function create():Void 
 	{	
+		
+		/*
 		_map = new FlxOgmoLoader("img/maps/level1.oel");
 		_mWalls = _map.loadTilemap("img/maps/tilemap.png", 16, 16, "walls");
 		_mWalls.follow();
 		_mWalls.setTileProperties(1, FlxObject.ANY);
 		_mWalls.setTileProperties(2, FlxObject.NONE);
 		add(_mWalls);
+		*/
+		
+		map = new FlxTilemap();
+		map.loadMapFromCSV(Assets.getText("img/maps/lvl1.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight);
+		map.setTileProperties(1, FlxObject.ANY);
+		map.setTileProperties(2, FlxObject.NONE);
+		map.setTileProperties(3, FlxObject.NONE);
+		map.setTileProperties(4, FlxObject.NONE);
+		map.setTileProperties(5, FlxObject.ANY);
+		
+		add(map);
 		
 		
-		/*map = new FlxTilemap();
-		map.loadMapFromCSV(Assets.getText("img/maps/tilemapdata.csv"), Assets.getBitmapData("img/maps/tilemap.png"), tileWidth, tileHeight,1,1);
-		add(map);*/
-		
-		gamePlayer = new Player(100, 100);
+		gamePlayer = new Player(200, 200);
 		GlobalGameData.player = gamePlayer;
 		gamePlayer.width = 16;
 		gamePlayer.height = 22;
@@ -114,9 +123,9 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		FlxG.worldBounds.setPosition(gamePlayer.x-400, gamePlayer.y-240);
-		FlxG.collide(_mWalls, gamePlayer);
-		FlxG.collide(_mWalls, gamePlayer.playerGun.bullets, destroyBullet);
-		FlxG.collide(_mWalls, enemies);
+		//FlxG.collide(_mWalls, gamePlayer);
+		//FlxG.collide(_mWalls, gamePlayer.playerGun.bullets, destroyBullet);
+		//FlxG.collide(_mWalls, enemies);
 		FlxG.overlap(gamePlayer.playerGun.bullets, enemies, bulletVsEnemy);
 		//FlxG.collide(map, gamePlayer);
 		//FlxG.collide(map, gamePlayer.playerGun.bullets);
@@ -146,8 +155,8 @@ class PlayState extends FlxState
 	}
 	
 	private function loadEnemies(){
-		enemies.add(new Enemy(150, 250));
-		enemies.add(new HunterEnemy(300, 400));
+		enemies.add(new Enemy(1000, 1200));
+		enemies.add(new HunterEnemy(580, 900));
 		enemies.add(new BossEnemy(550, 550));
 		add(enemies);
 	}
