@@ -87,8 +87,8 @@ class PlayState extends FlxState
 		
 		gamePlayer = new Player(200, 200);
 		GlobalGameData.player = gamePlayer;
-		gamePlayer.width = 16;
-		gamePlayer.height = 22;
+		//gamePlayer.width = 16;
+		//gamePlayer.height = 22;
 		gamePlayer.playerGun.x += 15;
 		gamePlayer.playerGun.y += 10;
 		this.add(gamePlayer);
@@ -149,7 +149,7 @@ class PlayState extends FlxState
 	private function bulletVsEnemy(b:Bullet, e:Enemy):Void
 	{
 		if (e.exists && e.alive && b.exists && b.alive){
-			e.receiveDamage(b.damage);			
+			e.receiveDamage(b.bulletDamage);			
 			b.kill();
 		}
 	}

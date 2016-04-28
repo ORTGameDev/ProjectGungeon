@@ -48,7 +48,8 @@ class Player extends FlxSprite
 		this.animation.addByPrefix("diagUp1_left", "diagup1_", 10, true, true);
 		this.animation.addByPrefix("start1", "start1", 10, false);
 		this.animation.play("start1");
-		
+		this.scale.set(2, 2);
+		this.setSize(32, 32);
 	}
 		
 	override public function update(elapsed:Float):Void 

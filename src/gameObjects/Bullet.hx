@@ -2,6 +2,7 @@ package gameObjects;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
+import openfl.Assets;
 
 /**
  * ...
@@ -10,15 +11,19 @@ import flixel.util.FlxColor;
 class Bullet extends FlxSprite
 {
 	
-	var bulletSpeed:Int = 500;
-	public var damage:Int = 2;
+	public var bulletSpeed:Int;
+	public var bulletDamage:Int;
 
-	public function new() 
+	public function new(aBulletSpeed:Int, aBulletDamage:Int) 
 	{
 		super(0, 0);
-		makeGraphic(5, 5, FlxColor.RED);
+		bulletSpeed = aBulletSpeed;
+		bulletDamage = aBulletDamage;
+		loadGraphic(Assets.getBitmapData("img/bullets/simpleBullet.png"), true, 11, 11);
+		animation.add("idle", [0, 1, 2, 1, ], 20, true);
 		alive = false;
-		
+		//offset.set(5, 5);
+		animation.play("idle");
 		
 	}
 	
@@ -33,7 +38,6 @@ class Bullet extends FlxSprite
 		dY /= length;
 		velocity.x = dX * bulletSpeed;
 		velocity.y = dY * bulletSpeed;
-		
 		
 	}
 	

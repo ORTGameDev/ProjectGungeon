@@ -58,6 +58,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/bullets/simpleBullet.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/characters/diagdown1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -334,7 +338,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("sounds/ShotgunShot.mp3");
+		urls.push ("sounds/shotgunShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
@@ -407,7 +411,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "120",
+			build: "148",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
