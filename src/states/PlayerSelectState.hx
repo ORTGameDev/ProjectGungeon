@@ -79,7 +79,7 @@ class PlayerSelectState extends FlxState
 	
 	private function playGame():Void
 	{
-		FlxG.switchState(new PlayState(1, "Nacho´s Room"));
+		FlxG.switchState(new PlayState());
 	}
 	
 	private function BackToMenu():Void

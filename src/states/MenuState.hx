@@ -59,7 +59,7 @@ class MenuState extends FlxState
 	}
 	
 	private function clickSinglePlay():Void{
-		FlxG.switchState(new PlayState(1, "Nacho´s Room"));
+		FlxG.switchState(new PlayState());
 	}
 	
 	private function clickSettings():Void {

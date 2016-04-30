@@ -26,25 +26,22 @@ import openfl.Assets;
  */
 class PlayState extends FlxState
 {
+	
+	//Level  data
+	private var lvlNumber: Int = 1;
+	private var lvlDesc : String = "Nacho´s Room";
+	
 	//Cursor
 	private var gamePointer:Pointer;
 	
 	//HUD + UI
 	private var hud:HUD;
-	private var lvlNumber:Int;
-	private var lvlDesc:String;
-	private var txtPlayerLife: FlxText;
-	private var txtLevelNumber: FlxText;
-	private var txtLevelDescription: FlxText;
+	
 
 	//Map
 	private var map:FlxTilemap;
 	private var tileWidth:  Int = 32;
 	private var tileHeight: Int = 32;
-	
-	//OGMO
-	private var _map:FlxOgmoLoader;
-	private var _mWalls:FlxTilemap;
 	
 	//Player
 	private var gamePlayer:Player;
@@ -53,27 +50,16 @@ class PlayState extends FlxState
 	private var enemies:FlxGroup;
 	
 	
-	public function new(aLvlNumber:Int, aLvlDesc:String) 
+	public function new() 
 	{
 		super();
-		this.lvlNumber = aLvlNumber;
-		this.lvlDesc = aLvlDesc;
 		enemies = new FlxGroup();
 		
 	}
 	
 	override public function create():Void 
 	{	
-		
-		/*
-		_map = new FlxOgmoLoader("img/maps/level1.oel");
-		_mWalls = _map.loadTilemap("img/maps/tilemap.png", 16, 16, "walls");
-		_mWalls.follow();
-		_mWalls.setTileProperties(1, FlxObject.ANY);
-		_mWalls.setTileProperties(2, FlxObject.NONE);
-		add(_mWalls);
-		*/
-		
+		//Map Setup
 		map = new FlxTilemap();
 		map.loadMapFromCSV(Assets.getText("img/maps/lvl1.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight);
 		map.setTileProperties(1, FlxObject.ANY);
@@ -81,42 +67,31 @@ class PlayState extends FlxState
 		map.setTileProperties(3, FlxObject.NONE);
 		map.setTileProperties(4, FlxObject.NONE);
 		map.setTileProperties(5, FlxObject.ANY);
-		
 		add(map);
 		
-		
+		//Playee Setup
 		gamePlayer = new Player(200, 200);
 		GlobalGameData.player = gamePlayer;
 		//gamePlayer.width = 16;
 		//gamePlayer.height = 22;
 		gamePlayer.playerGun.x += 15;
 		gamePlayer.playerGun.y += 10;
-		this.add(gamePlayer);
-		this.add(gamePlayer.playerGun);
-		this.add(gamePlayer.playerGun.bullets);
+		add(gamePlayer);
+		add(gamePlayer.playerGun);
+		add(gamePlayer.playerGun.bullets);
 		
 		
-		/*
-		hud = new HUD();
+		hud = new HUD(lvlNumber, lvlDesc);
 		add(hud);
-		*/
 		
-		txtLevelNumber = new FlxText(0, 25, 200, "Level: " + this.lvlNumber , 12);
-		txtLevelNumber.screenCenter(FlxAxes.X);
-		this.add(txtLevelNumber);
 		
-		txtLevelDescription = new FlxText(0, 50, 200, "( " + this.lvlDesc + " )", 14);
-		txtLevelDescription.screenCenter(FlxAxes.X);
-		this.add(txtLevelDescription);
-		
-		txtPlayerLife = new FlxText(15, 25, 200, "Life: " + gamePlayer.playerLife, 12);
-		this.add(txtPlayerLife);
+		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
 		this.loadEnemies();
 		this.changeGamePointer();
 		
 		
 		
-		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
+		
 	}
 	
 	override public function update(elapsed:Float):Void 

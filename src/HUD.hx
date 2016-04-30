@@ -15,18 +15,32 @@ import flixel.util.FlxSpriteUtil;
 class HUD extends FlxTypedGroup<FlxSprite>
 {
 	private var sprBack: FlxSprite;
-	private var txtHealth: FlxText;
+	private var txtPlayerHealth: FlxText;
+	private var txtLvlInfo: FlxText;
+	
 	private var sprHealth: FlxTypedGroup<FlxSprite>;
+	
+	private var lvlDesc:String;
 
-	public function new() 
+	public function new(aLvlNumber:Int, aLvlString:String) 
 	{
 		super();
 		sprBack = new FlxSprite().makeGraphic(FlxG.width, 20, FlxColor.TRANSPARENT);
-		FlxSpriteUtil.drawRect(sprBack, 0, 19, FlxG.width, 1, FlxColor.WHITE);
-		//txtHealth = new FlxText(16, 2, 0, "3 / 3", 8);
-		//txtHealth.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		FlxSpriteUtil.drawRect(sprBack, 0, 19, FlxG.width, 2, FlxColor.WHITE);
+		
+		txtPlayerHealth = new FlxText(16, 2, 0, "Life: 3 / 3", 8);
+		txtPlayerHealth.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
+		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
+		txtLvlInfo.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		
+		sprHealth = new FlxTypedGroup<FlxSprite>();
+		sprHealth.add(sprBack);
+		sprHealth.add(txtPlayerHealth);
+		sprHealth.add(txtLvlInfo);
 		add(sprBack);
-		//add(txtHealth);
+		add(txtPlayerHealth);
+		add(txtLvlInfo);
 		forEach(function(spr:FlxSprite)
 		{
 			spr.scrollFactor.set(0, 0);
@@ -61,6 +75,8 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		//this.add(sprHealth);
 		
 	}
+	
+	
 	
 	
 }
