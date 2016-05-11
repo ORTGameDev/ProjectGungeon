@@ -4,9 +4,14 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
+import gameObjects.Cannon;
 import gameObjects.DeadEnemy;
+import gameObjects.Gun;
 import openfl.Assets;
+import openfl.Lib;
+import openfl.utils.Timer;
 import states.PlayState;
 
 /**
@@ -15,19 +20,25 @@ import states.PlayState;
  */
 class Enemy extends FlxSprite
 {
+	/*******Enemy default config.***********/
 	//Movement  
-	private  var enemySpeed: Float = 100;
+	private var enemySpeed: Float = 100;
+	private var enemyDrag: Int = 1500;
 	//Generics
 	private var enemyLife: Int = 6;
 	private var enemyDamage: Int = 2;
 	
-	
+	//Gun
+	public var enemyGun:Gun;
+	private var enemyShootDistance:Int = 600;
+	private var enemyLastShoot: Int = 0;
 	
 	public function new(X:Float = 0, Y:Float = 0) 
 	{
 		super(X, Y);
-		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		frames = anAtlas;
+		drag.x = drag.y = enemyDrag;
+		enemyGun= new Cannon(X, Y);
+		frames = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		animation.addByPrefix("north3", "north3_", 10, true);
 		animation.addByPrefix("south3", "south3_", 10, true);
 		animation.addByPrefix("right3", "side3_", 10, true);
@@ -37,11 +48,10 @@ class Enemy extends FlxSprite
 		animation.addByPrefix("start3", "start3", 30, false);
 		animation.addByPrefix("x", "start3", 30, false, false, true);
 		animation.play("start3");
-		drag.x = drag.y = 1500;
-		maxVelocity.set(500, 300);
 		width = 20;
 		height = 20;
 		offset.set(5, 5);
+		
 	}
 	
 	
@@ -69,6 +79,16 @@ class Enemy extends FlxSprite
 		dY /= length;
 		velocity.x = dX * enemySpeed;
 		velocity.y = dY * enemySpeed;
+		
+		if (length <= enemyShootDistance)
+		{
+			var currentTime = Lib.getTimer();
+			if (currentTime > enemyLastShoot + 6000)
+			{
+				enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+				enemyLastShoot = currentTime;
+			}
+		}
 	}
 	
 		

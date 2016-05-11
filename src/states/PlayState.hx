@@ -41,13 +41,15 @@ class PlayState extends FlxState
 	private static inline var gamePlayerYSpawn:Int = 200;
 		
 	//Enemies
-	private var enemies:FlxGroup;
+	private var enemies:FlxTypedGroup<Enemy>;
+	private var enemyBullets:FlxTypedGroup<Bullet>;
 	
 	
 	public function new() 
 	{
 		super();
-		enemies = new FlxGroup();
+		enemies = new FlxTypedGroup<Enemy>();
+		
 	}
 	
 	override public function create():Void 
@@ -113,10 +115,23 @@ class PlayState extends FlxState
 	}
 	
 	private function loadEnemies(){
-		enemies.add(new Enemy(1000, 1200));
+		var enemyXSpawn = 1000;
+		var enemyYSpawn = 1000;
+		for (i in 0...6) 
+		{
+			enemyXSpawn += 50;
+			enemyYSpawn += 50;
+			var aEnemy = new Enemy(enemyXSpawn, enemyYSpawn);
+			add(aEnemy.enemyGun);
+			add(aEnemy.enemyGun.bullets);
+			enemies.add(aEnemy);
+		}
+		add(enemies);
+		
+		/*enemies.add(new Enemy(1000, 1200));
 		enemies.add(new HunterEnemy(580, 900));
 		enemies.add(new BossEnemy(550, 550));
-		add(enemies);
+		*/
 	}
 	
 	private function changeGamePointer()

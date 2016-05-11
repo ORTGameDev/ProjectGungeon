@@ -133,6 +133,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		#end
 		
 		#if flash
@@ -151,8 +152,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/atlas/spritemap.json", AssetType.TEXT);
 		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
 		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
-		className.set ("img/bullets/simpleBullet.png", __ASSET__img_bullets_simplebullet_png);
-		type.set ("img/bullets/simpleBullet.png", AssetType.IMAGE);
+		className.set ("img/bullets/Bullets001.png", __ASSET__img_bullets_bullets001_png);
+		type.set ("img/bullets/Bullets001.png", AssetType.IMAGE);
+		className.set ("img/bullets/Bullets002.png", __ASSET__img_bullets_bullets002_png);
+		type.set ("img/bullets/Bullets002.png", AssetType.IMAGE);
 		className.set ("img/characters/diagdown1.png", __ASSET__img_characters_diagdown1_png);
 		type.set ("img/characters/diagdown1.png", AssetType.IMAGE);
 		className.set ("img/characters/diagdown2.png", __ASSET__img_characters_diagdown2_png);
@@ -291,12 +294,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("characters/start2.png", AssetType.IMAGE);
 		className.set ("characters/start3.png", __ASSET__characters_start3_png);
 		type.set ("characters/start3.png", AssetType.IMAGE);
+		className.set ("sounds/cannonShot.mp3", __ASSET__sounds_cannonshot_mp3);
+		type.set ("sounds/cannonShot.mp3", AssetType.MUSIC);
 		className.set ("sounds/music/01_labyrinth.mp3", __ASSET__sounds_music_01_labyrinth_mp3);
 		type.set ("sounds/music/01_labyrinth.mp3", AssetType.MUSIC);
-		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
-		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
-		className.set ("sounds/simpleGunShot.mp3", __ASSET__sounds_simplegunshot_mp3);
-		type.set ("sounds/simpleGunShot.mp3", AssetType.MUSIC);
+		className.set ("sounds/pistolShot.mp3", __ASSET__sounds_pistolshot_mp3);
+		type.set ("sounds/pistolShot.mp3", AssetType.MUSIC);
 		className.set ("music/01_labyrinth.mp3", __ASSET__music_01_labyrinth_mp3);
 		type.set ("music/01_labyrinth.mp3", AssetType.MUSIC);
 		
@@ -332,7 +335,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "img/bullets/simpleBullet.png";
+		id = "img/bullets/Bullets001.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/bullets/Bullets002.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -612,15 +619,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "sounds/cannonShot.mp3";
+		path.set (id, id);
+		
+		type.set (id, AssetType.MUSIC);
 		id = "sounds/music/01_labyrinth.mp3";
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
-		id = "sounds/shotgunShot.mp3";
-		path.set (id, id);
-		
-		type.set (id, AssetType.MUSIC);
-		id = "sounds/simpleGunShot.mp3";
+		id = "sounds/pistolShot.mp3";
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
@@ -667,8 +674,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/atlas/spritesheet.png", __ASSET__img_atlas_spritesheet_png);
 		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
 		
-		className.set ("img/bullets/simpleBullet.png", __ASSET__img_bullets_simplebullet_png);
-		type.set ("img/bullets/simpleBullet.png", AssetType.IMAGE);
+		className.set ("img/bullets/Bullets001.png", __ASSET__img_bullets_bullets001_png);
+		type.set ("img/bullets/Bullets001.png", AssetType.IMAGE);
+		
+		className.set ("img/bullets/Bullets002.png", __ASSET__img_bullets_bullets002_png);
+		type.set ("img/bullets/Bullets002.png", AssetType.IMAGE);
 		
 		className.set ("img/characters/diagdown1.png", __ASSET__img_characters_diagdown1_png);
 		type.set ("img/characters/diagdown1.png", AssetType.IMAGE);
@@ -877,14 +887,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("characters/start3.png", __ASSET__characters_start3_png);
 		type.set ("characters/start3.png", AssetType.IMAGE);
 		
+		className.set ("sounds/cannonShot.mp3", __ASSET__sounds_cannonshot_mp3);
+		type.set ("sounds/cannonShot.mp3", AssetType.MUSIC);
+		
 		className.set ("sounds/music/01_labyrinth.mp3", __ASSET__sounds_music_01_labyrinth_mp3);
 		type.set ("sounds/music/01_labyrinth.mp3", AssetType.MUSIC);
 		
-		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
-		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
-		
-		className.set ("sounds/simpleGunShot.mp3", __ASSET__sounds_simplegunshot_mp3);
-		type.set ("sounds/simpleGunShot.mp3", AssetType.MUSIC);
+		className.set ("sounds/pistolShot.mp3", __ASSET__sounds_pistolshot_mp3);
+		type.set ("sounds/pistolShot.mp3", AssetType.MUSIC);
 		
 		className.set ("music/01_labyrinth.mp3", __ASSET__music_01_labyrinth_mp3);
 		type.set ("music/01_labyrinth.mp3", AssetType.MUSIC);
@@ -1539,7 +1549,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__flixel_images_ui_button_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritemap_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritesheet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__img_bullets_simplebullet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_bullets_bullets001_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_bullets_bullets002_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_characters_diagdown3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1609,9 +1620,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__characters_start1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_start2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_start3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__sounds_cannonshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_music_01_labyrinth_mp3 extends flash.media.Sound { }
-@:keep @:bind #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends flash.media.Sound { }
-@:keep @:bind #if display private #end class __ASSET__sounds_simplegunshot_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_pistolshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__music_01_labyrinth_mp3 extends flash.media.Sound { }
 
 
@@ -1621,6 +1632,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
 
 
 
@@ -1714,7 +1726,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
-@:image("assets/img/bullets/simpleBullet.png") #if display private #end class __ASSET__img_bullets_simplebullet_png extends lime.graphics.Image {}
+@:image("assets/img/bullets/Bullets001.png") #if display private #end class __ASSET__img_bullets_bullets001_png extends lime.graphics.Image {}
+@:image("assets/img/bullets/Bullets002.png") #if display private #end class __ASSET__img_bullets_bullets002_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown1.png") #if display private #end class __ASSET__img_characters_diagdown1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown2.png") #if display private #end class __ASSET__img_characters_diagdown2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown3.png") #if display private #end class __ASSET__img_characters_diagdown3_png extends lime.graphics.Image {}
@@ -1784,9 +1797,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/characters/start1.png") #if display private #end class __ASSET__characters_start1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/start2.png") #if display private #end class __ASSET__characters_start2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/start3.png") #if display private #end class __ASSET__characters_start3_png extends lime.graphics.Image {}
+@:file("assets/sounds/cannonShot.mp3") #if display private #end class __ASSET__sounds_cannonshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/music/01_labyrinth.mp3") #if display private #end class __ASSET__sounds_music_01_labyrinth_mp3 extends lime.utils.Bytes {}
-@:file("assets/sounds/shotgunShot.mp3") #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends lime.utils.Bytes {}
-@:file("assets/sounds/simpleGunShot.mp3") #if display private #end class __ASSET__sounds_simplegunshot_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/pistolShot.mp3") #if display private #end class __ASSET__sounds_pistolshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/music/01_labyrinth.mp3") #if display private #end class __ASSET__music_01_labyrinth_mp3 extends lime.utils.Bytes {}
 
 

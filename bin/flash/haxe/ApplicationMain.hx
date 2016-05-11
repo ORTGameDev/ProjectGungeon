@@ -58,7 +58,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/bullets/simpleBullet.png");
+		urls.push ("img/bullets/Bullets001.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/bullets/Bullets002.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -338,15 +342,15 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("sounds/cannonShot.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
 		urls.push ("sounds/music/01_labyrinth.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("sounds/shotgunShot.mp3");
-		types.push (lime.Assets.AssetType.MUSIC);
-		
-		
-		urls.push ("sounds/simpleGunShot.mp3");
+		urls.push ("sounds/pistolShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
@@ -415,7 +419,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "197",
+			build: "257",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

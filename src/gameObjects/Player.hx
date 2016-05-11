@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import gameObjects.Gun;
 import openfl.Assets;
 
 /**
@@ -34,7 +35,7 @@ class Player extends FlxSprite
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		//Creo gun y bullets
 		var aBullets = new FlxTypedGroup<Bullet>();
-		playerGun = new Gun(X, Y, aBullets);
+		playerGun = new Pistol(X, Y);
 		//Cargo animaciones del player
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
@@ -73,7 +74,7 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
 		{
-			playerGun.shoot(x + width, y + height/2);
+			playerGun.shoot(x + width /2 , y + height/2, FlxG.mouse.x, FlxG.mouse.y);
 		}
 		super.update(elapsed);
 		playerGun.x = this.x + 7;
