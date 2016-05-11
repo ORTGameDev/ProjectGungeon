@@ -28,7 +28,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		sprBack = new FlxSprite().makeGraphic(FlxG.width, 20, FlxColor.TRANSPARENT);
 		FlxSpriteUtil.drawRect(sprBack, 0, 19, FlxG.width, 2, FlxColor.WHITE);
 		
-		txtPlayerHealth = new FlxText(16, 2, 0, "Life: 3 / 3", 8);
+		txtPlayerHealth = new FlxText(16, 2, 0, "Life: ", 8);
 		txtPlayerHealth.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
 		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
@@ -51,7 +51,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 	public function updateHUD(health:Int = 0, totalHealth = 0):Void
 	{
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		var playerLife = GlobalGameData.player.playerLife;
+		var playerLife = GlobalGameData.player.playerCurrentLife;
 		var heartQty = playerLife / 2;
 		var healthX:Float = 10;
 		var healthY:Float = 10;

@@ -194,6 +194,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/logo.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/maps/level1.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -411,7 +415,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "163",
+			build: "197",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

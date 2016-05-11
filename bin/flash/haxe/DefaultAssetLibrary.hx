@@ -132,6 +132,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
 		#end
 		
 		#if flash
@@ -218,6 +219,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/guns/shotgun/shot_side.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
+		className.set ("img/logo.png", __ASSET__img_logo_png);
+		type.set ("img/logo.png", AssetType.IMAGE);
 		className.set ("img/maps/level1.csv", __ASSET__img_maps_level1_csv);
 		type.set ("img/maps/level1.csv", AssetType.TEXT);
 		className.set ("img/maps/level1.oel", __ASSET__img_maps_level1_oel);
@@ -462,6 +465,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/guns/shotgun/shot_up.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/logo.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -761,6 +768,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
+		
+		className.set ("img/logo.png", __ASSET__img_logo_png);
+		type.set ("img/logo.png", AssetType.IMAGE);
 		
 		className.set ("img/maps/level1.csv", __ASSET__img_maps_level1_csv);
 		type.set ("img/maps/level1.csv", AssetType.TEXT);
@@ -1563,6 +1573,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_logo_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_maps_level1_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_level1_oel extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_levelone_oel extends flash.utils.ByteArray { }
@@ -1610,6 +1621,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
 
 
 
@@ -1736,6 +1748,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/guns/shotgun/shot_down.png") #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_side.png") #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_up.png") #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends lime.graphics.Image {}
+@:image("assets/img/logo.png") #if display private #end class __ASSET__img_logo_png extends lime.graphics.Image {}
 @:file("assets/img/maps/level1.csv") #if display private #end class __ASSET__img_maps_level1_csv extends lime.utils.Bytes {}
 @:file("assets/img/maps/level1.oel") #if display private #end class __ASSET__img_maps_level1_oel extends lime.utils.Bytes {}
 @:file("assets/img/maps/levelOne.oel") #if display private #end class __ASSET__img_maps_levelone_oel extends lime.utils.Bytes {}

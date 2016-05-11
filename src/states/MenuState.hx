@@ -1,10 +1,7 @@
 package states;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxState;
-import flixel.graphics.atlas.FlxAtlas;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.math.FlxPoint;
-import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxAxes;
 import gameObjects.Pointer;
@@ -19,11 +16,15 @@ class MenuState extends FlxState
 	//Cursor
 	private var gamePointer:Pointer;
 	
-	//Texts
-	private var txtGameTitle:FlxText;
+	//Images
+	
+	//Buttons	
+	private var gameLogo:FlxSprite;
 	private var btnPlay: FlxButton;
 	private var btnSettings: FlxButton;
 	
+	//General
+	private static inline var buttonGap: Int = 10;
 
 	public function new()
 	{
@@ -34,20 +35,19 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		
-		
-		
 		//Set Texts
-		txtGameTitle = new FlxText(0, 30, 500, "<Replace with GameName (when u have one)>", 25);
-		txtGameTitle.screenCenter(FlxAxes.X);
-		add(txtGameTitle);
+		gameLogo = new FlxSprite(0, 50);
+		//gameLogo.loadGraphic(AssetPaths.logo__png, false, 375, 148);
+		gameLogo.loadGraphic("img/logo.png",false, 375, 148);
+		gameLogo.screenCenter(FlxAxes.X);
+		add(gameLogo);
 		
 		//Set Button
-		btnPlay = new FlxButton(0, 100, "Play!", clickSinglePlay);
+		btnPlay = new FlxButton(0, gameLogo.y + gameLogo.height + buttonGap * 15, "Play!", clickSinglePlay);
 		btnPlay.screenCenter(FlxAxes.X);
 		add(btnPlay);
 		
-		btnSettings = new FlxButton(0, 150, "Setting", clickSettings);
+		btnSettings = new FlxButton(0, btnPlay.y + btnPlay.height +  buttonGap, "Setting", clickSettings);
 		btnSettings.screenCenter(FlxAxes.X);
 		add(btnSettings);
 		this.changeGamePointer();

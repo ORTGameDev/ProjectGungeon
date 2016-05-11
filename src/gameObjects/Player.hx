@@ -15,8 +15,8 @@ class Player extends FlxSprite
 {
 
 	//Player
-	public var playerLife:Int = 7;
-	public var totalLife:Int = 8;
+	public var playerCurrentLife:Int = 10;
+	public var playerTotalLife:Int = 10;
 	
 	//Movement
 	static private inline var playerAcceleration: Float = 150;

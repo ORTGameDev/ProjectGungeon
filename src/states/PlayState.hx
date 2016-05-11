@@ -1,23 +1,16 @@
 package states;
+import GlobalGameData;
+import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
-import flixel.FlxObject;
 import flixel.FlxState;
-import flixel.addons.editors.ogmo.FlxOgmoLoader;
-import flixel.addons.editors.tiled.TiledMap;
 import flixel.group.FlxGroup;
-import flixel.text.FlxText;
 import flixel.tile.FlxTilemap;
-import openfl.display.Tile;
-
-import flixel.util.FlxAxes;
 import gameObjects.BossEnemy;
 import gameObjects.Bullet;
 import gameObjects.Enemy;
-import gameObjects.Gun;
 import gameObjects.HunterEnemy;
 import gameObjects.Player;
 import gameObjects.Pointer;
-import GlobalGameData;
 import openfl.Assets;
 
 /**
@@ -29,15 +22,14 @@ class PlayState extends FlxState
 	
 	//Level  data
 	private var lvlNumber: Int = 1;
-	private var lvlDesc : String = "Nacho´s Room";
+	private var lvlDesc : String = "Rock Castle";
 	
-	//Cursor
+	//Cursor+
 	private var gamePointer:Pointer;
 	
 	//HUD + UI
 	private var hud:HUD;
 	
-
 	//Map
 	private var map:FlxTilemap;
 	private var tileWidth:  Int = 32;
@@ -45,6 +37,8 @@ class PlayState extends FlxState
 	
 	//Player
 	private var gamePlayer:Player;
+	private static inline var gamePlayerXSpawn:Int = 200;
+	private static inline var gamePlayerYSpawn:Int = 200;
 		
 	//Enemies
 	private var enemies:FlxGroup;
@@ -54,23 +48,17 @@ class PlayState extends FlxState
 	{
 		super();
 		enemies = new FlxGroup();
-		
 	}
 	
 	override public function create():Void 
 	{	
 		//Map Setup
 		map = new FlxTilemap();
-		map.loadMapFromCSV(Assets.getText("img/maps/lvl1.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight);
-		map.setTileProperties(1, FlxObject.ANY);
-		map.setTileProperties(2, FlxObject.NONE);
-		map.setTileProperties(3, FlxObject.NONE);
-		map.setTileProperties(4, FlxObject.NONE);
-		map.setTileProperties(5, FlxObject.ANY);
+		//map.loadMapFromCSV(Assets.getText(AssetPaths.lvl1__csv), Assets.getBitmapData(AssetPaths.mapTiles__png), tileWidth, tileHeight, null, 0, 1, 5);
+		map.loadMapFromCSV(Assets.getText("img/maps/lvl1.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight, null, 0, 1 ,6);
 		add(map);
-		
-		//Playee Setup
-		gamePlayer = new Player(200, 200);
+		//Player Setup
+		gamePlayer = new Player(gamePlayerXSpawn, gamePlayerYSpawn);
 		GlobalGameData.player = gamePlayer;
 		//gamePlayer.width = 16;
 		//gamePlayer.height = 22;
@@ -80,33 +68,28 @@ class PlayState extends FlxState
 		add(gamePlayer.playerGun);
 		add(gamePlayer.playerGun.bullets);
 		
+		this.loadEnemies();
 		
 		hud = new HUD(lvlNumber, lvlDesc);
 		add(hud);
 		
-		
-		//hud.updateHUD(GlobalGameData.player.playerLife, GlobalGameData.player.totalLife);
-		this.loadEnemies();
+		FlxG.camera.follow(gamePlayer, FlxCameraFollowStyle.TOPDOWN);
+		FlxG.camera.setScrollBoundsRect(0, 0, map.width,map.height);
+		FlxG.worldBounds.set(0, 0, map.width, map.height);
 		this.changeGamePointer();
-		
-		
-		
-		
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		FlxG.worldBounds.setPosition(gamePlayer.x-400, gamePlayer.y-240);
-		//FlxG.collide(_mWalls, gamePlayer);
-		//FlxG.collide(_mWalls, gamePlayer.playerGun.bullets, destroyBullet);
-		//FlxG.collide(_mWalls, enemies);
 		FlxG.overlap(gamePlayer.playerGun.bullets, enemies, bulletVsEnemy);
-		//FlxG.collide(map, gamePlayer);
-		//FlxG.collide(map, gamePlayer.playerGun.bullets);
+		FlxG.collide(map, gamePlayer);
+		FlxG.collide(map, enemies);
+		FlxG.collide(map, gamePlayer.playerGun.bullets, destroyBullet);
 		
-		FlxG.camera.follow(gamePlayer, LOCKON, 2);
-		FlxG.camera.target = gamePlayer;
+		//FlxG.camera.follow(gamePlayer, LOCKON, 2);
+		//FlxG.camera.target = gamePlayer;
 		//FlxG.camera.zoom = 4;
 		
 		

@@ -43,7 +43,7 @@ class Gun extends FlxSprite
 	{
 		var bullet:Bullet = cast bullets.recycle(Bullet, null, false, false);
 		bullet.bulletDamage = 2;
-		bullet.bulletSpeed = 500;
+		bullet.bulletSpeed = 300;
 		
 		if (!bullet.alive)
 		{
