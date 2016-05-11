@@ -20,10 +20,10 @@ class Main extends Sprite
 	public function new() 
 	{
 		super();
-		addChild(new FlxGame(900, 600, MenuState, 1, 60, 60, false, true));
+		var game = new FlxGame(800, 640, MenuState, 1, 60, 60, false, true);
+		addChild(game);
 		
-		//Cambiar esto por AssethPath
-		FlxG.sound.playMusic("music/01_labyrinth.mp3", 0.2, true);
+		
 		
 	}
 	

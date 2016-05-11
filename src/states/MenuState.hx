@@ -43,14 +43,20 @@ class MenuState extends FlxState
 		add(gameLogo);
 		
 		//Set Button
-		btnPlay = new FlxButton(0, gameLogo.y + gameLogo.height + buttonGap * 15, "Play!", clickSinglePlay);
+		btnPlay = new FlxButton(0, gameLogo.y + gameLogo.height * 3 , "Play!", clickSinglePlay);
 		btnPlay.screenCenter(FlxAxes.X);
+		btnPlay.setSize(80, 20);
 		add(btnPlay);
 		
-		btnSettings = new FlxButton(0, btnPlay.y + btnPlay.height +  buttonGap, "Setting", clickSettings);
+		btnSettings = new FlxButton(0, btnPlay.y + btnPlay.height +  buttonGap, "Setting", runGame);
 		btnSettings.screenCenter(FlxAxes.X);
+		btnSettings.setSize(80, 20);
 		add(btnSettings);
+				
 		this.changeGamePointer();
+		
+		//Cambiar esto por AssethPath
+		FlxG.sound.playMusic("music/01_labyrinth.mp3", 0.2, true);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -59,7 +65,7 @@ class MenuState extends FlxState
 	}
 	
 	private function clickSinglePlay():Void{
-		FlxG.switchState(new PlayState());
+		FlxG.sound.play("sounds/LoadnShot.mp3", 0.5, false, null, true, runGame);		
 	}
 	
 	private function clickSettings():Void {
@@ -67,6 +73,9 @@ class MenuState extends FlxState
 		//FlxG.switchState(new SettingState());
 	}
 	
+	private function runGame():Void{
+		FlxG.switchState(new PlayState());
+	}
 
 	
 	private function changeGamePointer(){

@@ -25,6 +25,7 @@ class Gun extends FlxSprite
 	
 	public function new(aX:Float, aY:Float, aBullets:FlxTypedGroup<Bullet>, aBulletDamage:Int, aBulletSpeed:Int, aGunSound:FlxSound) 
 	{
+
 		super(aX, aY);
 		gunBulletDamage = aBulletDamage;
 		gunBulletSpeed = aBulletSpeed;
