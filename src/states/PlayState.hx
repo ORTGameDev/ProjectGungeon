@@ -9,6 +9,7 @@ import gameObjects.BossEnemy;
 import gameObjects.Bullet;
 import gameObjects.Enemy;
 import gameObjects.HunterEnemy;
+import gameObjects.PistolPete;
 import gameObjects.Player;
 import gameObjects.Pointer;
 import openfl.Assets;
@@ -112,10 +113,20 @@ class PlayState extends FlxState
 		}
 	}
 	
+	private function bulletVsPlayer(b:Bullet, p:Player):Void
+	{
+		if (p.exists && p.alive && b.exists && b.alive){
+			p.receiveDamage(b.bulletDamage);			
+			b.kill();
+		}
+	}
+	
 	private function loadEnemies(){
-		enemies.add(new Enemy(1000, 1200));
-		enemies.add(new HunterEnemy(580, 900));
-		enemies.add(new BossEnemy(550, 550));
+		enemies.add(new PistolPete(1000, 1200));
+		enemies.add(new PistolPete(1000, 2000));
+		enemies.add(new PistolPete(1500, 900));
+		//enemies.add(new HunterEnemy(580, 900));
+		enemies.add(new BossEnemy(3000, 3000));
 		add(enemies);
 	}
 	

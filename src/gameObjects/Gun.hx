@@ -22,8 +22,8 @@ class Gun extends FlxSprite
 	public function new(aX:Float, aY:Float, aBullets:FlxTypedGroup<Bullet>) 
 	{
 		super(aX + 10, aY + 10);
-		gunSound = FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false);
-		//gunSound = FlxG.sound.load("sounds/simpleGunShot.mp3", 0.4, false);
+		gunSound = FlxG.sound.load("sounds/simpleGunShot.mp3", 0.4, false);
+		//gunSound = FlxG.sound.load("sounds/ShotgunShot.mp3", 0.4, false);
 		bullets = aBullets;
 		bullets.maxSize = 50;
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");

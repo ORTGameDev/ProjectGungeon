@@ -30,11 +30,9 @@ class Player extends FlxSprite
 	public function new(X:Float = 0, Y:Float = 0)
 	{
 		super(X, Y);
-		drag.set(playerDrag, playerDrag);
-		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
-		//Creo gun y bullets
-		var aBullets = new FlxTypedGroup<Bullet>();
-		playerGun = new Gun(X, Y, aBullets);
+		this.drag.set(playerDrag, playerDrag);
+		this.maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
+		
 		//Cargo animaciones del player
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
@@ -49,27 +47,33 @@ class Player extends FlxSprite
 		this.animation.addByPrefix("start1", "start1", 10, false);
 		this.animation.play("start1");
 		this.scale.set(2, 2);
-		this.setSize(32, 32);
+		this.setSize(22, 42);
+		this.offset.set(7, 0);
+		
+		//Creo gun y bullets
+		var aBullets = new FlxTypedGroup<Bullet>();
+		this.playerGun = new Gun(X, Y + this.height / 2, aBullets);
+		
 	}
 		
 	override public function update(elapsed:Float):Void 
 	{
-		acceleration.set();
+		this.acceleration.set();
 		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A)
 		{
-			acceleration.x -= playerAcceleration;
+			this.acceleration.x -= playerAcceleration;
 		}
 		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D)
 		{
-			acceleration.x += playerAcceleration;
+			this.acceleration.x += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S)
 		{
-			acceleration.y += playerAcceleration;
+			this.acceleration.y += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W)
 		{
-			acceleration.y -= playerAcceleration;
+			this.acceleration.y -= playerAcceleration;
 		}
 		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
 		{
@@ -129,7 +133,16 @@ class Player extends FlxSprite
 			animation.stop();
 		super.draw();
 	}
-	
+
+	public function receiveDamage(damage:Int):Void
+	{
+		playerCurrentLife -= damage;
+		if (playerCurrentLife <= 0)
+		{
+			velocity.set(0, 0);
+			animation.play("x");
+		}	
+	}
 	
 	
 }
