@@ -9,6 +9,7 @@ import gameObjects.Bullet;
 import gameObjects.Gun;
 import gameObjects.Pistol;
 import openfl.Assets;
+import openfl.Lib;
 
 /**
  * ...
@@ -18,7 +19,7 @@ import openfl.Assets;
  
 class Cannon extends Gun
 {
-		
+	private var gunLastShoot: Int = 0;	
 	public function new(aX:Float, aY:Float) 
 	{
 		var bulletGroup = new FlxTypedGroup<Bullet>();
@@ -45,8 +46,13 @@ class Cannon extends Gun
 		bullet.bulletSpeed = gunBulletSpeed;
 		if (!bullet.alive)
 		{
-			bullet.shoot(aX, aY, aTargetX, aTargetY, 2);
-			gunSound.play(true);
+			var currentTime = Lib.getTimer();
+			if (currentTime > gunLastShoot + 1200)
+			{
+				bullet.shoot(aX, aY, aTargetX, aTargetY, 2);
+				gunSound.play(true);
+				gunLastShoot = currentTime;
+			}
 		}
 		
 	}

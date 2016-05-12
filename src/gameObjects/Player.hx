@@ -52,7 +52,7 @@ class Player extends FlxSprite
 		
 		//Creo gun y bullets
 		var aBullets = new FlxTypedGroup<Bullet>();
-		this.playerGun = new Gun(X, Y + this.height / 2, aBullets);
+		this.playerGun = new Pistol(X, Y + this.height / 2);
 		
 	}
 		

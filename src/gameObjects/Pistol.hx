@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import gameObjects.Bullet;
 import gameObjects.Gun;
 import openfl.Assets;
+import openfl.Lib;
 
 /**
  * ...
@@ -17,7 +18,7 @@ import openfl.Assets;
  
 class Pistol extends Gun
 {
-		
+	private var gunLastShoot: Int = 0;
 	public function new(aX:Float, aY:Float) 
 	{
 		var bulletGroup = new FlxTypedGroup<Bullet>();
@@ -45,8 +46,15 @@ class Pistol extends Gun
 		bullet.bulletSpeed = gunBulletSpeed;
 		if (!bullet.alive)
 		{
-			bullet.shoot(aX, aY, aTargetX, aTargetY, 1);
-			gunSound.play(true);
+			var currentTime = Lib.getTimer();
+			if (currentTime > gunLastShoot + 700)
+			{
+				bullet.shoot(aX, aY, aTargetX, aTargetY, 1);
+				gunSound.play(true);
+				gunLastShoot = currentTime;
+			}
+
+			
 		}
 		
 	}

@@ -346,6 +346,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		urls.push ("sounds/LoadnShot.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
 		urls.push ("sounds/music/01_labyrinth.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -419,7 +423,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "257",
+			build: "268",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

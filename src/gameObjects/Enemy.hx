@@ -31,7 +31,7 @@ class Enemy extends FlxSprite
 	//Gun
 	public var enemyGun:Gun;
 	private var enemyShootDistance:Int = 600;
-	private var enemyLastShoot: Int = 0;
+	//private var enemyLastShoot: Int = 0;
 	
 	public function new(X:Float = 0, Y:Float = 0) 
 	{
@@ -82,12 +82,12 @@ class Enemy extends FlxSprite
 		
 		if (length <= enemyShootDistance)
 		{
-			var currentTime = Lib.getTimer();
-			if (currentTime > enemyLastShoot + 6000)
-			{
+			//var currentTime = Lib.getTimer();
+			//if (currentTime > enemyLastShoot + 2000)
+			//{
 				enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
-				enemyLastShoot = currentTime;
-			}
+				//enemyLastShoot = currentTime;
+			//}
 		}
 	}
 	

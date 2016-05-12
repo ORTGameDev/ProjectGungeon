@@ -128,6 +128,11 @@ class PlayState extends FlxState
 		enemies.add(new Enemy(1000, 1200));
 		enemies.add(new Enemy(1000, 2000));
 		enemies.add(new Enemy(1500, 900));
+		for (e in enemies)
+		{
+			add(e.enemyGun);
+			add(e.enemyGun.bullets);
+		}
 		//enemies.add(new HunterEnemy(580, 900));
 		enemies.add(new BossEnemy(3000, 3000));
 		add(enemies);
