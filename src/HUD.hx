@@ -5,8 +5,12 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
+import flixel.ui.FlxButton;
+import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
+import openfl.text.Font;
+import states.PlayState;
 
 /**
  * ...
@@ -14,6 +18,10 @@ import flixel.util.FlxSpriteUtil;
  */
 class HUD extends FlxTypedGroup<FlxSprite>
 {
+	
+	private var PlayerMessage: FlxText ;
+	private var retryButton: FlxButton;
+	
 	private var sprBack: FlxSprite;
 	private var txtPlayerHealth: FlxText;
 	private var txtLvlInfo: FlxText;
@@ -41,6 +49,21 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		add(sprBack);
 		add(txtPlayerHealth);
 		add(txtLvlInfo);
+		
+		PlayerMessage = new FlxText(0, 200, 500, "", 24);
+		PlayerMessage.setFormat(24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
+		PlayerMessage.screenCenter();
+		PlayerMessage.visible = false;
+		sprHealth.add(PlayerMessage);
+		add(PlayerMessage);
+		
+		retryButton = new FlxButton(0, 0, "Retry", reloadState);
+		retryButton.screenCenter(FlxAxes.X);
+		retryButton.y = PlayerMessage.y + 50;
+		retryButton.visible = false;
+		sprHealth.add(retryButton);
+		add(retryButton);
+		
 		forEach(function(spr:FlxSprite)
 		{
 			spr.scrollFactor.set(0, 0);
@@ -48,9 +71,17 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		
 	}
 	
-	public function updateHUD(health:Int = 0, totalHealth = 0):Void
+	public function playerWin():Void
 	{
-		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
+		PlayerMessage.text = "You Win!!";
+		PlayerMessage.visible = true;
+		retryButton.visible = true;
+	}
+	
+	public function updateHUD():Void
+	{
+		txtPlayerHealth.text = "Life: " + GlobalGameData.player.playerCurrentLife + " /" + GlobalGameData.player.playerTotalLife;
+		/*var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		var playerLife = GlobalGameData.player.playerCurrentLife;
 		var heartQty = playerLife / 2;
 		var healthX:Float = 10;
@@ -72,11 +103,27 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			sprHealth.add(sprLife);
 			healthX += sprLife.width + 2;
 		}
-		//this.add(sprHealth);
+		this.add(sprHealth);*/
+		if (GlobalGameData.player.playerCurrentLife <= 0){
+			playerIsDead();
+		}
+		
+		
 		
 	}
 	
-	
-	
+		private function playerIsDead():Void
+		{
+			PlayerMessage.text = "You are dead!!";
+				PlayerMessage.visible = true;
+				PlayerMessage.alpha = 1;
+				retryButton.visible = true;
+				retryButton.alpha = 1;
+		}
+		
+		private function reloadState():Void
+		{
+			FlxG.switchState(new PlayState());
+		}
 	
 }

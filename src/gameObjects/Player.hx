@@ -33,6 +33,7 @@ class Player extends FlxSprite
 		super(X, Y);
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
+		
 		//Cargo animaciones del player
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
@@ -45,6 +46,7 @@ class Player extends FlxSprite
 		this.animation.addByPrefix("diagDown1_left", "diagdown1_", 10, true, true);
 		this.animation.addByPrefix("diagUp1_left", "diagup1_", 10, true, true);
 		this.animation.addByPrefix("start1", "start1", 10, false);
+		this.animation.addByPrefix("x", "start1", 30, false, false, true);
 		this.animation.play("start1");
 		this.scale.set(2, 2);
 		this.setSize(22, 42);
@@ -58,22 +60,32 @@ class Player extends FlxSprite
 		
 	override public function update(elapsed:Float):Void 
 	{
-		this.acceleration.set();
+		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
+		{
+		super.update(elapsed);
+		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
+			{
+				playerGun.kill();
+				kill();
+			}
+			return;
+		}
+		acceleration.set();
 		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A)
 		{
-			this.acceleration.x -= playerAcceleration;
+			acceleration.x -= playerAcceleration;
 		}
 		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D)
 		{
-			this.acceleration.x += playerAcceleration;
+			acceleration.x += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S)
 		{
-			this.acceleration.y += playerAcceleration;
+			acceleration.y += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W)
 		{
-			this.acceleration.y -= playerAcceleration;
+			acceleration.y -= playerAcceleration;
 		}
 		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
 		{
@@ -81,12 +93,14 @@ class Player extends FlxSprite
 		}
 		super.update(elapsed);
 		playerGun.x = this.x + 7;
-		playerGun.y = this.y + 16;
+		playerGun.y = this.y + 26;
 	}
 	
 	override public function draw():Void
 	{
-		var dX = FlxG.mouse.x - this.x;
+		if (playerCurrentLife > 0)
+		{
+			var dX = FlxG.mouse.x - this.x;
 		var dY = FlxG.mouse.y - this.y;
 		var angle = Math.atan2(dY, dX) * 180 / Math.PI;
 		if (angle < 0)
@@ -132,6 +146,8 @@ class Player extends FlxSprite
 		if(velocity.x == 0 && velocity.y == 0)
 			animation.stop();
 		super.draw();
+		}
+		
 	}
 
 	public function receiveDamage(damage:Int):Void

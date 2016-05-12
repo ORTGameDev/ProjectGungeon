@@ -63,10 +63,10 @@ class PlayState extends FlxState
 		//Player Setup
 		gamePlayer = new Player(gamePlayerXSpawn, gamePlayerYSpawn);
 		GlobalGameData.player = gamePlayer;
-		//gamePlayer.width = 16;
-		//gamePlayer.height = 22;
-		gamePlayer.playerGun.x += 15;
-		gamePlayer.playerGun.y += 10;
+		var enemieBulletPool = new FlxTypedGroup<Bullet>();
+		enemieBulletPool.maxSize = 50;
+		GlobalGameData.enemiesBullets = enemieBulletPool;
+		
 		add(gamePlayer);
 		add(gamePlayer.playerGun);
 		add(gamePlayer.playerGun.bullets);
@@ -74,6 +74,7 @@ class PlayState extends FlxState
 		this.loadEnemies();
 		
 		hud = new HUD(lvlNumber, lvlDesc);
+		hud.updateHUD();
 		add(hud);
 		
 		FlxG.camera.follow(gamePlayer, FlxCameraFollowStyle.TOPDOWN);
@@ -90,14 +91,14 @@ class PlayState extends FlxState
 		FlxG.collide(map, gamePlayer);
 		FlxG.collide(map, enemies);
 		FlxG.collide(map, gamePlayer.playerGun.bullets, destroyBullet);
-		
-		//FlxG.camera.follow(gamePlayer, LOCKON, 2);
-		//FlxG.camera.target = gamePlayer;
-		//FlxG.camera.zoom = 4;
-		
-		
+		FlxG.collide(map, GlobalGameData.enemiesBullets, destroyBullet);
+		FlxG.overlap(GlobalGameData.enemiesBullets, gamePlayer , bulletVsPlayer);
 		FlxG.worldBounds.set(0, 0, FlxG.camera.width, FlxG.camera.height);
 		
+		if (enemies.countLiving() == 0)
+		{
+			hud.playerWin();
+		}
 	}
 	
 	private function destroyBullet(t:FlxTilemap, b:Bullet):Void
@@ -120,22 +121,28 @@ class PlayState extends FlxState
 		if (p.exists && p.alive && b.exists && b.alive){
 			p.receiveDamage(b.bulletDamage);			
 			b.kill();
+			hud.updateHUD();
 		}
 	}
 	
 	private function loadEnemies()
-	{
+	{	
+		
 		enemies.add(new Enemy(1000, 1200));
+		
 		enemies.add(new Enemy(1000, 2000));
 		enemies.add(new Enemy(1500, 900));
+
+		enemies.add(new Enemy(2500, 3000));
+		enemies.add(new Enemy(2000, 3000));
+		//enemies.add(new HunterEnemy(580, 900));
+		enemies.add(new BossEnemy(3000, 3000));
+		add(enemies);
 		for (e in enemies)
 		{
 			add(e.enemyGun);
 			add(e.enemyGun.bullets);
 		}
-		//enemies.add(new HunterEnemy(580, 900));
-		enemies.add(new BossEnemy(3000, 3000));
-		add(enemies);
 
 	}
 	
@@ -146,6 +153,6 @@ class PlayState extends FlxState
 		FlxG.mouse.hideSystemCursor();
 		add(gamePointer);
 	}
-		
+
 	
 }
