@@ -21,9 +21,7 @@ class Cannon extends Gun
 		
 	public function new(aX:Float, aY:Float) 
 	{
-		var bulletGroup = new FlxTypedGroup<Bullet>();
-		bulletGroup.maxSize = 25;
-		super(aX, aY, bulletGroup, 1, 200, FlxG.sound.load("sounds/cannonShot.mp3", 0.4, false));
+		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/cannonShot.mp3", 0.4, false));
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "p_up", 10, true);

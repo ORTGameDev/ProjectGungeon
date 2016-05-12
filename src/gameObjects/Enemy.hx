@@ -31,6 +31,8 @@ class Enemy extends FlxSprite
 	//Gun
 	public var enemyGun:Gun;
 	private var enemyShootDistance:Int = 600;
+	private var enemyChaseDistance:Int = 200;
+	
 	private var enemyLastShoot: Int = 0;
 	
 	public function new(X:Float = 0, Y:Float = 0) 
@@ -54,7 +56,6 @@ class Enemy extends FlxSprite
 		
 	}
 	
-	
 	override public function update (elapsed: Float):Void
 	{
 		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
@@ -65,11 +66,14 @@ class Enemy extends FlxSprite
 				//Falta agregar el enemigo Dummy
 				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
 				FlxG.state.add(deadEnemy);
+				this.enemyGun.kill();
 				kill();
 			}
 			return;
 		}
 		super.update(elapsed);
+		enemyGun.x = this.x ;
+		enemyGun.y = this.y + 7;
 		//Comienza captura del player
 		var player = GlobalGameData.player;
 		var dX:Float = player.x - x;
@@ -77,8 +81,11 @@ class Enemy extends FlxSprite
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 
 		dX /= length;
 		dY /= length;
-		velocity.x = dX * enemySpeed;
-		velocity.y = dY * enemySpeed;
+		if (length >= enemyChaseDistance)
+		{
+			velocity.x = dX * enemySpeed;
+			velocity.y = dY * enemySpeed;
+		}
 		
 		if (length <= enemyShootDistance)
 		{
@@ -115,15 +122,20 @@ class Enemy extends FlxSprite
 			{
 				case FlxObject.LEFT:
 					animation.play("left3");
-				
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("left");
 				case FlxObject.RIGHT:
 					animation.play("right3");
-					
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("right");
 				case FlxObject.UP:
 					animation.play("north3");
-					
+					enemyGun.alpha = 0;
+					enemyGun.animation.play("north");
 				case FlxObject.DOWN:
 					animation.play("south3");
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("south");
 				
 			}
 			
