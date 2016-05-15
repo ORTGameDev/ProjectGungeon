@@ -11,10 +11,9 @@ import openfl.Assets;
  */
 class Bullet extends FlxSprite
 {
-	
-	public var bulletSpeed:Int;
-	public var bulletDamage:Int;
-	
+	//GamePlay
+	public 	var bulletSpeed:Int;
+	public 	var bulletDamage:Int;
 	private var targetX:Float;
 	private var targetY:Float;
 	
@@ -46,7 +45,6 @@ class Bullet extends FlxSprite
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
 		}
-		
 		var dX:Float = aTargetX - aOrX;
 		var dY:Float = aTargetY - aOrY;
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 

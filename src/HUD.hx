@@ -10,6 +10,7 @@ import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import openfl.text.Font;
+import states.MenuState;
 import states.PlayState;
 
 /**
@@ -21,6 +22,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 	
 	private var PlayerMessage: FlxText ;
 	private var retryButton: FlxButton;
+	private var BackToMenuButton: FlxButton;
 	
 	private var sprBack: FlxSprite;
 	private var txtPlayerHealth: FlxText;
@@ -64,6 +66,13 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		sprHealth.add(retryButton);
 		add(retryButton);
 		
+		BackToMenuButton = new FlxButton(0, 0, "Back to Menu", BackToMenu);
+		BackToMenuButton.screenCenter(FlxAxes.X);
+		BackToMenuButton.y = retryButton.y + 50;
+		BackToMenuButton.visible = false;
+		sprHealth.add(retryButton);
+		add(retryButton);
+		
 		forEach(function(spr:FlxSprite)
 		{
 			spr.scrollFactor.set(0, 0);
@@ -71,12 +80,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		
 	}
 	
-	public function playerWin():Void
-	{
-		PlayerMessage.text = "You Win!!";
-		PlayerMessage.visible = true;
-		retryButton.visible = true;
-	}
+
 	
 	public function updateHUD():Void
 	{
@@ -112,18 +116,35 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		
 	}
 	
-		private function playerIsDead():Void
-		{
-			PlayerMessage.text = "You are dead!!";
-				PlayerMessage.visible = true;
-				PlayerMessage.alpha = 1;
-				retryButton.visible = true;
-				retryButton.alpha = 1;
-		}
+	public function playerWin():Void
+	{
+		PlayerMessage.text = "You Win!!";
+		showActions();
+	}
+	
+	private function playerIsDead():Void
+	{
+		PlayerMessage.text = "You are dead!!";
+		showActions();
+	}
 		
 		private function reloadState():Void
 		{
 			FlxG.switchState(new PlayState());
 		}
+		
+		private function BackToMenu():Void
+		{
+			FlxG.switchState(new MenuState());
+		}
 	
+		private function showActions():Void
+		{
+			PlayerMessage.visible = true;
+			PlayerMessage.alpha = 1;
+			retryButton.visible = true;
+			retryButton.alpha = 1;
+			BackToMenuButton.visible = true;
+			BackToMenuButton.alpha = 1;
+		}
 }

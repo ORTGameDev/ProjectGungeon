@@ -6,7 +6,7 @@ import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
-import gameObjects.Cannon;
+import gameObjects.Shotgun;
 import gameObjects.DeadEnemy;
 import gameObjects.Gun;
 import openfl.Assets;
@@ -40,7 +40,7 @@ class Enemy extends FlxSprite
 	{
 		super(X, Y);
 		drag.x = drag.y = enemyDrag;
-		enemyGun= new Cannon(X, Y);
+		enemyGun= new Shotgun(X, Y);
 		frames = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		animation.addByPrefix("north3", "north3_", 10, true);
 		animation.addByPrefix("south3", "south3_", 10, true);
@@ -90,12 +90,7 @@ class Enemy extends FlxSprite
 		
 		if (length <= enemyShootDistance)
 		{
-			//var currentTime = Lib.getTimer();
-			//if (currentTime > enemyLastShoot + 2000)
-			//{
-				enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
-				//enemyLastShoot = currentTime;
-			//}
+			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
 		}
 	}
 	

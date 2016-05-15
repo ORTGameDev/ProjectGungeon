@@ -342,10 +342,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("sounds/cannonShot.mp3");
-		types.push (lime.Assets.AssetType.MUSIC);
-		
-		
 		urls.push ("sounds/LoadnShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -355,6 +351,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("sounds/pistolShot.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/shotgunShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
@@ -423,7 +423,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "268",
+			build: "318",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

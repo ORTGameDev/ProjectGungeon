@@ -33,10 +33,7 @@ class Gun extends FlxSprite
 		bullets = aBullets;
 	}
 	
-	public function shoot(aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
-	{
-		
-	}
+	public function shoot(aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void { }
 	
 	
 	
