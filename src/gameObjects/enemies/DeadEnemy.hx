@@ -1,10 +1,10 @@
-package gameObjects;
+package gameObjects.enemies;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
 import flixel.util.FlxColor;
-import gameObjects.Enemy;
+import gameObjects.enemies.Enemy;
 import openfl.Assets;
 
 /**

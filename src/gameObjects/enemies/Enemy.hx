@@ -1,33 +1,45 @@
-package gameObjects;
+package gameObjects.enemies;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
-import gameObjects.DeadEnemy;
+import gameObjects.guns.Shotgun;
+import gameObjects.enemies.DeadEnemy;
+import gameObjects.guns.Gun;
 import openfl.Assets;
+import openfl.Lib;
+import openfl.utils.Timer;
 import states.PlayState;
 
 /**
  * ...
  * @author Gastón Marichal / Ignacio Benedetto
  */
-class PistolPete extends Enemy
+class Enemy extends FlxSprite
 {
-	////Movement  
-	//private  var enemySpeed: Float = 100;
-	////Generics
-	//private var enemyLife: Int = 6;
-	//private var enemyDamage: Int = 2;
+	/*******Enemy default config.***********/
+	//Movement  
+	private var enemySpeed: Float = 100;
+	private var enemyDrag: Int = 1500;
+	//Generics
+	private var enemyLife: Int = 6;
 	
-	
-	
+	//Gun
+	public var enemyGun:Gun;
+	private var enemyShootDistance:Int = 600;
+
+	//private var enemyLastShoot: Int = 0;
+
+	private var enemyChaseDistance:Int = 200;
+
 	public function new(X:Float = 0, Y:Float = 0) 
 	{
 		super(X, Y);
-		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		frames = anAtlas;
+		drag.x = drag.y = enemyDrag;
+		frames = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		animation.addByPrefix("north3", "north3_", 10, true);
 		animation.addByPrefix("south3", "south3_", 10, true);
 		animation.addByPrefix("right3", "side3_", 10, true);
@@ -37,13 +49,11 @@ class PistolPete extends Enemy
 		animation.addByPrefix("start3", "start3", 30, false);
 		animation.addByPrefix("x", "start3", 30, false, false, true);
 		animation.play("start3");
-		drag.x = drag.y = 1500;
-		maxVelocity.set(500, 300);
-		this.scale.set(2, 2);
-		this.setSize(22, 38);
-		this.offset.set(1, 0);
+		width = 20;
+		height = 20;
+		offset.set(5, 5);
+		
 	}
-	
 	
 	override public function update (elapsed: Float):Void
 	{
@@ -55,11 +65,14 @@ class PistolPete extends Enemy
 				//Falta agregar el enemigo Dummy
 				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
 				FlxG.state.add(deadEnemy);
+				this.enemyGun.kill();
 				kill();
 			}
 			return;
 		}
 		super.update(elapsed);
+		enemyGun.x = this.x ;
+		enemyGun.y = this.y + 7;
 		//Comienza captura del player
 		var player = GlobalGameData.player;
 		var dX:Float = player.x - x;
@@ -67,8 +80,16 @@ class PistolPete extends Enemy
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 
 		dX /= length;
 		dY /= length;
-		velocity.x = dX * enemySpeed;
-		velocity.y = dY * enemySpeed;
+		if (length >= enemyChaseDistance)
+		{
+			velocity.x = dX * enemySpeed;
+			velocity.y = dY * enemySpeed;
+		}
+		
+		if (length <= enemyShootDistance)
+		{
+			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+		}
 	}
 	
 		
@@ -95,15 +116,20 @@ class PistolPete extends Enemy
 			{
 				case FlxObject.LEFT:
 					animation.play("left3");
-				
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("left");
 				case FlxObject.RIGHT:
 					animation.play("right3");
-					
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("right");
 				case FlxObject.UP:
 					animation.play("north3");
-					
+					enemyGun.alpha = 0;
+					enemyGun.animation.play("north");
 				case FlxObject.DOWN:
 					animation.play("south3");
+					enemyGun.alpha = 1;
+					enemyGun.animation.play("south");
 				
 			}
 			
@@ -111,14 +137,14 @@ class PistolPete extends Enemy
 		super.draw();
 	}
 	
-	//public function receiveDamage(damage:Int):Void
-	//{
-		//enemyLife -= damage;
-		//if (enemyLife <= 0)
-		//{
-			//velocity.set(0, 0);
-			//animation.play("x");
-		//}	
-	//}
+	public function receiveDamage(damage:Int):Void
+	{
+		enemyLife -= damage;
+		if (enemyLife <= 0)
+		{
+			velocity.set(0, 0);
+			animation.play("x");
+		}	
+	}
 	
 }

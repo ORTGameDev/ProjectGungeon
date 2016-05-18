@@ -1,11 +1,11 @@
-package gameObjects;
+package gameObjects.guns;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound;
 import flixel.util.FlxColor;
-import gameObjects.Bullet;
+import gameObjects.guns.Bullet;
 import openfl.Assets;
 
 /**

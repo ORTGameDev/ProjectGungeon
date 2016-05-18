@@ -1,10 +1,11 @@
-package gameObjects;
+package gameObjects.enemies;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
-import gameObjects.Enemy;
+import gameObjects.enemies.Enemy;
+import gameObjects.guns.Shotgun;
 import openfl.Assets;
 
 /**
@@ -28,9 +29,9 @@ class HunterEnemy extends Enemy
 		animation.addByPrefix("start3", "start3", 30, false);
 		animation.addByPrefix("x", "start3", 30, false, false, true);
 		animation.play("start3");
+		enemyGun = new Shotgun(X, Y);
 		drag.x = drag.y = 1500;
 		enemySpeed = 200;
-		enemyDamage = 3;
 		enemyLife = 2;
 		maxVelocity.set(500, 300);
 		width = 20;

@@ -1,11 +1,13 @@
-package gameObjects;
+package gameObjects.players;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import gameObjects.Gun;
+import gameObjects.guns.Bullet;
+import gameObjects.guns.Gun;
+import gameObjects.guns.Pistol;
 import openfl.Assets;
 
 /**
@@ -158,6 +160,20 @@ class Player extends FlxSprite
 			velocity.set(0, 0);
 			animation.play("x");
 		}	
+	}
+	
+	public function healPlayer(health:Int):Void
+	{
+		playerCurrentLife += health;
+		if (playerCurrentLife > playerTotalLife)
+		{
+			playerCurrentLife = playerTotalLife;
+		}	
+	}
+	
+	public function fullHealth():Bool
+	{
+		return playerCurrentLife == playerTotalLife;
 	}
 	
 	

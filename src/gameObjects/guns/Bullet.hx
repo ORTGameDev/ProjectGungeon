@@ -1,4 +1,4 @@
-package gameObjects;
+package gameObjects.guns;
 import flash.desktop.Clipboard;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -11,9 +11,11 @@ import openfl.Assets;
  */
 class Bullet extends FlxSprite
 {
-	//GamePlay
+	//Bullet Props.
 	public 	var bulletSpeed:Int;
 	public 	var bulletDamage:Int;
+	
+	//Target Coords.
 	private var targetX:Float;
 	private var targetY:Float;
 	
@@ -25,9 +27,6 @@ class Bullet extends FlxSprite
 		bulletSpeed = aBulletSpeed;
 		bulletDamage = aBulletDamage;
 		alive = false;
-		//offset.set(5, 5);
-		//animation.play("idle");
-		
 	}
 	
 	public function shoot(aOrX:Float, aOrY:Float, aTargetX:Float, aTargetY:Float, bType:Int)
@@ -39,6 +38,9 @@ class Bullet extends FlxSprite
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
 			case 2: loadGraphic(Assets.getBitmapData("img/bullets/Bullets002.png"), true, 11, 11);
+					animation.add("idle", [0, 1, 2, 1, ], 20, true);
+					animation.play("idle");
+			case 3: loadGraphic(Assets.getBitmapData("img/bullets/Bullets003.png"), true, 19, 19);
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
 			default: loadGraphic(Assets.getBitmapData("img/bullets/Bullets001.png"), true, 11, 11);

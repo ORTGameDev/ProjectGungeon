@@ -66,6 +66,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/bullets/Bullets003.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/characters/diagdown1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -198,8 +202,24 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/life_empty.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/life_full.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/life_half.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/logo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/maps/level001.csv");
+		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("img/maps/level1.csv");
@@ -342,6 +362,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("sounds/healPickUp.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
 		urls.push ("sounds/LoadnShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -423,7 +447,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "318",
+			build: "354",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

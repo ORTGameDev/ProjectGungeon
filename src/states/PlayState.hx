@@ -5,12 +5,13 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
-import gameObjects.BossEnemy;
-import gameObjects.Bullet;
-import gameObjects.Enemy;
-import gameObjects.HunterEnemy;
-import gameObjects.PistolPete;
-import gameObjects.Player;
+import gameObjects.enemies.BossEnemy;
+import gameObjects.guns.Bullet;
+import gameObjects.enemies.Enemy;
+import gameObjects.enemies.HunterEnemy;
+import gameObjects.enemies.PistolPete;
+import gameObjects.pickups.HealthPickUp;
+import gameObjects.players.Player;
 import gameObjects.Pointer;
 import openfl.Assets;
 
@@ -45,6 +46,9 @@ class PlayState extends FlxState
 	private var enemies:FlxTypedGroup<Enemy>;
 	private var enemyBullets:FlxTypedGroup<Bullet>;
 	
+	//PickUps
+	private var healthpickups: FlxTypedGroup<HealthPickUp>;
+	
 	
 	public function new() 
 	{
@@ -58,20 +62,24 @@ class PlayState extends FlxState
 		//Map Setup
 		map = new FlxTilemap();
 		//map.loadMapFromCSV(Assets.getText(AssetPaths.lvl1__csv), Assets.getBitmapData(AssetPaths.mapTiles__png), tileWidth, tileHeight, null, 0, 1, 5);
-		map.loadMapFromCSV(Assets.getText("img/maps/lvl1.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight, null, 0, 1 ,6);
+		map.loadMapFromCSV(Assets.getText("img/maps/level001.csv"), Assets.getBitmapData("img/maps/mapTiles.png"), tileWidth, tileHeight, null, 0, 1 ,6);
 		add(map);
 		//Player Setup
 		gamePlayer = new Player(gamePlayerXSpawn, gamePlayerYSpawn);
 		GlobalGameData.player = gamePlayer;
-		var enemieBulletPool = new FlxTypedGroup<Bullet>();
-		enemieBulletPool.maxSize = 50;
-		GlobalGameData.enemiesBullets = enemieBulletPool;
-		
 		add(gamePlayer);
 		add(gamePlayer.playerGun);
 		add(gamePlayer.playerGun.bullets);
 		
+		enemyBullets = new FlxTypedGroup<Bullet>();
+		GlobalGameData.enemiesBullets = enemyBullets;
+		
+		healthpickups = new FlxTypedGroup<HealthPickUp>();
+		GlobalGameData.healthspick = healthpickups;
+		
+		
 		this.loadEnemies();
+		this.loadPickUps();
 		
 		hud = new HUD(lvlNumber, lvlDesc);
 		hud.updateHUD();
@@ -93,6 +101,7 @@ class PlayState extends FlxState
 		FlxG.collide(map, gamePlayer.playerGun.bullets, destroyBullet);
 		FlxG.collide(map, GlobalGameData.enemiesBullets, destroyBullet);
 		FlxG.overlap(GlobalGameData.enemiesBullets, gamePlayer , bulletVsPlayer);
+		FlxG.overlap(gamePlayer, GlobalGameData.healthspick, healPlayer);
 		FlxG.worldBounds.set(0, 0, FlxG.camera.width, FlxG.camera.height);
 		
 		if (enemies.countLiving() == 0)
@@ -125,18 +134,36 @@ class PlayState extends FlxState
 		}
 	}
 	
-	private function loadEnemies()
+	private function healPlayer(p:Player, h:HealthPickUp):Void
+	{
+		if (p.exists && p.alive && h.exists && h.alive)
+		{
+			if (!p.fullHealth())
+			{
+				p.healPlayer(h.lifeAmount);	
+				h.kill();
+				hud.updateHUD();
+			}
+		}
+	}
+	
+	private function loadPickUps():Void
+	{
+		healthpickups.add(new HealthPickUp(800, 800));
+		healthpickups.add(new HealthPickUp(500, 1000));
+		healthpickups.add(new HealthPickUp(1200, 900));
+		add(healthpickups);
+	}
+	private function loadEnemies():Void
 	{	
 		
-		enemies.add(new Enemy(1000, 1200));
-		
-		enemies.add(new Enemy(1000, 2000));
-		enemies.add(new Enemy(1500, 900));
-
-		enemies.add(new Enemy(2500, 3000));
-		enemies.add(new Enemy(2000, 3000));
-		//enemies.add(new HunterEnemy(580, 900));
-		enemies.add(new BossEnemy(3000, 3000));
+		enemies.add(new HunterEnemy(1000, 1200));
+		enemies.add(new HunterEnemy(1000, 2000));
+		enemies.add(new HunterEnemy(1500, 900));
+		/*enemies.add(new HunterEnemy(2500, 3000));
+		enemies.add(new HunterEnemy(2000, 3000));
+		*/
+		enemies.add(new BossEnemy(2000, 2800));
 		add(enemies);
 		for (e in enemies)
 		{

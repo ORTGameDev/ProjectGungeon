@@ -1,10 +1,11 @@
-package gameObjects;
+package gameObjects.enemies;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
-import gameObjects.Enemy;
+import gameObjects.enemies.Enemy;
+import gameObjects.guns.Boltgun;
 import openfl.Assets;
 
 /**
@@ -28,9 +29,9 @@ class BossEnemy extends Enemy
 		animation.addByPrefix("start3", "start3", 5, false);
 		animation.addByPrefix("x", "start3", 5, false, false, true);
 		animation.play("start3");
+		enemyGun = new Boltgun(X, Y);
 		drag.x = drag.y = 1500;
 		enemySpeed = 30;
-		enemyDamage = 5;
 		enemyLife = 25;
 		maxVelocity.set(550, 400);
 		scale.set(3, 3);

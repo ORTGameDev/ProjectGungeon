@@ -1,13 +1,13 @@
-package gameObjects;
+package gameObjects.guns;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound;
 import flixel.util.FlxColor;
-import gameObjects.Bullet;
-import gameObjects.Gun;
-import gameObjects.Pistol;
+import gameObjects.guns.Bullet;
+import gameObjects.guns.Gun;
+import gameObjects.guns.Pistol;
 import openfl.Assets;
 import openfl.Lib;
 
@@ -20,7 +20,6 @@ import openfl.Lib;
 class Shotgun extends Gun
 {
 	private var gunLastShoot: Int = 0;	
-	private var gunCadency: Int = 2000;
 	public function new(aX:Float, aY:Float) 
 	{
 		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false));
@@ -41,7 +40,7 @@ class Shotgun extends Gun
 	public  override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
 		var currentTime = Lib.getTimer();
-		if (currentTime > gunLastShoot + gunCadency)
+		if (currentTime > gunLastShoot + 2000)
 		{
 			var angleX: Int = -30;
 			var angleY: Int = -30;
