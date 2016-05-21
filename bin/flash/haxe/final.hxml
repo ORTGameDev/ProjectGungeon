@@ -23,6 +23,6 @@
 -swf-lib bin/flash/obj/assets.swf
 -swf-version 11.8
 -swf bin/flash/bin/Obligatorio.swf
--swf-header 800:480:60:000000
+-swf-header 800:600:60:000000
 -cp bin/flash/haxe
 -D final

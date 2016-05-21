@@ -22,57 +22,39 @@ class Enemy extends FlxSprite
 {
 	/*******Enemy default config.***********/
 	//Movement  
-	private var enemySpeed: Float = 100;
-	private var enemyDrag: Int = 1500;
-	//Generics
-	private var enemyLife: Int = 6;
+	private var enemySpeed: Float = 0;
+	private var enemyChaseDistance:Int = 0; //Chase rate where enemy start moving to the player
+	
+	//Life
+	private var enemyLife: Int = 0; //Enemy total life
 	
 	//Gun
-	public var enemyGun:Gun;
-	private var enemyShootDistance:Int = 600;
+	public	var enemyGun:Gun = null;
+	private var enemyShootDistance:Int = 0; //Enemy atack rate 
 
-	//private var enemyLastShoot: Int = 0;
-
-	private var enemyChaseDistance:Int = 200;
 
 	public function new(X:Float = 0, Y:Float = 0) 
 	{
 		super(X, Y);
-		drag.x = drag.y = enemyDrag;
-		frames = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		animation.addByPrefix("north3", "north3_", 10, true);
-		animation.addByPrefix("south3", "south3_", 10, true);
-		animation.addByPrefix("right3", "side3_", 10, true);
-		animation.addByPrefix("left3", "side3_", 10, true, true);
-		animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
-		animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
-		animation.addByPrefix("start3", "start3", 30, false);
-		animation.addByPrefix("x", "start3", 30, false, false, true);
-		animation.play("start3");
-		width = 20;
-		height = 20;
-		offset.set(5, 5);
-		
 	}
 	
 	override public function update (elapsed: Float):Void
 	{
-		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
-		{
 		super.update(elapsed);
-		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
-			{
-				//Falta agregar el enemigo Dummy
+		if (animation.curAnim.name == "x") {  // Si la animación actual es de muerte
+			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
 				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
 				FlxG.state.add(deadEnemy);
-				this.enemyGun.kill();
 				kill();
 			}
 			return;
 		}
-		super.update(elapsed);
-		enemyGun.x = this.x ;
-		enemyGun.y = this.y + 7;
+		
+		if (enemyGun != null) { //Actualizo posicion del arma
+			enemyGun.x = this.x ;
+			enemyGun.y = this.y + 7;
+		}
+		
 		//Comienza captura del player
 		var player = GlobalGameData.player;
 		var dX:Float = player.x - x;
@@ -80,19 +62,18 @@ class Enemy extends FlxSprite
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 
 		dX /= length;
 		dY /= length;
-		if (length >= enemyChaseDistance)
-		{
+		
+		if (length < enemyChaseDistance) {
 			velocity.x = dX * enemySpeed;
 			velocity.y = dY * enemySpeed;
 		}
-		
-		if (length <= enemyShootDistance)
+		if (enemyGun != null && length < enemyShootDistance)
 		{
 			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
 		}
 	}
+
 	
-		
 	override public function draw():Void
 	{
 		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE)
@@ -111,31 +92,43 @@ class Enemy extends FlxSprite
 				else
 					facing = FlxObject.DOWN;
 			}
-			
-			switch (facing)
-			{
-				case FlxObject.LEFT:
-					animation.play("left3");
-					enemyGun.alpha = 1;
-					enemyGun.animation.play("left");
-				case FlxObject.RIGHT:
-					animation.play("right3");
-					enemyGun.alpha = 1;
-					enemyGun.animation.play("right");
-				case FlxObject.UP:
-					animation.play("north3");
-					enemyGun.alpha = 0;
-					enemyGun.animation.play("north");
-				case FlxObject.DOWN:
-					animation.play("south3");
-					enemyGun.alpha = 1;
-					enemyGun.animation.play("south");
-				
-			}
-			
+			if (enemyGun != null) {
+				switch (facing)
+				{	
+					case FlxObject.LEFT:
+						animation.play("left3");
+						enemyGun.alpha = 1;
+						enemyGun.animation.play("left");
+					case FlxObject.RIGHT:
+						animation.play("right3");
+						enemyGun.alpha = 1;
+						enemyGun.animation.play("right");
+					case FlxObject.UP:
+						animation.play("north3");
+						enemyGun.alpha = 0;
+						enemyGun.animation.play("north");
+					case FlxObject.DOWN:
+						animation.play("south3");
+						enemyGun.alpha = 1;
+						enemyGun.animation.play("south");
+				}
+			}else{ //Enemy without Gun
+				switch (facing)
+				{	
+					case FlxObject.LEFT:
+						animation.play("left3");
+					case FlxObject.RIGHT:
+						animation.play("right3");
+					case FlxObject.UP:
+						animation.play("north3");
+					case FlxObject.DOWN:
+						animation.play("south3");
+				}
+			}		
 		}
 		super.draw();
 	}
+
 	
 	public function receiveDamage(damage:Int):Void
 	{
@@ -145,6 +138,14 @@ class Enemy extends FlxSprite
 			velocity.set(0, 0);
 			animation.play("x");
 		}	
+	}
+	
+	override public function kill():Void 
+	{
+		if (enemyGun != null){
+			enemyGun.kill();
+		}
+		super.kill();
 	}
 	
 }

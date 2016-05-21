@@ -6,6 +6,8 @@ import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
 import gameObjects.enemies.BossEnemy;
+import gameObjects.enemies.SkeletonEnemy;
+import gameObjects.enemies.SummonerEnemy;
 import gameObjects.guns.Bullet;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.HunterEnemy;
@@ -73,12 +75,14 @@ class PlayState extends FlxState
 		
 		enemyBullets = new FlxTypedGroup<Bullet>();
 		GlobalGameData.enemiesBullets = enemyBullets;
+		add(enemyBullets);
 		
 		healthpickups = new FlxTypedGroup<HealthPickUp>();
 		GlobalGameData.healthspick = healthpickups;
 		
 		
 		this.loadEnemies();
+		GlobalGameData.enemies = this.enemies;
 		this.loadPickUps();
 		
 		hud = new HUD(lvlNumber, lvlDesc);
@@ -160,15 +164,21 @@ class PlayState extends FlxState
 		enemies.add(new HunterEnemy(1000, 1200));
 		enemies.add(new HunterEnemy(1000, 2000));
 		enemies.add(new HunterEnemy(1500, 900));
+		enemies.add(new SkeletonEnemy(1020, 1000));
+		enemies.add(new SkeletonEnemy(1040, 1100));
+		enemies.add(new SkeletonEnemy(1060, 1200));
+		enemies.add(new SummonerEnemy(1080, 1300));
 		/*enemies.add(new HunterEnemy(2500, 3000));
 		enemies.add(new HunterEnemy(2000, 3000));
 		*/
-		enemies.add(new BossEnemy(2000, 2800));
+		enemies.add(new BossEnemy(1200, 2800));
 		add(enemies);
 		for (e in enemies)
 		{
+			if (e.enemyGun != null){
 			add(e.enemyGun);
-			add(e.enemyGun.bullets);
+			//add(e.enemyGun.bullets);
+			}
 		}
 
 	}

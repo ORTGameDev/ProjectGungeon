@@ -40,7 +40,7 @@ class Bullet extends FlxSprite
 			case 2: loadGraphic(Assets.getBitmapData("img/bullets/Bullets002.png"), true, 11, 11);
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
-			case 3: loadGraphic(Assets.getBitmapData("img/bullets/Bullets003.png"), true, 19, 19);
+			case 3: loadGraphic(Assets.getBitmapData("img/bullets/Bullets003.png"), true, 25, 25);
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
 			default: loadGraphic(Assets.getBitmapData("img/bullets/Bullets001.png"), true, 11, 11);

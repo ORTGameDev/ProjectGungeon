@@ -370,7 +370,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("sounds/music/01_labyrinth.mp3");
+		urls.push ("sounds/music/background.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
@@ -382,7 +382,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("music/01_labyrinth.mp3");
+		urls.push ("music/background.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
@@ -447,7 +447,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "354",
+			build: "406",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
@@ -465,7 +465,7 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-					height: 480,
+					height: 600,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
@@ -489,7 +489,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 800, 480, "000000");
+		openfl.Lib.embed (null, 800, 600, "000000");
 		#end
 		#else
 		create ();

@@ -18,6 +18,7 @@ class BossEnemy extends Enemy
 	public function new(X:Float, Y:Float) 
 	{
 		super(X, Y);
+		//Graphics
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
 		animation.addByPrefix("north3", "north3_", 5, true);
@@ -29,15 +30,19 @@ class BossEnemy extends Enemy
 		animation.addByPrefix("start3", "start3", 5, false);
 		animation.addByPrefix("x", "start3", 5, false, false, true);
 		animation.play("start3");
-		enemyGun = new Boltgun(X, Y);
-		drag.x = drag.y = 1500;
-		enemySpeed = 30;
-		enemyLife = 25;
-		maxVelocity.set(550, 400);
 		scale.set(3, 3);
-		width = 30;
-		height = 30;
-		offset.set(5, 5);
+		width  = 45;
+		height = 60;
+		//Skills
+		enemySpeed = 40;
+		enemyChaseDistance = 600;
+		enemyLife = 25;
+		enemyGun = new Boltgun(X, Y);
+		enemyShootDistance = 500;
+		
+		drag.x = drag.y = 1500;
+		maxVelocity.set(550, 400);
+		
 	}
 	
 	

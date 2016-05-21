@@ -18,27 +18,32 @@ class HunterEnemy extends Enemy
 	public function new(X:Float, Y:Float) 
 	{
 		super(X, Y);
+		//Graphics
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
-		animation.addByPrefix("north3", "north3_", 10, true);
-		animation.addByPrefix("south3", "south3_", 10, true);
-		animation.addByPrefix("right3", "side3_", 10, true);
-		animation.addByPrefix("left3", "side3_", 10, true, true);
-		animation.addByPrefix("diagDown3", "diagDown3_", 10, true);
-		animation.addByPrefix("diagUp3", "diagUp3_", 30, true);
-		animation.addByPrefix("start3", "start3", 30, false);
-		animation.addByPrefix("x", "start3", 30, false, false, true);
+		animation.addByPrefix("north3", "north3_", 5, true);
+		animation.addByPrefix("south3", "south3_", 5, true);
+		animation.addByPrefix("right3", "side3_", 5, true);
+		animation.addByPrefix("left3", "side3_", 5, true, true);
+		animation.addByPrefix("diagDown3", "diagDown3_", 5, true);
+		animation.addByPrefix("diagUp3", "diagUp3_", 5, true);
+		animation.addByPrefix("start3", "start3", 5, false);
+		animation.addByPrefix("x", "start3", 5, false, false, true);
 		animation.play("start3");
+		scale.set(2, 2);
+		width  = 30;
+		height = 42;
+		offset.set(0.5, 0.5);
+		
+		//Skills
+		enemySpeed = 40;
+		enemyChaseDistance = 700;
+		enemyLife = 4;
 		enemyGun = new Shotgun(X, Y);
+		enemyShootDistance = 600;
 		drag.x = drag.y = 1500;
-		enemySpeed = 200;
-		enemyLife = 2;
-		maxVelocity.set(500, 300);
-		width = 20;
-		height = 20;
-		offset.set(5, 5);
+		maxVelocity.set(550, 400);
 	}
-	
 	
 	override public function update (elapsed: Float):Void
 	{

@@ -40,7 +40,7 @@ class MenuState extends FlxState
 		add(gameLogo);
 		//Set Sounds
 		//Cambiar esto por AssethPath
-		FlxG.sound.playMusic("music/01_labyrinth.mp3", 0.2, true);
+		FlxG.sound.playMusic("music/background.mp3", 0.2, true);
 		
 		menu = new MainMenu();
 		

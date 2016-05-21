@@ -7,7 +7,7 @@
     <movie path="project.xml" />
     <movie fps="60" />
     <movie width="800" />
-    <movie height="480" />
+    <movie height="600" />
     <movie version="1" />
     <movie minorVersion="0" />
     <movie platform="Lime" />
@@ -32,7 +32,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 11.8" />
+    <option additional="--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 11.8&#xA;-debug " />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

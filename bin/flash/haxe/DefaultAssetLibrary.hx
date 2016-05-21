@@ -315,14 +315,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("sounds/healPickUp.mp3", AssetType.MUSIC);
 		className.set ("sounds/LoadnShot.mp3", __ASSET__sounds_loadnshot_mp3);
 		type.set ("sounds/LoadnShot.mp3", AssetType.MUSIC);
-		className.set ("sounds/music/01_labyrinth.mp3", __ASSET__sounds_music_01_labyrinth_mp3);
-		type.set ("sounds/music/01_labyrinth.mp3", AssetType.MUSIC);
+		className.set ("sounds/music/background.mp3", __ASSET__sounds_music_background_mp3);
+		type.set ("sounds/music/background.mp3", AssetType.MUSIC);
 		className.set ("sounds/pistolShot.mp3", __ASSET__sounds_pistolshot_mp3);
 		type.set ("sounds/pistolShot.mp3", AssetType.MUSIC);
 		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
 		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
-		className.set ("music/01_labyrinth.mp3", __ASSET__music_01_labyrinth_mp3);
-		type.set ("music/01_labyrinth.mp3", AssetType.MUSIC);
+		className.set ("music/background.mp3", __ASSET__music_background_mp3);
+		type.set ("music/background.mp3", AssetType.MUSIC);
 		
 		
 		#elseif html5
@@ -668,7 +668,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
-		id = "sounds/music/01_labyrinth.mp3";
+		id = "sounds/music/background.mp3";
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
@@ -680,7 +680,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
-		id = "music/01_labyrinth.mp3";
+		id = "music/background.mp3";
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
@@ -957,8 +957,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("sounds/LoadnShot.mp3", __ASSET__sounds_loadnshot_mp3);
 		type.set ("sounds/LoadnShot.mp3", AssetType.MUSIC);
 		
-		className.set ("sounds/music/01_labyrinth.mp3", __ASSET__sounds_music_01_labyrinth_mp3);
-		type.set ("sounds/music/01_labyrinth.mp3", AssetType.MUSIC);
+		className.set ("sounds/music/background.mp3", __ASSET__sounds_music_background_mp3);
+		type.set ("sounds/music/background.mp3", AssetType.MUSIC);
 		
 		className.set ("sounds/pistolShot.mp3", __ASSET__sounds_pistolshot_mp3);
 		type.set ("sounds/pistolShot.mp3", AssetType.MUSIC);
@@ -966,8 +966,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
 		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
 		
-		className.set ("music/01_labyrinth.mp3", __ASSET__music_01_labyrinth_mp3);
-		type.set ("music/01_labyrinth.mp3", AssetType.MUSIC);
+		className.set ("music/background.mp3", __ASSET__music_background_mp3);
+		type.set ("music/background.mp3", AssetType.MUSIC);
 		
 		
 		if (useManifest) {
@@ -1697,10 +1697,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__characters_start3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__sounds_healpickup_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_loadnshot_mp3 extends flash.media.Sound { }
-@:keep @:bind #if display private #end class __ASSET__sounds_music_01_labyrinth_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_music_background_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_pistolshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends flash.media.Sound { }
-@:keep @:bind #if display private #end class __ASSET__music_01_labyrinth_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__music_background_mp3 extends flash.media.Sound { }
 
 
 #elseif html5
@@ -1888,10 +1888,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/characters/start3.png") #if display private #end class __ASSET__characters_start3_png extends lime.graphics.Image {}
 @:file("assets/sounds/healPickUp.mp3") #if display private #end class __ASSET__sounds_healpickup_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/LoadnShot.mp3") #if display private #end class __ASSET__sounds_loadnshot_mp3 extends lime.utils.Bytes {}
-@:file("assets/sounds/music/01_labyrinth.mp3") #if display private #end class __ASSET__sounds_music_01_labyrinth_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/music/background.mp3") #if display private #end class __ASSET__sounds_music_background_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/pistolShot.mp3") #if display private #end class __ASSET__sounds_pistolshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/shotgunShot.mp3") #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends lime.utils.Bytes {}
-@:file("assets/sounds/music/01_labyrinth.mp3") #if display private #end class __ASSET__music_01_labyrinth_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/music/background.mp3") #if display private #end class __ASSET__music_background_mp3 extends lime.utils.Bytes {}
 
 
 
