@@ -155,8 +155,10 @@ class Player extends FlxSprite
 	public function receiveDamage(damage:Int):Void
 	{
 		playerCurrentLife -= damage;
+		GlobalGameData.aHud.updateHUD();
 		if (playerCurrentLife <= 0)
 		{
+			playerCurrentLife = 0;
 			velocity.set(0, 0);
 			animation.play("x");
 		}	
@@ -169,6 +171,7 @@ class Player extends FlxSprite
 		{
 			playerCurrentLife = playerTotalLife;
 		}	
+		GlobalGameData.aHud.updateHUD();
 	}
 	
 	public function fullHealth():Bool

@@ -3,8 +3,11 @@ import GlobalGameData;
 import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.effects.particles.FlxEmitter;
+import flixel.effects.particles.FlxParticle;
 import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
+import gameObjects.Barrel;
 import gameObjects.enemies.BossEnemy;
 import gameObjects.enemies.SkeletonEnemy;
 import gameObjects.enemies.SummonerEnemy;
@@ -51,6 +54,10 @@ class PlayState extends FlxState
 	//PickUps
 	private var healthpickups: FlxTypedGroup<HealthPickUp>;
 	
+	//Barrels & Explotions
+	private var barrels: FlxTypedGroup<Barrel>;
+	private var ExplotionPparticles : FlxTypedGroup<FlxParticle>;
+	
 	
 	public function new() 
 	{
@@ -85,9 +92,19 @@ class PlayState extends FlxState
 		GlobalGameData.enemies = this.enemies;
 		this.loadPickUps();
 		
+		ExplotionPparticles = new FlxTypedGroup<FlxParticle>();
+		GlobalGameData.particles = ExplotionPparticles;
+		barrels = new FlxTypedGroup<Barrel>();
+		barrels.add(new Barrel(500, 500));
+		
+		
+		
+		
 		hud = new HUD(lvlNumber, lvlDesc);
+		GlobalGameData.aHud = hud;
 		hud.updateHUD();
 		add(hud);
+		
 		
 		FlxG.camera.follow(gamePlayer, FlxCameraFollowStyle.TOPDOWN);
 		FlxG.camera.setScrollBoundsRect(0, 0, map.width,map.height);
@@ -107,10 +124,24 @@ class PlayState extends FlxState
 		FlxG.overlap(GlobalGameData.enemiesBullets, gamePlayer , bulletVsPlayer);
 		FlxG.overlap(gamePlayer, GlobalGameData.healthspick, healPlayer);
 		FlxG.worldBounds.set(0, 0, FlxG.camera.width, FlxG.camera.height);
+		FlxG.overlap(gamePlayer.playerGun.bullets, barrels, poomBarrel);
+		FlxG.overlap(GlobalGameData.enemiesBullets, barrels, poomBarrel);
+		
+		FlxG.overlap(gamePlayer, GlobalGameData.particles, particlesVsPlayer);
+		FlxG.overlap(GlobalGameData.enemies, GlobalGameData.particles, particlesVsEnemies);
 		
 		if (enemies.countLiving() == 0)
 		{
 			hud.playerWin();
+		}
+	}
+	
+	
+	private function poomBarrel(aBullet:Bullet, abarrel:Barrel):Void 
+	{
+		if (aBullet.exists && aBullet.alive && abarrel.exists && abarrel.alive){
+			aBullet.kill();
+			abarrel.explote();
 		}
 	}
 	
@@ -138,6 +169,24 @@ class PlayState extends FlxState
 		}
 	}
 	
+	private function particlesVsPlayer(p:Player, par:FlxParticle):Void
+	{
+		if (p.exists && p.alive && par.exists && par.alive){
+					p.receiveDamage(4);			
+					par.kill();
+					hud.updateHUD();
+		}
+	}
+	
+	private function particlesVsEnemies(e:Enemy, par:FlxParticle):Void
+	{
+		if (e.exists && e.alive && par.exists && par.alive){
+					e.receiveDamage(4);
+					par.kill();
+					hud.updateHUD();
+		}
+	}
+	
 	private function healPlayer(p:Player, h:HealthPickUp):Void
 	{
 		if (p.exists && p.alive && h.exists && h.alive)
@@ -161,16 +210,10 @@ class PlayState extends FlxState
 	private function loadEnemies():Void
 	{	
 		
-		enemies.add(new HunterEnemy(1000, 1200));
+		enemies.add(new HunterEnemy(600, 600));
 		enemies.add(new HunterEnemy(1000, 2000));
 		enemies.add(new HunterEnemy(1500, 900));
-		enemies.add(new SkeletonEnemy(1020, 1000));
-		enemies.add(new SkeletonEnemy(1040, 1100));
-		enemies.add(new SkeletonEnemy(1060, 1200));
 		enemies.add(new SummonerEnemy(1080, 1300));
-		/*enemies.add(new HunterEnemy(2500, 3000));
-		enemies.add(new HunterEnemy(2000, 3000));
-		*/
 		enemies.add(new BossEnemy(1200, 2800));
 		add(enemies);
 		for (e in enemies)

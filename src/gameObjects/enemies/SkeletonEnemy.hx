@@ -51,6 +51,11 @@ class SkeletonEnemy extends Enemy
 	override public function update (elapsed: Float):Void
 	{
 		super.update(elapsed);
+		if (this.overlaps(GlobalGameData.player) && this.alive && this.exists)
+		{
+			GlobalGameData.player.receiveDamage(2);
+			this.destroy();
+		}
 	}
 	
 	

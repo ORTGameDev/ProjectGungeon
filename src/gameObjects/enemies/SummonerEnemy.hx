@@ -62,8 +62,8 @@ class SummonerEnemy extends Enemy
 	
 	private function summonSkeleton():Void
 	{
-		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y));
-		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y));
+		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y + 20));
+		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y + 20));
 		
 	}
 	

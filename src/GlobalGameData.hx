@@ -1,4 +1,5 @@
 package;
+import flixel.effects.particles.FlxParticle;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import gameObjects.enemies.Enemy;
 import gameObjects.pickups.HealthPickUp;
@@ -14,6 +15,8 @@ import gameObjects.players.Player;
 
 class GlobalGameData
 {
+	
+	public static var aHud: HUD;
 
 	public static var player: Player;
 	
@@ -21,6 +24,8 @@ class GlobalGameData
 	
 	public static var enemiesBullets: FlxTypedGroup<Bullet>;
 	public static var healthspick: FlxTypedGroup<HealthPickUp>;
+	
+	public static var particles: FlxTypedGroup<FlxParticle>;
 	
 	public static function clear():Void 
 	{
@@ -31,6 +36,10 @@ class GlobalGameData
 		enemiesBullets = null;
 		healthspick.destroy();
 		healthspick = null;
+		particles.destroy();
+		particles = null;
+		aHud.destroy();
+		aHud = null;
 	}
 	
 }
