@@ -2,3 +2,4 @@
 bin/flash/bin/Obligatorio.swf
 *.build
 bin/flash/haxe/ApplicationMain.hx
+bin
