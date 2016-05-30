@@ -1,9 +1,11 @@
 package gameObjects.enemies;
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import gameObjects.enemies.Enemy;
 import gameObjects.guns.Boltgun;
 import openfl.Assets;
@@ -16,11 +18,14 @@ import openfl.Lib;
 class SummonerEnemy extends Enemy
 {
 
-	private var lastSummonTime: Int = 5;
+	private var lastSummonTime: Int = 0;
+	private var minionsGroup: FlxTypedGroup<SkeletonEnemy>;
 	
 	public function new(X:Float, Y:Float) 
 	{
 		super(X, Y);
+		minionsGroup = new FlxTypedGroup<SkeletonEnemy>();
+		
 		//Graphics
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
@@ -62,8 +67,11 @@ class SummonerEnemy extends Enemy
 	
 	private function summonSkeleton():Void
 	{
-		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y + 20));
-		GlobalGameData.enemies.add(new SkeletonEnemy(this.x, this.y + 20));
+		//var s1 = minionsGroup.recycle(SkeletonEnemy, null, false, true);
+		//s1.setPosition(this.x + this.y + 50);
+		
+		GlobalGameData.enemies.add(new SkeletonEnemy(this.x -50 , this.y));
+		
 		
 	}
 	

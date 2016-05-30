@@ -96,6 +96,8 @@ class PlayState extends FlxState
 		GlobalGameData.particles = ExplotionPparticles;
 		barrels = new FlxTypedGroup<Barrel>();
 		barrels.add(new Barrel(500, 500));
+		barrels.add(new Barrel(500, 800));
+		barrels.add(new Barrel(1000, 500));
 		
 		
 		
@@ -172,7 +174,7 @@ class PlayState extends FlxState
 	private function particlesVsPlayer(p:Player, par:FlxParticle):Void
 	{
 		if (p.exists && p.alive && par.exists && par.alive){
-					p.receiveDamage(4);			
+					p.receiveDamage(2);			
 					par.kill();
 					hud.updateHUD();
 		}
@@ -181,7 +183,7 @@ class PlayState extends FlxState
 	private function particlesVsEnemies(e:Enemy, par:FlxParticle):Void
 	{
 		if (e.exists && e.alive && par.exists && par.alive){
-					e.receiveDamage(4);
+					e.receiveDamage(2);
 					par.kill();
 					hud.updateHUD();
 		}

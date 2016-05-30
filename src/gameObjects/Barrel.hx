@@ -27,12 +27,14 @@ class Barrel extends FlxSprite
 	{
 		super(aX, aY);
 		barrelSound = FlxG.sound.load("sounds/barrelExplotion.mp3");
+		loadGraphic(Assets.getBitmapData("barrels/Barrel.png"), true, 19, 25);
+		animation.add("idle", [0,], 15);
+		animation.add("x", [0,1,2,3,4,], 15,false);
 		barrelEmitter = new FlxEmitter(aX + 15, aY + 20);
 		barrelEmitter.allowCollisions = FlxObject.ANY;
-		this.makeGraphic(30, 40, FlxColor.BROWN);
 		FlxG.state.add(this);
 		FlxG.state.add(barrelEmitter);
-		
+		animation.play("idle");
 		for (i in 0 ... 10)
         {
         	var p = new FlxParticle();
@@ -51,6 +53,11 @@ class Barrel extends FlxSprite
 	override public function update (elapsed: Float):Void
 	{
 		super.update(elapsed);
+		if (animation.curAnim.name == "x") {  // Si la animación es de activado
+			if (animation.curAnim.finished) { // Al finalizar la animación oculto el barril
+				this.visible = false;
+			}
+		}
 		if (activated && (Lib.getTimer() > lifeTime + 3000)) { //Emitter ends
 			barrelEmitter.destroy();
 			this.destroy();
@@ -65,7 +72,7 @@ class Barrel extends FlxSprite
 			lifeTime = Lib.getTimer();
 			barrelSound.play();
 			barrelEmitter.start(true, 1, 10);
-			this.visible = false;
+			animation.play("x");
 		}
 		
 		

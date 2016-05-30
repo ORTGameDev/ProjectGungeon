@@ -53,8 +53,8 @@ class SkeletonEnemy extends Enemy
 		super.update(elapsed);
 		if (this.overlaps(GlobalGameData.player) && this.alive && this.exists)
 		{
-			GlobalGameData.player.receiveDamage(2);
-			this.destroy();
+			GlobalGameData.player.receiveDamage(1);
+			this.kill();
 		}
 	}
 	

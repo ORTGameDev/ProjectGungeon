@@ -58,6 +58,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/barrels/Barrel.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/bullets/Bullets001.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -226,27 +230,11 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("img/maps/level1.oel");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("img/maps/levelOne.oel");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
 		urls.push ("img/maps/lvl1.csv");
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		urls.push ("img/maps/mapTiles.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/maps/mapTiles_olg.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/maps/tilemap.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -267,6 +255,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("pointer/crosshairSmall.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("barrels/Barrel.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -451,7 +443,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "1",
+			build: "31",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

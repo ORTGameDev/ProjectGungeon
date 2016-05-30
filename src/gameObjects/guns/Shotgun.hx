@@ -20,6 +20,7 @@ import openfl.Lib;
 class Shotgun extends Gun
 {
 	private var gunLastShoot: Int = 0;	
+	
 	public function new(aX:Float, aY:Float) 
 	{
 		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false));
@@ -40,13 +41,13 @@ class Shotgun extends Gun
 	public  override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
 		var currentTime = Lib.getTimer();
-		if (currentTime > gunLastShoot + 2000)
+		if (currentTime > gunLastShoot + 4000)
 		{
 			var angleX: Int = -30;
 			var angleY: Int = -30;
 			for (i in 0...3)
 			{
-				var bullet:Bullet = cast bullets.recycle(Bullet, null, false, false);
+				var bullet:Bullet = bullets.recycle(Bullet, null, false, false);
 				bullet.bulletDamage = gunBulletDamage;
 				bullet.bulletSpeed = gunBulletSpeed;
 				bullet.shoot(aX, aY, aTargetX + angleX, aTargetY + angleY, 2);

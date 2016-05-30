@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import openfl.Assets;
+import openfl.Lib;
 
 /**
  * ...
@@ -14,6 +15,8 @@ class Bullet extends FlxSprite
 	//Bullet Props.
 	public 	var bulletSpeed:Int;
 	public 	var bulletDamage:Int;
+	private static inline var bulletLifeTime: Int = 4000;
+	private var bulletStartTime:Int = 0;
 	
 	//Target Coords.
 	private var targetX:Float;
@@ -29,6 +32,13 @@ class Bullet extends FlxSprite
 		alive = false;
 	}
 	
+	override public function update (elapsed: Float):Void
+	{
+		super.update(elapsed);
+		if ((Lib.getTimer() - bulletStartTime) > bulletLifeTime) { // Si pasan mas de 4 seg. Mato la bala.
+			this.kill();
+		}
+	}
 	public function shoot(aOrX:Float, aOrY:Float, aTargetX:Float, aTargetY:Float, bType:Int)
 	{
 		this.reset(aOrX, aOrY);
@@ -47,6 +57,7 @@ class Bullet extends FlxSprite
 					animation.add("idle", [0, 1, 2, 1, ], 20, true);
 					animation.play("idle");
 		}
+		bulletStartTime = Lib.getTimer();
 		var dX:Float = aTargetX - aOrX;
 		var dY:Float = aTargetY - aOrY;
 		var length:Float = Math.sqrt(dX * dX + dY * dY); 
