@@ -382,6 +382,42 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		urls.push ("maps/level1.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level1.oel");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level1.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/levelOne.oel");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/lvl1.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/mapTiles.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/mapTiles_olg.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/tilemap.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/tilemapdata.csv");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
 		
 		if (config.assetsPrefix != null) {
 			
@@ -443,7 +479,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "31",
+			build: "37",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
@@ -461,13 +497,13 @@ class ApplicationMain {
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-					height: 600,
+					height: 768,
 					parameters: "{}",
 					resizable: true,
 					stencilBuffer: true,
 					title: "Obligatorio",
 					vsync: false,
-					width: 800,
+					width: 1024,
 					x: null,
 					y: null
 				},
@@ -485,7 +521,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 800, 600, "000000");
+		openfl.Lib.embed (null, 1024, 768, "000000");
 		#end
 		#else
 		create ();

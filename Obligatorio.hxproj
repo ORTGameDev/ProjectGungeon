@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="project.xml" />
     <movie fps="60" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="1024" />
+    <movie height="768" />
     <movie version="1" />
     <movie minorVersion="0" />
     <movie platform="Lime" />
@@ -17,9 +17,10 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="C:\HaxeToolkit\haxe\lib\actuate\1,8,6" />
-    <class path="C:\HaxeToolkit\haxe\lib\flixel\4,0,0" />
+    <class path="C:\HaxeToolkit\haxe\lib\flixel\4,0,1" />
     <class path="C:\HaxeToolkit\haxe\lib\lime\2,9,0" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,0" />
+    <class path="C:\HaxeToolkit\haxe\lib\hscript\2,0,7" />
     <class path="C:\HaxeToolkit\haxe\lib\flixel-addons\2,0,0" />
     <class path="src" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\3,6,0\extern" />
@@ -27,12 +28,12 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="actuate=1.8.6&#xA;flixel=4.0.0&#xA;lime=2.9.0&#xA;openfl=3.6.0&#xA;flixel-addons=2.0.0&#xA;openfl-next&#xA;tools=2.9.0&#xA;no-compilation&#xA;openfl-flash&#xA;web&#xA;display" />
+    <option directives="actuate=1.8.6&#xA;flixel=4.0.1&#xA;lime=2.9.0&#xA;openfl=3.6.0&#xA;hscript=2.0.7&#xA;flixel-addons=2.0.0&#xA;openfl-next&#xA;tools=2.9.0&#xA;no-compilation&#xA;openfl-flash&#xA;web&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 11.8&#xA;-debug " />
+    <option additional="#--macro keep('IntIterator')&#xA;--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 11.8&#xA;-debug " />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

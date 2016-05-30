@@ -140,6 +140,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -320,6 +329,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
 		className.set ("music/background.mp3", __ASSET__music_background_mp3);
 		type.set ("music/background.mp3", AssetType.MUSIC);
+		className.set ("maps/level1.csv", __ASSET__maps_level1_csv);
+		type.set ("maps/level1.csv", AssetType.TEXT);
+		className.set ("maps/level1.oel", __ASSET__maps_level1_oel);
+		type.set ("maps/level1.oel", AssetType.TEXT);
+		className.set ("maps/level1.tmx", __ASSET__maps_level1_tmx);
+		type.set ("maps/level1.tmx", AssetType.TEXT);
+		className.set ("maps/levelOne.oel", __ASSET__maps_levelone_oel);
+		type.set ("maps/levelOne.oel", AssetType.TEXT);
+		className.set ("maps/lvl1.csv", __ASSET__maps_lvl1_csv);
+		type.set ("maps/lvl1.csv", AssetType.TEXT);
+		className.set ("maps/mapTiles.png", __ASSET__maps_maptiles_png);
+		type.set ("maps/mapTiles.png", AssetType.IMAGE);
+		className.set ("maps/mapTiles_olg.png", __ASSET__maps_maptiles_olg_png);
+		type.set ("maps/mapTiles_olg.png", AssetType.IMAGE);
+		className.set ("maps/tilemap.png", __ASSET__maps_tilemap_png);
+		type.set ("maps/tilemap.png", AssetType.IMAGE);
+		className.set ("maps/tilemapdata.csv", __ASSET__maps_tilemapdata_csv);
+		type.set ("maps/tilemapdata.csv", AssetType.TEXT);
 		
 		
 		#elseif html5
@@ -677,6 +704,42 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
+		id = "maps/level1.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "maps/level1.oel";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "maps/level1.tmx";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "maps/levelOne.oel";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "maps/lvl1.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "maps/mapTiles.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "maps/mapTiles_olg.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "maps/tilemap.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "maps/tilemapdata.csv";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
 		
 		
 		var assetsPrefix = null;
@@ -958,6 +1021,33 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("music/background.mp3", __ASSET__music_background_mp3);
 		type.set ("music/background.mp3", AssetType.MUSIC);
+		
+		className.set ("maps/level1.csv", __ASSET__maps_level1_csv);
+		type.set ("maps/level1.csv", AssetType.TEXT);
+		
+		className.set ("maps/level1.oel", __ASSET__maps_level1_oel);
+		type.set ("maps/level1.oel", AssetType.TEXT);
+		
+		className.set ("maps/level1.tmx", __ASSET__maps_level1_tmx);
+		type.set ("maps/level1.tmx", AssetType.TEXT);
+		
+		className.set ("maps/levelOne.oel", __ASSET__maps_levelone_oel);
+		type.set ("maps/levelOne.oel", AssetType.TEXT);
+		
+		className.set ("maps/lvl1.csv", __ASSET__maps_lvl1_csv);
+		type.set ("maps/lvl1.csv", AssetType.TEXT);
+		
+		className.set ("maps/mapTiles.png", __ASSET__maps_maptiles_png);
+		type.set ("maps/mapTiles.png", AssetType.IMAGE);
+		
+		className.set ("maps/mapTiles_olg.png", __ASSET__maps_maptiles_olg_png);
+		type.set ("maps/mapTiles_olg.png", AssetType.IMAGE);
+		
+		className.set ("maps/tilemap.png", __ASSET__maps_tilemap_png);
+		type.set ("maps/tilemap.png", AssetType.IMAGE);
+		
+		className.set ("maps/tilemapdata.csv", __ASSET__maps_tilemapdata_csv);
+		type.set ("maps/tilemapdata.csv", AssetType.TEXT);
 		
 		
 		if (useManifest) {
@@ -1690,6 +1780,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__sounds_pistolshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__music_background_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__maps_level1_csv extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__maps_level1_oel extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__maps_level1_tmx extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__maps_levelone_oel extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__maps_lvl1_csv extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__maps_maptiles_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__maps_maptiles_olg_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__maps_tilemap_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__maps_tilemapdata_csv extends flash.utils.ByteArray { }
 
 
 #elseif html5
@@ -1784,6 +1883,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
 #else
 
 
@@ -1791,11 +1899,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
-@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
 @:image("assets/img/barrels/Barrel.png") #if display private #end class __ASSET__img_barrels_barrel_png extends lime.graphics.Image {}
@@ -1879,6 +1987,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/sounds/pistolShot.mp3") #if display private #end class __ASSET__sounds_pistolshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/shotgunShot.mp3") #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/music/background.mp3") #if display private #end class __ASSET__music_background_mp3 extends lime.utils.Bytes {}
+@:file("assets/maps/level1.csv") #if display private #end class __ASSET__maps_level1_csv extends lime.utils.Bytes {}
+@:file("assets/maps/level1.oel") #if display private #end class __ASSET__maps_level1_oel extends lime.utils.Bytes {}
+@:file("assets/maps/level1.tmx") #if display private #end class __ASSET__maps_level1_tmx extends lime.utils.Bytes {}
+@:file("assets/maps/levelOne.oel") #if display private #end class __ASSET__maps_levelone_oel extends lime.utils.Bytes {}
+@:file("assets/maps/lvl1.csv") #if display private #end class __ASSET__maps_lvl1_csv extends lime.utils.Bytes {}
+@:image("assets/maps/mapTiles.png") #if display private #end class __ASSET__maps_maptiles_png extends lime.graphics.Image {}
+@:image("assets/maps/mapTiles_olg.png") #if display private #end class __ASSET__maps_maptiles_olg_png extends lime.graphics.Image {}
+@:image("assets/maps/tilemap.png") #if display private #end class __ASSET__maps_tilemap_png extends lime.graphics.Image {}
+@:file("assets/maps/tilemapdata.csv") #if display private #end class __ASSET__maps_tilemapdata_csv extends lime.utils.Bytes {}
 
 
 

@@ -13,7 +13,7 @@
 	<app swf-version="11.8" if="flash" />
 	
 	<window background="#000000" fps="60" />
-	<window width="800" height="600" unless="mobile" />
+	<window width="1024" height="768" unless="mobile" />
 	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
 	
 	
@@ -32,6 +32,7 @@
 	<assets path="assets/img/characters" rename="characters" />
 	<assets path="assets/sounds" rename="sounds" />
 	<assets path="assets/sounds/music" rename="music" />
+	<assets path="assets/maps" rename="maps" />
 	
 	<!-- optimize output
 	<haxeflag name="-dce full" /> -->
