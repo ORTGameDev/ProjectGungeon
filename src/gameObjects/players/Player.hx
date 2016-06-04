@@ -20,22 +20,22 @@ class Player extends FlxSprite
 	//Player
 	public var playerCurrentLife:Int = 10;
 	public var playerTotalLife:Int = 10;
-	
+
 	//Movement
 	static private inline var playerAcceleration: Float = 150;
 	static private inline var playerXMaxSpeed: Float = 250;
 	static private inline var playerYMaxSpeed: Float = 200;
 	static private inline var playerDrag: Int = 2500;
-	
+
 	//Gun
 	public var playerGun:Gun;
-			
+
 	public function new(X:Float = 0, Y:Float = 0)
 	{
 		super(X, Y);
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
-		
+
 		//Cargo animaciones del player
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
@@ -53,14 +53,14 @@ class Player extends FlxSprite
 		this.scale.set(2, 2);
 		this.setSize(22, 42);
 		this.offset.set(7, 0);
-		
+
 		//Creo gun y bullets
-		var aBullets = new FlxTypedGroup<Bullet>();
+		//var aBullets = new FlxTypedGroup<Bullet>();
 		this.playerGun = new Pistol(X, Y + this.height / 2);
-		
+
 	}
-		
-	override public function update(elapsed:Float):Void 
+
+	override public function update(elapsed:Float):Void
 	{
 		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
 		{
@@ -97,7 +97,7 @@ class Player extends FlxSprite
 		playerGun.x = this.x + 7;
 		playerGun.y = this.y + 26;
 	}
-	
+
 	override public function draw():Void
 	{
 		if (playerCurrentLife > 0)
@@ -149,7 +149,7 @@ class Player extends FlxSprite
 			animation.stop();
 		super.draw();
 		}
-		
+
 	}
 
 	public function receiveDamage(damage:Int):Void
@@ -161,23 +161,23 @@ class Player extends FlxSprite
 			playerCurrentLife = 0;
 			velocity.set(0, 0);
 			animation.play("x");
-		}	
+		}
 	}
-	
+
 	public function healPlayer(health:Int):Void
 	{
 		playerCurrentLife += health;
 		if (playerCurrentLife > playerTotalLife)
 		{
 			playerCurrentLife = playerTotalLife;
-		}	
+		}
 		GlobalGameData.aHud.updateHUD();
 	}
-	
+
 	public function fullHealth():Bool
 	{
 		return playerCurrentLife == playerTotalLife;
 	}
-	
-	
+
+
 }

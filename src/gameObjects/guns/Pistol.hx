@@ -21,7 +21,7 @@ class Pistol extends Gun
 	private var gunLastShoot: Int = 0;
 	public function new(aX:Float, aY:Float) 
 	{
-		var bulletGroup = new FlxTypedGroup<Bullet>();
+		var bulletGroup = GlobalGameData.playerBullets;
 		bulletGroup.maxSize = 25;
 		super(aX, aY, bulletGroup, 2, 250, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false));
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");

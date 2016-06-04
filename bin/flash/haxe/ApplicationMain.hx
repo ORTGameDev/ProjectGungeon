@@ -479,7 +479,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "37",
+			build: "111",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
@@ -495,7 +495,7 @@ class ApplicationMain {
 					borderless: false,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: false,
+					fullscreen: true,
 					hardware: true,
 					height: 768,
 					parameters: "{}",
@@ -503,7 +503,7 @@ class ApplicationMain {
 					stencilBuffer: true,
 					title: "Obligatorio",
 					vsync: false,
-					width: 1024,
+					width: 1366,
 					x: null,
 					y: null
 				},
@@ -521,7 +521,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 1024, 768, "000000");
+		openfl.Lib.embed (null, 1366, 768, "000000");
 		#end
 		#else
 		create ();

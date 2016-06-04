@@ -48,6 +48,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		sprHealth.add(sprBack);
 		sprHealth.add(txtPlayerHealth);
 		sprHealth.add(txtLvlInfo);
+		
 		add(sprBack);
 		add(txtPlayerHealth);
 		add(txtLvlInfo);

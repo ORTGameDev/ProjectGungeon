@@ -19,6 +19,7 @@ import gameObjects.enemies.PistolPete;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.players.Player;
 import gameObjects.Pointer;
+import level.LevelManager;
 import openfl.Assets;
 
 /**
@@ -28,51 +29,51 @@ import openfl.Assets;
 class PlayState extends FlxState
 {
 	//level
-	public var level:TiledLevel;
-	
+	public var level:LevelManager;
+
 	//Level  data
 	private var lvlNumber: Int = 1;
 	private var lvlDesc : String = "Rock Castle";
-	
+
 	//Cursor+
 	private var gamePointer:Pointer;
-	
+
 	//HUD + UI
 	private var hud:HUD;
-	
+
 	//Map
 	private var map:FlxTilemap;
 	private var tileWidth:  Int = 32;
 	private var tileHeight: Int = 32;
-	
+
 	//Player
 	public var gamePlayer:Player;
 	private static inline var gamePlayerXSpawn:Int = 200;
 	private static inline var gamePlayerYSpawn:Int = 200;
-		
+
 	//Enemies
 	public var enemies:FlxTypedGroup<Enemy>;
 	private var enemyBullets:FlxTypedGroup<Bullet>;
-	
+
 	//PickUps
 	public var healthpickups: FlxTypedGroup<HealthPickUp>;
-	
+
 	//Barrels & Explotions
 	private var barrels: FlxTypedGroup<Barrel>;
-	private var ExplotionPparticles : FlxTypedGroup<FlxParticle>;
-	
+	private var explotionParticles : FlxTypedGroup<FlxParticle>;
+
 	//Exit
 	public var exit:FlxSprite;
-	
-	public function new() 
+
+	public function new()
 	{
 		super();
 		enemies = new FlxTypedGroup<Enemy>();
-		
+
 	}
-	
-	override public function create():Void 
-	{	
+
+	override public function create():Void
+	{
 		//Map Setup
 		//map = new FlxTilemap();
 		////map.loadMapFromCSV(Assets.getText(AssetPaths.lvl1__csv), Assets.getBitmapData(AssetPaths.mapTiles__png), tileWidth, tileHeight, null, 0, 1, 5);
@@ -82,167 +83,50 @@ class PlayState extends FlxState
 		//gamePlayer = new Player(gamePlayerXSpawn, gamePlayerYSpawn);
 		healthpickups = new FlxTypedGroup<HealthPickUp>();
 		enemyBullets = new FlxTypedGroup<Bullet>();
-		
-		
-		
+
+
+
 		GlobalGameData.enemiesBullets = enemyBullets;
 		//add(enemyBullets);
-		
-		
+
+
 		//GlobalGameData.healthspick = healthpickups;
-		
-		level = new TiledLevel("maps/level1.tmx", this);
-		
+
+		level = new level.LevelManager("maps/level1.tmx", this);
+
 		// Add floor
 		add(level.floorLayer);
-		
-		// Draw coins first
-		add(healthpickups);
-		
-		// Load player objects
+
+		// Add objects
 		add(level.objectsLayer);
+
+		add(level.characterGroup);
 		
-		add(gamePlayer.playerGun);
-		add(gamePlayer.playerGun.bullets);
-		add(GlobalGameData.enemiesBullets);		
-		add(enemies);
+		add(level.enemiesGroup);
+		
 		loadEnemyBullets();
 
 		// Add foreground tiles after adding level objects, so these tiles render on top of player
 		add(level.foregroundLayer);
-		
-				
+
 		add(level.collidableLayer);
-		
-		//ExplotionPparticles = new FlxTypedGroup<FlxParticle>();
-		//GlobalGameData.particles = ExplotionPparticles;
-		//barrels = new FlxTypedGroup<Barrel>();
-		//barrels.add(new Barrel(500, 500));
-		//barrels.add(new Barrel(500, 800));
-		//barrels.add(new Barrel(1000, 500));
-		//this.loadEnemies();
-		//this.loadPickUps();
-		
-		//add(gamePlayer);
-		
-		hud = new HUD(lvlNumber, lvlDesc);
-		GlobalGameData.aHud = hud;
-		hud.updateHUD();
-		add(hud);
-		
-		
-		FlxG.camera.follow(gamePlayer, FlxCameraFollowStyle.TOPDOWN);
-		//FlxG.camera.setScrollBoundsRect(0, 0, map.width,map.height);
-		FlxG.worldBounds.set(0, 0, level.width, level.height);
+
+		add(level.hudLayer);
+	
 		this.changeGamePointer();
 	}
-	
-	override public function update(elapsed:Float):Void 
+
+	override public function update(elapsed:Float):Void
 	{
+		level.update(elapsed);
 		super.update(elapsed);
-		FlxG.worldBounds.setPosition(gamePlayer.x-400, gamePlayer.y-240);
-		FlxG.overlap(gamePlayer.playerGun.bullets, enemies, bulletVsEnemy);
-		level.collideWithLevel(gamePlayer); //FlxG.collide(map, gamePlayer);
-		level.collideWithLevel(enemies); //FlxG.collide(map, enemies);
-		FlxG.overlap(level, gamePlayer.playerGun.bullets, destroyBullet); //FlxG.collide(map, gamePlayer.playerGun.bullets, destroyBullet);
-		level.collideWithLevel(GlobalGameData.enemiesBullets); //FlxG.collide(map, GlobalGameData.enemiesBullets, destroyBullet);
-		FlxG.overlap(GlobalGameData.enemiesBullets, gamePlayer , bulletVsPlayer);
-		FlxG.overlap(gamePlayer, GlobalGameData.healthspick, healPlayer);
-		FlxG.worldBounds.set(0, 0, FlxG.camera.width, FlxG.camera.height);
-		//FlxG.overlap(gamePlayer.playerGun.bullets, barrels, poomBarrel);
-		//FlxG.overlap(GlobalGameData.enemiesBullets, barrels, poomBarrel);
-		
-		//FlxG.overlap(gamePlayer, GlobalGameData.particles, particlesVsPlayer);
-		//FlxG.overlap(GlobalGameData.enemies, GlobalGameData.particles, particlesVsEnemies);
 		
 		if (enemies.countLiving() == 0)
 		{
 			hud.playerWin();
 		}
 	}
-	
-	
-	private function poomBarrel(aBullet:Bullet, abarrel:Barrel):Void 
-	{
-		if (aBullet.exists && aBullet.alive && abarrel.exists && abarrel.alive){
-			aBullet.kill();
-			abarrel.explote();
-		}
-	}
-	
-	private function destroyBullet(t:TiledLevel, b:Bullet):Void
-	{
-		if (b.exists && b.alive){
-			b.kill();
-		}
-	}
-	
-	private function bulletVsEnemy(b:Bullet, e:Enemy):Void
-	{
-		if (e.exists && e.alive && b.exists && b.alive){
-			e.receiveDamage(b.bulletDamage);			
-			b.kill();
-		}
-	}
-	
-	private function bulletVsPlayer(b:Bullet, p:Player):Void
-	{
-		if (p.exists && p.alive && b.exists && b.alive){
-			p.receiveDamage(b.bulletDamage);			
-			b.kill();
-			hud.updateHUD();
-		}
-	}
-	
-	private function particlesVsPlayer(p:Player, par:FlxParticle):Void
-	{
-		if (p.exists && p.alive && par.exists && par.alive){
-					p.receiveDamage(2);			
-					par.kill();
-					hud.updateHUD();
-		}
-	}
-	
-	private function particlesVsEnemies(e:Enemy, par:FlxParticle):Void
-	{
-		if (e.exists && e.alive && par.exists && par.alive){
-					e.receiveDamage(2);
-					par.kill();
-					hud.updateHUD();
-		}
-	}
-	
-	private function healPlayer(p:Player, h:HealthPickUp):Void
-	{
-		if (p.exists && p.alive && h.exists && h.alive)
-		{
-			if (!p.fullHealth())
-			{
-				p.healPlayer(h.lifeAmount);	
-				h.kill();
-				hud.updateHUD();
-			}
-		}
-	}
-	
-	private function loadPickUps():Void
-	{
-		healthpickups.add(new HealthPickUp(800, 800));
-		healthpickups.add(new HealthPickUp(500, 1000));
-		healthpickups.add(new HealthPickUp(1200, 900));
-		add(healthpickups);
-	}
-	
-	private function loadEnemies():Void
-	{	
-		enemies.add(new HunterEnemy(600, 600));
-		enemies.add(new HunterEnemy(1000, 2000));
-		enemies.add(new HunterEnemy(1500, 900));
-		enemies.add(new SummonerEnemy(1080, 1300));
-		enemies.add(new BossEnemy(1200, 2800));
-		add(enemies);
-	}
-	
+
 	private function loadEnemyBullets():Void
 	{
 		for (e in enemies)
@@ -254,7 +138,7 @@ class PlayState extends FlxState
 		}
 
 	}
-	
+
 	private function changeGamePointer()
 	{
 		gamePointer = new Pointer();
@@ -263,5 +147,5 @@ class PlayState extends FlxState
 		add(gamePointer);
 	}
 
-	
+
 }
