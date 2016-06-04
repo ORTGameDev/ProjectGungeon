@@ -10,7 +10,7 @@ import openfl.Assets;
 
 /**
  * ...
- * @author Gastón Marichal
+ * @author Gastón Marichal // Ignacio Benedetto
  */
 class HunterEnemy extends Enemy
 {

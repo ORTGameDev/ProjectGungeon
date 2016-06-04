@@ -6,8 +6,6 @@ import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.addons.editors.tiled.TiledImageLayer;
-import flixel.addons.editors.tiled.TiledImageTile;
 import flixel.addons.editors.tiled.TiledLayer.TiledLayerType;
 import flixel.addons.editors.tiled.TiledMap;
 import flixel.addons.editors.tiled.TiledObject;
@@ -19,10 +17,12 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxRect;
 import flixel.tile.FlxTilemap;
 import gameObjects.Barrel;
+import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.HunterEnemy;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickUp;
+import gameObjects.pickups.IPickable;
 import gameObjects.players.Player;
 import haxe.io.Path;
 import states.PlayState;
@@ -47,11 +47,12 @@ class LevelManager extends TiledMap
 	public var enemiesGroup:FlxGroup;
 	public var pickupGroup:FlxGroup;
 	public var breakableGroup:FlxGroup;
-
+	//*****NUEVO*******//
+	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
+	//*****************//
 	public var playerBulletGroup:FlxTypedGroup<Bullet>;
 	public var enemyBulletGroup:FlxTypedGroup<Bullet>;
-	private var particlesGroup:FlxTypedGroup<FlxParticle>;
-
+	
 	private var collidableTileLayers:Array<FlxTilemap>;
 
 	private var bounds:FlxRect;
@@ -65,7 +66,10 @@ class LevelManager extends TiledMap
 		collidableLayer = new FlxTypedGroup<FlxTilemap>();
 		objectsLayer = new FlxGroup();
 
-
+		//*****NUEVO*******//
+		explotionGroup = new FlxTypedGroup<BarrelExplotion>(); 
+		GlobalGameData.explotions = explotionGroup;
+		//****************//
 		breakableGroup = new FlxGroup();
 		characterGroup = new FlxGroup();
 		enemiesGroup = new FlxGroup();
@@ -73,8 +77,7 @@ class LevelManager extends TiledMap
 
 		playerBulletGroup = new FlxTypedGroup<Bullet>();
 		enemyBulletGroup = new FlxTypedGroup<Bullet>();
-		particlesGroup = new FlxTypedGroup<FlxParticle>();
-
+		
 		bounds = new FlxRect(0, 0, fullWidth, fullHeight);
 
 		FlxG.camera.setScrollBoundsRect(0, 0, fullWidth, fullHeight, true);
@@ -147,13 +150,43 @@ class LevelManager extends TiledMap
 
 		FlxG.overlap(playerBulletGroup, breakableGroup, poomBarrel);
 		FlxG.overlap(enemyBulletGroup, breakableGroup, poomBarrel);
-		FlxG.overlap(characterGroup, particlesGroup, particlesVsPlayer);
-		FlxG.overlap(enemiesGroup, particlesGroup, particlesVsEnemies);
-
+		
 		FlxG.overlap(enemyBulletGroup, characterGroup, bulletVsPlayer);
 		FlxG.overlap(playerBulletGroup, enemiesGroup, bulletVsEnemy);
 		FlxG.overlap(characterGroup, pickupGroup, pickItem);
+		
+		//******NUEVO*******//
+		FlxG.overlap(characterGroup, explotionGroup, explotionHitPlayer);
+		FlxG.overlap(enemiesGroup, explotionGroup, explotionHitEnemy);
+		FlxG.overlap(explotionGroup, breakableGroup, explotionHitBarrel);
+		//****************//
 	}
+	
+	//******NUEVO*******//
+	private function explotionHitEnemy(e:Enemy, exp:BarrelExplotion):Void
+	{
+		if (exp.exists && exp.alive && e.exists && e.alive)
+		{
+			e.receiveDamage(exp.expDamage);
+		}
+	}
+	
+	private function explotionHitBarrel(e1:BarrelExplotion, b:Barrel):Void
+	{
+		if (e1.exists && e1.alive && b.exists && b.alive)
+		{
+			b.explote();
+		}
+	}
+	
+	private function explotionHitPlayer(p:Player, exp:BarrelExplotion):Void
+	{
+		if (exp.exists && exp.alive && p.exists && p.alive)
+		{
+			p.receiveDamage(exp.expDamage);
+		}
+	}
+	//****************//
 
 	public function loadObjects(state:PlayState)
 	{
@@ -206,7 +239,7 @@ class LevelManager extends TiledMap
 				enemiesGroup.add(enemy);
 
 			case "breakable":
-				GlobalGameData.particles = particlesGroup;
+				
 				var barrel = new Barrel(x, y);
 				objectsLayer.add(barrel);
 				breakableGroup.add(barrel);
@@ -309,18 +342,11 @@ class LevelManager extends TiledMap
 		}
 	}
 
-	private function pickItem(p:Player, pk:HealthPickUp):Void
+	private function pickItem(p:Player, pk:IPickable):Void
 	{
-		if (p.exists && p.alive && pk.exists && pk.alive)
+		if (p.exists && p.alive)
 		{
-			//if (pk.name = "life"){
-				if (!p.fullHealth())
-				{
-					p.healPlayer(pk.lifeAmount);
-					pk.kill();
-					hudLayer.updateHUD();
-				}
-			//}
+			pk.pickUp();
 		}
 	}
 }

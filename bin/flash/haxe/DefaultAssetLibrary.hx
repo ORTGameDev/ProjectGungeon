@@ -149,6 +149,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -169,6 +171,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/atlas/spritesheet.png", AssetType.IMAGE);
 		className.set ("img/barrels/Barrel.png", __ASSET__img_barrels_barrel_png);
 		type.set ("img/barrels/Barrel.png", AssetType.IMAGE);
+		className.set ("img/barrels/explosion_01.png", __ASSET__img_barrels_explosion_01_png);
+		type.set ("img/barrels/explosion_01.png", AssetType.IMAGE);
 		className.set ("img/bullets/Bullets001.png", __ASSET__img_bullets_bullets001_png);
 		type.set ("img/bullets/Bullets001.png", AssetType.IMAGE);
 		className.set ("img/bullets/Bullets002.png", __ASSET__img_bullets_bullets002_png);
@@ -241,12 +245,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/guns/shotgun/shot_side.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
-		className.set ("img/life_empty.png", __ASSET__img_life_empty_png);
-		type.set ("img/life_empty.png", AssetType.IMAGE);
-		className.set ("img/life_full.png", __ASSET__img_life_full_png);
-		type.set ("img/life_full.png", AssetType.IMAGE);
-		className.set ("img/life_half.png", __ASSET__img_life_half_png);
-		type.set ("img/life_half.png", AssetType.IMAGE);
 		className.set ("img/logo.png", __ASSET__img_logo_png);
 		type.set ("img/logo.png", AssetType.IMAGE);
 		className.set ("img/maps/level001.csv", __ASSET__img_maps_level001_csv);
@@ -263,12 +261,20 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/pointer/crosshairBig.png", AssetType.IMAGE);
 		className.set ("img/pointer/crosshairSmall.png", __ASSET__img_pointer_crosshairsmall_png);
 		type.set ("img/pointer/crosshairSmall.png", AssetType.IMAGE);
+		className.set ("img/sprite_0.png", __ASSET__img_sprite_0_png);
+		type.set ("img/sprite_0.png", AssetType.IMAGE);
+		className.set ("img/sprite_1.png", __ASSET__img_sprite_1_png);
+		type.set ("img/sprite_1.png", AssetType.IMAGE);
+		className.set ("img/sprite_2.png", __ASSET__img_sprite_2_png);
+		type.set ("img/sprite_2.png", AssetType.IMAGE);
 		className.set ("pointer/crosshairBig.png", __ASSET__pointer_crosshairbig_png);
 		type.set ("pointer/crosshairBig.png", AssetType.IMAGE);
 		className.set ("pointer/crosshairSmall.png", __ASSET__pointer_crosshairsmall_png);
 		type.set ("pointer/crosshairSmall.png", AssetType.IMAGE);
 		className.set ("barrels/Barrel.png", __ASSET__barrels_barrel_png);
 		type.set ("barrels/Barrel.png", AssetType.IMAGE);
+		className.set ("barrels/explosion_01.png", __ASSET__barrels_explosion_01_png);
+		type.set ("barrels/explosion_01.png", AssetType.IMAGE);
 		className.set ("characters/diagdown1.png", __ASSET__characters_diagdown1_png);
 		type.set ("characters/diagdown1.png", AssetType.IMAGE);
 		className.set ("characters/diagdown2.png", __ASSET__characters_diagdown2_png);
@@ -381,6 +387,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/barrels/Barrel.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/barrels/explosion_01.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -528,18 +538,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "img/life_empty.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "img/life_full.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "img/life_half.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
 		id = "img/logo.png";
 		path.set (id, id);
 		
@@ -572,6 +570,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/sprite_0.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/sprite_1.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/sprite_2.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "pointer/crosshairBig.png";
 		path.set (id, id);
 		
@@ -581,6 +591,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "barrels/Barrel.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "barrels/explosion_01.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -782,6 +796,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/barrels/Barrel.png", __ASSET__img_barrels_barrel_png);
 		type.set ("img/barrels/Barrel.png", AssetType.IMAGE);
 		
+		className.set ("img/barrels/explosion_01.png", __ASSET__img_barrels_explosion_01_png);
+		type.set ("img/barrels/explosion_01.png", AssetType.IMAGE);
+		
 		className.set ("img/bullets/Bullets001.png", __ASSET__img_bullets_bullets001_png);
 		type.set ("img/bullets/Bullets001.png", AssetType.IMAGE);
 		
@@ -890,15 +907,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/guns/shotgun/shot_up.png", __ASSET__img_guns_shotgun_shot_up_png);
 		type.set ("img/guns/shotgun/shot_up.png", AssetType.IMAGE);
 		
-		className.set ("img/life_empty.png", __ASSET__img_life_empty_png);
-		type.set ("img/life_empty.png", AssetType.IMAGE);
-		
-		className.set ("img/life_full.png", __ASSET__img_life_full_png);
-		type.set ("img/life_full.png", AssetType.IMAGE);
-		
-		className.set ("img/life_half.png", __ASSET__img_life_half_png);
-		type.set ("img/life_half.png", AssetType.IMAGE);
-		
 		className.set ("img/logo.png", __ASSET__img_logo_png);
 		type.set ("img/logo.png", AssetType.IMAGE);
 		
@@ -923,6 +931,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/pointer/crosshairSmall.png", __ASSET__img_pointer_crosshairsmall_png);
 		type.set ("img/pointer/crosshairSmall.png", AssetType.IMAGE);
 		
+		className.set ("img/sprite_0.png", __ASSET__img_sprite_0_png);
+		type.set ("img/sprite_0.png", AssetType.IMAGE);
+		
+		className.set ("img/sprite_1.png", __ASSET__img_sprite_1_png);
+		type.set ("img/sprite_1.png", AssetType.IMAGE);
+		
+		className.set ("img/sprite_2.png", __ASSET__img_sprite_2_png);
+		type.set ("img/sprite_2.png", AssetType.IMAGE);
+		
 		className.set ("pointer/crosshairBig.png", __ASSET__pointer_crosshairbig_png);
 		type.set ("pointer/crosshairBig.png", AssetType.IMAGE);
 		
@@ -931,6 +948,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("barrels/Barrel.png", __ASSET__barrels_barrel_png);
 		type.set ("barrels/Barrel.png", AssetType.IMAGE);
+		
+		className.set ("barrels/explosion_01.png", __ASSET__barrels_explosion_01_png);
+		type.set ("barrels/explosion_01.png", AssetType.IMAGE);
 		
 		className.set ("characters/diagdown1.png", __ASSET__characters_diagdown1_png);
 		type.set ("characters/diagdown1.png", AssetType.IMAGE);
@@ -1700,6 +1720,7 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritemap_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritesheet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_barrels_barrel_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_barrels_explosion_01_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_bullets_bullets001_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_bullets_bullets002_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_bullets_bullets003_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1736,9 +1757,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__img_life_empty_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__img_life_full_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__img_life_half_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_logo_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_maps_level001_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_maps_level1_csv extends flash.utils.ByteArray { }
@@ -1747,9 +1765,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_maps_tilemapdata_csv extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_pointer_crosshairbig_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_pointer_crosshairsmall_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_sprite_0_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_sprite_1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_sprite_2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__pointer_crosshairbig_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__pointer_crosshairsmall_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__barrels_barrel_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__barrels_explosion_01_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_diagdown1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_diagdown2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_diagdown3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -1892,6 +1914,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #else
 
 
@@ -1899,14 +1923,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux || cpp)
 
 
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
-@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
-@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
-@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,1/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/beep.mp3") #if display private #end class __ASSET__flixel_sounds_beep_mp3 extends lime.utils.Bytes {}
+@:file("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/sounds/flixel.mp3") #if display private #end class __ASSET__flixel_sounds_flixel_mp3 extends lime.utils.Bytes {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/nokiafc22.ttf") #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font {}
+@:font("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/fonts/monsterrat.ttf") #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font {}
+@:image("C:/HaxeToolkit/haxe/lib/flixel/4,0,0/assets/images/ui/button.png") #if display private #end class __ASSET__flixel_images_ui_button_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/spritesheet.png") #if display private #end class __ASSET__img_atlas_spritesheet_png extends lime.graphics.Image {}
 @:image("assets/img/barrels/Barrel.png") #if display private #end class __ASSET__img_barrels_barrel_png extends lime.graphics.Image {}
+@:image("assets/img/barrels/explosion_01.png") #if display private #end class __ASSET__img_barrels_explosion_01_png extends lime.graphics.Image {}
 @:image("assets/img/bullets/Bullets001.png") #if display private #end class __ASSET__img_bullets_bullets001_png extends lime.graphics.Image {}
 @:image("assets/img/bullets/Bullets002.png") #if display private #end class __ASSET__img_bullets_bullets002_png extends lime.graphics.Image {}
 @:image("assets/img/bullets/Bullets003.png") #if display private #end class __ASSET__img_bullets_bullets003_png extends lime.graphics.Image {}
@@ -1943,9 +1968,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/guns/shotgun/shot_down.png") #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_side.png") #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_up.png") #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends lime.graphics.Image {}
-@:image("assets/img/life_empty.png") #if display private #end class __ASSET__img_life_empty_png extends lime.graphics.Image {}
-@:image("assets/img/life_full.png") #if display private #end class __ASSET__img_life_full_png extends lime.graphics.Image {}
-@:image("assets/img/life_half.png") #if display private #end class __ASSET__img_life_half_png extends lime.graphics.Image {}
 @:image("assets/img/logo.png") #if display private #end class __ASSET__img_logo_png extends lime.graphics.Image {}
 @:file("assets/img/maps/level001.csv") #if display private #end class __ASSET__img_maps_level001_csv extends lime.utils.Bytes {}
 @:file("assets/img/maps/level1.csv") #if display private #end class __ASSET__img_maps_level1_csv extends lime.utils.Bytes {}
@@ -1954,9 +1976,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:file("assets/img/maps/tilemapdata.csv") #if display private #end class __ASSET__img_maps_tilemapdata_csv extends lime.utils.Bytes {}
 @:image("assets/img/pointer/crosshairBig.png") #if display private #end class __ASSET__img_pointer_crosshairbig_png extends lime.graphics.Image {}
 @:image("assets/img/pointer/crosshairSmall.png") #if display private #end class __ASSET__img_pointer_crosshairsmall_png extends lime.graphics.Image {}
+@:image("assets/img/sprite_0.png") #if display private #end class __ASSET__img_sprite_0_png extends lime.graphics.Image {}
+@:image("assets/img/sprite_1.png") #if display private #end class __ASSET__img_sprite_1_png extends lime.graphics.Image {}
+@:image("assets/img/sprite_2.png") #if display private #end class __ASSET__img_sprite_2_png extends lime.graphics.Image {}
 @:image("assets/img/pointer/crosshairBig.png") #if display private #end class __ASSET__pointer_crosshairbig_png extends lime.graphics.Image {}
 @:image("assets/img/pointer/crosshairSmall.png") #if display private #end class __ASSET__pointer_crosshairsmall_png extends lime.graphics.Image {}
 @:image("assets/img/barrels/Barrel.png") #if display private #end class __ASSET__barrels_barrel_png extends lime.graphics.Image {}
+@:image("assets/img/barrels/explosion_01.png") #if display private #end class __ASSET__barrels_explosion_01_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown1.png") #if display private #end class __ASSET__characters_diagdown1_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown2.png") #if display private #end class __ASSET__characters_diagdown2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/diagdown3.png") #if display private #end class __ASSET__characters_diagdown3_png extends lime.graphics.Image {}

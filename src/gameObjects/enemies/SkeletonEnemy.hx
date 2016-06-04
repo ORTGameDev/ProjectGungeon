@@ -12,7 +12,7 @@ import openfl.Assets;
 
 /**
  * ...
- * @author Gastón Marichal
+ * @author Gastón Marichal // Ignacio Benedetto
  */
 class SkeletonEnemy extends Enemy
 {
@@ -32,7 +32,7 @@ class SkeletonEnemy extends Enemy
 		animation.addByPrefix("start3", "start3", 5, false);
 		animation.addByPrefix("x", "start3", 5, false, false, true);
 		animation.play("start3");
-		
+		this.set_color(FlxColor.ORANGE);
 		width  = 15;
 		height = 20;
 		offset.set(0.5, 0.5);

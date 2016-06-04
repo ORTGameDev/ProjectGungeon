@@ -5,6 +5,8 @@ import flixel.FlxSprite;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import gameObjects.guns.Bullet;
 import gameObjects.guns.Gun;
 import gameObjects.guns.Pistol;
@@ -20,6 +22,10 @@ class Player extends FlxSprite
 	//Player
 	public var playerCurrentLife:Int = 10;
 	public var playerTotalLife:Int = 10;
+	
+	//Hurt
+	private var isHurt:Bool = false;
+	
 
 	//Movement
 	static private inline var playerAcceleration: Float = 150;
@@ -154,14 +160,22 @@ class Player extends FlxSprite
 
 	public function receiveDamage(damage:Int):Void
 	{
-		playerCurrentLife -= damage;
-		GlobalGameData.aHud.updateHUD();
-		if (playerCurrentLife <= 0)
+		if (!isHurt)
 		{
-			playerCurrentLife = 0;
-			velocity.set(0, 0);
-			animation.play("x");
+			playerCurrentLife -= damage;
+			GlobalGameData.aHud.updateHUD();
+			if (playerCurrentLife <= 0)
+			{
+				playerCurrentLife = 0;
+				velocity.set(0, 0);
+				animation.play("x");
+			}else
+			{
+			hurtTween();
+			isHurt = true;
+			}
 		}
+		
 	}
 
 	public function healPlayer(health:Int):Void
@@ -173,11 +187,22 @@ class Player extends FlxSprite
 		}
 		GlobalGameData.aHud.updateHUD();
 	}
+	
 
 	public function fullHealth():Bool
 	{
 		return playerCurrentLife == playerTotalLife;
 	}
 
+	private function hurtTween():Void
+	{
+		FlxTween.color(this, 2, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
+	}
+	
+	private function tweenEnds(tween:FlxTween):Void
+	{
+		tween.cancel();
+		isHurt = false;
+	}
 
 }

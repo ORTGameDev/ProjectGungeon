@@ -62,6 +62,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/barrels/explosion_01.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/bullets/Bullets001.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -206,18 +210,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/life_empty.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/life_full.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/life_half.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
 		urls.push ("img/logo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -250,6 +242,18 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/sprite_0.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/sprite_1.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/sprite_2.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("pointer/crosshairBig.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -259,6 +263,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("barrels/Barrel.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("barrels/explosion_01.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -479,7 +487,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "111",
+			build: "137",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

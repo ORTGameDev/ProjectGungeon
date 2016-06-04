@@ -9,6 +9,7 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
+import openfl.Assets;
 import openfl.text.Font;
 import states.MenuState;
 import states.PlayState;
@@ -19,73 +20,94 @@ import states.PlayState;
  */
 class HUD extends FlxTypedGroup<FlxSprite>
 {
+	//background
+	private var sprBackground: FlxSprite;
 	
+	//player Health
+	private var sprHealthArray: Array<FlxSprite>;
+	
+	
+	//level details
+	private var txtLvlInfo: FlxText;
+	private var lvlDesc:String;
+
+	//Messages and Buttons
 	private var PlayerMessage: FlxText ;
 	private var retryButton: FlxButton;
 	private var BackToMenuButton: FlxButton;
 	
-	private var sprBack: FlxSprite;
-	private var txtPlayerHealth: FlxText;
-	private var txtLvlInfo: FlxText;
 	
-	private var sprHealth: FlxTypedGroup<FlxSprite>;
-	
-	private var lvlDesc:String;
-
 	public function new(aLvlNumber:Int, aLvlString:String) 
 	{
 		super();
-		sprBack = new FlxSprite().makeGraphic(FlxG.width, 20, FlxColor.TRANSPARENT);
-		FlxSpriteUtil.drawRect(sprBack, 0, 19, FlxG.width, 2, FlxColor.WHITE);
+		//BackGround
+		sprBackground = new FlxSprite();
+		sprBackground.makeGraphic(FlxG.width, 40, FlxColor.BLACK);
+		sprBackground.alpha = 0.2;
+		FlxSpriteUtil.drawRect(sprBackground, 0, 37, FlxG.width, 3, FlxColor.WHITE);
 		
-		txtPlayerHealth = new FlxText(16, 2, 0, "Life: ", 8);
-		txtPlayerHealth.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		//PLayerHealth
+		sprHealthArray = new Array<FlxSprite>();
+		var gap: Int = 20;
+		for (i in 0...GlobalGameData.player.playerTotalLife)
+		{
+			var h = new FlxSprite(gap, 5);
+			h.loadGraphic(Assets.getBitmapData("img/sprite_0.png"), false, 32, 32);
+			add(h);
+			sprHealthArray.insert(i, h);
+			gap += 30;
+			
+		}
+		
+		
 		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
 		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
 		txtLvlInfo.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
 		
-		sprHealth = new FlxTypedGroup<FlxSprite>();
-		sprHealth.add(sprBack);
-		sprHealth.add(txtPlayerHealth);
-		sprHealth.add(txtLvlInfo);
 		
-		add(sprBack);
-		add(txtPlayerHealth);
+		add(sprBackground);
+		
 		add(txtLvlInfo);
 		
 		PlayerMessage = new FlxText(0, 200, 500, "", 24);
 		PlayerMessage.setFormat(24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
 		PlayerMessage.screenCenter();
 		PlayerMessage.visible = false;
-		sprHealth.add(PlayerMessage);
 		add(PlayerMessage);
+		
 		
 		retryButton = new FlxButton(0, 0, "Retry", reloadState);
 		retryButton.screenCenter(FlxAxes.X);
 		retryButton.y = PlayerMessage.y + 50;
 		retryButton.visible = false;
-		sprHealth.add(retryButton);
 		add(retryButton);
 		
 		BackToMenuButton = new FlxButton(0, 0, "Back to Menu", BackToMenu);
 		BackToMenuButton.screenCenter(FlxAxes.X);
 		BackToMenuButton.y = retryButton.y + 50;
 		BackToMenuButton.visible = false;
-		sprHealth.add(retryButton);
 		add(retryButton);
 		
 		forEach(function(spr:FlxSprite)
 		{
 			spr.scrollFactor.set(0, 0);
 		});
-		
 	}
 	
 
-	
 	public function updateHUD():Void
 	{
-		txtPlayerHealth.text = "Life: " + GlobalGameData.player.playerCurrentLife + " /" + GlobalGameData.player.playerTotalLife;
+		var pLife = GlobalGameData.player.playerCurrentLife;
+		var i = 0;
+		while (i < sprHealthArray.length){
+			if ( i + 1 <= pLife){
+				sprHealthArray[i].visible = true;
+			}else{
+				sprHealthArray[i].visible = false;
+			}
+			i++;
+		}
+		//txtPlayerHealth.text = "Life: " + GlobalGameData.player.playerCurrentLife + " /" + GlobalGameData.player.playerTotalLife;
 		/*var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		var playerLife = GlobalGameData.player.playerCurrentLife;
 		var heartQty = playerLife / 2;
