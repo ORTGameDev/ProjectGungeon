@@ -24,7 +24,7 @@ class Player extends FlxSprite
 	public var playerTotalLife:Int = 10;
 	
 	//Hurt
-	private var isHurt:Bool = false;
+	public var isHurt:Bool = false;
 	
 
 	//Movement

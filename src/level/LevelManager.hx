@@ -317,7 +317,7 @@ class LevelManager extends TiledMap
 
 	private function bulletVsPlayer(b:Bullet, p:Player):Void
 	{
-		if (p.exists && p.alive && b.exists && b.alive){
+		if (p.exists && p.alive && !p.isHurt && b.exists && b.alive){
 			p.receiveDamage(b.bulletDamage);
 			b.kill();
 			hudLayer.updateHUD();
