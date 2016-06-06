@@ -56,6 +56,8 @@ class LevelManager extends TiledMap
 	private var collidableTileLayers:Array<FlxTilemap>;
 
 	private var bounds:FlxRect;
+	
+	private var exit:FlxSprite;
 
 	public function new(tiledLevel:Dynamic, state:PlayState)
 	{
@@ -114,9 +116,8 @@ class LevelManager extends TiledMap
 			var tilemap:FlxTilemap = new FlxTilemap();
 			tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath,
 				tileSet.tileWidth, tileSet.tileHeight, OFF, tileSet.firstGID, 1, 1);
-
-			loadObjects(state);
-
+				
+			
 			if (tileLayer.properties.get("type") == "floor")
 			{
 				floorLayer.add(tilemap);
@@ -134,6 +135,7 @@ class LevelManager extends TiledMap
 				collidableTileLayers.push(tilemap);
 			}
 		}
+		loadObjects();
 	}
 
 	public function update(elapsed:Float):Void
@@ -159,6 +161,8 @@ class LevelManager extends TiledMap
 		FlxG.overlap(characterGroup, explotionGroup, explotionHitPlayer);
 		FlxG.overlap(enemiesGroup, explotionGroup, explotionHitEnemy);
 		FlxG.overlap(explotionGroup, breakableGroup, explotionHitBarrel);
+		
+		FlxG.overlap(characterGroup, exit, nextLevel);
 		//****************//
 	}
 	
@@ -188,7 +192,7 @@ class LevelManager extends TiledMap
 	}
 	//****************//
 
-	public function loadObjects(state:PlayState)
+	public function loadObjects()
 	{
 		var layer:TiledObjectLayer;
 		for (layer in layers)
@@ -199,13 +203,13 @@ class LevelManager extends TiledMap
 			{
 				for (o in objectLayer.objects)
 				{
-					loadObject(state, o, objectLayer, objectsLayer);
+					loadObject( o, objectLayer, objectsLayer);
 				}
 			}
 		}
 	}
 
-	private function loadObject(state:PlayState, o:TiledObject, g:TiledObjectLayer, group:FlxGroup)
+	private function loadObject(o:TiledObject, g:TiledObjectLayer, group:FlxGroup)
 	{
 		var x:Int = o.x;
 		var y:Int = o.y;
@@ -257,8 +261,8 @@ class LevelManager extends TiledMap
 				var exit = new FlxSprite(x, y);
 				exit.makeGraphic(32, 32, 0xff3f3f3f);
 				exit.exists = false;
-				state.exit = exit;
-				group.add(exit);
+				//state.exit = exit;
+				objectsLayer.add(exit);
 		}
 	}
 //
@@ -274,23 +278,6 @@ class LevelManager extends TiledMap
 			//imagesLayer.add(sprite);
 		//}
 	//}
-
-	public function collideWithLevel(obj:FlxBasic, ?notifyCallback:FlxObject->FlxObject->Void, ?processCallback:FlxObject->FlxObject->Bool):Bool
-	{
-		if (collidableTileLayers == null)
-			return false;
-
-		for (map in collidableTileLayers)
-		{
-			// IMPORTANT: Always collide the map with objects, not the other way around.
-			//			  This prevents odd collision errors (collision separation code off by 1 px).
-			if (FlxG.overlap(map, obj, notifyCallback, processCallback != null ? processCallback : FlxObject.separate))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
 
 	private function poomBarrel(aBullet:Bullet, abarrel:Barrel):Void
 	{
@@ -348,5 +335,10 @@ class LevelManager extends TiledMap
 		{
 			pk.pickUp();
 		}
+	}
+	
+	private function nextLevel(p:Player, e:FlxSprite):Void
+	{
+		
 	}
 }
