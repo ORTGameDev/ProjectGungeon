@@ -43,6 +43,7 @@ class Player extends FlxSprite
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 
 		//Cargo animaciones del player
+		/********************************
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north1", "north1_", 10, true);
@@ -59,16 +60,29 @@ class Player extends FlxSprite
 		this.scale.set(2, 2);
 		this.setSize(22, 42);
 		this.offset.set(7, 0);
-
+        *************************************/
+		
+		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/players/PlayerOne.png", "img/atlas/players/PlayerOne.json");
+		this.frames = anAtlas;
+		this.animation.addByPrefix("north", "playerOne_walk_up", 8, true);
+		this.animation.addByPrefix("south", "playerOne_walk_down", 8, true);
+		this.animation.addByPrefix("right", "playerOne_walk_right", 8, true);
+		this.animation.addByPrefix("left", "playerOne_walk_left", 8, true);
+		this.animation.addByPrefix("die", "playerOne_die", 5, false);
+		this.animation.addByPrefix("start", "playerOne_walk_down (1)", 1, false, false, true);
+		this.animation.play("start");
+		this.setSize(28, 52);
+		this.offset.set(18, 12);
 		//Creo gun y bullets
 		//var aBullets = new FlxTypedGroup<Bullet>();
 		this.playerGun = new Pistol(X, Y + this.height / 2);
+		FlxG.state.add(playerGun);
 
 	}
 
 	override public function update(elapsed:Float):Void
 	{
-		if (animation.curAnim.name == "x") // Si la animación actual es de muerte
+		if (animation.curAnim.name == "die") // Si la animación actual es de muerte
 		{
 		super.update(elapsed);
 		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
@@ -109,53 +123,34 @@ class Player extends FlxSprite
 		if (playerCurrentLife > 0)
 		{
 			var dX = FlxG.mouse.x - this.x;
-		var dY = FlxG.mouse.y - this.y;
-		var angle = Math.atan2(dY, dX) * 180 / Math.PI;
-		if (angle < 0)
-		{
-		 angle += 360;
+			var dY = FlxG.mouse.y - this.y;
+			var angle = Math.atan2(dY, dX) * 180 / Math.PI;
+			if (angle < 0)
+			{
+				angle += 360;
+			}
+			if (angle <= (0 + 45) || angle > (360 - 45)){
+				animation.play("right");
+				playerGun.alpha = 1;
+				playerGun.animation.play("right");
+			} else if (angle  <=  (90 + 45) && angle > (90 - 45)){
+				animation.play("south");
+				playerGun.alpha = 1;
+				playerGun.animation.play("south");
+			} else if (angle <= (180 + 45) && angle > (180 - 45)){
+				animation.play("left");
+				playerGun.alpha = 1;
+				playerGun.animation.play("left");
+				playerGun.x -= 7;
+			} else if (angle <= (270 + 45) && angle > (270 - 45)){
+				animation.play("north");
+				playerGun.alpha = 0;
+				playerGun.animation.play("north");
+			}
+			if(velocity.x == 0 && velocity.y == 0)
+				animation.stop();	
 		}
-		if (angle <= (0 + 20) || angle > (360 - 20)){
-			animation.play("right1");
-			playerGun.alpha = 1;
-			playerGun.animation.play("right");
-		} else if (angle  <=  (90 - 20) && angle > (0 + 20)){
-			animation.play("diagDown1_right");
-			playerGun.alpha = 1;
-			playerGun.animation.play("diagDown_right");
-		} else if (angle  <=  (90 + 20) && angle > (90 - 20)){
-			animation.play("south1");
-			playerGun.alpha = 1;
-			playerGun.animation.play("south");
-		} else if (angle <= (180 - 20) && angle > (90 + 20)){
-			animation.play("diagDown1_left");
-			playerGun.alpha = 1;
-			playerGun.animation.play("diagDown_left");
-			playerGun.x -= 7;
-		} else if (angle <= (180 + 20) && angle > (180 - 20)){
-			animation.play("left1");
-			playerGun.alpha = 1;
-			playerGun.animation.play("left");
-			playerGun.x -= 7;
-		} else if (angle <= (270 - 20) && angle > (180 + 20)){
-			animation.play("diagUp1_left");
-			playerGun.alpha = 0;
-			playerGun.animation.play("diagUp_left");
-			playerGun.x -= 7;
-		} else if (angle <= (270 + 20) && angle > (270 - 20)){
-			animation.play("north1");
-			playerGun.alpha = 0;
-			playerGun.animation.play("north");
-		} else if (angle <= (360 - 20) && angle > (270 + 20)){
-			animation.play("diagUp1_right");
-			playerGun.alpha = 0;
-			playerGun.animation.play("diagUp_right");
-		}
-		if(velocity.x == 0 && velocity.y == 0)
-			animation.stop();
 		super.draw();
-		}
-
 	}
 
 	public function receiveDamage(damage:Int):Void
@@ -168,7 +163,7 @@ class Player extends FlxSprite
 			{
 				playerCurrentLife = 0;
 				velocity.set(0, 0);
-				animation.play("x");
+				animation.play("die");
 			}else
 			{
 			hurtTween();
