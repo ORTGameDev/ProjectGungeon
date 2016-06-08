@@ -21,6 +21,7 @@ import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.Skeleton;
+import gameObjects.enemies.Summoner;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.pickups.IPickable;
@@ -45,7 +46,7 @@ class LevelManager extends TiledMap
 	public var hudLayer:HUD;
 
 	public var characterGroup:FlxGroup;
-	public var enemiesGroup:FlxGroup;
+	public var enemiesGroup:FlxTypedGroup<Enemy>;
 	public var pickupGroup:FlxGroup;
 	public var breakableGroup:FlxGroup;
 	//*****NUEVO*******//
@@ -75,7 +76,7 @@ class LevelManager extends TiledMap
 		//****************//
 		breakableGroup = new FlxGroup();
 		characterGroup = new FlxGroup();
-		enemiesGroup = new FlxGroup();
+		enemiesGroup = new FlxTypedGroup<Enemy>();
 		pickupGroup = new FlxGroup();
 
 		playerBulletGroup = new FlxTypedGroup<Bullet>();
@@ -222,6 +223,8 @@ class LevelManager extends TiledMap
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
 
+			
+		GlobalGameData.enemies = this.enemiesGroup;
 		switch (o.type.toLowerCase())
 		{
 			case "player_start":
@@ -242,7 +245,7 @@ class LevelManager extends TiledMap
 				objectsLayer.add(enemyBulletGroup);
 				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
 				//idem player: arma?
-				var enemy = new GreenOrc(x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
+				var enemy = new Summoner(x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
 				//state.enemies.add(enemy);
 				enemiesGroup.add(enemy);
 

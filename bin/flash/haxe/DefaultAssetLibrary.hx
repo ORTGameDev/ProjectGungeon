@@ -157,6 +157,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -179,6 +181,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/atlas/enemies/Skeleton.json", AssetType.TEXT);
 		className.set ("img/atlas/enemies/Skeleton.png", __ASSET__img_atlas_enemies_skeleton_png);
 		type.set ("img/atlas/enemies/Skeleton.png", AssetType.IMAGE);
+		className.set ("img/atlas/enemies/Summoner.json", __ASSET__img_atlas_enemies_summoner_json);
+		type.set ("img/atlas/enemies/Summoner.json", AssetType.TEXT);
+		className.set ("img/atlas/enemies/Summoner.png", __ASSET__img_atlas_enemies_summoner_png);
+		type.set ("img/atlas/enemies/Summoner.png", AssetType.IMAGE);
 		className.set ("img/atlas/players/PlayerOne.json", __ASSET__img_atlas_players_playerone_json);
 		type.set ("img/atlas/players/PlayerOne.json", AssetType.TEXT);
 		className.set ("img/atlas/players/PlayerOne.png", __ASSET__img_atlas_players_playerone_png);
@@ -409,6 +415,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.TEXT);
 		id = "img/atlas/enemies/Skeleton.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/atlas/enemies/Summoner.json";
+		path.set (id, id);
+		
+		type.set (id, AssetType.TEXT);
+		id = "img/atlas/enemies/Summoner.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -840,6 +854,12 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/atlas/enemies/Skeleton.png", __ASSET__img_atlas_enemies_skeleton_png);
 		type.set ("img/atlas/enemies/Skeleton.png", AssetType.IMAGE);
+		
+		className.set ("img/atlas/enemies/Summoner.json", __ASSET__img_atlas_enemies_summoner_json);
+		type.set ("img/atlas/enemies/Summoner.json", AssetType.TEXT);
+		
+		className.set ("img/atlas/enemies/Summoner.png", __ASSET__img_atlas_enemies_summoner_png);
+		type.set ("img/atlas/enemies/Summoner.png", AssetType.IMAGE);
 		
 		className.set ("img/atlas/players/PlayerOne.json", __ASSET__img_atlas_players_playerone_json);
 		type.set ("img/atlas/players/PlayerOne.json", AssetType.TEXT);
@@ -1781,6 +1801,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_atlas_enemies_greenorc_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_enemies_skeleton_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_enemies_skeleton_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_atlas_enemies_summoner_json extends flash.utils.ByteArray { }
+@:keep @:bind #if display private #end class __ASSET__img_atlas_enemies_summoner_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_players_playerone_json extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_players_playerone_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_atlas_spritemap_json extends flash.utils.ByteArray { }
@@ -1988,6 +2010,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #else
 
 
@@ -2004,6 +2028,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/atlas/enemies/GreenOrc.png") #if display private #end class __ASSET__img_atlas_enemies_greenorc_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/enemies/Skeleton.json") #if display private #end class __ASSET__img_atlas_enemies_skeleton_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/enemies/Skeleton.png") #if display private #end class __ASSET__img_atlas_enemies_skeleton_png extends lime.graphics.Image {}
+@:file("assets/img/atlas/enemies/Summoner.json") #if display private #end class __ASSET__img_atlas_enemies_summoner_json extends lime.utils.Bytes {}
+@:image("assets/img/atlas/enemies/Summoner.png") #if display private #end class __ASSET__img_atlas_enemies_summoner_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/players/PlayerOne.json") #if display private #end class __ASSET__img_atlas_players_playerone_json extends lime.utils.Bytes {}
 @:image("assets/img/atlas/players/PlayerOne.png") #if display private #end class __ASSET__img_atlas_players_playerone_png extends lime.graphics.Image {}
 @:file("assets/img/atlas/spritemap.json") #if display private #end class __ASSET__img_atlas_spritemap_json extends lime.utils.Bytes {}

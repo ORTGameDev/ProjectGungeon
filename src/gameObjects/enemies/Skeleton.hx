@@ -28,7 +28,7 @@ class Skeleton extends Enemy
 		animation.addByPrefix("right", "skeleton_walk_right", 10, true);
 		animation.addByPrefix("left",  "skeleton_walk_left", 10, true);
 		animation.addByPrefix("start", "skeleton_walk_down (1)", 5, false);
-		animation.addByPrefix("die", "skeleton_die", 5, false, false, true);
+		animation.addByPrefix("die", "skeleton_die", 5, false);
 		animation.play("start");
 		setSize(28, 52);
 		offset.set(18, 12);

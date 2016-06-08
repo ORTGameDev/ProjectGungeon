@@ -5,7 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
 import gameObjects.enemies.Enemy;
-import gameObjects.guns.Boltgun;
+import gameObjects.guns.Wand;
 import openfl.Assets;
 
 /**
@@ -37,7 +37,7 @@ class BossEnemy extends Enemy
 		enemySpeed = 40;
 		enemyChaseDistance = 600;
 		enemyLife = 25;
-		enemyGun = new Boltgun(X, Y);
+		enemyGun = new Wand(X, Y);
 		enemyShootDistance = 500;
 		
 		drag.x = drag.y = 1500;
