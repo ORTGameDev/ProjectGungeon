@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import gameObjects.guns.Shotgun;
 import gameObjects.enemies.DeadEnemy;
@@ -23,11 +24,9 @@ class Enemy extends FlxSprite
 	/*******Enemy default config.***********/
 	//Movement  
 	private var enemySpeed: Float = 0;
-	private var enemyChaseDistance:Int = 0; //Chase rate where enemy start moving to the player
-	
+	private var enemyChaseDistance:Int = 0; //Chase rate, enemy start moving to the player
 	//Life
 	private var enemyLife: Int = 0; //Enemy total life
-	
 	//Gun
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate 
@@ -41,38 +40,22 @@ class Enemy extends FlxSprite
 	override public function update (elapsed: Float):Void
 	{
 		super.update(elapsed);
-		if (animation.curAnim.name == "x") {  // Si la animación actual es de muerte
+		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
-				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
-				FlxG.state.add(deadEnemy);
-				kill();
+				FlxTween.tween(this, {alpha: 0},2.5, {onComplete:killEnemy });
+				//kill();
 			}
 			return;
 		}
 		
+		chasePlayer();
 		if (enemyGun != null) { //Actualizo posicion del arma
 			enemyGun.x = this.x ;
 			enemyGun.y = this.y + 7;
 		}
 		
-		//Comienza captura del player
-		var player = GlobalGameData.player;
-		var dX:Float = player.x - x;
-		var dY:Float = player.y - y;
-		var length:Float = Math.sqrt(dX * dX + dY * dY); 
-		dX /= length;
-		dY /= length;
 		
-		if (length < enemyChaseDistance) {
-			velocity.x = dX * enemySpeed;
-			velocity.y = dY * enemySpeed;
-		}
-		if (enemyGun != null && length < enemyShootDistance)
-		{
-			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
-		}
 	}
-
 	
 	override public function draw():Void
 	{
@@ -96,19 +79,19 @@ class Enemy extends FlxSprite
 				switch (facing)
 				{	
 					case FlxObject.LEFT:
-						animation.play("left3");
+						animation.play("left");
 						enemyGun.alpha = 1;
 						enemyGun.animation.play("left");
 					case FlxObject.RIGHT:
-						animation.play("right3");
+						animation.play("right");
 						enemyGun.alpha = 1;
 						enemyGun.animation.play("right");
 					case FlxObject.UP:
-						animation.play("north3");
+						animation.play("north");
 						enemyGun.alpha = 0;
 						enemyGun.animation.play("north");
 					case FlxObject.DOWN:
-						animation.play("south3");
+						animation.play("south");
 						enemyGun.alpha = 1;
 						enemyGun.animation.play("south");
 				}
@@ -116,17 +99,37 @@ class Enemy extends FlxSprite
 				switch (facing)
 				{	
 					case FlxObject.LEFT:
-						animation.play("left3");
+						animation.play("left");
 					case FlxObject.RIGHT:
-						animation.play("right3");
+						animation.play("right");
 					case FlxObject.UP:
-						animation.play("north3");
+						animation.play("north");
 					case FlxObject.DOWN:
-						animation.play("south3");
+						animation.play("south");
 				}
 			}		
 		}
 		super.draw();
+	}
+	
+	
+	private function chasePlayer():Void
+	{
+		var player = GlobalGameData.player;
+		var dX:Float = player.x - x;
+		var dY:Float = player.y - y;
+		var length:Float = Math.sqrt(dX * dX + dY * dY); 
+		dX /= length;
+		dY /= length;
+		
+		if (length < enemyChaseDistance) {
+			velocity.x = dX * enemySpeed;
+			velocity.y = dY * enemySpeed;
+		}
+		if (enemyGun != null && length < enemyShootDistance)
+		{
+			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+		}
 	}
 
 	
@@ -136,12 +139,13 @@ class Enemy extends FlxSprite
 		if (enemyLife <= 0)
 		{
 			velocity.set(0, 0);
-			animation.play("x");
+			animation.play("die");
 		}	
 	}
 	
-	override public function kill():Void 
+	private function killEnemy(tween:FlxTween):Void 
 	{
+		tween.cancel();
 		if (enemyGun != null){
 			enemyGun.kill();
 		}

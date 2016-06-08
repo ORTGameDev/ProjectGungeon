@@ -14,7 +14,7 @@ import gameObjects.enemies.SkeletonEnemy;
 import gameObjects.enemies.SummonerEnemy;
 import gameObjects.guns.Bullet;
 import gameObjects.enemies.Enemy;
-import gameObjects.enemies.HunterEnemy;
+import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.PistolPete;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.players.Player;

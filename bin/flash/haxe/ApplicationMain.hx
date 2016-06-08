@@ -50,6 +50,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/atlas/enemies/GreenOrc.json");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/atlas/enemies/GreenOrc.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/atlas/players/PlayerOne.json");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -495,7 +503,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "177",
+			build: "197",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

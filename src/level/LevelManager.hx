@@ -19,7 +19,7 @@ import flixel.tile.FlxTilemap;
 import gameObjects.Barrel;
 import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
-import gameObjects.enemies.HunterEnemy;
+import gameObjects.enemies.GreenOrc;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.pickups.IPickable;
@@ -238,7 +238,7 @@ class LevelManager extends TiledMap
 				objectsLayer.add(enemyBulletGroup);
 				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
 				//idem player: arma?
-				var enemy = new HunterEnemy(x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
+				var enemy = new GreenOrc(x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
 				//state.enemies.add(enemy);
 				enemiesGroup.add(enemy);
 
