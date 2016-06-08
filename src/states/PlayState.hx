@@ -10,7 +10,7 @@ import flixel.group.FlxGroup;
 import flixel.tile.FlxTilemap;
 import gameObjects.Barrel;
 import gameObjects.enemies.BossEnemy;
-import gameObjects.enemies.SkeletonEnemy;
+import gameObjects.enemies.Skeleton;
 import gameObjects.enemies.SummonerEnemy;
 import gameObjects.guns.Bullet;
 import gameObjects.enemies.Enemy;

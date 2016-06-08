@@ -19,12 +19,12 @@ class SummonerEnemy extends Enemy
 {
 
 	private var lastSummonTime: Int = 0;
-	private var minionsGroup: FlxTypedGroup<SkeletonEnemy>;
+	private var minionsGroup: FlxTypedGroup<Skeleton>;
 	
 	public function new(X:Float, Y:Float) 
 	{
 		super(X, Y);
-		minionsGroup = new FlxTypedGroup<SkeletonEnemy>();
+		minionsGroup = new FlxTypedGroup<Skeleton>();
 		
 		//Graphics
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
@@ -70,7 +70,7 @@ class SummonerEnemy extends Enemy
 		//var s1 = minionsGroup.recycle(SkeletonEnemy, null, false, true);
 		//s1.setPosition(this.x + this.y + 50);
 		
-		GlobalGameData.enemies.add(new SkeletonEnemy(this.x -50 , this.y));
+		GlobalGameData.enemies.add(new Skeleton(this.x -50 , this.y));
 		
 		
 	}

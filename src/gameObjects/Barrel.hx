@@ -20,7 +20,8 @@ class Barrel extends FlxSprite
 	{
 		super(aX, aY);
 		loadGraphic(Assets.getBitmapData("barrels/Barrel.png"), true, 19, 25);
-		this.allowCollisions = FlxObject.ANY;
+		allowCollisions = FlxObject.ANY;
+		immovable = true;
 		FlxG.state.add(this);
 	}
 	

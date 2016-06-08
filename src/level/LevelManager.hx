@@ -20,6 +20,7 @@ import gameObjects.Barrel;
 import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;
+import gameObjects.enemies.Skeleton;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.pickups.IPickable;
@@ -149,6 +150,9 @@ class LevelManager extends TiledMap
 		FlxG.collide(collidableLayer, enemiesGroup);
 		FlxG.collide(collidableLayer, playerBulletGroup, destroyBullet);
 		FlxG.collide(collidableLayer, enemyBulletGroup, destroyBullet);
+		
+		FlxG.collide(breakableGroup, enemiesGroup);
+		FlxG.collide(breakableGroup, characterGroup);
 
 		FlxG.overlap(playerBulletGroup, breakableGroup, poomBarrel);
 		FlxG.overlap(enemyBulletGroup, breakableGroup, poomBarrel);

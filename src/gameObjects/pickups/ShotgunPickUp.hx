@@ -42,7 +42,7 @@ class ShotgunPickUp extends FlxSprite implements IPickable
 	
 	public function pickUp():Void 
 	{
-		
+		allowCollisions = FlxObject.NONE;
 		this.kill();
 	}
 

@@ -8,7 +8,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import gameObjects.guns.Shotgun;
-import gameObjects.enemies.DeadEnemy;
 import gameObjects.guns.Gun;
 import openfl.Assets;
 import openfl.Lib;

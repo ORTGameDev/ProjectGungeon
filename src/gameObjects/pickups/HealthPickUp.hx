@@ -1,5 +1,6 @@
 package gameObjects.pickups;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
@@ -45,6 +46,7 @@ class HealthPickUp extends FlxSprite implements IPickable
 	{
 		if (!GlobalGameData.player.fullHealth())
 		{
+			allowCollisions = FlxObject.NONE;
 			GlobalGameData.player.healPlayer(lifeAmount);
 			this.kill();
 		}

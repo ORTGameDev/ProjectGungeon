@@ -5,7 +5,7 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
-import gameObjects.enemies.DeadEnemy;
+
 import openfl.Assets;
 import states.PlayState;
 
@@ -53,8 +53,8 @@ class PistolPete extends Enemy
 		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
 			{
 				//Falta agregar el enemigo Dummy
-				var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
-				FlxG.state.add(deadEnemy);
+				//var deadEnemy = new DeadEnemy(this.x, this.y, "", 10, 10);
+				//FlxG.state.add(deadEnemy);
 				kill();
 			}
 			return;
