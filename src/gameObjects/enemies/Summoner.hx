@@ -77,4 +77,9 @@ class Summoner extends Enemy
 		
 	}
 	
+	override private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void
+	{
+		enemyGun.shoot(x + width / 2, y + height / 2, aPlayerX, aPlayerY);
+	}
+	
 }

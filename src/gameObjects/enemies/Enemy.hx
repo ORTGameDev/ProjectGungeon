@@ -24,9 +24,7 @@ class Enemy extends FlxSprite
 	//Movement  
 	private var enemySpeed: Float = 0;
 	private var enemyChaseDistance:Int = 0; //Chase rate, enemy start moving to the player
-	//Life
 	private var enemyLife: Int = 0; //Enemy total life
-	//Gun
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate 
 
@@ -48,10 +46,11 @@ class Enemy extends FlxSprite
 		}
 		
 		chasePlayer();
-		if (enemyGun != null) { //Actualizo posicion del arma
+		
+		/*if (enemyGun != null) { //Actualizo posicion del arma
 			enemyGun.x = this.x ;
 			enemyGun.y = this.y + 7;
-		}
+		}*/
 		
 		
 	}
@@ -125,12 +124,17 @@ class Enemy extends FlxSprite
 			velocity.x = dX * enemySpeed;
 			velocity.y = dY * enemySpeed;
 		}
-		if (enemyGun != null && length < enemyShootDistance)
+		if (length < enemyShootDistance)
 		{
-			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+			shootToPlayer(player.x, player.y);
 		}
 	}
 
+	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void
+	{
+		//Each Enemy should redefine this!
+		//enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+	}
 	
 	public function receiveDamage(damage:Int):Void
 	{

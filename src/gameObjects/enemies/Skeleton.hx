@@ -54,6 +54,10 @@ class Skeleton extends Enemy
 		}
 	}
 	
+	override private function shootToPlayer(aPlayerX:Float, aPlayerY):Void
+	{
+		return;
+	}
 	
 
 }
