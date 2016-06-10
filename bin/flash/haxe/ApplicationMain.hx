@@ -519,7 +519,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "220",
+			build: "226",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

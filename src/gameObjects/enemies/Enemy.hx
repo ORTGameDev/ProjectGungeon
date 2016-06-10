@@ -41,7 +41,7 @@ class Enemy extends FlxSprite
 		super.update(elapsed);
 		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
-				FlxTween.tween(this, {alpha: 0},2.5, {onComplete:killEnemy });
+				FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK},2, {onComplete:killEnemy });
 				//kill();
 			}
 			return;
@@ -134,12 +134,16 @@ class Enemy extends FlxSprite
 	
 	public function receiveDamage(damage:Int):Void
 	{
-		enemyLife -= damage;
-		if (enemyLife <= 0)
-		{
-			velocity.set(0, 0);
-			animation.play("die");
-		}	
+		if (alive) {
+			enemyLife -= damage;
+			if (enemyLife <= 0)
+			{
+				alive = false;
+				velocity.set(0, 0);
+				animation.play("die");
+			}	
+		}
+		
 	}
 	
 	private function killEnemy(tween:FlxTween):Void 

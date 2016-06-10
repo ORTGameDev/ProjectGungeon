@@ -35,6 +35,11 @@ class Summoner extends Enemy
 		animation.addByPrefix("left", "Summoner_walk_left", 8, true);
 		animation.addByPrefix("start", "Summoner_walk_down (1)", 5, false);
 		animation.addByPrefix("die", "Summoner_die", 5, false);
+		//Summon animations
+		animation.addByPrefix("castUp", "Summoner_cast_up", 5, false);
+		animation.addByPrefix("castDown", "Summoner_cast_down", 5, false);
+		animation.addByPrefix("castLeft", "Summoner_cast_left", 5, false);
+		animation.addByPrefix("castRight", "Summoner_cast_right", 5, false);
 		animation.play("start");
 		setSize(28, 52);
 		offset.set(18, 12);
