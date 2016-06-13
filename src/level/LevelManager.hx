@@ -1,6 +1,5 @@
 package level;
 
-
 import flixel.FlxBasic;
 import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
@@ -21,6 +20,7 @@ import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.Skeleton;
+import gameObjects.enemies.Summoner;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickUp;
 import gameObjects.pickups.IPickable;
@@ -43,23 +43,22 @@ class LevelManager extends TiledMap
 	public var floorLayer:FlxGroup;
 	public var collidableLayer:FlxTypedGroup<FlxTilemap>;
 	public var hudLayer:HUD;
-
 	public var characterGroup:FlxGroup;
-	public var enemiesGroup:FlxGroup;
-	public var pickupGroup:FlxGroup;
+	public var enemiesGroup:FlxTypedGroup<Enemy>;
+	public var pickupGroup:FlxTypedGroup<IPickable>;
 	public var breakableGroup:FlxGroup;
 	//*****NUEVO*******//
 	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
 	//*****************//
 	public var playerBulletGroup:FlxTypedGroup<Bullet>;
 	public var enemyBulletGroup:FlxTypedGroup<Bullet>;
-	
+
 	private var collidableTileLayers:Array<FlxTilemap>;
 
 	private var bounds:FlxRect;
-	
+
 	private var exit:FlxSprite;
-	
+
 	public function new(tiledLevel:Dynamic, state:PlayState)
 	{
 		super(tiledLevel);
@@ -70,17 +69,17 @@ class LevelManager extends TiledMap
 		objectsLayer = new FlxGroup();
 
 		//*****NUEVO*******//
-		explotionGroup = new FlxTypedGroup<BarrelExplotion>(); 
+		explotionGroup = new FlxTypedGroup<BarrelExplotion>();
 		GlobalGameData.explotions = explotionGroup;
 		//****************//
 		breakableGroup = new FlxGroup();
 		characterGroup = new FlxGroup();
-		enemiesGroup = new FlxGroup();
+		enemiesGroup = new FlxTypedGroup<Enemy>();
 		pickupGroup = new FlxGroup();
 
 		playerBulletGroup = new FlxTypedGroup<Bullet>();
 		enemyBulletGroup = new FlxTypedGroup<Bullet>();
-		
+
 		bounds = new FlxRect(0, 0, fullWidth, fullHeight);
 
 		FlxG.camera.setScrollBoundsRect(0, 0, fullWidth, fullHeight, true);
@@ -117,8 +116,8 @@ class LevelManager extends TiledMap
 			var tilemap:FlxTilemap = new FlxTilemap();
 			tilemap.loadMapFromArray(tileLayer.tileArray, width, height, processedPath,
 				tileSet.tileWidth, tileSet.tileHeight, OFF, tileSet.firstGID, 1, 1);
-				
-			
+
+
 			if (tileLayer.properties.get("type") == "floor")
 			{
 				floorLayer.add(tilemap);
@@ -150,27 +149,24 @@ class LevelManager extends TiledMap
 		FlxG.collide(collidableLayer, enemiesGroup);
 		FlxG.collide(collidableLayer, playerBulletGroup, destroyBullet);
 		FlxG.collide(collidableLayer, enemyBulletGroup, destroyBullet);
-		
+
 		FlxG.collide(breakableGroup, enemiesGroup);
 		FlxG.collide(breakableGroup, characterGroup);
 
 		FlxG.overlap(playerBulletGroup, breakableGroup, poomBarrel);
 		FlxG.overlap(enemyBulletGroup, breakableGroup, poomBarrel);
-		
+
 		FlxG.overlap(enemyBulletGroup, characterGroup, bulletVsPlayer);
 		FlxG.overlap(playerBulletGroup, enemiesGroup, bulletVsEnemy);
 		FlxG.overlap(characterGroup, pickupGroup, pickItem);
-		
-		//******NUEVO*******//
+
 		FlxG.overlap(characterGroup, explotionGroup, explotionHitPlayer);
 		FlxG.overlap(enemiesGroup, explotionGroup, explotionHitEnemy);
 		FlxG.overlap(explotionGroup, breakableGroup, explotionHitBarrel);
-		
+
 		FlxG.overlap(characterGroup, exit, nextLevel);
-		//****************//
 	}
-	
-	//******NUEVO*******//
+
 	private function explotionHitEnemy(e:Enemy, exp:BarrelExplotion):Void
 	{
 		if (exp.exists && exp.alive && e.exists && e.alive)
@@ -178,7 +174,7 @@ class LevelManager extends TiledMap
 			e.receiveDamage(exp.expDamage);
 		}
 	}
-	
+
 	private function explotionHitBarrel(e1:BarrelExplotion, b:Barrel):Void
 	{
 		if (e1.exists && e1.alive && b.exists && b.alive)
@@ -186,7 +182,7 @@ class LevelManager extends TiledMap
 			b.explote();
 		}
 	}
-	
+
 	private function explotionHitPlayer(p:Player, exp:BarrelExplotion):Void
 	{
 		if (exp.exists && exp.alive && p.exists && p.alive)
@@ -221,7 +217,7 @@ class LevelManager extends TiledMap
 		// objects in tiled are aligned bottom-left (top-left in flixel)
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
-		
+			GlobalGameData.enemies = this.enemiesGroup;
 		switch (o.type.toLowerCase())
 		{
 			case "player_start":
@@ -239,7 +235,7 @@ class LevelManager extends TiledMap
 				hudLayer.updateHUD();
 
 			case "enemy":
-				
+
 				objectsLayer.add(enemyBulletGroup);
 				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
 				//idem player: arma?
@@ -248,7 +244,7 @@ class LevelManager extends TiledMap
 				enemiesGroup.add(enemy);
 
 			case "breakable":
-				
+
 				var barrel = new Barrel(x, y);
 				objectsLayer.add(barrel);
 				breakableGroup.add(barrel);
@@ -341,9 +337,9 @@ class LevelManager extends TiledMap
 			pk.pickUp();
 		}
 	}
-	
+
 	private function nextLevel(p:Player, e:FlxSprite):Void
 	{
-		
+
 	}
 }

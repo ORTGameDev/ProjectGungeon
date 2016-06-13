@@ -24,9 +24,7 @@ class Enemy extends FlxSprite
 	//Movement  
 	private var enemySpeed: Float = 0;
 	private var enemyChaseDistance:Int = 0; //Chase rate, enemy start moving to the player
-	//Life
 	private var enemyLife: Int = 0; //Enemy total life
-	//Gun
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate 
 
@@ -41,17 +39,18 @@ class Enemy extends FlxSprite
 		super.update(elapsed);
 		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
-				FlxTween.tween(this, {alpha: 0},2.5, {onComplete:killEnemy });
+				FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK},2, {onComplete:killEnemy });
 				//kill();
 			}
 			return;
 		}
 		
 		chasePlayer();
-		if (enemyGun != null) { //Actualizo posicion del arma
+		
+		/*if (enemyGun != null) { //Actualizo posicion del arma
 			enemyGun.x = this.x ;
 			enemyGun.y = this.y + 7;
-		}
+		}*/
 		
 		
 	}
@@ -125,21 +124,30 @@ class Enemy extends FlxSprite
 			velocity.x = dX * enemySpeed;
 			velocity.y = dY * enemySpeed;
 		}
-		if (enemyGun != null && length < enemyShootDistance)
+		if (length < enemyShootDistance)
 		{
-			enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+			shootToPlayer(player.x, player.y);
 		}
 	}
 
+	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void
+	{
+		//Each Enemy should redefine this!
+		//enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
+	}
 	
 	public function receiveDamage(damage:Int):Void
 	{
-		enemyLife -= damage;
-		if (enemyLife <= 0)
-		{
-			velocity.set(0, 0);
-			animation.play("die");
-		}	
+		if (alive) {
+			enemyLife -= damage;
+			if (enemyLife <= 0)
+			{
+				alive = false;
+				velocity.set(0, 0);
+				animation.play("die");
+			}	
+		}
+		
 	}
 	
 	private function killEnemy(tween:FlxTween):Void 

@@ -66,6 +66,14 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/atlas/enemies/Summoner.json");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("img/atlas/enemies/Summoner.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/atlas/players/PlayerOne.json");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -515,7 +523,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "214",
+			build: "216",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

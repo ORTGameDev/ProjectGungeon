@@ -11,7 +11,7 @@ import flixel.tile.FlxTilemap;
 import gameObjects.Barrel;
 import gameObjects.enemies.BossEnemy;
 import gameObjects.enemies.Skeleton;
-import gameObjects.enemies.SummonerEnemy;
+import gameObjects.enemies.Summoner;
 import gameObjects.guns.Bullet;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;

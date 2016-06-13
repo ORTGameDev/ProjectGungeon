@@ -5,7 +5,7 @@ import gameObjects.enemies.BossEnemy;
 import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.PistolPete;
 import gameObjects.enemies.Skeleton;
-import gameObjects.enemies.SummonerEnemy;
+import gameObjects.enemies.Summoner;
 
 /**
 *@author Ignacio Benedetto
@@ -28,7 +28,7 @@ class EnemyFactory
           case "skelleton":
             return new Skeleton(X,Y);
           case "summoner":
-            return new SummonerEnemy(X,Y);
+            return new Summoner(X,Y);
       }
       return null;
     }
