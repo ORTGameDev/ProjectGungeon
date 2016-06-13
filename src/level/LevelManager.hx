@@ -59,7 +59,7 @@ class LevelManager extends TiledMap
 	private var bounds:FlxRect;
 	
 	private var exit:FlxSprite;
-
+	
 	public function new(tiledLevel:Dynamic, state:PlayState)
 	{
 		super(tiledLevel);
@@ -221,7 +221,7 @@ class LevelManager extends TiledMap
 		// objects in tiled are aligned bottom-left (top-left in flixel)
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
-
+		
 		switch (o.type.toLowerCase())
 		{
 			case "player_start":
@@ -239,10 +239,11 @@ class LevelManager extends TiledMap
 				hudLayer.updateHUD();
 
 			case "enemy":
+				
 				objectsLayer.add(enemyBulletGroup);
 				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
 				//idem player: arma?
-				var enemy = new GreenOrc(x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
+				var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
 				//state.enemies.add(enemy);
 				enemiesGroup.add(enemy);
 

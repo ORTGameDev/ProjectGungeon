@@ -234,6 +234,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/jarBreakable.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/logo.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -511,7 +515,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "208",
+			build: "214",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
