@@ -6,8 +6,6 @@ import gameObjects.enemies.Enemy;
 import gameObjects.guns.Bullet;
 import gameObjects.players.Player;
 
-
-
 /**
  * ...
  * @author Nacho/Gaston
@@ -15,20 +13,21 @@ import gameObjects.players.Player;
 
 class GlobalGameData
 {
-	
+
 	public static var aHud: HUD;
 
 	public static var player: Player;
-	
+
 	public static var playerBullets: FlxTypedGroup<Bullet>;
 	public static var enemies: FlxTypedGroup<Enemy>;
-	
+
 	public static var enemiesBullets: FlxTypedGroup<Bullet>;
-	public static var healthspick: FlxTypedGroup<FlxSprite>;
-	
+	public static var pickups: FlxTypedGroup<FlxSprite>;
+
 	public static var explotions: FlxTypedGroup<BarrelExplotion>;
-	
-	public static function clear():Void 
+
+
+	public static function clear():Void
 	{
 		player = null;
 		playerBullets.destroy();
@@ -37,12 +36,13 @@ class GlobalGameData
 		enemies = null;
 		enemiesBullets.destroy();
 		enemiesBullets = null;
-		healthspick.destroy();
-		healthspick = null;
+		pickups.destroy();
+		pickups = null;
 		explotions.destroy();
 		explotions = null;
 		aHud.destroy();
 		aHud = null;
+
 	}
-	
+
 }

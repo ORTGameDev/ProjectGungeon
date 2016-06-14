@@ -4,7 +4,11 @@
   <image source="../img/maps/mapTiles.png" width="288" height="32"/>
  </tileset>
  <objectgroup name="objects">
-  <object id="15" name="life" type="pickup" x="733.333" y="897.333" width="26.6667" height="32"/>
+  <object id="15" name="life" type="pickup" x="733.333" y="897.333" width="26.6667" height="32">
+   <properties>
+    <property name="pType" value="health"/>
+   </properties>
+  </object>
   <object id="16" name="exit" type="exit" x="1304" y="557.333" width="42.6667" height="42.6667"/>
   <object id="18" name="player" type="player_start" x="601" y="285" width="33" height="36">
    <properties>
@@ -13,7 +17,7 @@
   </object>
   <object id="20" name="enemy" type="enemy" x="1178" y="470" width="37" height="36">
    <properties>
-    <property name="eType" value="summoner"/>
+    <property name="eType" value="greenOrc"/>
    </properties>
   </object>
   <object id="21" name="barrel" type="breakable" x="1040" y="289" width="31" height="33"/>

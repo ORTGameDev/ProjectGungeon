@@ -11,7 +11,7 @@ import openfl.Assets;
  * ...
  * @author Gastón Marichal
  */
-class HealthPickUp extends FlxSprite implements IPickable
+class HealthPickup extends FlxSprite implements IPickable
 {
 	public var lifeAmount: Int = 2;
 	

@@ -22,7 +22,7 @@ import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.Skeleton;
 import gameObjects.enemies.Summoner;
 import gameObjects.guns.Bullet;
-import gameObjects.pickups.HealthPickUp;
+import gameObjects.pickups.HealthPickup;
 import gameObjects.pickups.IPickable;
 import gameObjects.players.Player;
 import haxe.io.Path;
@@ -45,7 +45,7 @@ class LevelManager extends TiledMap
 	public var hudLayer:HUD;
 	public var characterGroup:FlxGroup;
 	public var enemiesGroup:FlxTypedGroup<Enemy>;
-	public var pickupGroup:FlxTypedGroup<IPickable>;
+	public var pickupGroup:FlxGroup;
 	public var breakableGroup:FlxGroup;
 	//*****NUEVO*******//
 	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
@@ -179,7 +179,7 @@ class LevelManager extends TiledMap
 	{
 		if (e1.exists && e1.alive && b.exists && b.alive)
 		{
-			b.explote();
+			b.eBreak();
 		}
 	}
 
@@ -252,7 +252,8 @@ class LevelManager extends TiledMap
 
 			case "pickup":
 				var tileset = g.map.getGidOwner(o.gid);
-				var pickup = new HealthPickUp(x, y);
+				var pickup = PickupFactory.getPickup(o.properties.get("pType"), x, y);
+				GlobalGameData.pickups.add(pickup);
 				//state.healthpickups.add(pickup);
 				objectsLayer.add(pickup);
 				pickupGroup.add(pickup);
@@ -284,7 +285,7 @@ class LevelManager extends TiledMap
 	{
 		if (aBullet.exists && aBullet.alive && abarrel.exists && abarrel.alive){
 			aBullet.kill();
-			abarrel.explote();
+			abarrel.eBreak();
 		}
 	}
 
@@ -315,18 +316,18 @@ class LevelManager extends TiledMap
 	private function particlesVsPlayer(p:Player, par:FlxParticle):Void
 	{
 		if (p.exists && p.alive && par.exists && par.alive){
-					p.receiveDamage(2);
-					par.kill();
-					hudLayer.updateHUD();
+			p.receiveDamage(2);
+			par.kill();
+			hudLayer.updateHUD();
 		}
 	}
 
 	private function particlesVsEnemies(e:Enemy, par:FlxParticle):Void
 	{
 		if (e.exists && e.alive && par.exists && par.alive){
-					e.receiveDamage(2);
-					par.kill();
-					hudLayer.updateHUD();
+			e.receiveDamage(2);
+			par.kill();
+			hudLayer.updateHUD();
 		}
 	}
 

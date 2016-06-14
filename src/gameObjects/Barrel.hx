@@ -30,7 +30,7 @@ class Barrel extends FlxSprite
 		super.update(elapsed);
 	}
 	
-	public function explote(): Void
+	public function eBreak(): Void
 	{
 		var aExplotion = GlobalGameData.explotions.recycle(BarrelExplotion);
 		aExplotion.reset(this.x + this.width / 2, this.y + this.height);

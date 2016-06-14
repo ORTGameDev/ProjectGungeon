@@ -5,9 +5,5 @@ package gameObjects.pickups;
  */
 interface IPickable 
 {
-	
-	public function pickUp():Void;
-	
-	
-  
+	public function pickUp():Void;  
 }
