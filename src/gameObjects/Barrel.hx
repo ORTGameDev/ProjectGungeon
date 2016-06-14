@@ -13,7 +13,7 @@ import openfl.Lib;
  * ...
  * @author Gastón Marichal
  */
-class Barrel extends FlxSprite
+class Barrel extends FlxSprite 
 {
 	
 	public function new(aX:Float, aY:Float) 

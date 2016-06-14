@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="34" tilewidth="32" tileheight="32" nextobjectid="24">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="34" tilewidth="32" tileheight="32" nextobjectid="26">
  <tileset firstgid="1" name="mapTiles" tilewidth="32" tileheight="32" tilecount="9" columns="9">
   <image source="../img/maps/mapTiles.png" width="288" height="32"/>
  </tileset>
@@ -21,6 +21,11 @@
    </properties>
   </object>
   <object id="21" name="barrel" type="breakable" x="1040" y="289" width="31" height="33"/>
+  <object id="25" name="pistol" type="pickup" x="733" y="698">
+   <properties>
+    <property name="pType" value="shotgun"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="floor" width="60" height="34">
   <properties>

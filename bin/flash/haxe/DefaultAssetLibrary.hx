@@ -163,6 +163,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
 		#end
 		
 		#if flash
@@ -259,6 +261,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/guns/pistol/p_diagup.png", AssetType.IMAGE);
 		className.set ("img/guns/pistol/p_down.png", __ASSET__img_guns_pistol_p_down_png);
 		type.set ("img/guns/pistol/p_down.png", AssetType.IMAGE);
+		className.set ("img/guns/pistol/p_pick - Copy.png", __ASSET__img_guns_pistol_p_pick___copy_png);
+		type.set ("img/guns/pistol/p_pick - Copy.png", AssetType.IMAGE);
 		className.set ("img/guns/pistol/p_pick.png", __ASSET__img_guns_pistol_p_pick_png);
 		type.set ("img/guns/pistol/p_pick.png", AssetType.IMAGE);
 		className.set ("img/guns/pistol/p_side.png", __ASSET__img_guns_pistol_p_side_png);
@@ -271,6 +275,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("img/guns/shotgun/shot_diagup.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_down.png", __ASSET__img_guns_shotgun_shot_down_png);
 		type.set ("img/guns/shotgun/shot_down.png", AssetType.IMAGE);
+		className.set ("img/guns/shotgun/shot_pick - Copy.png", __ASSET__img_guns_shotgun_shot_pick___copy_png);
+		type.set ("img/guns/shotgun/shot_pick - Copy.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_pick.png", __ASSET__img_guns_shotgun_shot_pick_png);
 		type.set ("img/guns/shotgun/shot_pick.png", AssetType.IMAGE);
 		className.set ("img/guns/shotgun/shot_side.png", __ASSET__img_guns_shotgun_shot_side_png);
@@ -578,6 +584,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
+		id = "img/guns/pistol/p_pick - Copy.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
 		id = "img/guns/pistol/p_pick.png";
 		path.set (id, id);
 		
@@ -599,6 +609,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "img/guns/shotgun/shot_down.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "img/guns/shotgun/shot_pick - Copy.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -994,6 +1008,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("img/guns/pistol/p_down.png", __ASSET__img_guns_pistol_p_down_png);
 		type.set ("img/guns/pistol/p_down.png", AssetType.IMAGE);
 		
+		className.set ("img/guns/pistol/p_pick - Copy.png", __ASSET__img_guns_pistol_p_pick___copy_png);
+		type.set ("img/guns/pistol/p_pick - Copy.png", AssetType.IMAGE);
+		
 		className.set ("img/guns/pistol/p_pick.png", __ASSET__img_guns_pistol_p_pick_png);
 		type.set ("img/guns/pistol/p_pick.png", AssetType.IMAGE);
 		
@@ -1011,6 +1028,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("img/guns/shotgun/shot_down.png", __ASSET__img_guns_shotgun_shot_down_png);
 		type.set ("img/guns/shotgun/shot_down.png", AssetType.IMAGE);
+		
+		className.set ("img/guns/shotgun/shot_pick - Copy.png", __ASSET__img_guns_shotgun_shot_pick___copy_png);
+		type.set ("img/guns/shotgun/shot_pick - Copy.png", AssetType.IMAGE);
 		
 		className.set ("img/guns/shotgun/shot_pick.png", __ASSET__img_guns_shotgun_shot_pick_png);
 		type.set ("img/guns/shotgun/shot_pick.png", AssetType.IMAGE);
@@ -1878,12 +1898,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_diagdown_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_diagup_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_down_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_pick___copy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_pick_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_side_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_pistol_p_up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_diagdown_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_diagup_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_pick___copy_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_pick_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
@@ -2060,6 +2082,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
 #else
 
 
@@ -2113,12 +2137,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/guns/pistol/p_diagdown.png") #if display private #end class __ASSET__img_guns_pistol_p_diagdown_png extends lime.graphics.Image {}
 @:image("assets/img/guns/pistol/p_diagup.png") #if display private #end class __ASSET__img_guns_pistol_p_diagup_png extends lime.graphics.Image {}
 @:image("assets/img/guns/pistol/p_down.png") #if display private #end class __ASSET__img_guns_pistol_p_down_png extends lime.graphics.Image {}
+@:image("assets/img/guns/pistol/p_pick - Copy.png") #if display private #end class __ASSET__img_guns_pistol_p_pick___copy_png extends lime.graphics.Image {}
 @:image("assets/img/guns/pistol/p_pick.png") #if display private #end class __ASSET__img_guns_pistol_p_pick_png extends lime.graphics.Image {}
 @:image("assets/img/guns/pistol/p_side.png") #if display private #end class __ASSET__img_guns_pistol_p_side_png extends lime.graphics.Image {}
 @:image("assets/img/guns/pistol/p_up.png") #if display private #end class __ASSET__img_guns_pistol_p_up_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_diagdown.png") #if display private #end class __ASSET__img_guns_shotgun_shot_diagdown_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_diagup.png") #if display private #end class __ASSET__img_guns_shotgun_shot_diagup_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_down.png") #if display private #end class __ASSET__img_guns_shotgun_shot_down_png extends lime.graphics.Image {}
+@:image("assets/img/guns/shotgun/shot_pick - Copy.png") #if display private #end class __ASSET__img_guns_shotgun_shot_pick___copy_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_pick.png") #if display private #end class __ASSET__img_guns_shotgun_shot_pick_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_side.png") #if display private #end class __ASSET__img_guns_shotgun_shot_side_png extends lime.graphics.Image {}
 @:image("assets/img/guns/shotgun/shot_up.png") #if display private #end class __ASSET__img_guns_shotgun_shot_up_png extends lime.graphics.Image {}

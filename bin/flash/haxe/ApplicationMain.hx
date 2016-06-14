@@ -214,6 +214,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/guns/pistol/p_pick - Copy.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/guns/pistol/p_pick.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -235,6 +239,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("img/guns/shotgun/shot_down.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/guns/shotgun/shot_pick - Copy.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -535,7 +543,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "237",
+			build: "241",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
