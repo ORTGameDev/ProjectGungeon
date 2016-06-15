@@ -23,7 +23,8 @@ import gameObjects.enemies.Skeleton;
 import gameObjects.enemies.Summoner;
 import gameObjects.guns.Bullet;
 import gameObjects.pickups.HealthPickup;
-import gameObjects.pickups.IPickable;
+import gameObjects.pickups.Pickup;
+import gameObjects.pickups.ShotgunPickup;
 import gameObjects.players.Player;
 import haxe.io.Path;
 import states.PlayState;
@@ -45,7 +46,7 @@ class LevelManager extends TiledMap
 	public var hudLayer:HUD;
 	public var characterGroup:FlxGroup;
 	public var enemiesGroup:FlxTypedGroup<Enemy>;
-	public var pickupGroup:FlxGroup;
+	public var pickupGroup:FlxTypedGroup<Pickup>;
 	public var breakableGroup:FlxGroup;
 	//*****NUEVO*******//
 	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
@@ -75,7 +76,10 @@ class LevelManager extends TiledMap
 		breakableGroup = new FlxGroup();
 		characterGroup = new FlxGroup();
 		enemiesGroup = new FlxTypedGroup<Enemy>();
-		pickupGroup = new FlxGroup();
+		
+		pickupGroup = new FlxTypedGroup<Pickup>();
+		GlobalGameData.pickups = pickupGroup;
+		
 
 		playerBulletGroup = new FlxTypedGroup<Bullet>();
 		enemyBulletGroup = new FlxTypedGroup<Bullet>();
@@ -253,7 +257,7 @@ class LevelManager extends TiledMap
 			case "pickup":
 				var tileset = g.map.getGidOwner(o.gid);
 				var pickup = PickupFactory.getPickup(o.properties.get("pType"), x, y);
-				GlobalGameData.pickups.add(pickup);
+				//GlobalGameData.pickups.add(pickup);
 				//state.healthpickups.add(pickup);
 				objectsLayer.add(pickup);
 				pickupGroup.add(pickup);
@@ -331,7 +335,7 @@ class LevelManager extends TiledMap
 		}
 	}
 
-	private function pickItem(p:Player, pk:IPickable):Void
+	private function pickItem(p:Player, pk:Pickup):Void
 	{
 		if (p.exists && p.alive)
 		{

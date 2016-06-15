@@ -17,6 +17,7 @@ import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.PistolPete;
 import gameObjects.pickups.HealthPickup;
+import gameObjects.pickups.Pickup;
 import gameObjects.players.Player;
 import gameObjects.Pointer;
 import level.LevelManager;
@@ -56,7 +57,7 @@ class PlayState extends FlxState
 	private var enemyBullets:FlxTypedGroup<Bullet>;
 
 	//PickUps
-	public var pickups: FlxTypedGroup<FlxSprite>;
+	public var pickups: FlxTypedGroup<Pickup>;
 
 	//Barrels & Explotions
 	private var barrels: FlxTypedGroup<Barrel>;
@@ -81,11 +82,11 @@ class PlayState extends FlxState
 		//add(map);
 		////Player Setup
 		//gamePlayer = new Player(gamePlayerXSpawn, gamePlayerYSpawn);
-		pickups = new FlxTypedGroup<FlxSprite>();
+		pickups = new FlxTypedGroup<Pickup>();
 		enemyBullets = new FlxTypedGroup<Bullet>();
 
 
-		GlobalGameData.pickups = pickups;
+		
 		GlobalGameData.enemiesBullets = enemyBullets;
 		//add(enemyBullets);
 

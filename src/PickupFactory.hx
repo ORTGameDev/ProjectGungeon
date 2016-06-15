@@ -1,7 +1,7 @@
 package;
 
 import flixel.FlxSprite;
-import gameObjects.pickups.IPickable;
+import gameObjects.pickups.Pickup;
 import gameObjects.pickups.HealthPickup;
 import gameObjects.pickups.PistolPickup;
 import gameObjects.pickups.ShotgunPickup;
@@ -18,18 +18,20 @@ class PickupFactory
 
     }
 
-    public static function getPickup(type: String, X:Int = 0, Y:Int = 0):FlxSprite
+    public static function getPickup(type: String, ?X:Float = 0, ?Y:Float = 0):Pickup
     {
+	  var ret = null;
       switch(type)
       {
         case "pistol":
-            return new PistolPickup(X,Y);
+            ret = GlobalGameData.pickups.recycle(PistolPickup);
         case "shotgun":
-            return new ShotgunPickup(X,Y);
+            ret = GlobalGameData.pickups.recycle(ShotgunPickup);
         case "health":
-            return new HealthPickup(X,Y);
+            ret = GlobalGameData.pickups.recycle(HealthPickup);
 
       }
-      return null;
+	  ret.reset(X, Y);
+      return ret;
     }
 }

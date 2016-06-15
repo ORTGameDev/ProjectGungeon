@@ -4,6 +4,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.guns.Bullet;
+import gameObjects.pickups.Pickup;
 import gameObjects.players.Player;
 
 /**
@@ -22,7 +23,7 @@ class GlobalGameData
 	public static var enemies: FlxTypedGroup<Enemy>;
 
 	public static var enemiesBullets: FlxTypedGroup<Bullet>;
-	public static var pickups: FlxTypedGroup<FlxSprite>;
+	public static var pickups: FlxTypedGroup<Pickup>;
 
 	public static var explotions: FlxTypedGroup<BarrelExplotion>;
 

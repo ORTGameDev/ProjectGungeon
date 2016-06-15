@@ -258,6 +258,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/guns/smg/smg_pick - Copy.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/guns/smg/smg_pick.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -543,7 +547,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "241",
+			build: "305",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

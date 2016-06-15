@@ -7,9 +7,13 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import gameObjects.guns.Pistol;
 import gameObjects.guns.Shotgun;
 import gameObjects.guns.Gun;
+import gameObjects.pickups.HealthPickup;
+import gameObjects.pickups.Pickup;
 import gameObjects.pickups.PistolPickup;
+import gameObjects.pickups.ShotgunPickup;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.utils.Timer;
@@ -40,8 +44,8 @@ class Enemy extends FlxSprite
 		super.update(elapsed);
 		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
-				FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK},2, {onComplete:killEnemy });
-				//kill();
+				//FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK},2, {onComplete:killEnemy });
+				killEnemy();
 			}
 			return;
 		}
@@ -151,17 +155,14 @@ class Enemy extends FlxSprite
 
 	}
 
-	private function killEnemy(tween:FlxTween):Void
+	private function killEnemy():Void
 	{
-		tween.cancel();
+		//tween.cancel();
 		if (enemyGun != null){
 			enemyGun.kill();
 		}
-		var aPickup = PickupFactory.getPickup("pistol", 0, 0);
-		aPickup.reset(this.x + this.width / 2, this.y + this.height);
-		//var aPickup = GlobalGameData.pickups.recycle(FlxSprite);
-		//aPickup.reset(this.x + this.width / 2, this.y + this.height);
-		super.kill();
+		var aPickup = PickupFactory.getPickup("shotgun", this.x, this.y);
+		kill();
 	}
 
 }
