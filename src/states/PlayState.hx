@@ -121,10 +121,9 @@ class PlayState extends FlxState
 	{
 		level.update(elapsed);
 		super.update(elapsed);
-		
-		if (enemies.countLiving() == 0)
+		if (GlobalGameData.enemies.countLiving() == 0)
 		{
-			hud.playerWin();
+			level.hudLayer.playerWin();
 		}
 	}
 
