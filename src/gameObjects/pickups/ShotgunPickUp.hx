@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import gameObjects.guns.Shotgun;
 import openfl.Assets;
 
 /**
@@ -28,6 +29,7 @@ class ShotgunPickup extends Pickup
 	override public function pickUp():Void
 	{
 		allowCollisions = FlxObject.NONE;
+		GlobalGameData.player.pickWeapon("shotgun");
 		this.kill();
 	}
 

@@ -35,7 +35,10 @@ class Shotgun extends Gun
 		this.animation.addByPrefix("diagDown_left", "shot_diagdown", 10, true, true);
 		this.animation.addByPrefix("diagUp_left", "shot_diagup", 10, true, true);
 		this.animation.play("south");
-
+		
+		this.chamberLength = 8;
+		this.currentInChamber = chamberLength;
+		
 	}
 	
 	public  override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
@@ -54,15 +57,16 @@ class Shotgun extends Gun
 				angleX += 30;
 				angleY += 30;
 			}
-			/*
-			var bullet:Bullet = cast bullets.recycle(Bullet, null, false, false);
-			bullet.bulletDamage = gunBulletDamage;
-			bullet.bulletSpeed = gunBulletSpeed;
-			//if (!bullet.alive)
-			//{*/
+			
 				gunSound.play(true);
 				gunLastShoot = currentTime;
-			//}
+				currentInChamber --;
+				if (currentInChamber == 0 && infiniteBullets){
+					currentInChamber = chamberLength;
+				}else{
+					
+				}
+			
 		}
 		
 	}

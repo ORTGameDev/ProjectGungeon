@@ -19,6 +19,7 @@ import openfl.Lib;
 class Pistol extends Gun
 {
 	private var gunLastShoot: Int = 0;
+	
 	public function new(aX:Float, aY:Float) 
 	{
 		var bulletGroup = GlobalGameData.playerBullets;
@@ -35,7 +36,10 @@ class Pistol extends Gun
 		this.animation.addByPrefix("diagDown_left", "p_diagdown", 10, true, true);
 		this.animation.addByPrefix("diagUp_left", "p_diagup", 10, true, true);
 		this.animation.play("south");
-
+	
+		this.chamberLength = 20;
+		this.currentInChamber = chamberLength;
+		this.infiniteBullets = true;
 	}
 	
 	
@@ -52,6 +56,10 @@ class Pistol extends Gun
 				bullet.shoot(aX, aY, aTargetX, aTargetY, 1);
 				gunSound.play(true);
 				gunLastShoot = currentTime;
+				currentInChamber --;
+				if (currentInChamber == 0 && infiniteBullets){
+					currentInChamber = chamberLength;
+				}
 			}
 
 			

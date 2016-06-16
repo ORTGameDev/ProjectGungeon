@@ -10,12 +10,22 @@ import flixel.util.FlxColor;
 import gameObjects.guns.Bullet;
 import gameObjects.guns.Gun;
 import gameObjects.guns.Pistol;
+import gameObjects.guns.Shotgun;
+import gameObjects.players.Player.GunType;
 import openfl.Assets;
 
 /**
  * ...
  * @author Gastón // Nacho
  */
+
+ enum GunType{
+	pistol;
+	shotgun;
+	smg;
+	}
+	
+	
 class Player extends FlxSprite
 {
 
@@ -34,33 +44,20 @@ class Player extends FlxSprite
 	static private inline var playerDrag: Int = 2500;
 
 	//Gun
-	public var playerGun:Gun;
+	public var playerCurrentGun:Gun;
+	private var guns:Array<Gun>;
 
 	public function new(X:Float = 0, Y:Float = 0)
 	{
 		super(X, Y);
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
-
-		//Cargo animaciones del player
-		/********************************
-		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		this.frames = anAtlas;
-		this.animation.addByPrefix("north1", "north1_", 10, true);
-		this.animation.addByPrefix("south1", "south1_", 10, true);
-		this.animation.addByPrefix("right1", "side1_", 10, true);
-		this.animation.addByPrefix("left1", "side1_", 10, true, true);
-		this.animation.addByPrefix("diagDown1_right", "diagdown1_", 10, true);
-		this.animation.addByPrefix("diagUp1_right", "diagup1_", 10, true);
-		this.animation.addByPrefix("diagDown1_left", "diagdown1_", 10, true, true);
-		this.animation.addByPrefix("diagUp1_left", "diagup1_", 10, true, true);
-		this.animation.addByPrefix("start1", "start1", 10, false);
-		this.animation.addByPrefix("x", "start1", 30, false, false, true);
-		this.animation.play("start1");
-		this.scale.set(2, 2);
-		this.setSize(22, 42);
-		this.offset.set(7, 0);
-        *************************************/
+		guns = new Array<Gun>();
+		guns[0] = new Pistol(X, Y + this.height / 2);
+		guns[1] = new Shotgun(X, Y + this.height / 2);
+		guns[2] = new Shotgun(X, Y + this.height / 2);
+		this.playerCurrentGun = guns[0];
+		
 		
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/players/PlayerOne.png", "img/atlas/players/PlayerOne.json");
 		this.frames = anAtlas;
@@ -75,8 +72,8 @@ class Player extends FlxSprite
 		this.offset.set(18, 12);
 		//Creo gun y bullets
 		//var aBullets = new FlxTypedGroup<Bullet>();
-		this.playerGun = new Pistol(X, Y + this.height / 2);
-		FlxG.state.add(playerGun);
+		changeWeapon(pistol);
+		FlxG.state.add(playerCurrentGun);
 
 	}
 
@@ -87,7 +84,7 @@ class Player extends FlxSprite
 		super.update(elapsed);
 		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
 			{
-				playerGun.kill();
+				playerCurrentGun.kill();
 				kill();
 			}
 			return;
@@ -111,11 +108,24 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
 		{
-			playerGun.shoot(x + width /2 , y + height/2, FlxG.mouse.x, FlxG.mouse.y);
+			playerCurrentGun.shoot(x + width / 2 , y + height / 2, FlxG.mouse.x, FlxG.mouse.y);
+			GlobalGameData.aHud.updateVisualizer();
+		}
+		if (FlxG.keys.pressed.ONE)
+		{
+			changeWeapon(pistol);
+		}
+		if (FlxG.keys.pressed.TWO)
+		{
+			changeWeapon(shotgun);
+		}
+		if (FlxG.keys.pressed.THREE)
+		{
+			changeWeapon(shotgun);
 		}
 		super.update(elapsed);
-		playerGun.x = this.x + 7;
-		playerGun.y = this.y + 26;
+		playerCurrentGun.x = this.x + 7;
+		playerCurrentGun.y = this.y + 26;
 	}
 
 	override public function draw():Void
@@ -131,21 +141,21 @@ class Player extends FlxSprite
 			}
 			if (angle <= (0 + 45) || angle > (360 - 45)){
 				animation.play("right");
-				playerGun.alpha = 1;
-				playerGun.animation.play("right");
+				playerCurrentGun.alpha = 1;
+				playerCurrentGun.animation.play("right");
 			} else if (angle  <=  (90 + 45) && angle > (90 - 45)){
 				animation.play("south");
-				playerGun.alpha = 1;
-				playerGun.animation.play("south");
+				playerCurrentGun.alpha = 1;
+				playerCurrentGun.animation.play("south");
 			} else if (angle <= (180 + 45) && angle > (180 - 45)){
 				animation.play("left");
-				playerGun.alpha = 1;
-				playerGun.animation.play("left");
-				playerGun.x -= 7;
+				playerCurrentGun.alpha = 1;
+				playerCurrentGun.animation.play("left");
+				playerCurrentGun.x -= 7;
 			} else if (angle <= (270 + 45) && angle > (270 - 45)){
 				animation.play("north");
-				playerGun.alpha = 0;
-				playerGun.animation.play("north");
+				playerCurrentGun.alpha = 0;
+				playerCurrentGun.animation.play("north");
 			}
 			if(velocity.x == 0 && velocity.y == 0)
 				animation.stop();	
@@ -183,6 +193,20 @@ class Player extends FlxSprite
 		GlobalGameData.aHud.updateHUD();
 	}
 	
+	public function pickWeapon(type:String):Void
+	{
+		
+	}
+	
+	private function changeWeapon(gType:GunType):Void
+	{
+		switch(gType){
+			case pistol: this.playerCurrentGun = guns[0];
+			case shotgun: this.playerCurrentGun = guns[1];
+			case smg: this.playerCurrentGun = guns[2];
+		}
+	}
+	
 
 	public function fullHealth():Bool
 	{
@@ -200,4 +224,7 @@ class Player extends FlxSprite
 		isHurt = false;
 	}
 
+	
 }
+
+	

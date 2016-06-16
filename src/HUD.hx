@@ -9,6 +9,7 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
+import gameObjects.guns.Pistol;
 import openfl.Assets;
 import openfl.text.Font;
 import states.MenuState;
@@ -20,21 +21,25 @@ import states.PlayState;
  */
 class HUD extends FlxTypedGroup<FlxSprite>
 {
-	//background
+	/*______Background______*/
 	private var sprBackground: FlxSprite;
 	
-	//player Health
+	/*______Player Health______*/
 	private var sprHealthArray: Array<FlxSprite>;
-	
-	
-	//level details
+		
+	/*_____level details_____*/
 	private var txtLvlInfo: FlxText;
 	private var lvlDesc:String;
 
-	//Messages and Buttons
+	/*_______Messages and Buttons_______*/
 	private var PlayerMessage: FlxText ;
 	private var retryButton: FlxButton;
 	private var BackToMenuButton: FlxButton;
+		
+	/*__________Gun visualizer____________*/
+	private var visualizerBackground: FlxSprite;
+	private var gunSprite: FlxSprite;
+	private var bulletInChamber: FlxText;
 	
 	
 	public function new(aLvlNumber:Int, aLvlString:String) 
@@ -45,6 +50,12 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		sprBackground.makeGraphic(FlxG.width, 40, FlxColor.BLACK);
 		sprBackground.alpha = 0.2;
 		FlxSpriteUtil.drawRect(sprBackground, 0, 37, FlxG.width, 3, FlxColor.WHITE);
+		add(sprBackground);
+		
+		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
+		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
+		txtLvlInfo.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		add(txtLvlInfo);
 		
 		//PLayerHealth
 		sprHealthArray = new Array<FlxSprite>();
@@ -59,15 +70,6 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			
 		}
 		
-		
-		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
-		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
-		txtLvlInfo.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
-		
-		
-		add(sprBackground);
-		
-		add(txtLvlInfo);
 		
 		PlayerMessage = new FlxText(0, 200, 500, "", 24);
 		PlayerMessage.setFormat(24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
@@ -88,6 +90,21 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		BackToMenuButton.visible = false;
 		add(retryButton);
 		
+		//visualizer BackGround
+		visualizerBackground = new FlxSprite(FlxG.width - 200,FlxG.height - 60);
+		visualizerBackground.makeGraphic(200, 40, FlxColor.BLACK);
+		visualizerBackground.alpha = 0.3;
+		add(visualizerBackground);
+		
+		gunSprite = new FlxSprite(visualizerBackground.x + 5, visualizerBackground.y + 5);
+		add(gunSprite);
+		
+		bulletInChamber = new FlxText(gunSprite.x + 100, gunSprite.y + (gunSprite.height / 2), 0, "", 24);
+		bulletInChamber.setFormat(24, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.WHITE);
+		add(bulletInChamber);
+		
+		updateVisualizer();
+		
 		forEach(function(spr:FlxSprite)
 		{
 			spr.scrollFactor.set(0, 0);
@@ -107,35 +124,21 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			}
 			i++;
 		}
-		//txtPlayerHealth.text = "Life: " + GlobalGameData.player.playerCurrentLife + " /" + GlobalGameData.player.playerTotalLife;
-		/*var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		var playerLife = GlobalGameData.player.playerCurrentLife;
-		var heartQty = playerLife / 2;
-		var healthX:Float = 10;
-		var healthY:Float = 10;
-		while (playerLife != 0)
-		{
-			var sprLife = new FlxSprite();
-			sprLife.frames = anAtlas;
-			if ( playerLife > 1)
-			{
-				sprLife.animation.addByPrefix("fullHeart", "heart_full", 0, false);
-			}
-			else
-			{
-				sprLife.animation.addByPrefix("halfHeart", "heart_half", 0, false);
-			}
-			sprLife.y = healthY;
-			sprLife.x = healthX;
-			sprHealth.add(sprLife);
-			healthX += sprLife.width + 2;
-		}
-		this.add(sprHealth);*/
 		if (GlobalGameData.player.playerCurrentLife <= 0){
 			playerIsDead();
 		}
 		
-		
+	}
+	
+	public function updateVisualizer():Void
+	{
+		var aGun = GlobalGameData.player.playerCurrentGun;
+		if (Type.getClass(aGun) == Pistol){
+			gunSprite.loadGraphic(Assets.getBitmapData("img/guns/pistol/p_pick.png"), false, 45, 27);
+		}else{
+			gunSprite.loadGraphic(Assets.getBitmapData("img/guns/shotgun/shot_pick.png"), false, 76, 27);
+		}
+		bulletInChamber.text = aGun.currentInChamber + "/" + aGun.chamberLength;
 		
 	}
 	

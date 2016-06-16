@@ -218,6 +218,9 @@ class LevelManager extends TiledMap
 		var x:Int = o.x;
 		var y:Int = o.y;
 
+	
+		
+
 		// objects in tiled are aligned bottom-left (top-left in flixel)
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
@@ -236,8 +239,7 @@ class LevelManager extends TiledMap
 				characterGroup.add(player);
 				hudLayer = new HUD(1, "Rock Castle"); //(lvlNumber, lvlDesc);
 				GlobalGameData.aHud = hudLayer;
-				hudLayer.updateHUD();
-
+				//hudLayer.updateHUD();
 			case "enemy":
 
 				objectsLayer.add(enemyBulletGroup);
