@@ -106,7 +106,7 @@ class Player extends FlxSprite
 		{
 			acceleration.y -= playerAcceleration;
 		}
-		if (FlxG.keys.justPressed.SPACE || FlxG.mouse.justPressed)
+		if (FlxG.keys.pressed.SPACE || FlxG.mouse.pressed)
 		{
 			playerCurrentGun.shoot(x + width / 2 , y + height / 2, FlxG.mouse.x, FlxG.mouse.y);
 			GlobalGameData.aHud.updateVisualizer();

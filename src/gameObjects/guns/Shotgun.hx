@@ -23,7 +23,7 @@ class Shotgun extends Gun
 	
 	public function new(aX:Float, aY:Float) 
 	{
-		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false));
+		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false), 8, false, 2000);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "shot_up", 10, true);
@@ -36,23 +36,20 @@ class Shotgun extends Gun
 		this.animation.addByPrefix("diagUp_left", "shot_diagup", 10, true, true);
 		this.animation.play("south");
 		
-		this.chamberLength = 8;
-		this.currentInChamber = chamberLength;
-		
 	}
 	
 	public  override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
 		var currentTime = Lib.getTimer();
-		if (currentTime > gunLastShoot + 4000)
+		if (currentTime > gunLastShoot + shootDelay)
 		{
 			var angleX: Int = -30;
 			var angleY: Int = -30;
 			for (i in 0...3)
 			{
-				var bullet:Bullet = bullets.recycle(Bullet, null, false, false);
-				bullet.bulletDamage = gunBulletDamage;
-				bullet.bulletSpeed = gunBulletSpeed;
+				var bullet:Bullet = bulletGroup.recycle(Bullet, null, false, false);
+				bullet.bulletDamage = this.bulletDamage;
+				bullet.bulletSpeed = this.bulletSpeed;
 				bullet.shoot(aX, aY, aTargetX + angleX, aTargetY + angleY, 2);
 				angleX += 30;
 				angleY += 30;

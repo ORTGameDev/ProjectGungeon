@@ -21,7 +21,7 @@ class Wand extends Gun
 	private var gunLastShoot: Int = 0;
 	public function new(aX:Float, aY:Float) 
 	{
-		super(aX, aY, GlobalGameData.enemiesBullets, 4, 150, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false));
+		super(aX, aY, GlobalGameData.enemiesBullets, 4, 150, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 1, true, 500);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "shot_up", 10, true);
@@ -38,9 +38,9 @@ class Wand extends Gun
 	
 	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
-		var bullet:Bullet = cast bullets.recycle(Bullet, null, false, false);
-		bullet.bulletDamage = gunBulletDamage;
-		bullet.bulletSpeed = gunBulletSpeed;
+		var bullet:Bullet = cast bulletGroup.recycle(Bullet, null, false, false);
+		bullet.bulletDamage = this.bulletDamage;
+		bullet.bulletSpeed = this.bulletSpeed;
 		if (!bullet.alive)
 		{
 			var currentTime = Lib.getTimer();

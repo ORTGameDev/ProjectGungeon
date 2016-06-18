@@ -16,27 +16,33 @@ import openfl.Assets;
  
 class Gun extends FlxSprite
 {
-	public 	var bullets: FlxTypedGroup<Bullet>;
+	public 	var bulletGroup: FlxTypedGroup<Bullet>;
 	public 	var chamberLength: Int = 0;
 	public 	var currentInChamber: Int = 0;
 	public  var infiniteBullets: Bool = false;
 	private var gunSound: FlxSound;
-	private var gunBulletDamage: Int = 1;
-	private var gunBulletSpeed: Int = 100;
+	private var bulletDamage: Int = 1;
+	private var bulletSpeed: Int = 100;
 	private var bulletSprite: FlxSprite;
+	private var lastShoot: Int = 0;
+	private var shootDelay: Int = 0;
 	
 	
-	public function new(aX:Float, aY:Float, aBullets:FlxTypedGroup<Bullet>, aBulletDamage:Int, aBulletSpeed:Int, aGunSound:FlxSound) 
+	public function new(aX:Float, aY:Float, aBullets:FlxTypedGroup<Bullet>, aBulletDamage:Int, aBulletSpeed:Int, aGunSound:FlxSound, aChamberLength:Int, hasInfiniteBullet:Bool, aShootDelay:Int) 
 	{
-
 		super(aX, aY);
-		gunBulletDamage = aBulletDamage;
-		gunBulletSpeed = aBulletSpeed;
-		gunSound = aGunSound;
-		bullets = aBullets;
+		this.bulletGroup = aBullets;
+		this.bulletDamage = aBulletDamage;
+		this.bulletSpeed = aBulletSpeed;
+		this.gunSound = aGunSound;
+		this.chamberLength = this.currentInChamber = aChamberLength;
+		this.infiniteBullets = hasInfiniteBullet;
+		this.shootDelay = aShootDelay;
 	}
 	
 	public function shoot(aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void { }
+	
+	
 	
 	
 	
