@@ -50,7 +50,8 @@ class Shotgun extends Gun
 				var bullet2:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
 				bullet2.shoot(aX, aY, aTargetX, aTargetY, (Math.PI /4));
 				
-				var bullet3:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				var bullet3
+				:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
 				bullet3.shoot(aX, aY, aTargetX, aTargetY, -1 * (Math.PI /4));
 				
 				gunSound.play(true);
