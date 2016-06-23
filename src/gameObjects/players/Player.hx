@@ -7,7 +7,8 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import gameObjects.guns.Bullet;
+import gameObjects.guns.Wand;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.guns.Gun;
 import gameObjects.guns.Pistol;
 import gameObjects.guns.Shotgun;
@@ -36,7 +37,6 @@ class Player extends FlxSprite
 	//Hurt
 	public var isHurt:Bool = false;
 	
-
 	//Movement
 	static private inline var playerAcceleration: Float = 150;
 	static private inline var playerXMaxSpeed: Float = 250;
@@ -46,19 +46,11 @@ class Player extends FlxSprite
 	//Gun
 	public var playerCurrentGun:Gun;
 	private var guns:Array<Gun>;
+	
 
 	public function new(X:Float = 0, Y:Float = 0)
 	{
 		super(X, Y);
-		drag.set(playerDrag, playerDrag);
-		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
-		guns = new Array<Gun>();
-		guns[0] = new Pistol(X, Y + this.height / 2);
-		guns[1] = new Shotgun(X, Y + this.height / 2);
-		guns[2] = new Shotgun(X, Y + this.height / 2);
-		this.playerCurrentGun = guns[0];
-		
-		
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/players/PlayerOne.png", "img/atlas/players/PlayerOne.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "playerOne_walk_up", 8, true);
@@ -68,11 +60,17 @@ class Player extends FlxSprite
 		this.animation.addByPrefix("die", "playerOne_die", 5, false);
 		this.animation.addByPrefix("start", "playerOne_walk_down (1)", 1, false, false, true);
 		this.animation.play("start");
-		this.setSize(28, 52);
-		this.offset.set(18, 12);
-		//Creo gun y bullets
-		//var aBullets = new FlxTypedGroup<Bullet>();
-		changeWeapon(pistol);
+		this.setSize(26, 52);
+		this.offset.set(17, 12);
+		
+		drag.set(playerDrag, playerDrag);
+		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
+		
+		guns = new Array<Gun>();
+		this.pickWeapon(pistol);
+		this.playerCurrentGun = guns[0];
+		
+		
 		FlxG.state.add(playerCurrentGun);
 
 	}
@@ -121,7 +119,7 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.pressed.THREE)
 		{
-			changeWeapon(shotgun);
+			//Falta SMG
 		}
 		super.update(elapsed);
 		playerCurrentGun.x = this.x + 7;
@@ -193,18 +191,51 @@ class Player extends FlxSprite
 		GlobalGameData.aHud.updateHUD();
 	}
 	
-	public function pickWeapon(type:String):Void
+	public function pickWeapon(gType:GunType):Void
 	{
+		switch(gType)
+		{
+			case pistol:	
+				if (guns[0] == null){
+					guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
+				}
+				this.playerCurrentGun = guns[0];
+			case shotgun:
+				if (guns[1] == null){
+					guns[1] = new Shotgun(this.x, this.y, GlobalGameData.playerBullets);
+				}
+				this.playerCurrentGun = guns[1];
+			case smg: 
+				if (guns[2] == null){
+					guns[2] = new Wand(this.x, this.y, GlobalGameData.playerBullets);
+				}
+				this.playerCurrentGun = guns[2];
+		}
+		playerCurrentGun.reload();
+		//changeWeapon(gType);
 		
 	}
 	
 	private function changeWeapon(gType:GunType):Void
 	{
-		switch(gType){
-			case pistol: this.playerCurrentGun = guns[0];
-			case shotgun: this.playerCurrentGun = guns[1];
-			case smg: this.playerCurrentGun = guns[2];
+		this.playerCurrentGun.kill();
+		switch(gType)
+		{
+			case pistol:
+				if (guns[0] != null){
+					this.playerCurrentGun = guns[0];
+				}
+			case shotgun:
+				if (guns[1] != null){
+					this.playerCurrentGun = guns[1];
+				}
+			case smg:
+				if (guns[2] != null){
+					this.playerCurrentGun = guns[2];
+				}
 		}
+		this.playerCurrentGun.revive();
+		GlobalGameData.aHud.updateVisualizer();
 	}
 	
 

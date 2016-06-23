@@ -29,7 +29,7 @@ class ShotgunPickup extends Pickup
 	override public function pickUp():Void
 	{
 		allowCollisions = FlxObject.NONE;
-		GlobalGameData.player.pickWeapon("shotgun");
+		GlobalGameData.player.pickWeapon(shotgun);
 		this.kill();
 	}
 

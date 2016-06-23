@@ -37,7 +37,7 @@ class BossEnemy extends Enemy
 		enemySpeed = 40;
 		enemyChaseDistance = 600;
 		enemyLife = 25;
-		enemyGun = new Wand(X, Y);
+		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets); 
 		enemyShootDistance = 500;
 		
 		drag.x = drag.y = 1500;

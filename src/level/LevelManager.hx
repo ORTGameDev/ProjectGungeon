@@ -21,7 +21,7 @@ import gameObjects.enemies.Enemy;
 import gameObjects.enemies.GreenOrc;
 import gameObjects.enemies.Skeleton;
 import gameObjects.enemies.Summoner;
-import gameObjects.guns.Bullet;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.pickups.HealthPickup;
 import gameObjects.pickups.Pickup;
 import gameObjects.pickups.ShotgunPickup;
@@ -51,6 +51,7 @@ class LevelManager extends TiledMap
 	//*****NUEVO*******//
 	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
 	//*****************//
+	
 	public var playerBulletGroup:FlxTypedGroup<Bullet>;
 	public var enemyBulletGroup:FlxTypedGroup<Bullet>;
 
@@ -241,7 +242,6 @@ class LevelManager extends TiledMap
 				GlobalGameData.aHud = hudLayer;
 				//hudLayer.updateHUD();
 			case "enemy":
-
 				objectsLayer.add(enemyBulletGroup);
 				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
 				//idem player: arma?

@@ -5,8 +5,9 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound;
 import flixel.util.FlxColor;
-import gameObjects.guns.Bullet;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.guns.Gun;
+import gameObjects.guns.bullets.PistolBullet;
 import openfl.Assets;
 import openfl.Lib;
 
@@ -20,10 +21,10 @@ class Pistol extends Gun
 {
 	
 	
-	public function new(aX:Float, aY:Float) 
+	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) 
 	{
 		var bulletGroup = GlobalGameData.playerBullets;
-		super(aX, aY, bulletGroup, 2, 250, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 20, true, 1000);
+		super(aX, aY, bullets, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 20, true, 1000);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
 		this.animation.addByPrefix("north", "p_up", 10, true);
@@ -40,29 +41,26 @@ class Pistol extends Gun
 	
 	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
-		var currentTime = Lib.getTimer();
-		if (currentTime > lastShoot + shootDelay)
-		{
-			var bullet:Bullet = cast bulletGroup.recycle(Bullet, null, false, false);
-			bullet.bulletDamage = this.bulletDamage;
-			bullet.bulletSpeed = this.bulletSpeed;
-			if (!bullet.alive) 
+		if (currentInChamber > 0 ){
+			
+			var currentTime = Lib.getTimer();
+			if (currentTime > lastShoot + shootDelay)
 			{
-				bullet.shoot(aX, aY, aTargetX, aTargetY, 1);
-				gunSound.play(true);
-				lastShoot = currentTime;
-				currentInChamber --;
-				if (currentInChamber == 0){
-					if (infiniteBullets){
-						currentInChamber = chamberLength;
-					}else{
-						currentInChamber = 0;
-						//Acá hay que destruir el arma del player y que vuelva a la pisto
+				var bullet:Bullet = cast bulletGroup.recycle(PistolBullet, null, false, false);
+					bullet.shoot(aX, aY, aTargetX, aTargetY);
+					gunSound.play(true);
+					lastShoot = currentTime;
+					currentInChamber --;
+					if (currentInChamber == 0){
+						if (infiniteBullets){
+							currentInChamber = chamberLength;
+						}else{
+							currentInChamber = 0;
+							//Acá hay que destruir el arma del player y que vuelva a la pisto
+						}
 					}
-				}
 			}
 		}
 	}
-		
 	
 }

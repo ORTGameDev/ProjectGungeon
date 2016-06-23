@@ -547,31 +547,31 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "376",
+			build: "445",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,
-			name: "Obligatorio",
-			orientation: "",
-			packageName: "Obligatorio",
+			name: "Welcome to the Gungle",
+			orientation: "landscape",
+			packageName: "com.gastonignacio.obligatorio",
 			version: "1.0.0",
 			windows: [
 				
 				{
-					antialiasing: 0,
-					background: 0,
-					borderless: false,
+					antialiasing: 4,
+					background: 132360,
+					borderless: true,
 					depthBuffer: false,
 					display: 0,
-					fullscreen: true,
+					fullscreen: false,
 					hardware: true,
-					height: 768,
+					height: 600,
 					parameters: "{}",
-					resizable: true,
+					resizable: false,
 					stencilBuffer: true,
-					title: "Obligatorio",
+					title: "Welcome to the Gungle",
 					vsync: false,
-					width: 1366,
+					width: 800,
 					x: null,
 					y: null
 				},
@@ -589,7 +589,7 @@ class ApplicationMain {
 		
 		#if (js && html5)
 		#if (munit || utest)
-		openfl.Lib.embed (null, 1366, 768, "000000");
+		openfl.Lib.embed (null, 800, 600, "020508");
 		#end
 		#else
 		create ();

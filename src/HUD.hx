@@ -1,5 +1,6 @@
 package;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup;
@@ -53,8 +54,9 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		add(sprBackground);
 		
 		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
-		txtLvlInfo = new FlxText(FlxG.width/2, 2, 0, lvlDesc, 8);
-		txtLvlInfo.setBorderStyle(SHADOW, FlxColor.GRAY, 1, 1);
+		txtLvlInfo = new FlxText(FlxG.width / 2, 2, 0, lvlDesc, 18);
+		txtLvlInfo.color = FlxColor.GRAY;
+		txtLvlInfo.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.WHITE, 1, 1);
 		add(txtLvlInfo);
 		
 		//PLayerHealth

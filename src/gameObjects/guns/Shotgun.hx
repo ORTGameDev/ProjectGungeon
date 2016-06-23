@@ -5,9 +5,10 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxSound;
 import flixel.util.FlxColor;
-import gameObjects.guns.Bullet;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.guns.Gun;
 import gameObjects.guns.Pistol;
+import gameObjects.guns.bullets.ShotgunBullet;
 import openfl.Assets;
 import openfl.Lib;
 
@@ -21,9 +22,9 @@ class Shotgun extends Gun
 {
 	private var gunLastShoot: Int = 0;	
 	
-	public function new(aX:Float, aY:Float) 
+	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) 
 	{
-		super(aX, aY, GlobalGameData.enemiesBullets, 2, 200, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false), 8, false, 2000);
+		super(aX, aY, bullets, FlxG.sound.load("sounds/shotgunShot.mp3", 0.4, false), 8, false, 2000);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "shot_up", 10, true);
@@ -40,21 +41,18 @@ class Shotgun extends Gun
 	
 	public  override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
 	{
-		var currentTime = Lib.getTimer();
-		if (currentTime > gunLastShoot + shootDelay)
-		{
-			var angleX: Int = -30;
-			var angleY: Int = -30;
-			for (i in 0...3)
-			{
-				var bullet:Bullet = bulletGroup.recycle(Bullet, null, false, false);
-				bullet.bulletDamage = this.bulletDamage;
-				bullet.bulletSpeed = this.bulletSpeed;
-				bullet.shoot(aX, aY, aTargetX + angleX, aTargetY + angleY, 2);
-				angleX += 30;
-				angleY += 30;
-			}
-			
+		if(currentInChamber > 0){
+			var currentTime = Lib.getTimer();
+			if (currentTime> gunLastShoot + shootDelay){
+				var bullet1:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet1.shoot(aX, aY, aTargetX, aTargetY, 0);
+				
+				var bullet2:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet2.shoot(aX, aY, aTargetX, aTargetY, (Math.PI /4));
+				
+				var bullet3:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet3.shoot(aX, aY, aTargetX, aTargetY, -1 * (Math.PI /4));
+				
 				gunSound.play(true);
 				gunLastShoot = currentTime;
 				currentInChamber --;
@@ -63,9 +61,9 @@ class Shotgun extends Gun
 				}else{
 					
 				}
-			
+				
+			}
 		}
-		
 	}
 	
 	

@@ -3,7 +3,7 @@ import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import gameObjects.BarrelExplotion;
 import gameObjects.enemies.Enemy;
-import gameObjects.guns.Bullet;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.pickups.Pickup;
 import gameObjects.players.Player;
 

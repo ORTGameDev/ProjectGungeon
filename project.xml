@@ -6,15 +6,14 @@
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
 	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
-	<meta title="Obligatorio" package="Obligatorio" version="1.0.0" company="GastonIgnacio" />
+	<meta title="Welcome to the Gungle" package="com.gastonignacio.obligatorio" version="1.0.0" company="GastonIgnacio" />
 	
 	<!-- output -->
 	<app main="Main" file="Obligatorio" path="bin" />
 	<app swf-version="11.8" if="flash" />
 	
-	<window background="#000000" fps="60" />
-	<window width="1366" height="768" fullscreen="true" unless="mobile" />
-	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
+	<window width="0" height="0" background="#020508" fps="60" />
+	<window width="800" height="600" orientation="landscape" fullscreen="false" fps="60" vsync="false" borderless="true" resizable="false" antialiasing="4" />
 	
 	
 	<!-- classpath, haxe libs -->

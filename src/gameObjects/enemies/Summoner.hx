@@ -47,7 +47,7 @@ class Summoner extends Enemy
 		enemySpeed = 45;
 		enemyChaseDistance = 400;
 		enemyLife = 5;
-		enemyGun = new Wand(X, Y);
+		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
 		enemyShootDistance = 300;
 		
 		drag.x = drag.y = 1500;
