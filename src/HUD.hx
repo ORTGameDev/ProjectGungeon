@@ -11,6 +11,7 @@ import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import gameObjects.guns.Pistol;
+import gameObjects.guns.Shotgun;
 import openfl.Assets;
 import openfl.text.Font;
 import states.MenuState;
@@ -22,22 +23,25 @@ import states.PlayState;
  */
 class HUD extends FlxTypedGroup<FlxSprite>
 {
-	/*______Background______*/
+	/////  Top info  /////
 	private var sprBackground: FlxSprite;
-	
-	/*______Player Health______*/
 	private var sprHealthArray: Array<FlxSprite>;
-		
-	/*_____level details_____*/
 	private var txtLvlInfo: FlxText;
 	private var lvlDesc:String;
 
-	/*_______Messages and Buttons_______*/
-	private var PlayerMessage: FlxText ;
-	private var retryButton: FlxButton;
-	private var BackToMenuButton: FlxButton;
+	/////  Messages and Buttons  /////
+	private var backGround: FlxSprite;
+	private static inline var backGroundWidth: 	Int = 300;
+	private static inline var backGroundHeigth: Int = 200;
+	private var PlayerMessage: FlxText;
+	private var btnRetryLevel: FlxButton;
+	private var btnQuit: FlxButton;
+	private var btnNextLevel: FlxButton;
+	private static inline var buttonGap: Int = 10;
+
+	
 		
-	/*__________Gun visualizer____________*/
+	/////  Gun visualizer  /////
 	private var visualizerBackground: FlxSprite;
 	private var gunSprite: FlxSprite;
 	private var bulletInChamber: FlxText;
@@ -46,6 +50,17 @@ class HUD extends FlxTypedGroup<FlxSprite>
 	public function new(aLvlNumber:Int, aLvlString:String) 
 	{
 		super();
+		createTopHudInfo(aLvlNumber, aLvlString);
+		createGunVisualizer();
+		updateVisualizer();
+		forEach(function(spr:FlxSprite)
+		{
+			spr.scrollFactor.set(0, 0);
+		});
+	}
+	
+	private function createTopHudInfo(aLvlNumber:Int, aLvlString:String):Void
+	{
 		//BackGround
 		sprBackground = new FlxSprite();
 		sprBackground.makeGraphic(FlxG.width, 40, FlxColor.BLACK);
@@ -72,26 +87,10 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			
 		}
 		
-		
-		PlayerMessage = new FlxText(0, 200, 500, "", 24);
-		PlayerMessage.setFormat(24, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
-		PlayerMessage.screenCenter();
-		PlayerMessage.visible = false;
-		add(PlayerMessage);
-		
-		
-		retryButton = new FlxButton(0, 0, "Retry", reloadState);
-		retryButton.screenCenter(FlxAxes.X);
-		retryButton.y = PlayerMessage.y + 50;
-		retryButton.visible = false;
-		add(retryButton);
-		
-		BackToMenuButton = new FlxButton(0, 0, "Back to Menu", BackToMenu);
-		BackToMenuButton.screenCenter(FlxAxes.X);
-		BackToMenuButton.y = retryButton.y + 50;
-		BackToMenuButton.visible = false;
-		add(retryButton);
-		
+	}
+	
+	private function createGunVisualizer()
+	{
 		//visualizer BackGround
 		visualizerBackground = new FlxSprite(FlxG.width - 200,FlxG.height - 60);
 		visualizerBackground.makeGraphic(200, 40, FlxColor.BLACK);
@@ -104,15 +103,50 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		bulletInChamber = new FlxText(gunSprite.x + 100, gunSprite.y + (gunSprite.height / 2), 0, "", 24);
 		bulletInChamber.setFormat(24, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.NONE, FlxColor.WHITE);
 		add(bulletInChamber);
-		
-		updateVisualizer();
-		
-		forEach(function(spr:FlxSprite)
-		{
-			spr.scrollFactor.set(0, 0);
-		});
 	}
 	
+	public function createPlayMenu(playerWins:Bool):Void 
+	{
+		btnNextLevel = new FlxButton(0, 200, "Continue >>", nextLevel);
+		btnNextLevel.screenCenter(FlxAxes.X);
+		if (!playerWins){
+			btnNextLevel.visible = false;
+		}
+		btnNextLevel.allowCollisions = FlxObject.NONE;
+			
+		btnRetryLevel = new FlxButton(0, 0, "Retry", reloadState);
+		btnRetryLevel.screenCenter(FlxAxes.X);
+		btnRetryLevel.y = btnNextLevel.y + btnNextLevel.height + buttonGap;
+		btnRetryLevel.allowCollisions = FlxObject.NONE;
+		
+		btnQuit = new FlxButton(0, 0, "Back to Menu", BackToMenu);
+		btnQuit.screenCenter(FlxAxes.X);
+		btnQuit.y = btnRetryLevel.y + btnRetryLevel.height + buttonGap;
+		btnQuit.allowCollisions = FlxObject.NONE;
+		
+		PlayerMessage = new FlxText(btnNextLevel.x + (btnNextLevel.width / 2) - 250, btnNextLevel.y - 40, 500, "", 18);
+		PlayerMessage.setFormat(18, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
+		PlayerMessage.allowCollisions = FlxObject.NONE;
+		PlayerMessage.scrollFactor.set(0, 0);
+		if (playerWins){
+			PlayerMessage.text = "You win!!";
+		}else{
+			PlayerMessage.text = "You are dead!!";
+		}
+		
+		backGround = new FlxSprite(btnNextLevel.x + (btnNextLevel.width/2) - backGroundWidth / 2, PlayerMessage.y - 30);
+		backGround.makeGraphic(backGroundWidth, backGroundHeigth, FlxColor.BLACK);
+		backGround.alpha = 0.4;
+		backGround.scrollFactor.set(0, 0);
+		backGround.allowCollisions = FlxObject.NONE;
+		
+		add(backGround);
+		add(PlayerMessage);
+		add(btnNextLevel);
+		add(btnRetryLevel);
+		add(btnQuit);
+	
+	}
 
 	public function updateHUD():Void
 	{
@@ -126,10 +160,6 @@ class HUD extends FlxTypedGroup<FlxSprite>
 			}
 			i++;
 		}
-		if (GlobalGameData.player.playerCurrentLife <= 0){
-			playerIsDead();
-		}
-		
 	}
 	
 	public function updateVisualizer():Void
@@ -137,42 +167,31 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		var aGun = GlobalGameData.player.playerCurrentGun;
 		if (Type.getClass(aGun) == Pistol){
 			gunSprite.loadGraphic(Assets.getBitmapData("img/guns/pistol/p_pick.png"), false, 45, 27);
-		}else{
+		}else if (Type.getClass(aGun) == Shotgun){
 			gunSprite.loadGraphic(Assets.getBitmapData("img/guns/shotgun/shot_pick.png"), false, 76, 27);
+		}else {
+			gunSprite.loadGraphic(Assets.getBitmapData("img/guns/smg/smg_pick.png"), false, 76, 27);
 		}
 		bulletInChamber.text = aGun.currentInChamber + "/" + aGun.chamberLength;
 		
 	}
 	
-	public function playerWin():Void
+	
+	private function reloadState():Void
 	{
-		PlayerMessage.text = "You Win!!";
-		showActions();
+		FlxG.switchState(new PlayState());
 	}
 	
-	private function playerIsDead():Void
+	private function nextLevel():Void
 	{
-		PlayerMessage.text = "You are dead!!";
-		showActions();
+		//FlxG.switchState(new PlayState());
 	}
-		
-		private function reloadState():Void
-		{
-			FlxG.switchState(new PlayState());
-		}
-		
-		private function BackToMenu():Void
-		{
-			FlxG.switchState(new MenuState());
-		}
 	
-		private function showActions():Void
-		{
-			PlayerMessage.visible = true;
-			PlayerMessage.alpha = 1;
-			retryButton.visible = true;
-			retryButton.alpha = 1;
-			BackToMenuButton.visible = true;
-			BackToMenuButton.alpha = 1;
-		}
+	private function BackToMenu():Void
+	{
+		FlxG.switchState(new MenuState());
+	}
+
+	
+	
 }

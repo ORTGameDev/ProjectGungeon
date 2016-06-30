@@ -3,8 +3,8 @@ package;
 import flixel.FlxSprite;
 import gameObjects.pickups.Pickup;
 import gameObjects.pickups.HealthPickup;
-import gameObjects.pickups.PistolPickup;
 import gameObjects.pickups.ShotgunPickup;
+import gameObjects.pickups.SmgPickup;
 
 /**
 *@author Ignacio Benedetto
@@ -23,8 +23,9 @@ class PickupFactory
 	  var ret = null;
       switch(type)
       {
-        case "pistol":
-            ret = GlobalGameData.pickups.recycle(PistolPickup);
+        //case "pistol":
+          //  ret = GlobalGameData.pickups.recycle(PistolPickup);
+		  //NO HAY PICKUP DE PISTOL POR SER EL ARMA POR DEFECTO
         case "shotgun":
             ret = GlobalGameData.pickups.recycle(ShotgunPickup);
         case "health":

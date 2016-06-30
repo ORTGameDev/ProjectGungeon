@@ -38,10 +38,7 @@ class Gun extends FlxSprite
 	
 	public function shoot(aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void { }
 	
-	public function reload():Void
-	{
-		this.currentInChamber = this.chamberLength;
-	}
+	public function reload():Void {	this.currentInChamber = this.chamberLength;	}
 	
 	
 	

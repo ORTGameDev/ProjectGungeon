@@ -12,7 +12,6 @@ import gameObjects.guns.Shotgun;
 import gameObjects.guns.Gun;
 import gameObjects.pickups.HealthPickup;
 import gameObjects.pickups.Pickup;
-import gameObjects.pickups.PistolPickup;
 import gameObjects.pickups.ShotgunPickup;
 import openfl.Assets;
 import openfl.Lib;
@@ -126,7 +125,7 @@ class Enemy extends FlxSprite
 		}
 		if (length < enemyShootDistance)
 		{
-			shootToPlayer(player.x, player.y);
+			shootToPlayer(player.x + player.width / 2, player.y + player.height / 2);
 		}
 	}
 

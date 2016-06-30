@@ -19,9 +19,7 @@ class ShotgunPickup extends Pickup
 	{
 		super(aX, aY);
 		loadGraphic(Assets.getBitmapData("img/guns/shotgun/shot_pick.png"), false, 76, 27);
-		pickUpSound = FlxG.sound.load("sounds/healPickUp.mp3", 1, false);
-		
-
+		pickUpSound = FlxG.sound.load("sounds/gunPickUp.mp3", 1, false);
 	}
 
 
@@ -30,6 +28,7 @@ class ShotgunPickup extends Pickup
 	{
 		allowCollisions = FlxObject.NONE;
 		GlobalGameData.player.pickWeapon(shotgun);
+		GlobalGameData.aHud.updateVisualizer();
 		this.kill();
 	}
 

@@ -7,6 +7,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import gameObjects.guns.Smg;
 import gameObjects.guns.Wand;
 import gameObjects.guns.bullets.Bullet;
 import gameObjects.guns.Gun;
@@ -67,7 +68,7 @@ class Player extends FlxSprite
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		
 		guns = new Array<Gun>();
-		this.pickWeapon(pistol);
+		this.guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
 		this.playerCurrentGun = guns[0];
 		
 		
@@ -119,7 +120,7 @@ class Player extends FlxSprite
 		}
 		if (FlxG.keys.pressed.THREE)
 		{
-			//Falta SMG
+			changeWeapon(smg);
 		}
 		super.update(elapsed);
 		playerCurrentGun.x = this.x + 7;
@@ -200,20 +201,22 @@ class Player extends FlxSprite
 					guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[0];
+				this.playerCurrentGun.reload();
+				
 			case shotgun:
 				if (guns[1] == null){
 					guns[1] = new Shotgun(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[1];
+				this.playerCurrentGun.reload();
 			case smg: 
 				if (guns[2] == null){
-					guns[2] = new Wand(this.x, this.y, GlobalGameData.playerBullets);
+					guns[2] = new Smg(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[2];
+				this.playerCurrentGun.reload();
 		}
-		playerCurrentGun.reload();
-		//changeWeapon(gType);
-		
+		changeWeapon(gType);
 	}
 	
 	private function changeWeapon(gType:GunType):Void

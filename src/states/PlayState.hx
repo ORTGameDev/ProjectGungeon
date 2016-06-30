@@ -1,27 +1,20 @@
 package states;
 import GlobalGameData;
-import flixel.FlxCamera.FlxCameraFollowStyle;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
-import flixel.effects.particles.FlxEmitter;
 import flixel.effects.particles.FlxParticle;
-import flixel.group.FlxGroup;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tile.FlxTilemap;
 import gameObjects.Barrel;
-import gameObjects.enemies.BossEnemy;
-import gameObjects.enemies.Skeleton;
-import gameObjects.enemies.Summoner;
-import gameObjects.guns.bullets.Bullet;
+import gameObjects.Pointer;
 import gameObjects.enemies.Enemy;
-import gameObjects.enemies.GreenOrc;
-import gameObjects.enemies.PistolPete;
-import gameObjects.pickups.HealthPickup;
+import gameObjects.guns.bullets.Bullet;
 import gameObjects.pickups.Pickup;
 import gameObjects.players.Player;
-import gameObjects.Pointer;
 import level.LevelManager;
-import openfl.Assets;
+
 
 /**
  * ...
@@ -41,6 +34,7 @@ class PlayState extends FlxState
 
 	//HUD + UI
 	private var hud:HUD;
+	private var gameOver: Bool = false;
 
 	//Map
 	private var map:FlxTilemap;
@@ -114,16 +108,22 @@ class PlayState extends FlxState
 
 		add(level.hudLayer);
 	
-		this.changeGamePointer();
+		changeGamePointer();
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		level.update(elapsed);
 		super.update(elapsed);
-		if (GlobalGameData.enemies.countLiving() == 0)
-		{
-			level.hudLayer.playerWin();
+		if (!gameOver) {
+			if (GlobalGameData.player.playerCurrentLife <= 0){
+				gameOver = true;
+				GlobalGameData.aHud.createPlayMenu(false);
+			}else if (GlobalGameData.enemies.countLiving() == 0)
+			{
+				gameOver = true;
+				GlobalGameData.aHud.createPlayMenu(true);
+			}
 		}
 	}
 
@@ -136,12 +136,12 @@ class PlayState extends FlxState
 			//add(e.enemyGun.bullets);
 			}
 		}
-
 	}
-
+	
 	private function changeGamePointer()
 	{
 		gamePointer = new Pointer();
+		gamePointer.allowCollisions = FlxObject.NONE;
 		FlxG.mouse.visible = false;
 		FlxG.mouse.hideSystemCursor();
 		add(gamePointer);

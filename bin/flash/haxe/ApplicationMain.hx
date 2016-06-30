@@ -426,6 +426,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		urls.push ("sounds/gunPickUp.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
 		urls.push ("sounds/healPickUp.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -547,7 +551,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "445",
+			build: "514",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

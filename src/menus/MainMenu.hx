@@ -1,6 +1,7 @@
 package menus;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.ui.FlxButtonPlus;
 import flixel.group.FlxGroup;
 import flixel.ui.FlxButton;
 import flixel.util.FlxAxes;
@@ -16,13 +17,13 @@ import states.PlayerSelectState;
 class MainMenu extends FlxGroup
 {
 	//Buttons	
-	private var btnPlay: FlxButton;
+	private var btnPlay: FlxButtonPlus;
 	private var btnSettings: FlxButton;
 	private var btnQuit: FlxButton;
 	//Background
 	private var backGround: FlxSprite;
-	private static inline var backGroundWidth: 	Int = 250;
-	private static inline var backGroundHeigth: Int = 300;
+	private static inline var backGroundWidth: 	Int = 450;
+	private static inline var backGroundHeigth: Int = 400;
 	//General
 	private static inline var buttonGap: Int = 10;
 
@@ -37,7 +38,10 @@ class MainMenu extends FlxGroup
 		backGround.screenCenter(FlxAxes.X);
 		add(backGround);
 		//Set Button
-		btnPlay = new FlxButton(0, backGround.y + buttonGap, "Play!", clickSinglePlay);
+		btnPlay = new FlxButtonPlus(0, backGround.y + buttonGap, clickSinglePlay, "Play!", 200, 40);
+		btnPlay.borderColor = FlxColor.BROWN;
+		btnPlay.offColor = [FlxColor.BLACK,FlxColor.MAGENTA];
+		btnPlay.updateActiveButtonColors([FlxColor.BLUE]);
 		btnPlay.screenCenter(FlxAxes.X);
 		add(btnPlay);
 		

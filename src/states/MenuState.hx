@@ -34,7 +34,6 @@ class MenuState extends FlxState
 		super.create();
 		//Set Logo
 		gameLogo = new FlxSprite(0, 50);
-		//gameLogo.loadGraphic(AssetPaths.logo__png, false, 375, 148);
 		gameLogo.loadGraphic("img/logo.png",false, 375, 148);
 		gameLogo.screenCenter(FlxAxes.X);
 		add(gameLogo);
@@ -45,7 +44,7 @@ class MenuState extends FlxState
 		menu = new MainMenu();
 		
 		add(menu);
-				
+		
 		this.changeGamePointer();
 		
 		
