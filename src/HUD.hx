@@ -21,14 +21,12 @@ import states.PlayState;
  * ...
  * @author Gaston Marichal / Ignacio Benedetto
  */
-class HUD extends FlxTypedGroup<FlxSprite>
-{
+class HUD extends FlxTypedGroup<FlxSprite> {
+	
 	/////  Top info  /////
 	private var sprBackground: FlxSprite;
 	private var sprHealthArray: Array<FlxSprite>;
-	private var txtLvlInfo: FlxText;
-	private var lvlDesc:String;
-
+	
 	/////  Messages and Buttons  /////
 	private var backGround: FlxSprite;
 	private static inline var backGroundWidth: 	Int = 300;
@@ -40,27 +38,23 @@ class HUD extends FlxTypedGroup<FlxSprite>
 	private static inline var buttonGap: Int = 10;
 
 	
-		
 	/////  Gun visualizer  /////
 	private var visualizerBackground: FlxSprite;
 	private var gunSprite: FlxSprite;
 	private var bulletInChamber: FlxText;
 	
 	
-	public function new(aLvlNumber:Int, aLvlString:String) 
-	{
+	public function new(aLvlNumber:Int, aLvlString:String) {
 		super();
 		createTopHudInfo(aLvlNumber, aLvlString);
 		createGunVisualizer();
 		updateVisualizer();
-		forEach(function(spr:FlxSprite)
-		{
+		forEach(function(spr:FlxSprite)	{
 			spr.scrollFactor.set(0, 0);
 		});
 	}
 	
-	private function createTopHudInfo(aLvlNumber:Int, aLvlString:String):Void
-	{
+	private function createTopHudInfo(aLvlNumber:Int, aLvlString:String):Void {
 		//BackGround
 		sprBackground = new FlxSprite();
 		sprBackground.makeGraphic(FlxG.width, 40, FlxColor.BLACK);
@@ -68,17 +62,10 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		FlxSpriteUtil.drawRect(sprBackground, 0, 37, FlxG.width, 3, FlxColor.WHITE);
 		add(sprBackground);
 		
-		lvlDesc = "Level: " + aLvlNumber + " (" + aLvlString + ")";
-		txtLvlInfo = new FlxText(FlxG.width / 2, 2, 0, lvlDesc, 18);
-		txtLvlInfo.color = FlxColor.GRAY;
-		txtLvlInfo.setBorderStyle(FlxTextBorderStyle.OUTLINE, FlxColor.WHITE, 1, 1);
-		add(txtLvlInfo);
-		
 		//PLayerHealth
 		sprHealthArray = new Array<FlxSprite>();
 		var gap: Int = 20;
-		for (i in 0...GlobalGameData.player.playerTotalLife)
-		{
+		for (i in 0...GlobalGameData.player.playerTotalLife) {
 			var h = new FlxSprite(gap, 5);
 			h.loadGraphic(Assets.getBitmapData("img/sprite_0.png"), false, 32, 32);
 			add(h);
@@ -89,8 +76,7 @@ class HUD extends FlxTypedGroup<FlxSprite>
 		
 	}
 	
-	private function createGunVisualizer()
-	{
+	private function createGunVisualizer() {
 		//visualizer BackGround
 		visualizerBackground = new FlxSprite(FlxG.width - 200,FlxG.height - 60);
 		visualizerBackground.makeGraphic(200, 40, FlxColor.BLACK);

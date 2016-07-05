@@ -45,14 +45,19 @@ class Shotgun extends Gun
 			var currentTime = Lib.getTimer();
 			if (currentTime> gunLastShoot + shootDelay){
 				var bullet1:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
-				bullet1.shootWithAngle(aX, aY, aTargetX, aTargetY, Math.PI / 16);
+				bullet1.shootWithAngle(aX, aY, aTargetX, aTargetY, Math.PI / 24);
 				
 				var bullet2:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
 				bullet2.shootWithAngle(aX, aY, aTargetX, aTargetY, 0);
 				
-				var bullet3
-				:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
-				bullet3.shootWithAngle(aX, aY, aTargetX, aTargetY, (Math.PI / 16) * -1);
+				var bullet3:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet3.shootWithAngle(aX, aY, aTargetX, aTargetY, (Math.PI / 24) * -1);
+				
+				var bullet4:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet4.shootWithAngle(aX, aY, aTargetX, aTargetY, Math.PI / 12);
+				
+				var bullet5:ShotgunBullet = cast (bulletGroup.recycle(ShotgunBullet, null, false, false), ShotgunBullet);
+				bullet5.shootWithAngle(aX, aY, aTargetX, aTargetY, (Math.PI / 12) * -1);
 				
 				gunSound.play(true);
 				gunLastShoot = currentTime;

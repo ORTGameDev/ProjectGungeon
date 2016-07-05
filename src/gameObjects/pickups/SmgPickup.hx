@@ -11,8 +11,7 @@ import openfl.Assets;
  * ...
  * @author Ignacio Benedetto
  */
-class SmgPickup extends Pickup
-{
+class SmgPickup extends Pickup {
 	
 	public function new(aX:Float, aY:Float)
 	{
