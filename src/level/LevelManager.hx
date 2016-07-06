@@ -31,27 +31,26 @@ import states.PlayState;
 
 /**
  * @author Ignacio Benedetto
- */
+**/
 class LevelManager extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
 	private inline static var c_PATH_LEVEL_TILESHEETS = "maps/";
 
-	// Array of tilemaps used for collision
+	//Layers
 	public var foregroundLayer:FlxGroup; //muros no colisionables
 	public var objectsLayer:FlxGroup; //jugadores, enemies, pickups, barrels
 	public var floorLayer:FlxGroup;
 	public var collidableLayer:FlxTypedGroup<FlxTilemap>;
+
+	//Groups
 	public var hudLayer:HUD;
 	public var characterGroup:FlxGroup;
 	public var enemiesGroup:FlxTypedGroup<Enemy>;
 	public var pickupGroup:FlxTypedGroup<Pickup>;
 	public var breakableGroup:FlxGroup;
-	//*****NUEVO*******//
 	public var explotionGroup:FlxTypedGroup<BarrelExplotion>;
-	//*****************//
-	
 	public var playerBulletGroup:FlxTypedGroup<Bullet>;
 	public var enemyBulletGroup:FlxTypedGroup<Bullet>;
 
@@ -70,17 +69,16 @@ class LevelManager extends TiledMap
 		collidableLayer = new FlxTypedGroup<FlxTilemap>();
 		objectsLayer = new FlxGroup();
 
-		//*****NUEVO*******//
 		explotionGroup = new FlxTypedGroup<BarrelExplotion>();
 		GlobalGameData.explotions = explotionGroup;
-		//****************//
+
 		breakableGroup = new FlxGroup();
 		characterGroup = new FlxGroup();
 		enemiesGroup = new FlxTypedGroup<Enemy>();
-		
+
 		pickupGroup = new FlxTypedGroup<Pickup>();
 		GlobalGameData.pickups = pickupGroup;
-		
+
 
 		playerBulletGroup = new FlxTypedGroup<Bullet>();
 		enemyBulletGroup = new FlxTypedGroup<Bullet>();
@@ -136,6 +134,7 @@ class LevelManager extends TiledMap
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
 				tilemap.allowCollisions = FlxObject.ANY;
+				//tilemap.inmovable?
 				collidableLayer.add(tilemap);
 				collidableTileLayers.push(tilemap);
 			}
@@ -219,57 +218,46 @@ class LevelManager extends TiledMap
 		var x:Int = o.x;
 		var y:Int = o.y;
 
-	
-		
+		GlobalGameData.playerBullets = playerBulletGroup;
+		objectsLayer.add(playerBulletGroup);
+
+
+		GlobalGameData.enemiesBullets = enemyBulletGroup;
+		objectsLayer.add(enemyBulletGroup);
+		GlobalGameData.enemies = enemiesGroup;
 
 		// objects in tiled are aligned bottom-left (top-left in flixel)
 		if (o.gid != -1)
 			y -= g.map.getGidOwner(o.gid).tileHeight;
-			GlobalGameData.enemies = this.enemiesGroup;
+
 		switch (o.type.toLowerCase())
 		{
 			case "player_start":
-				objectsLayer.add(playerBulletGroup);
-				GlobalGameData.playerBullets = playerBulletGroup; //arreglar player para que tome bullets del GGD
 				var player = new Player(x, y);
-				//dibujar arma aca?
-				//FlxG.camera.setScrollBoundsRect(0, 0, this.width,this.height);
+				GlobalGameData.player = player;
+		 		characterGroup.add(player);
 				FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 				FlxG.worldBounds.set(0, 0, fullWidth, fullHeight);
-				GlobalGameData.player = player;
-				characterGroup.add(player);
 				hudLayer = new HUD(1, "Rock Castle"); //(lvlNumber, lvlDesc);
 				GlobalGameData.aHud = hudLayer;
-				//hudLayer.updateHUD();
 			case "enemy":
-				objectsLayer.add(enemyBulletGroup);
-				GlobalGameData.enemiesBullets = enemyBulletGroup; //idem player
-				//idem player: arma?
-				var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
-				//state.enemies.add(enemy);
-				enemiesGroup.add(enemy);
+				 var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
+				 enemiesGroup.add(enemy);
 
 			case "breakable":
-
 				var barrel = new Barrel(x, y);
-				objectsLayer.add(barrel);
 				breakableGroup.add(barrel);
-				//state.barrels.add(barrel);
+				objectsLayer.add(breakableGroup);
 
 			case "pickup":
 				var tileset = g.map.getGidOwner(o.gid);
 				var pickup = PickupFactory.getPickup(o.properties.get("pType"), x, y);
-				//GlobalGameData.pickups.add(pickup);
-				//state.healthpickups.add(pickup);
-				objectsLayer.add(pickup);
 				pickupGroup.add(pickup);
+				objectsLayer.add(pickupGroup);
 
 			case "exit":
-				// Create the level exit
-				var exit = new FlxSprite(x, y);
-				exit.makeGraphic(32, 32, 0xff3f3f3f);
+				exit = new FlxSprite(x, y);
 				exit.exists = false;
-				//state.exit = exit;
 				objectsLayer.add(exit);
 		}
 	}

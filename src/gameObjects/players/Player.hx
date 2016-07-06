@@ -140,21 +140,21 @@ class Player extends FlxSprite
 			}
 			if (angle <= (0 + 45) || angle > (360 - 45)){
 				animation.play("right");
-				playerCurrentGun.alpha = 1;
-				playerCurrentGun.animation.play("right");
+				//playerCurrentGun.alpha = 1;
+				//playerCurrentGun.animation.play("right");
 			} else if (angle  <=  (90 + 45) && angle > (90 - 45)){
 				animation.play("south");
-				playerCurrentGun.alpha = 1;
-				playerCurrentGun.animation.play("south");
+				//playerCurrentGun.alpha = 1;
+				//playerCurrentGun.animation.play("south");
 			} else if (angle <= (180 + 45) && angle > (180 - 45)){
 				animation.play("left");
-				playerCurrentGun.alpha = 1;
-				playerCurrentGun.animation.play("left");
-				playerCurrentGun.x -= 7;
+				//playerCurrentGun.alpha = 1;
+				//playerCurrentGun.animation.play("left");
+				//playerCurrentGun.x -= 7;
 			} else if (angle <= (270 + 45) && angle > (270 - 45)){
 				animation.play("north");
-				playerCurrentGun.alpha = 0;
-				playerCurrentGun.animation.play("north");
+				//playerCurrentGun.alpha = 0;
+				//playerCurrentGun.animation.play("north");
 			}
 			if(velocity.x == 0 && velocity.y == 0)
 				animation.stop();	
