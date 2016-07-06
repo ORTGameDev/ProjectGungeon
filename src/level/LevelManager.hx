@@ -45,7 +45,7 @@ class LevelManager extends TiledMap
 	public var collidableLayer:FlxTypedGroup<FlxTilemap>;
 
 	//Groups
-	public var hudLayer:HUD;
+	public var hud:HUD;
 	public var characterGroup:FlxGroup;
 	public var enemiesGroup:FlxTypedGroup<Enemy>;
 	public var pickupGroup:FlxTypedGroup<Pickup>;
@@ -238,8 +238,8 @@ class LevelManager extends TiledMap
 		 		characterGroup.add(player);
 				FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 				FlxG.worldBounds.set(0, 0, fullWidth, fullHeight);
-				hudLayer = new HUD(1, "Rock Castle"); //(lvlNumber, lvlDesc);
-				GlobalGameData.aHud = hudLayer;
+				hud = new HUD(1, "Rock Castle"); //(lvlNumber, lvlDesc);
+				GlobalGameData.aHud = hud;
 			case "enemy":
 				 var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
 				 enemiesGroup.add(enemy);
@@ -303,7 +303,7 @@ class LevelManager extends TiledMap
 		if (p.exists && p.alive && !p.isHurt && b.exists && b.alive){
 			p.receiveDamage(b.bulletDamage);
 			b.kill();
-			hudLayer.updateHUD();
+			hud.updateHUD();
 		}
 	}
 
@@ -312,7 +312,7 @@ class LevelManager extends TiledMap
 		if (p.exists && p.alive && par.exists && par.alive){
 			p.receiveDamage(2);
 			par.kill();
-			hudLayer.updateHUD();
+			hud.updateHUD();
 		}
 	}
 
@@ -321,7 +321,7 @@ class LevelManager extends TiledMap
 		if (e.exists && e.alive && par.exists && par.alive){
 			e.receiveDamage(2);
 			par.kill();
-			hudLayer.updateHUD();
+			hud.updateHUD();
 		}
 	}
 
