@@ -37,7 +37,7 @@ class PlayState extends FlxState {
 	}
 
 	override public function create():Void {
-		level = new level.LevelManager("maps/level1.tmx", this);
+		level = new level.LevelManager("maps/lvl3/level3.tmx", this);
 		// Add floor
 		add(level.floorLayer);
 		// Add objects
@@ -47,7 +47,7 @@ class PlayState extends FlxState {
 		// Add foreground tiles after adding level objects, so these tiles render on top of player
 		add(level.foregroundLayer);
 		add(level.collidableLayer);
-		add(level.hudLayer);
+		add(level.hud);
 		changeGamePointer();
 	}
 

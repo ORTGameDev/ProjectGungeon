@@ -8,7 +8,7 @@ import flixel.util.FlxAxes;
 import flixel.util.FlxColor;
 import openfl.system.System;
 import states.PlayState;
-import states.PlayerSelectState;
+
 
 /**
  * ...
@@ -60,7 +60,7 @@ class MainMenu extends FlxGroup
 	
 	
 	private function clickSettings():Void {
-		FlxG.switchState(new PlayerSelectState());
+		
 		//FlxG.switchState(new SettingState());
 	}
 	
