@@ -36,7 +36,7 @@ class LevelManager extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
-	private inline static var c_PATH_LEVEL_TILESHEETS = "maps/";
+	private inline static var c_PATH_LEVEL_TILESHEETS = "maps/level4/";
 
 	//Layers
 	public var foregroundLayer:FlxGroup; //muros no colisionables
@@ -238,7 +238,7 @@ class LevelManager extends TiledMap
 		 		characterGroup.add(player);
 				FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 				FlxG.worldBounds.set(0, 0, fullWidth, fullHeight);
-				hud = new HUD(1, "Rock Castle"); //(lvlNumber, lvlDesc);
+				hud = new HUD(); //(lvlNumber, lvlDesc);
 				GlobalGameData.aHud = hud;
 			case "enemy":
 				 var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
