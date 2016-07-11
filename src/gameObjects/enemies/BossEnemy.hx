@@ -49,6 +49,7 @@ class BossEnemy extends Enemy
 	override public function update (elapsed: Float):Void
 	{
 		super.update(elapsed);
+		
 	}
 	
 }

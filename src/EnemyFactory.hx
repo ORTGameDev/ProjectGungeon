@@ -23,12 +23,14 @@ class EnemyFactory
     {
       switch(type)
       {
-          case "greenOrc":
+        case "greenOrc":
             return new GreenOrc(X,Y);
-          case "skelleton":
+        case "skelleton":
             return new Skeleton(X,Y);
-          case "summoner":
-            return new Summoner(X,Y);
+        case "summoner":
+            return new Summoner(X, Y);
+		case "boss":
+			return new BossEnemy(X,Y);
       }
       return null;
     }

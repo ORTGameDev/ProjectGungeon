@@ -17,7 +17,7 @@ import states.PlayState;
 class MainMenu extends FlxGroup
 {
 	//Buttons	
-	private var btnPlay: FlxButtonPlus;
+	private var btnPlay: FlxButton;
 	private var btnSettings: FlxButton;
 	private var btnQuit: FlxButton;
 	//Background
@@ -29,8 +29,7 @@ class MainMenu extends FlxGroup
 
 	
 
-	public function new() 
-	{
+	public function new() {
 		super();
 		//Set BackGround
 		backGround = new FlxSprite(0,250);
@@ -38,10 +37,7 @@ class MainMenu extends FlxGroup
 		backGround.screenCenter(FlxAxes.X);
 		add(backGround);
 		//Set Button
-		btnPlay = new FlxButtonPlus(0, backGround.y + buttonGap, clickSinglePlay, "Play!", 200, 40);
-		btnPlay.borderColor = FlxColor.BROWN;
-		btnPlay.offColor = [FlxColor.BLACK,FlxColor.MAGENTA];
-		btnPlay.updateActiveButtonColors([FlxColor.BLUE]);
+		btnPlay = new FlxButton(0, backGround.y + buttonGap, "Play!", clickSinglePlay);
 		btnPlay.screenCenter(FlxAxes.X);
 		add(btnPlay);
 		
@@ -55,7 +51,6 @@ class MainMenu extends FlxGroup
 		btnQuit.setSize(80, 30);
 		add(btnQuit);
 		
-		
 	}
 	
 	
@@ -64,12 +59,11 @@ class MainMenu extends FlxGroup
 		//FlxG.switchState(new SettingState());
 	}
 	
-	private function clickSinglePlay():Void{
+	private function clickSinglePlay():Void {
 		FlxG.sound.play("sounds/LoadnShot.mp3", 0.5, false, null, true, runGame );		
 	}
 	
-	private function runGame():Void
-	{
+	private function runGame():Void	{
 		FlxG.switchState(new PlayState());
 	}
 	

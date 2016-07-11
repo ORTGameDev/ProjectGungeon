@@ -37,7 +37,7 @@ class PlayState extends FlxState {
 	}
 
 	override public function create():Void {
-		level = new level.LevelManager("maps/level1.tmx", this);
+		level = new level.LevelManager("maps/level4/level4.tmx", this);
 		// Add floor
 		add(level.floorLayer);
 		// Add objects

@@ -13,8 +13,7 @@ import openfl.Lib;
 class BoltBullet extends Bullet
 {
 	
-	public function new()
-	{
+	public function new() {
 		super();
 		bulletSpeed =  100;
 		bulletDamage = 4;

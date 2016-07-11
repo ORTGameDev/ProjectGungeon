@@ -44,9 +44,9 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 	private var bulletInChamber: FlxText;
 	
 	
-	public function new(aLvlNumber:Int, aLvlString:String) {
+	public function new() {
 		super();
-		createTopHudInfo(aLvlNumber, aLvlString);
+		createTopHudInfo();
 		createGunVisualizer();
 		updateVisualizer();
 		forEach(function(spr:FlxSprite)	{
@@ -54,7 +54,7 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 		});
 	}
 	
-	private function createTopHudInfo(aLvlNumber:Int, aLvlString:String):Void {
+	private function createTopHudInfo():Void {
 		//BackGround
 		sprBackground = new FlxSprite();
 		sprBackground.makeGraphic(FlxG.width, 40, FlxColor.BLACK);

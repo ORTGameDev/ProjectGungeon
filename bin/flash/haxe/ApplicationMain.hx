@@ -98,6 +98,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/barrels/explosion_02.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/bullets/Bullets001.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -330,6 +334,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("barrels/explosion_02.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("characters/diagdown1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -466,6 +474,38 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
+		urls.push ("maps/level2/level2.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level2/mapTiles.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/level3/level2 - copia.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level3/level3.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level3/mapTiles.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/level4/level4.tmx");
+		types.push (lime.Assets.AssetType.TEXT);
+		
+		
+		urls.push ("maps/level4/mapTiles.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("maps/level4/mapTiles_old.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("maps/levelOne.oel");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -551,7 +591,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "533",
+			build: "589",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

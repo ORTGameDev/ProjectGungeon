@@ -5,6 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
 import flixel.util.FlxColor;
+import gameObjects.SkeletonExplotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.guns.Pistol;
 import gameObjects.guns.Shotgun;
@@ -34,8 +35,8 @@ class Skeleton extends Enemy
 		offset.set(18, 12);
 		
 		//Skills
-		enemySpeed = 100;
-		enemyChaseDistance = 800;
+		enemySpeed = 80;
+		enemyChaseDistance = 500;
 		enemyLife = 1;
 		enemyShootDistance = 0;
 		drag.x = drag.y = 1500;
@@ -49,6 +50,7 @@ class Skeleton extends Enemy
 		super.update(elapsed);
 		if (this.overlaps(GlobalGameData.player) && this.alive && this.exists)
 		{
+			var exp = new SkeletonExplotion(this.x - this.width / 2, this.y - this.height / 2);
 			GlobalGameData.player.receiveDamage(1);
 			this.kill();
 		}

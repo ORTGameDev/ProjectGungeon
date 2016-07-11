@@ -45,10 +45,10 @@ class Summoner extends Enemy
 		offset.set(18, 12);
 		//Skills
 		enemySpeed = 45;
-		enemyChaseDistance = 400;
-		enemyLife = 5;
+		enemyChaseDistance = 500;
+		enemyLife = 6;
 		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
-		enemyShootDistance = 300;
+		enemyShootDistance = 250;
 		
 		drag.x = drag.y = 1500;
 		maxVelocity.set(550, 400);
@@ -59,12 +59,20 @@ class Summoner extends Enemy
 	override public function update (elapsed: Float):Void
 	{
 		super.update(elapsed);
+		var player = GlobalGameData.player;
+		var dX:Float = player.x - x;
+		var dY:Float = player.y - y;
+		var length:Float = Math.sqrt(dX * dX + dY * dY);
+		dX /= length;
+		dY /= length;
 		var currentTime = Lib.getTimer();
-		if (currentTime > lastSummonTime + 5000)
-		{
+		
+		if (length < enemyChaseDistance && currentTime > lastSummonTime + 5000 && animation.curAnim.name != "die") {
 			summonSkeleton();
 			lastSummonTime = currentTime;
 		}
+		
+		
 	}
 	
 	private function summonSkeleton():Void
@@ -76,6 +84,7 @@ class Summoner extends Enemy
 		
 		
 	}
+	
 	
 	override private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void
 	{

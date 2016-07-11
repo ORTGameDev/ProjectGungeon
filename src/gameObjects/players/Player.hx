@@ -49,8 +49,7 @@ class Player extends FlxSprite
 	private var guns:Array<Gun>;
 	
 
-	public function new(X:Float = 0, Y:Float = 0)
-	{
+	public function new(X:Float = 0, Y:Float = 0) {
 		super(X, Y);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/players/PlayerOne.png", "img/atlas/players/PlayerOne.json");
 		this.frames = anAtlas;
@@ -70,56 +69,44 @@ class Player extends FlxSprite
 		guns = new Array<Gun>();
 		this.guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
 		this.playerCurrentGun = guns[0];
-		
-		
-		FlxG.state.add(playerCurrentGun);
+
+		//FlxG.state.add(playerCurrentGun);
 
 	}
 
-	override public function update(elapsed:Float):Void
-	{
-		if (animation.curAnim.name == "die") // Si la animación actual es de muerte
-		{
-		super.update(elapsed);
-		if (animation.curAnim.finished) // Al finalizar la animación mato al enemy
-			{
+	override public function update(elapsed:Float):Void {
+		if (animation.curAnim.name == "die") {// Si la animación actual es de muerte
+			super.update(elapsed);
+			if (animation.curAnim.finished) { // Al finalizar la animación mato al enemy
 				playerCurrentGun.kill();
 				kill();
 			}
 			return;
 		}
 		acceleration.set();
-		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A)
-		{
+		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A) {
 			acceleration.x -= playerAcceleration;
 		}
-		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D)
-		{
+		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D) {
 			acceleration.x += playerAcceleration;
 		}
-		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S)
-		{
+		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S) {
 			acceleration.y += playerAcceleration;
 		}
-		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W)
-		{
+		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W) {
 			acceleration.y -= playerAcceleration;
 		}
-		if (FlxG.keys.pressed.SPACE || FlxG.mouse.pressed)
-		{
+		if (FlxG.keys.pressed.SPACE || FlxG.mouse.pressed) {
 			playerCurrentGun.shoot(x + width / 2 , y + height / 2, FlxG.mouse.x, FlxG.mouse.y);
 			GlobalGameData.aHud.updateVisualizer();
 		}
-		if (FlxG.keys.pressed.ONE)
-		{
+		if (FlxG.keys.pressed.ONE) {
 			changeWeapon(pistol);
 		}
-		if (FlxG.keys.pressed.TWO)
-		{
+		if (FlxG.keys.pressed.TWO) {
 			changeWeapon(shotgun);
 		}
-		if (FlxG.keys.pressed.THREE)
-		{
+		if (FlxG.keys.pressed.THREE) {
 			changeWeapon(smg);
 		}
 		super.update(elapsed);
@@ -127,31 +114,28 @@ class Player extends FlxSprite
 		playerCurrentGun.y = this.y + 26;
 	}
 
-	override public function draw():Void
-	{
-		if (playerCurrentLife > 0)
-		{
+	override public function draw():Void {
+		if (playerCurrentLife > 0) {
 			var dX = FlxG.mouse.x - this.x;
 			var dY = FlxG.mouse.y - this.y;
 			var angle = Math.atan2(dY, dX) * 180 / Math.PI;
-			if (angle < 0)
-			{
+			if (angle < 0) {
 				angle += 360;
 			}
-			if (angle <= (0 + 45) || angle > (360 - 45)){
+			if (angle <= (0 + 45) || angle > (360 - 45)) {
 				animation.play("right");
 				//playerCurrentGun.alpha = 1;
 				//playerCurrentGun.animation.play("right");
-			} else if (angle  <=  (90 + 45) && angle > (90 - 45)){
+			} else if (angle  <=  (90 + 45) && angle > (90 - 45)) {
 				animation.play("south");
 				//playerCurrentGun.alpha = 1;
 				//playerCurrentGun.animation.play("south");
-			} else if (angle <= (180 + 45) && angle > (180 - 45)){
+			} else if (angle <= (180 + 45) && angle > (180 - 45)) {
 				animation.play("left");
 				//playerCurrentGun.alpha = 1;
 				//playerCurrentGun.animation.play("left");
 				//playerCurrentGun.x -= 7;
-			} else if (angle <= (270 + 45) && angle > (270 - 45)){
+			} else if (angle <= (270 + 45) && angle > (270 - 45)) {
 				animation.play("north");
 				//playerCurrentGun.alpha = 0;
 				//playerCurrentGun.animation.play("north");

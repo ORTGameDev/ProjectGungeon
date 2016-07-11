@@ -20,8 +20,8 @@ import openfl.Lib;
 class Wand extends Gun
 {
 	private var gunLastShoot: Int = 0;
-	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) 
-	{
+	
+	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) {
 		super(aX, aY, bullets, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 1, true, 500);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
@@ -37,19 +37,14 @@ class Wand extends Gun
 	}
 	
 	
-	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
-	{
+	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void {
 		var bullet:Bullet = cast bulletGroup.recycle(BoltBullet, null, false, false);
 			var currentTime = Lib.getTimer();
-			if (currentTime > gunLastShoot + 2500)
-			{
+			if (currentTime > gunLastShoot + 2500) {
 				bullet.shoot(aX, aY, aTargetX, aTargetY);
 				gunSound.play(true);
 				gunLastShoot = currentTime;
 			}
-
 	}
-	
-	
 	
 }
