@@ -50,6 +50,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("img/atlas/enemies/Boss.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("img/atlas/enemies/GreenOrc.json");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -99,6 +103,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("img/barrels/explosion_02.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("img/barrels/explosion_03.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -338,6 +346,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("barrels/explosion_03.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("characters/diagdown1.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -462,14 +474,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
-		urls.push ("maps/level1.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("maps/level1.oel");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
 		urls.push ("maps/level1.tmx");
 		types.push (lime.Assets.AssetType.TEXT);
 		
@@ -506,28 +510,8 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("maps/levelOne.oel");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("maps/lvl1.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
 		urls.push ("maps/mapTiles.png");
 		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("maps/mapTiles_olg.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("maps/tilemap.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("maps/tilemapdata.csv");
-		types.push (lime.Assets.AssetType.TEXT);
 		
 		
 		
@@ -591,7 +575,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "589",
+			build: "601",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

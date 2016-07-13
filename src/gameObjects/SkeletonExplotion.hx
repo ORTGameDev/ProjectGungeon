@@ -24,7 +24,7 @@ class SkeletonExplotion extends FlxSprite
 		super(aX, aY);
 		expSound = FlxG.sound.load("sounds/barrelExplotion.mp3");
 		loadGraphic(Assets.getBitmapData("barrels/explosion_02.png"), true, 100, 100);
-		animation.add("explode", [1,2,3,4,5,6,7,8,9,10,11], 25, false);
+		animation.add("explode", [1,2,3,4,5,6,7,8,9,10], 25, false);
 		FlxG.state.add(this);
 		expSound.play();
 		animation.play("explode");

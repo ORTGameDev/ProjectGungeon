@@ -104,7 +104,7 @@ class Enemy extends FlxSprite
 				}
 			}
 		}
-		if(velocity.x == 0 && velocity.y == 0)
+		if(animation.curAnim.name != "die" && velocity.x == 0 && velocity.y == 0)
 			animation.stop();
 		super.draw();
 	}
