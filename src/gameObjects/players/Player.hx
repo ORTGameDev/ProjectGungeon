@@ -41,7 +41,7 @@ class Player extends FlxSprite
 	//Movement
 	static private inline var playerAcceleration: Float = 25000;
 	static private inline var playerXMaxSpeed: Float = 250;
-	static private inline var playerYMaxSpeed: Float = 200;
+	static private inline var playerYMaxSpeed: Float = 150;
 	static private inline var playerDrag: Int = 2500;
 
 	//Gun

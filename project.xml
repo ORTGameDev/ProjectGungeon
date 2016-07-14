@@ -28,7 +28,6 @@
 	<assets path="assets/img" rename="img" />
 	<assets path="assets/img/pointer" rename="pointer" />
 	<assets path="assets/img/barrels" rename="barrels" />
-	<assets path="assets/img/characters" rename="characters" />
 	<assets path="assets/sounds" rename="sounds" />
 	<assets path="assets/sounds/music" rename="music" />
 	<assets path="assets/maps" rename="maps" />

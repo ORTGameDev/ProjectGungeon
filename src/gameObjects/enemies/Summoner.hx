@@ -44,7 +44,7 @@ class Summoner extends Enemy
 		setSize(28, 52);
 		offset.set(18, 12);
 		//Skills
-		enemySpeed = 45;
+		enemySpeed = 60;
 		enemyChaseDistance = 500;
 		enemyLife = 6;
 		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
@@ -79,9 +79,9 @@ class Summoner extends Enemy
 	{
 		//var s1 = minionsGroup.recycle(SkeletonEnemy, null, false, true);
 		//s1.setPosition(this.x + this.y + 50);
-		
-		GlobalGameData.enemies.add(new Skeleton(this.x -50 , this.y));
-		
+		animation.play("castDown");
+		GlobalGameData.enemies.add(new Skeleton(this.x - 50 , this.y));
+		GlobalGameData.enemies.add(new Skeleton(this.x + 50 , this.y));
 		
 	}
 	

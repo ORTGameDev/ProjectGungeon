@@ -18,12 +18,12 @@ import openfl.Lib;
 import openfl.utils.Timer;
 import states.PlayState;
 
+
 /**
  * ...
  * @author Gastón Marichal / Ignacio Benedetto
  */
-class Enemy extends FlxSprite
-{
+class Enemy extends FlxSprite {
 	/*******Enemy default config.***********/
 	//Movement
 	private var enemySpeed: Float = 0;
@@ -31,15 +31,15 @@ class Enemy extends FlxSprite
 	private var enemyLife: Int = 0; //Enemy total life
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate
+	private var gunPerc = 0.15;
+	private var healthPerc = 0.05;
 	
 	
-	public function new(X:Float = 0, Y:Float = 0)
-	{
+	public function new(X:Float = 0, Y:Float = 0) {
 		super(X, Y);
 	}
 
-	override public function update (elapsed: Float):Void
-	{
+	override public function update (elapsed: Float):Void {
 		super.update(elapsed);
 		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished && this.alive) { // Al finalizar la animación mato al enemy
@@ -52,27 +52,21 @@ class Enemy extends FlxSprite
 		chasePlayer();
 	}
 
-	override public function draw():Void
-	{
-		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE)
-		{
-			if (Math.abs(velocity.x) > Math.abs(velocity.y))
-			{
+	override public function draw():Void {
+		if ((velocity.x != 0 || velocity.y != 0) && touching == FlxObject.NONE) {
+			if (Math.abs(velocity.x) > Math.abs(velocity.y)) {
 				if (velocity.x < 0)
 					facing = FlxObject.LEFT;
 				else
 					facing = FlxObject.RIGHT;
-			}
-			else
-			{
+			} else {
 				if (velocity.y < 0)
 					facing = FlxObject.UP;
 				else
 					facing = FlxObject.DOWN;
 			}
 			if (enemyGun != null) {
-				switch (facing)
-				{
+				switch (facing) {
 					case FlxObject.LEFT:
 						animation.play("left");
 						enemyGun.alpha = 1;
@@ -90,9 +84,8 @@ class Enemy extends FlxSprite
 						enemyGun.alpha = 1;
 						enemyGun.animation.play("south");
 				}
-			}else{ //Enemy without Gun
-				switch (facing)
-				{
+			} else { //Enemy without Gun
+				switch (facing) {
 					case FlxObject.LEFT:
 						animation.play("left");
 					case FlxObject.RIGHT:
@@ -104,14 +97,12 @@ class Enemy extends FlxSprite
 				}
 			}
 		}
-		if(animation.curAnim.name != "die" && velocity.x == 0 && velocity.y == 0)
+		if(animation.curAnim.name != "die" && velocity.x == 0 && velocity.y == 0) 
 			animation.stop();
 		super.draw();
 	}
 
-
-	private function chasePlayer():Void
-	{
+	private function chasePlayer():Void {
 		var player = GlobalGameData.player;
 		var dX:Float = player.x - x;
 		var dY:Float = player.y - y;
@@ -123,24 +114,20 @@ class Enemy extends FlxSprite
 			velocity.x = dX * enemySpeed;
 			velocity.y = dY * enemySpeed;
 		}
-		if (length < enemyShootDistance)
-		{
+		if (length < enemyShootDistance) { 
 			shootToPlayer(player.x + player.width / 2, player.y + player.height / 2);
 		}
 	}
 
-	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void
-	{
+	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void {
 		//Each Enemy should redefine this!
 		//enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
 	}
 
-	public function receiveDamage(damage:Int):Void
-	{
+	public function receiveDamage(damage:Int):Void {
 		if (alive) {
 			enemyLife -= damage;
-			if (enemyLife <= 0)
-			{
+			if (enemyLife <= 0) {
 				velocity.set(0, 0);
 				animation.play("die");
 			}
@@ -148,14 +135,24 @@ class Enemy extends FlxSprite
 
 	}
 
-	private function killEnemy(tween:FlxTween):Void
-	{
+	private function killEnemy(tween:FlxTween):Void {
 		tween.cancel();
-		if (enemyGun != null){
+		if (enemyGun != null) {
 			enemyGun.kill();
 		}
-		var aPickup = PickupFactory.getPickup("shotgun", this.x, this.y);
+		dropItem();
 		kill();
+	}
+	
+	private function dropItem():Void {
+		var pickupProb = Math.random();
+		if (pickupProb <= healthPerc) {
+			var aPickup = PickupFactory.getPickup("health", this.x - 15, this.y - 5);
+		} 
+		if (pickupProb <= gunPerc) {
+			var aPickup = PickupFactory.getPickup("shotgun", this.x + 15, this.y + 5);
+		}
+		
 	}
 
 }
