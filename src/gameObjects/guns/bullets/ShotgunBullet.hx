@@ -16,7 +16,7 @@ class ShotgunBullet extends Bullet
 	public function new()
 	{
 		super();
-		bulletSpeed =  200;
+		bulletSpeed =  250;
 		bulletDamage = 2;
 		loadGraphic(Assets.getBitmapData("img/bullets/Bullets001.png"), true, 11, 11);
 		animation.add("idle", [0, 1, 2, 1, ], 20, true);

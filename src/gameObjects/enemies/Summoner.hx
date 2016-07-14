@@ -44,7 +44,7 @@ class Summoner extends Enemy
 		setSize(28, 52);
 		offset.set(18, 12);
 		//Skills
-		enemySpeed = 60;
+		enemySpeed = 70;
 		enemyChaseDistance = 500;
 		enemyLife = 5;
 		enemyTotalLife = enemyLife;

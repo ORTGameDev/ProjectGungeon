@@ -33,7 +33,7 @@ class Skeleton extends Enemy {
 		offset.set(18, 12);
 		
 		//Skills
-		enemySpeed = 80;
+		enemySpeed = 100;
 		enemyChaseDistance = 500;
 		enemyLife = 2;
 		enemyTotalLife = enemyLife;

@@ -37,6 +37,7 @@ class LevelManager extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
+<<<<<<< HEAD
 	private var c_PATH_LEVEL_TILESHEETS="";
 	
 	private var collidableTileLayers:Array<FlxTilemap>;
@@ -51,6 +52,7 @@ class LevelManager extends TiledMap
 	public var foregroundLayer:FlxGroup; //muros no colisionables
 	public var objectsLayer:FlxGroup; //jugadores, enemies, pickups, barrels
 	public var floorLayer:FlxGroup;
+	public var decoLayer:FlxGroup;
 	public var collidableLayer:FlxTypedGroup<FlxTilemap>;
 
 	//Groups
@@ -96,6 +98,7 @@ class LevelManager extends TiledMap
 		var mapPath = pathLevel + levelString + ".tmx";
 		c_PATH_LEVEL_TILESHEETS = pathLevel;
 		floorLayer = new FlxGroup();
+		decoLayer = new FlxGroup();
 		foregroundLayer = new FlxGroup();
 		collidableLayer = new FlxTypedGroup<FlxTilemap>();
 		objectsLayer = new FlxGroup();
@@ -211,10 +214,10 @@ class LevelManager extends TiledMap
 		 		characterGroup.add(player);
 				FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 				FlxG.worldBounds.set(0, 0, fullWidth, fullHeight);
-				hud = new HUD(); //(lvlNumber, lvlDesc);
+				hud = new HUD();
 				GlobalGameData.aHud = hud;
 			case "enemy":
-				 var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);//new FlxSprite(x, y);  //Usar un Factory para crear diferentes Enemies? Que usar para diferenciarlos?
+				 var enemy = EnemyFactory.getEnemy(o.properties.get("eType"), x, y);
 				 enemiesGroup.add(enemy);
 
 			case "breakable":
@@ -280,7 +283,6 @@ class LevelManager extends TiledMap
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
 				tilemap.allowCollisions = FlxObject.ANY;
-				//tilemap.inmovable?
 				collidableLayer.add(tilemap);
 				collidableTileLayers.push(tilemap);
 			}

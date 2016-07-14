@@ -34,9 +34,12 @@ class PlayState extends FlxState {
 	}
 
 	override public function create():Void {
+		
 		level = new level.LevelManager(4);
 		// Add floor
 		add(level.floorLayer);
+		add(level.decoLayer);
+		
 		// Add objects
 		add(level.objectsLayer);
 		add(level.characterGroup);
@@ -47,7 +50,6 @@ class PlayState extends FlxState {
 		add(level.hud);
 		changeGamePointer();
 		
-		//FlxG.sound.playMusic("music/levelBackground.mp3", 0.2, true);
 	}
 
 	override public function update(elapsed:Float):Void {
