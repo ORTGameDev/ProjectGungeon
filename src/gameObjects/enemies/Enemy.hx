@@ -106,19 +106,21 @@ class Enemy extends FlxSprite {
 	}
 
 	private function chasePlayer():Void {
-		var player = GlobalGameData.player;
-		var dX:Float = player.x - x;
-		var dY:Float = player.y - y;
-		var length:Float = Math.sqrt(dX * dX + dY * dY);
-		dX /= length;
-		dY /= length;
+		if (GlobalGameData.player.alive) {
+			var player = GlobalGameData.player;
+			var dX:Float = player.x - x;
+			var dY:Float = player.y - y;
+			var length:Float = Math.sqrt(dX * dX + dY * dY);
+			dX /= length;
+			dY /= length;
 
-		if (length < enemyChaseDistance) {
-			velocity.x = dX * enemySpeed;
-			velocity.y = dY * enemySpeed;
-		}
-		if (length < enemyShootDistance) { 
-			shootToPlayer(player.x + player.width / 2, player.y + player.height / 2);
+			if (length < enemyChaseDistance) {
+				velocity.x = dX * enemySpeed;
+				velocity.y = dY * enemySpeed;
+			}
+			if (length < enemyShootDistance) { 
+				shootToPlayer(player.x + player.width / 2, player.y + player.height / 2);
+			}
 		}
 	}
 

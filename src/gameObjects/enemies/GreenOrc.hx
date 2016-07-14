@@ -32,9 +32,9 @@ class GreenOrc extends Enemy
 		offset.set(18, 12);
 		
 		//Skills
-		enemySpeed = 40;
+		enemySpeed = 70;
 		enemyChaseDistance = 600;
-		enemyLife = 4;
+		enemyLife = 3;
 		enemyTotalLife = enemyLife;
 		enemyGun = new Shotgun(X, Y, GlobalGameData.enemiesBullets);
 		enemyGun.infiniteBullets = true;

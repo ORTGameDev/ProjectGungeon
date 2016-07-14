@@ -36,7 +36,7 @@ class LevelManager extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
-	private inline static var c_PATH_LEVEL_TILESHEETS = "maps/level4/";
+	private inline static var c_PATH_LEVEL_TILESHEETS = "maps/level3/";
 
 	//Layers
 	public var foregroundLayer:FlxGroup; //muros no colisionables

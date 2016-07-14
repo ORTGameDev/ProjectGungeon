@@ -52,7 +52,7 @@ class BossEnemy extends Enemy
 		voices.push(FlxG.sound.load("sounds/voices/stupid_monkey.mp3"));*/
 		
 		//Skills
-		enemySpeed = 55;
+		enemySpeed = 65;
 		enemyChaseDistance = 600;
 		enemyLife = 25;
 		enemyTotalLife = enemyLife;
