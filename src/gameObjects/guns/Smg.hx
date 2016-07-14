@@ -17,12 +17,9 @@ import openfl.Lib;
  */
 
  
-class Smg extends Gun
-{
+class Smg extends Gun {
 	
-	
-	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) 
-	{
+	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) {
 		super(aX, aY, bullets, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 40, false, 200);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		frames = anAtlas;
@@ -37,25 +34,20 @@ class Smg extends Gun
 		this.animation.play("south");
 	}
 	
-	
-	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void
-	{
-		if (currentInChamber > 0 ){
-			
+	public override function shoot (aX:Float, aY:Float, aTargetX:Float, aTargetY:Float): Void {
+		if (currentInChamber > 0 ) {
 			var currentTime = Lib.getTimer();
-			if (currentTime > lastShoot + shootDelay)
-			{
+			if (currentTime > lastShoot + shootDelay) {
 				var bullet:Bullet = cast bulletGroup.recycle(PistolBullet, null, false, false);
 					bullet.shoot(aX, aY, aTargetX, aTargetY);
 					gunSound.play(true);
 					lastShoot = currentTime;
 					currentInChamber --;
-					if (currentInChamber == 0){
-						if (infiniteBullets){
+					if (currentInChamber == 0) {
+						if (infiniteBullets) {
 							currentInChamber = chamberLength;
 						}else{
 							currentInChamber = 0;
-							//Acá hay que destruir el arma del player y que vuelva a la pisto
 						}
 					}
 			}

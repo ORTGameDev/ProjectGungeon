@@ -14,8 +14,7 @@ import openfl.Assets;
  */
 
  
-class Gun extends FlxSprite
-{
+class Gun extends FlxSprite {
 	public 	var bulletGroup: FlxTypedGroup<Bullet>;
 	public 	var chamberLength: Int = 0;
 	public 	var currentInChamber: Int = 0;

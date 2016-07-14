@@ -44,16 +44,15 @@ class Pistol extends Gun
 		if (currentInChamber > 0 ){
 			
 			var currentTime = Lib.getTimer();
-			if (currentTime > lastShoot + shootDelay)
-			{
+			if (currentTime > lastShoot + shootDelay) {
 				var bullet:Bullet = cast bulletGroup.recycle(PistolBullet, null, false, false);
 					bullet.shoot(aX, aY, aTargetX, aTargetY);
 					gunSound.play(true);
 					lastShoot = currentTime;
 					currentInChamber --;
-					if (currentInChamber == 0){
-						if (infiniteBullets){
-							currentInChamber = chamberLength;
+					if (currentInChamber == 0) {
+						if (infiniteBullets) {
+							reload();
 						}else{
 							currentInChamber = 0;
 							//Acá hay que destruir el arma del player y que vuelva a la pisto
@@ -62,5 +61,7 @@ class Pistol extends Gun
 			}
 		}
 	}
+	
+
 	
 }
