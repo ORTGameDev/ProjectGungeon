@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 import flixel.graphics.atlas.FlxAtlas;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.system.FlxSound;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import gameObjects.guns.Smg;
@@ -37,7 +38,7 @@ class Player extends FlxSprite
 	
 	//Hurt
 	public var isHurt:Bool = false;
-	
+	private var hurtSound: FlxSound;
 	//Movement
 	static private inline var playerAcceleration: Float = 25000;
 	static private inline var playerXMaxSpeed: Float = 250;
@@ -63,14 +64,13 @@ class Player extends FlxSprite
 		this.setSize(26, 52);
 		this.offset.set(17, 12);
 		
+		hurtSound = FlxG.sound.load("sounds/voices/playerHurt.wav", 1);
 		drag.set(playerDrag, playerDrag);
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		
 		guns = new Array<Gun>();
 		this.guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
 		this.playerCurrentGun = guns[0];
-
-		//FlxG.state.add(playerCurrentGun);
 
 	}
 
@@ -155,6 +155,7 @@ class Player extends FlxSprite
 	{
 		if (!isHurt)
 		{
+			hurtSound.play();
 			playerCurrentLife -= damage;
 			GlobalGameData.aHud.updateHUD();
 			if (playerCurrentLife <= 0)
@@ -238,7 +239,7 @@ class Player extends FlxSprite
 
 	private function hurtTween():Void
 	{
-		FlxTween.color(this, 2, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
+		FlxTween.color(this, 1, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
 	}
 	
 	private function tweenEnds(tween:FlxTween):Void

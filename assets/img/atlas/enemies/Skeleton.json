@@ -28,7 +28,7 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "skeleton_die (4).png",
+	"filename": "NOskeleton_die_(4).png",
 	"frame": {"x":348,"y":468,"w":32,"h":40},
 	"rotated": false,
 	"trimmed": true,
@@ -37,7 +37,7 @@
 	"pivot": {"x":0.5,"y":0.5}
 },
 {
-	"filename": "skeleton_die (5).png",
+	"filename": "NOskeleton_die_(5).png",
 	"frame": {"x":260,"y":478,"w":33,"h":34},
 	"rotated": true,
 	"trimmed": true,

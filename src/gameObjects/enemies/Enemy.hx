@@ -28,11 +28,16 @@ class Enemy extends FlxSprite {
 	//Movement
 	private var enemySpeed: Float = 0;
 	private var enemyChaseDistance:Int = 0; //Chase rate, enemy start moving to the player
-	private var enemyLife: Int = 0; //Enemy total life
+	private var enemyLife: Int = 0; //Enemy Current life
+	private var enemyTotalLife: Int = 0; //Enemy total life
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate
+<<<<<<< HEAD
 	private var gunPerc = 0.15;
 	private var healthPerc = 0.05;
+=======
+	private var tweenDuration: Int = 2;
+>>>>>>> origin/master
 	
 	
 	public function new(X:Float = 0, Y:Float = 0) {
@@ -44,7 +49,7 @@ class Enemy extends FlxSprite {
 		if (animation.curAnim.name == "die") {  // Si la animación actual es de muerte
 			if (animation.curAnim.finished && this.alive) { // Al finalizar la animación mato al enemy
 				alive = false;
-				FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK},2, {onComplete:killEnemy, type:FlxTween.ONESHOT });
+				FlxTween.tween(this, {alpha: 0, color: FlxColor.BLACK}, tweenDuration, {onComplete:killEnemy, type:FlxTween.ONESHOT });
 				//killEnemy();
 			}
 			return;

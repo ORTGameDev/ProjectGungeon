@@ -46,7 +46,8 @@ class Summoner extends Enemy
 		//Skills
 		enemySpeed = 60;
 		enemyChaseDistance = 500;
-		enemyLife = 6;
+		enemyLife = 5;
+		enemyTotalLife = enemyLife;
 		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
 		enemyShootDistance = 250;
 		
@@ -82,7 +83,6 @@ class Summoner extends Enemy
 		animation.play("castDown");
 		GlobalGameData.enemies.add(new Skeleton(this.x - 50 , this.y));
 		GlobalGameData.enemies.add(new Skeleton(this.x + 50 , this.y));
-		
 	}
 	
 	
