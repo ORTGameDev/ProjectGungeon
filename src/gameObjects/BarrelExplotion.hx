@@ -23,7 +23,7 @@ class BarrelExplotion extends FlxSprite
 	public function new(aX:Float, aY:Float) 
 	{
 		super(aX, aY);
-		expSound = FlxG.sound.load("sounds/barrelExplotion.mp3");
+		expSound = FlxG.sound.load("sounds/barrelExplotion.mp3", 0.6);
 		loadGraphic(Assets.getBitmapData("barrels/explosion_01.png"), true, 52, 65);
 		animation.add("explode", [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18], 25, false);
 		FlxG.state.add(this);

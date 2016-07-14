@@ -35,6 +35,7 @@ class GreenOrc extends Enemy
 		enemySpeed = 40;
 		enemyChaseDistance = 600;
 		enemyLife = 4;
+		enemyTotalLife = enemyLife;
 		enemyGun = new Shotgun(X, Y, GlobalGameData.enemiesBullets);
 		enemyGun.infiniteBullets = true;
 		

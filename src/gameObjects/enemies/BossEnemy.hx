@@ -6,6 +6,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
 import flixel.system.FlxSound;
+import flixel.util.FlxColor;
 import gameObjects.enemies.Enemy;
 import gameObjects.guns.Gun;
 import gameObjects.guns.Smg;
@@ -34,75 +35,46 @@ class BossEnemy extends Enemy
 	{
 		super(X, Y);
 		//Graphics
-		/*var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
-		frames = anAtlas;
-		animation.addByPrefix("north3", "north3_", 5, true);
-		animation.addByPrefix("south3", "south3_", 5, true);
-		animation.addByPrefix("right3", "side3_", 5, true);
-		animation.addByPrefix("left3", "side3_", 5, true, true);
-		animation.addByPrefix("diagDown3", "diagDown3_", 5, true);
-		animation.addByPrefix("diagUp3", "diagUp3_", 5, true);
-		animation.addByPrefix("start3", "start3", 5, false);
-		animation.addByPrefix("x", "start3", 5, false, false, true);*/
-		
 		this.loadGraphic(Assets.getBitmapData("img/atlas/enemies/Boss.png"),true, 96,96);
 		animation.add("start", [0], 1, true);
-		animation.add("north", [9, 10, 11], 5, true);
-		animation.add("south", [0, 1, 2], 5, true);
-		animation.add("right", [6, 7, 8], 5, true);
-		animation.add("left", [3, 4, 5], 5, true);
-		animation.add("die", [1], 1, true);
+		animation.add("north", [9, 10, 11], 8, true);
+		animation.add("south", [0, 1, 2], 8, true);
+		animation.add("right", [6, 7, 8], 8, true);
+		animation.add("left", [3, 4, 5], 8, true);
+		animation.add("die", [1,1,1,1,1,1], 8, false);
 		scale.set(1.5, 1.5);
 		updateHitbox();
 		animation.play("start");
 		//Voices
 		voices = new Array<FlxSound>();
-		voices.push(FlxG.sound.load("sounds/voices/die.mp3"));
+		/*voices.push(FlxG.sound.load("sounds/voices/die.mp3"));
 		voices.push(FlxG.sound.load("sounds/voices/no_one.mp3"));
-		voices.push(FlxG.sound.load("sounds/voices/stupid_monkey.mp3"));
+		voices.push(FlxG.sound.load("sounds/voices/stupid_monkey.mp3"));*/
 		
 		//Skills
 		enemySpeed = 40;
 		enemyChaseDistance = 600;
 		enemyLife = 25;
+		enemyTotalLife = enemyLife;
 		drag.x = drag.y = 1500;
 		maxVelocity.set(550, 400);
 		enemyShootDistance = 500;
-		//Enemy Guns
 		//Main gun
 		mainGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
 		mainGun.infiniteBullets = true;
-		//SecondGun
+		//Second Gun
 		secondGun = new Smg(X, Y, GlobalGameData.enemiesBullets); 
 		secondGun.infiniteBullets = true;
 		enemyGun = mainGun;
 		lastWeaponChange = Lib.getTimer();	
 		onSpecialAtack = false;
+		tweenDuration = 1;
 		
 	}
 	
 	
 	override public function update (elapsed: Float):Void {
 		super.update(elapsed);
-		/*
-		switch (animation.curAnim.name) {
-			case "start": 
-				width = 96;
-				offset.set(0,0);
-			case "north": 
-				width = 96; 
-				offset.set(0,0);
-			case "south": 
-				width = 96; 
-				offset.set(0,0);
-			case "right": 
-				width = 96 / 2;
-				offset.set(96/3,0);
-			case "left":  
-				width = 96 / 2; 
-				offset.set(96/3,0);
-			
-		}*/
 		if (!onSpecialAtack && (Lib.getTimer() - lastWeaponChange >= weapongChangeTime)){
 			onSpecialAtack = true;
 			enemyGun = secondGun;
@@ -113,6 +85,12 @@ class BossEnemy extends Enemy
 			onSpecialAtack = false;
 			enemyGun = mainGun;
 			lastWeaponChange = Lib.getTimer();
+		}
+		if (enemyLife < enemyTotalLife / 2 && enemyLife >= enemyTotalLife / 3 && this.color != FlxColor.PINK){
+			this.color = FlxColor.PINK;
+		}
+		if (enemyLife < enemyTotalLife / 3 && this.color != FlxColor.RED){
+			this.color = FlxColor.RED;
 		}
 	}
 	
@@ -131,5 +109,17 @@ class BossEnemy extends Enemy
 		}
 	}
 	
+	override public function kill() {
+		explode();
+		super.kill();
+	}
 	
+	private function explode():Void {
+		var aux = 0;
+		while (aux < 6){
+			aux++;
+			var exp = new SkeletonExplotion(this.x + this.width / 2 - Std.int(Math.random() * 100), this.y + Std.int(Math.random() * 100));
+		}
+		
+	}
 }

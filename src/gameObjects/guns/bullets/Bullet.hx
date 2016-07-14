@@ -15,7 +15,7 @@ class Bullet extends FlxSprite
 	//Bullet Props.
 	public 	var bulletSpeed:Int;
 	public 	var bulletDamage:Int;
-	private static inline var bulletLifeTime: Int = 3000;
+	private static inline var bulletLifeTime: Int = 2500;
 	private var bulletStartTime:Int;
 
 	//Target Coords.

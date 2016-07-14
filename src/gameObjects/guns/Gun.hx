@@ -30,6 +30,7 @@ class Gun extends FlxSprite {
 		super(aX, aY);
 		this.bulletGroup = aBullets;
 		this.gunSound = aGunSound;
+		this.gunSound.volume = 0.4;
 		this.chamberLength = this.currentInChamber = aChamberLength;
 		this.infiniteBullets = hasInfiniteBullet;
 		this.shootDelay = aShootDelay;

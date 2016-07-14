@@ -46,7 +46,8 @@ class Summoner extends Enemy
 		//Skills
 		enemySpeed = 45;
 		enemyChaseDistance = 500;
-		enemyLife = 6;
+		enemyLife = 5;
+		enemyTotalLife = enemyLife;
 		enemyGun = new Wand(X, Y, GlobalGameData.enemiesBullets);
 		enemyShootDistance = 250;
 		
@@ -77,12 +78,7 @@ class Summoner extends Enemy
 	
 	private function summonSkeleton():Void
 	{
-		//var s1 = minionsGroup.recycle(SkeletonEnemy, null, false, true);
-		//s1.setPosition(this.x + this.y + 50);
-		
-		GlobalGameData.enemies.add(new Skeleton(this.x -50 , this.y));
-		
-		
+		GlobalGameData.enemies.add(new Skeleton(this.x -50 , this.y));	
 	}
 	
 	

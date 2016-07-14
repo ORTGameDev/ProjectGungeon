@@ -22,7 +22,7 @@ class SkeletonExplotion extends FlxSprite
 	public function new(aX:Float, aY:Float) 
 	{
 		super(aX, aY);
-		expSound = FlxG.sound.load("sounds/barrelExplotion.mp3");
+		expSound = FlxG.sound.load("sounds/barrelExplotion.mp3", 0.6);
 		loadGraphic(Assets.getBitmapData("barrels/explosion_02.png"), true, 100, 100);
 		animation.add("explode", [1,2,3,4,5,6,7,8,9,10], 25, false);
 		FlxG.state.add(this);
@@ -33,11 +33,15 @@ class SkeletonExplotion extends FlxSprite
 	
 	override public function update (elapsed: Float):Void
 	{
+		super.update(elapsed);
 		if (animation.finished)
 		{
 			kill();
 		}
-		super.update(elapsed);
+		if (this.overlaps(GlobalGameData.player) && this.alive && this.exists) {
+			GlobalGameData.player.receiveDamage(1);
+		}
+		
 	}
 	
 	

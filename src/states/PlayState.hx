@@ -49,6 +49,8 @@ class PlayState extends FlxState {
 		add(level.collidableLayer);
 		add(level.hud);
 		changeGamePointer();
+		
+		//FlxG.sound.playMusic("music/levelBackground.mp3", 0.2, true);
 	}
 
 	override public function update(elapsed:Float):Void {
