@@ -37,11 +37,11 @@ class BossEnemy extends Enemy
 		//Graphics
 		this.loadGraphic(Assets.getBitmapData("img/atlas/enemies/Boss.png"),true, 96,96);
 		animation.add("start", [0], 1, true);
-		animation.add("north", [9, 10, 11], 8, true);
-		animation.add("south", [0, 1, 2], 8, true);
-		animation.add("right", [6, 7, 8], 8, true);
-		animation.add("left", [3, 4, 5], 8, true);
-		animation.add("die", [1,1,1,1,1,1], 8, false);
+		animation.add("north", [9, 10, 11], 5, true);
+		animation.add("south", [0, 1, 2], 5, true);
+		animation.add("right", [6, 7, 8], 5, true);
+		animation.add("left", [3, 4, 5], 5, true);
+		animation.add("die", [1,1,1,1,1,1], 5, false);
 		scale.set(1.5, 1.5);
 		updateHitbox();
 		animation.play("start");
@@ -52,7 +52,7 @@ class BossEnemy extends Enemy
 		voices.push(FlxG.sound.load("sounds/voices/stupid_monkey.mp3"));*/
 		
 		//Skills
-		enemySpeed = 40;
+		enemySpeed = 55;
 		enemyChaseDistance = 600;
 		enemyLife = 25;
 		enemyTotalLife = enemyLife;

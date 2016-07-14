@@ -42,6 +42,7 @@ class LevelManager extends TiledMap
 	public var foregroundLayer:FlxGroup; //muros no colisionables
 	public var objectsLayer:FlxGroup; //jugadores, enemies, pickups, barrels
 	public var floorLayer:FlxGroup;
+	public var decoLayer:FlxGroup;
 	public var collidableLayer:FlxTypedGroup<FlxTilemap>;
 
 	//Groups
@@ -65,6 +66,7 @@ class LevelManager extends TiledMap
 		super(tiledLevel);
 
 		floorLayer = new FlxGroup();
+		decoLayer = new FlxGroup();
 		foregroundLayer = new FlxGroup();
 		collidableLayer = new FlxTypedGroup<FlxTilemap>();
 		objectsLayer = new FlxGroup();
@@ -121,16 +123,13 @@ class LevelManager extends TiledMap
 				tileSet.tileWidth, tileSet.tileHeight, OFF, tileSet.firstGID, 1, 1);
 
 
-			if (tileLayer.properties.get("type") == "floor")
-			{
+			if (tileLayer.properties.get("type") == "floor") {
 				floorLayer.add(tilemap);
-			}
-			else if (tileLayer.properties.get("type") == "foreground")
-			{
+			} else if (tileLayer.properties.get("type") == "deco") {
+				decoLayer.add(tilemap);
+			} else if (tileLayer.properties.get("type") == "foreground") {
 				foregroundLayer.add(tilemap);
-			}
-			else if (tileLayer.properties.get("type") == "collidable")
-			{
+			} else if (tileLayer.properties.get("type") == "collidable") {
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
 				tilemap.allowCollisions = FlxObject.ANY;
