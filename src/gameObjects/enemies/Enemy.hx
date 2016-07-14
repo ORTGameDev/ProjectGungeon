@@ -32,12 +32,10 @@ class Enemy extends FlxSprite {
 	private var enemyTotalLife: Int = 0; //Enemy total life
 	public	var enemyGun:Gun = null;
 	private var enemyShootDistance:Int = 0; //Enemy atack rate
-<<<<<<< HEAD
 	private var gunPerc = 0.15;
 	private var healthPerc = 0.05;
-=======
 	private var tweenDuration: Int = 2;
->>>>>>> origin/master
+
 	
 	
 	public function new(X:Float = 0, Y:Float = 0) {
