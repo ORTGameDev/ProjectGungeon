@@ -173,6 +173,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
 		#end
 		
 		#if flash
@@ -385,6 +392,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("characters/start3.png", AssetType.IMAGE);
 		className.set ("sounds/barrelExplotion.mp3", __ASSET__sounds_barrelexplotion_mp3);
 		type.set ("sounds/barrelExplotion.mp3", AssetType.MUSIC);
+		className.set ("sounds/boltgunShot.wav", __ASSET__sounds_boltgunshot_wav);
+		type.set ("sounds/boltgunShot.wav", AssetType.SOUND);
 		className.set ("sounds/gunPickUp.mp3", __ASSET__sounds_gunpickup_mp3);
 		type.set ("sounds/gunPickUp.mp3", AssetType.MUSIC);
 		className.set ("sounds/healPickUp.mp3", __ASSET__sounds_healpickup_mp3);
@@ -397,6 +406,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("sounds/pistolShot.mp3", AssetType.MUSIC);
 		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
 		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
+		className.set ("sounds/voices/die.mp3", __ASSET__sounds_voices_die_mp3);
+		type.set ("sounds/voices/die.mp3", AssetType.MUSIC);
+		className.set ("sounds/voices/die.wav", __ASSET__sounds_voices_die_wav);
+		type.set ("sounds/voices/die.wav", AssetType.SOUND);
+		className.set ("sounds/voices/no_one.mp3", __ASSET__sounds_voices_no_one_mp3);
+		type.set ("sounds/voices/no_one.mp3", AssetType.MUSIC);
+		className.set ("sounds/voices/no_one.wav", __ASSET__sounds_voices_no_one_wav);
+		type.set ("sounds/voices/no_one.wav", AssetType.SOUND);
+		className.set ("sounds/voices/stupid_monkey.mp3", __ASSET__sounds_voices_stupid_monkey_mp3);
+		type.set ("sounds/voices/stupid_monkey.mp3", AssetType.MUSIC);
+		className.set ("sounds/voices/stupid_monkey.wav", __ASSET__sounds_voices_stupid_monkey_wav);
+		type.set ("sounds/voices/stupid_monkey.wav", AssetType.SOUND);
 		className.set ("music/background.mp3", __ASSET__music_background_mp3);
 		type.set ("music/background.mp3", AssetType.MUSIC);
 		className.set ("maps/level1.tmx", __ASSET__maps_level1_tmx);
@@ -840,6 +861,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
+		id = "sounds/boltgunShot.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "sounds/gunPickUp.mp3";
 		path.set (id, id);
 		
@@ -864,6 +889,30 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.MUSIC);
+		id = "sounds/voices/die.mp3";
+		path.set (id, id);
+		
+		type.set (id, AssetType.MUSIC);
+		id = "sounds/voices/die.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "sounds/voices/no_one.mp3";
+		path.set (id, id);
+		
+		type.set (id, AssetType.MUSIC);
+		id = "sounds/voices/no_one.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
+		id = "sounds/voices/stupid_monkey.mp3";
+		path.set (id, id);
+		
+		type.set (id, AssetType.MUSIC);
+		id = "sounds/voices/stupid_monkey.wav";
+		path.set (id, id);
+		
+		type.set (id, AssetType.SOUND);
 		id = "music/background.mp3";
 		path.set (id, id);
 		
@@ -1238,6 +1287,9 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("sounds/barrelExplotion.mp3", __ASSET__sounds_barrelexplotion_mp3);
 		type.set ("sounds/barrelExplotion.mp3", AssetType.MUSIC);
 		
+		className.set ("sounds/boltgunShot.wav", __ASSET__sounds_boltgunshot_wav);
+		type.set ("sounds/boltgunShot.wav", AssetType.SOUND);
+		
 		className.set ("sounds/gunPickUp.mp3", __ASSET__sounds_gunpickup_mp3);
 		type.set ("sounds/gunPickUp.mp3", AssetType.MUSIC);
 		
@@ -1255,6 +1307,24 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("sounds/shotgunShot.mp3", __ASSET__sounds_shotgunshot_mp3);
 		type.set ("sounds/shotgunShot.mp3", AssetType.MUSIC);
+		
+		className.set ("sounds/voices/die.mp3", __ASSET__sounds_voices_die_mp3);
+		type.set ("sounds/voices/die.mp3", AssetType.MUSIC);
+		
+		className.set ("sounds/voices/die.wav", __ASSET__sounds_voices_die_wav);
+		type.set ("sounds/voices/die.wav", AssetType.SOUND);
+		
+		className.set ("sounds/voices/no_one.mp3", __ASSET__sounds_voices_no_one_mp3);
+		type.set ("sounds/voices/no_one.mp3", AssetType.MUSIC);
+		
+		className.set ("sounds/voices/no_one.wav", __ASSET__sounds_voices_no_one_wav);
+		type.set ("sounds/voices/no_one.wav", AssetType.SOUND);
+		
+		className.set ("sounds/voices/stupid_monkey.mp3", __ASSET__sounds_voices_stupid_monkey_mp3);
+		type.set ("sounds/voices/stupid_monkey.mp3", AssetType.MUSIC);
+		
+		className.set ("sounds/voices/stupid_monkey.wav", __ASSET__sounds_voices_stupid_monkey_wav);
+		type.set ("sounds/voices/stupid_monkey.wav", AssetType.SOUND);
 		
 		className.set ("music/background.mp3", __ASSET__music_background_mp3);
 		type.set ("music/background.mp3", AssetType.MUSIC);
@@ -2036,12 +2106,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:keep @:bind #if display private #end class __ASSET__characters_start2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__characters_start3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__sounds_barrelexplotion_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_boltgunshot_wav extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_gunpickup_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_healpickup_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_loadnshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_music_background_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_pistolshot_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_die_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_die_wav extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_no_one_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_no_one_wav extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_stupid_monkey_mp3 extends flash.media.Sound { }
+@:keep @:bind #if display private #end class __ASSET__sounds_voices_stupid_monkey_wav extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__music_background_mp3 extends flash.media.Sound { }
 @:keep @:bind #if display private #end class __ASSET__maps_level1_tmx extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__maps_level2_level2_tmx extends flash.utils.ByteArray { }
@@ -2061,6 +2138,13 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep #if display private #end class __ASSET__flixel_fonts_nokiafc22_ttf extends lime.text.Font { public function new () { super (); name = "Nokia Cellphone FC Small"; } } 
 @:keep #if display private #end class __ASSET__flixel_fonts_monsterrat_ttf extends lime.text.Font { public function new () { super (); name = "Monsterrat"; } } 
+
+
+
+
+
+
+
 
 
 
@@ -2291,12 +2375,19 @@ class DefaultAssetLibrary extends AssetLibrary {
 @:image("assets/img/characters/start2.png") #if display private #end class __ASSET__characters_start2_png extends lime.graphics.Image {}
 @:image("assets/img/characters/start3.png") #if display private #end class __ASSET__characters_start3_png extends lime.graphics.Image {}
 @:file("assets/sounds/barrelExplotion.mp3") #if display private #end class __ASSET__sounds_barrelexplotion_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/boltgunShot.wav") #if display private #end class __ASSET__sounds_boltgunshot_wav extends lime.utils.Bytes {}
 @:file("assets/sounds/gunPickUp.mp3") #if display private #end class __ASSET__sounds_gunpickup_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/healPickUp.mp3") #if display private #end class __ASSET__sounds_healpickup_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/LoadnShot.mp3") #if display private #end class __ASSET__sounds_loadnshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/music/background.mp3") #if display private #end class __ASSET__sounds_music_background_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/pistolShot.mp3") #if display private #end class __ASSET__sounds_pistolshot_mp3 extends lime.utils.Bytes {}
 @:file("assets/sounds/shotgunShot.mp3") #if display private #end class __ASSET__sounds_shotgunshot_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/die.mp3") #if display private #end class __ASSET__sounds_voices_die_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/die.wav") #if display private #end class __ASSET__sounds_voices_die_wav extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/no_one.mp3") #if display private #end class __ASSET__sounds_voices_no_one_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/no_one.wav") #if display private #end class __ASSET__sounds_voices_no_one_wav extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/stupid_monkey.mp3") #if display private #end class __ASSET__sounds_voices_stupid_monkey_mp3 extends lime.utils.Bytes {}
+@:file("assets/sounds/voices/stupid_monkey.wav") #if display private #end class __ASSET__sounds_voices_stupid_monkey_wav extends lime.utils.Bytes {}
 @:file("assets/sounds/music/background.mp3") #if display private #end class __ASSET__music_background_mp3 extends lime.utils.Bytes {}
 @:file("assets/maps/level1.tmx") #if display private #end class __ASSET__maps_level1_tmx extends lime.utils.Bytes {}
 @:file("assets/maps/level2/level2.tmx") #if display private #end class __ASSET__maps_level2_level2_tmx extends lime.utils.Bytes {}

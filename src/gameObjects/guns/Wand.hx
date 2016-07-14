@@ -22,7 +22,7 @@ class Wand extends Gun
 	private var gunLastShoot: Int = 0;
 	
 	public function new(aX:Float, aY:Float, bullets:FlxTypedGroup<Bullet>) {
-		super(aX, aY, bullets, FlxG.sound.load("sounds/pistolShot.mp3", 0.4, false), 1, true, 500);
+		super(aX, aY, bullets, FlxG.sound.load("sounds/boltgunShot.wav", 0.4, false), 1, true, 500);
 		var anAtlas = FlxAtlasFrames.fromTexturePackerJson("img/atlas/spritesheet.png", "img/atlas/spritemap.json");
 		this.frames = anAtlas;
 		this.animation.addByPrefix("north", "shot_up", 10, true);

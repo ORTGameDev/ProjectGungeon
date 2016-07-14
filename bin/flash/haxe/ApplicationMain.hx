@@ -446,6 +446,10 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.MUSIC);
 		
 		
+		urls.push ("sounds/boltgunShot.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
 		urls.push ("sounds/gunPickUp.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
 		
@@ -468,6 +472,30 @@ class ApplicationMain {
 		
 		urls.push ("sounds/shotgunShot.mp3");
 		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/voices/die.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/voices/die.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("sounds/voices/no_one.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/voices/no_one.wav");
+		types.push (lime.Assets.AssetType.SOUND);
+		
+		
+		urls.push ("sounds/voices/stupid_monkey.mp3");
+		types.push (lime.Assets.AssetType.MUSIC);
+		
+		
+		urls.push ("sounds/voices/stupid_monkey.wav");
+		types.push (lime.Assets.AssetType.SOUND);
 		
 		
 		urls.push ("music/background.mp3");
@@ -575,7 +603,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "601",
+			build: "637",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

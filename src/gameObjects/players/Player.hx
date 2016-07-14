@@ -40,9 +40,9 @@ class Player extends FlxSprite
 	
 	//Movement
 	static private inline var playerAcceleration: Float = 150;
-	static private inline var playerXMaxSpeed: Float = 250;
-	static private inline var playerYMaxSpeed: Float = 200;
-	static private inline var playerDrag: Int = 2500;
+	static private inline var playerXMaxSpeed: Float = 120;
+	static private inline var playerYMaxSpeed: Float = 100;
+	static private inline var playerDrag: Int = 200;
 
 	//Gun
 	public var playerCurrentGun:Gun;
@@ -67,9 +67,9 @@ class Player extends FlxSprite
 		maxVelocity.set(playerXMaxSpeed, playerYMaxSpeed);
 		
 		guns = new Array<Gun>();
-		this.guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
+		this.guns[0] = new Smg(this.x, this.y, GlobalGameData.playerBullets);
 		this.playerCurrentGun = guns[0];
-
+		
 		//FlxG.state.add(playerCurrentGun);
 
 	}
@@ -85,16 +85,20 @@ class Player extends FlxSprite
 		}
 		acceleration.set();
 		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A) {
-			acceleration.x -= playerAcceleration;
+			//acceleration.x -= playerAcceleration;
+			velocity.x -= playerXMaxSpeed;
 		}
 		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D) {
-			acceleration.x += playerAcceleration;
+			//acceleration.x += playerAcceleration;
+			velocity.x += playerXMaxSpeed;
 		}
 		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S) {
-			acceleration.y += playerAcceleration;
+			//acceleration.y += playerAcceleration;
+			velocity.y += playerYMaxSpeed;
 		}
 		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W) {
-			acceleration.y -= playerAcceleration;
+			//acceleration.y -= playerAcceleration;
+			velocity.y -= playerYMaxSpeed;
 		}
 		if (FlxG.keys.pressed.SPACE || FlxG.mouse.pressed) {
 			playerCurrentGun.shoot(x + width / 2 , y + height / 2, FlxG.mouse.x, FlxG.mouse.y);
@@ -233,7 +237,7 @@ class Player extends FlxSprite
 
 	private function hurtTween():Void
 	{
-		FlxTween.color(this, 2, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
+		FlxTween.color(this, 1.2, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
 	}
 	
 	private function tweenEnds(tween:FlxTween):Void
