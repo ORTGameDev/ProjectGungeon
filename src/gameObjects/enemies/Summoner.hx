@@ -68,7 +68,7 @@ class Summoner extends Enemy
 		dY /= length;
 		var currentTime = Lib.getTimer();
 		
-		if (length < enemyChaseDistance && currentTime > lastSummonTime + 5000 && animation.curAnim.name != "die") {
+		if (length < enemyChaseDistance && currentTime > lastSummonTime + 12000 && animation.curAnim.name != "die") {
 			summonSkeleton();
 			lastSummonTime = currentTime;
 		}
@@ -81,8 +81,9 @@ class Summoner extends Enemy
 		//var s1 = minionsGroup.recycle(SkeletonEnemy, null, false, true);
 		//s1.setPosition(this.x + this.y + 50);
 		animation.play("castDown");
-		GlobalGameData.enemies.add(new Skeleton(this.x - 50 , this.y));
-		GlobalGameData.enemies.add(new Skeleton(this.x + 50 , this.y));
+		GlobalGameData.enemies.add(new Skeleton(this.x, this.y - 100));
+		GlobalGameData.enemies.add(new Skeleton(this.x + 75 , this.y + 75));
+		GlobalGameData.enemies.add(new Skeleton(this.x - 75 , this.y + 75));
 	}
 	
 	

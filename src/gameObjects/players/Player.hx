@@ -29,8 +29,7 @@ import openfl.Assets;
 	}
 	
 	
-class Player extends FlxSprite
-{
+class Player extends FlxSprite {
 
 	//Player
 	public var playerCurrentLife:Int = 10;
@@ -129,21 +128,12 @@ class Player extends FlxSprite
 			}
 			if (angle <= (0 + 45) || angle > (360 - 45)) {
 				animation.play("right");
-				//playerCurrentGun.alpha = 1;
-				//playerCurrentGun.animation.play("right");
 			} else if (angle  <=  (90 + 45) && angle > (90 - 45)) {
 				animation.play("south");
-				//playerCurrentGun.alpha = 1;
-				//playerCurrentGun.animation.play("south");
 			} else if (angle <= (180 + 45) && angle > (180 - 45)) {
 				animation.play("left");
-				//playerCurrentGun.alpha = 1;
-				//playerCurrentGun.animation.play("left");
-				//playerCurrentGun.x -= 7;
 			} else if (angle <= (270 + 45) && angle > (270 - 45)) {
 				animation.play("north");
-				//playerCurrentGun.alpha = 0;
-				//playerCurrentGun.animation.play("north");
 			}
 			if(velocity.x == 0 && velocity.y == 0)
 				animation.stop();	
@@ -151,56 +141,47 @@ class Player extends FlxSprite
 		super.draw();
 	}
 
-	public function receiveDamage(damage:Int):Void
-	{
-		if (!isHurt)
-		{
+	public function receiveDamage(damage:Int):Void {
+		if (!isHurt) {
 			hurtSound.play();
 			playerCurrentLife -= damage;
 			GlobalGameData.aHud.updateHUD();
-			if (playerCurrentLife <= 0)
-			{
+			if (playerCurrentLife <= 0) {
 				playerCurrentLife = 0;
 				velocity.set(0, 0);
 				animation.play("die");
-			}else
-			{
+			} else {
 			hurtTween();
 			isHurt = true;
 			}
 		}
-		
 	}
 
-	public function healPlayer(health:Int):Void
-	{
+	public function healPlayer(health:Int):Void {
 		playerCurrentLife += health;
-		if (playerCurrentLife > playerTotalLife)
-		{
+		if (playerCurrentLife > playerTotalLife) {
 			playerCurrentLife = playerTotalLife;
 		}
 		GlobalGameData.aHud.updateHUD();
 	}
 	
-	public function pickWeapon(gType:GunType):Void
-	{
-		switch(gType)
-		{
+	public function pickWeapon(gType:GunType):Void {
+		switch(gType) {
 			case pistol:	
-				if (guns[0] == null){
+				if (guns[0] == null) {
 					guns[0] = new Pistol(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[0];
 				this.playerCurrentGun.reload();
 				
 			case shotgun:
-				if (guns[1] == null){
+				if (guns[1] == null) {
 					guns[1] = new Shotgun(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[1];
 				this.playerCurrentGun.reload();
 			case smg: 
-				if (guns[2] == null){
+				if (guns[2] == null) {
 					guns[2] = new Smg(this.x, this.y, GlobalGameData.playerBullets);
 				}
 				this.playerCurrentGun = guns[2];
@@ -209,21 +190,19 @@ class Player extends FlxSprite
 		changeWeapon(gType);
 	}
 	
-	private function changeWeapon(gType:GunType):Void
-	{
+	private function changeWeapon(gType:GunType):Void {
 		this.playerCurrentGun.kill();
-		switch(gType)
-		{
+		switch(gType) {
 			case pistol:
-				if (guns[0] != null){
+				if (guns[0] != null) {
 					this.playerCurrentGun = guns[0];
 				}
 			case shotgun:
-				if (guns[1] != null){
+				if (guns[1] != null) {
 					this.playerCurrentGun = guns[1];
 				}
 			case smg:
-				if (guns[2] != null){
+				if (guns[2] != null) {
 					this.playerCurrentGun = guns[2];
 				}
 		}
@@ -231,24 +210,16 @@ class Player extends FlxSprite
 		GlobalGameData.aHud.updateVisualizer();
 	}
 	
-
-	public function fullHealth():Bool
-	{
+	public function fullHealth():Bool {
 		return playerCurrentLife == playerTotalLife;
 	}
 
-	private function hurtTween():Void
-	{
+	private function hurtTween():Void {
 		FlxTween.color(this, 1, FlxColor.RED, FlxColor.WHITE, {onComplete:tweenEnds });
 	}
 	
-	private function tweenEnds(tween:FlxTween):Void
-	{
+	private function tweenEnds(tween:FlxTween):Void {
 		tween.cancel();
 		isHurt = false;
 	}
-
-	
-}
-
-	
+}	

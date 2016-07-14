@@ -1,7 +1,7 @@
 package;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import gameObjects.BarrelExplotion;
+import gameObjects.Explotion;
 import gameObjects.enemies.Enemy;
 import gameObjects.guns.bullets.Bullet;
 import gameObjects.pickups.Pickup;
@@ -25,7 +25,7 @@ class GlobalGameData
 	public static var enemiesBullets: FlxTypedGroup<Bullet>;
 	public static var pickups: FlxTypedGroup<Pickup>;
 
-	public static var explotions: FlxTypedGroup<BarrelExplotion>;
+	public static var explotions: FlxTypedGroup<Explotion>;
 
 
 	public static function clear():Void

@@ -15,7 +15,7 @@ import openfl.Lib;
  * ...
  * @author Gastón Marichal
  */
-class BarrelExplotion extends FlxSprite
+class Explotion extends FlxSprite
 {
 	public  var expDamage: Int = 2;
 	private var expSound: FlxSound;

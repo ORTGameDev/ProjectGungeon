@@ -32,7 +32,7 @@ class Barrel extends FlxSprite
 	
 	public function eBreak(): Void
 	{
-		var aExplotion = GlobalGameData.explotions.recycle(BarrelExplotion);
+		var aExplotion = GlobalGameData.explotions.recycle(Explotion);
 		aExplotion.reset(this.x + this.width / 2, this.y + this.height);
 		this.kill();
 	}

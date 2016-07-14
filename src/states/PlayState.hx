@@ -27,17 +27,14 @@ class PlayState extends FlxState {
 	//Cursor+
 	private var gamePointer:Pointer;
 
-	//HUD + UI
-	private var hud:HUD;
 	
-	private var gameOver: Bool = false;
 
 	public function new() {
 		super();
 	}
 
 	override public function create():Void {
-		level = new level.LevelManager("maps/level4/level4.tmx", this);
+		level = new level.LevelManager(4);
 		// Add floor
 		add(level.floorLayer);
 		// Add objects
@@ -56,16 +53,7 @@ class PlayState extends FlxState {
 	override public function update(elapsed:Float):Void {
 		level.update(elapsed);
 		super.update(elapsed);
-		if (!gameOver) {
-			if (GlobalGameData.player.playerCurrentLife <= 0){
-				gameOver = true;
-				GlobalGameData.aHud.createPlayMenu(false);
-			}else if (GlobalGameData.enemies.countLiving() == 0)
-			{
-				gameOver = true;
-				GlobalGameData.aHud.createPlayMenu(true);
-			}
-		}
+		
 	}
 	
 	private function changeGamePointer() {
