@@ -122,98 +122,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/characters/diagdown1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/diagdown2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/diagdown3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/diagup1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/diagup2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/diagup3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/enemyDead.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/jason.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/north1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/north2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/north3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/side1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/side2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/side3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south21.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south22.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south23.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/south3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/start1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/start2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/characters/start3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
 		urls.push ("img/guns/pistol/p_diagdown.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -286,26 +194,6 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
-		urls.push ("img/maps/level001.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("img/maps/level1.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("img/maps/lvl1.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
-		urls.push ("img/maps/mapTiles.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("img/maps/tilemapdata.csv");
-		types.push (lime.Assets.AssetType.TEXT);
-		
-		
 		urls.push ("img/pointer/crosshairBig.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -347,98 +235,6 @@ class ApplicationMain {
 		
 		
 		urls.push ("barrels/explosion_03.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagdown1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagdown2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagdown3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagup1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagup2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/diagup3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/enemyDead.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/jason.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/north1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/north2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/north3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/side1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/side2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/side3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south21.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south22.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south23.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/south3.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/start1.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/start2.png");
-		types.push (lime.Assets.AssetType.IMAGE);
-		
-		
-		urls.push ("characters/start3.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -575,7 +371,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "601",
+			build: "614",
 			company: "GastonIgnacio",
 			file: "Obligatorio",
 			fps: 60,

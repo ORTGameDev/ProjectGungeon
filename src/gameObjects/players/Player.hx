@@ -39,7 +39,7 @@ class Player extends FlxSprite
 	public var isHurt:Bool = false;
 	
 	//Movement
-	static private inline var playerAcceleration: Float = 150;
+	static private inline var playerAcceleration: Float = 25000;
 	static private inline var playerXMaxSpeed: Float = 250;
 	static private inline var playerYMaxSpeed: Float = 200;
 	static private inline var playerDrag: Int = 2500;
@@ -83,17 +83,22 @@ class Player extends FlxSprite
 			}
 			return;
 		}
-		acceleration.set();
+		acceleration.set(0, 0);
+		
 		if (FlxG.keys.pressed.LEFT || FlxG.keys.pressed.A) {
+			velocity.x = 0;
 			acceleration.x -= playerAcceleration;
 		}
 		if (FlxG.keys.pressed.RIGHT || FlxG.keys.pressed.D) {
+			velocity.x = 0;
 			acceleration.x += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.DOWN || FlxG.keys.pressed.S) {
+			velocity.x = 0;
 			acceleration.y += playerAcceleration;
 		}
 		if (FlxG.keys.pressed.UP || FlxG.keys.pressed.W) {
+			velocity.x = 0;
 			acceleration.y -= playerAcceleration;
 		}
 		if (FlxG.keys.pressed.SPACE || FlxG.mouse.pressed) {
