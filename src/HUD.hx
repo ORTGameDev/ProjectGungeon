@@ -93,16 +93,9 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 	
 	public function createPlayMenu(playerWins:Bool):Void 
 	{
-		btnNextLevel = new FlxButton(0, 200, "Continue >>", nextLevel);
-		btnNextLevel.screenCenter(FlxAxes.X);
-		if (!playerWins){
-			btnNextLevel.visible = false;
-		}
-		btnNextLevel.allowCollisions = FlxObject.NONE;
-			
-		btnRetryLevel = new FlxButton(0, 0, "Retry", reloadState);
+		
+		btnRetryLevel = new FlxButton(0, 200, "Retry", reloadState);
 		btnRetryLevel.screenCenter(FlxAxes.X);
-		btnRetryLevel.y = btnNextLevel.y + btnNextLevel.height + buttonGap;
 		btnRetryLevel.allowCollisions = FlxObject.NONE;
 		
 		btnQuit = new FlxButton(0, 0, "Back to Menu", BackToMenu);
