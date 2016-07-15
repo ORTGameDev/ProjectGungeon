@@ -47,9 +47,9 @@ class BossEnemy extends Enemy
 		animation.play("start");
 		//Voices
 		voices = new Array<FlxSound>();
-		/*voices.push(FlxG.sound.load("sounds/voices/die.mp3"));
-		voices.push(FlxG.sound.load("sounds/voices/no_one.mp3"));
-		voices.push(FlxG.sound.load("sounds/voices/stupid_monkey.mp3"));*/
+		voices.push(FlxG.sound.load("sounds/voices/orcDiemp3.mp3"));
+		voices.push(FlxG.sound.load("sounds/voices/youWillBurn.mp3"));
+		
 		
 		//Skills
 		enemySpeed = 65;
@@ -79,7 +79,7 @@ class BossEnemy extends Enemy
 			onSpecialAtack = true;
 			enemyGun = secondGun;
 			lastWeaponChange = Lib.getTimer();
-		//	talk();
+			talk();
 		}
 		if (onSpecialAtack && Lib.getTimer() -  lastWeaponChange >= weapongChangeTime){
 			onSpecialAtack = false;
@@ -100,12 +100,10 @@ class BossEnemy extends Enemy
 	
 	private function talk(){
 		var aux = Math.random();
-		if (aux <= 0.33){
+		if (aux <= 0.40){
 			voices[0].play();
-		}else if (aux > 0.33 && aux <= 0.66){
+		}else if (aux > 0.41 && aux <= 0.80){
 			voices[1].play();
-		}else{
-			voices[2].play();
 		}
 	}
 	

@@ -32,7 +32,7 @@ class RedOrc extends Enemy
 		animation.play("start");
 		setSize(28, 52);
 		offset.set(18, 12);
-		this.color = FlxColor.BLUE;
+		this.color = FlxColor.ORANGE;
 		//Skills
 		enemySpeed = 70;
 		enemyChaseDistance = 750;
