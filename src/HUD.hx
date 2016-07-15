@@ -34,7 +34,6 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 	private var PlayerMessage: FlxText;
 	private var btnRetryLevel: FlxButton;
 	private var btnQuit: FlxButton;
-	private var btnNextLevel: FlxButton;
 	private static inline var buttonGap: Int = 10;
 
 	
@@ -103,7 +102,7 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 		btnQuit.y = btnRetryLevel.y + btnRetryLevel.height + buttonGap;
 		btnQuit.allowCollisions = FlxObject.NONE;
 		
-		PlayerMessage = new FlxText(btnNextLevel.x + (btnNextLevel.width / 2) - 250, btnNextLevel.y - 40, 500, "", 18);
+		PlayerMessage = new FlxText(btnRetryLevel.x + (btnRetryLevel.width / 2) - 250, btnRetryLevel.y - 40, 500, "", 18);
 		PlayerMessage.setFormat(18, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.NONE, FlxColor.RED);
 		PlayerMessage.allowCollisions = FlxObject.NONE;
 		PlayerMessage.scrollFactor.set(0, 0);
@@ -113,7 +112,7 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 			PlayerMessage.text = "You are dead!!";
 		}
 		
-		backGround = new FlxSprite(btnNextLevel.x + (btnNextLevel.width/2) - backGroundWidth / 2, PlayerMessage.y - 30);
+		backGround = new FlxSprite(btnRetryLevel.x + (btnRetryLevel.width/2) - backGroundWidth / 2, PlayerMessage.y - 30);
 		backGround.makeGraphic(backGroundWidth, backGroundHeigth, FlxColor.BLACK);
 		backGround.alpha = 0.4;
 		backGround.scrollFactor.set(0, 0);
@@ -121,7 +120,6 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 		
 		add(backGround);
 		add(PlayerMessage);
-		add(btnNextLevel);
 		add(btnRetryLevel);
 		add(btnQuit);
 	

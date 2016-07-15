@@ -53,7 +53,7 @@ class MainMenu extends FlxGroup
 	}
 	
 	private function runGame():Void	{
-		FlxG.switchState(new PlayState(1));
+		FlxG.switchState(new PlayState(3));
 	}
 	
 	private function quitGame():Void {

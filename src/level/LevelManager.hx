@@ -357,7 +357,7 @@ class LevelManager extends TiledMap
 	private function nextLevel(p:Player, e:Exit):Void {
 		if (e.exists && e.alive && p.exists && p.alive) {
 			if (level == 3)
-				hud.createPlayMenu(false);
+				hud.createPlayMenu(true);
 			else
 				FlxG.switchState(new PlayState(level+1));
 			
