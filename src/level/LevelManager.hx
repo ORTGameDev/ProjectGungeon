@@ -28,6 +28,7 @@ import gameObjects.pickups.Pickup;
 import gameObjects.pickups.ShotgunPickup;
 import gameObjects.players.Player;
 import haxe.io.Path;
+import states.PlayState;
 
 
 /**
@@ -37,7 +38,7 @@ class LevelManager extends TiledMap
 {
 	// For each "Tile Layer" in the map, you must define a "tileset" property which contains the name of a tile sheet image
 	// used to draw tiles in that layer (without file extension). The image file must be located in the directory specified bellow.
-<<<<<<< HEAD
+
 	private var c_PATH_LEVEL_TILESHEETS="";
 	
 	private var collidableTileLayers:Array<FlxTilemap>;
@@ -47,7 +48,9 @@ class LevelManager extends TiledMap
 	private var exit:Exit;
 	
 	private var level: Dynamic;
-
+	
+	public var levelEnded:Bool = false;
+	
 	//Layers
 	public var foregroundLayer:FlxGroup; //muros no colisionables
 	public var objectsLayer:FlxGroup; //jugadores, enemies, pickups, barrels
@@ -86,7 +89,7 @@ class LevelManager extends TiledMap
 				hud.createPlayMenu(false);
 			} else if (GlobalGameData.enemies.countLiving() == 0) {
 				gameOver = true;
-				exit.alive = true;
+				exit.revive();
 			}
 		}
 	}
@@ -209,8 +212,14 @@ class LevelManager extends TiledMap
 		switch (o.type.toLowerCase())
 		{
 			case "player_start":
-				var player = new Player(x, y);
-				GlobalGameData.player = player;
+				var player = new Player(x, y);// null;
+				
+				//if (GlobalGameData.player == null) {
+					GlobalGameData.player = player;
+				//} else {
+					//player.playerCurrentGun = GlobalGameData.player.playerCurrentGun;
+					//player.guns = GlobalGameData.player.guns;
+				//}
 		 		characterGroup.add(player);
 				FlxG.camera.follow(player, FlxCameraFollowStyle.TOPDOWN);
 				FlxG.worldBounds.set(0, 0, fullWidth, fullHeight);
@@ -233,6 +242,7 @@ class LevelManager extends TiledMap
 
 			case "exit":
 				exit = new Exit(x, y);
+				exit.kill();
 				objectsLayer.add(exit);
 		}
 	}
@@ -270,16 +280,13 @@ class LevelManager extends TiledMap
 				tileSet.tileWidth, tileSet.tileHeight, OFF, tileSet.firstGID, 1, 1);
 
 
-			if (tileLayer.properties.get("type") == "floor")
-			{
+			if (tileLayer.properties.get("type") == "floor") {
 				floorLayer.add(tilemap);
-			}
-			else if (tileLayer.properties.get("type") == "foreground")
-			{
+			} else if (tileLayer.properties.get("type") == "deco") {
+				decoLayer.add(tilemap);
+			} else if (tileLayer.properties.get("type") == "foreground") {
 				foregroundLayer.add(tilemap);
-			}
-			else if (tileLayer.properties.get("type") == "collidable")
-			{
+			} else if (tileLayer.properties.get("type") == "collidable") {
 				if (collidableTileLayers == null)
 					collidableTileLayers = new Array<FlxTilemap>();
 				tilemap.allowCollisions = FlxObject.ANY;
@@ -349,27 +356,32 @@ class LevelManager extends TiledMap
 
 	private function nextLevel(p:Player, e:Exit):Void {
 		if (e.exists && e.alive && p.exists && p.alive) {
-			clearLevel();
-			loadLevel(level + 1);			
+			if (level == 3)
+				hud.createPlayMenu(false);
+			else
+				FlxG.switchState(new PlayState(level+1));
+			
 		}
 	}
 	
 	private function clearLevel():Void{
-		GlobalGameData.clear();
-		floorLayer.destroy();
-		floorLayer = null;
-		foregroundLayer.destroy();
-		foregroundLayer = null;
-		collidableLayer.destroy();
-		collidableLayer = null;
-		objectsLayer.destroy();
-		objectsLayer = null;
-		explotionGroup = null;
-		breakableGroup.destroy();
-		breakableGroup = null;
-		characterGroup.destroy();
-		characterGroup = null;
-		enemiesGroup = null;
-		pickupGroup = null;
+		//GlobalGameData.clear();
+		floorLayer.clear();
+		//floorLayer = null;
+		decoLayer.clear();
+		//decoLayer = null;
+		foregroundLayer.clear();
+		//foregroundLayer = null;
+		collidableLayer.clear();
+		//collidableLayer = null;
+		objectsLayer.clear();
+		//objectsLayer = null;
+		//explotionGroup = null;
+		breakableGroup.clear();
+		//breakableGroup = null;
+		characterGroup.clear();
+		//characterGroup = null;
+		//enemiesGroup = null;
+		//pickupGroup = null;
 	}
 }

@@ -46,7 +46,7 @@ class Player extends FlxSprite {
 
 	//Gun
 	public var playerCurrentGun:Gun;
-	private var guns:Array<Gun>;
+	public var guns:Array<Gun>;
 	
 
 	public function new(X:Float = 0, Y:Float = 0) {

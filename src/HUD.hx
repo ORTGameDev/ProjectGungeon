@@ -165,12 +165,7 @@ class HUD extends FlxTypedGroup<FlxSprite> {
 	
 	private function reloadState():Void
 	{
-		FlxG.switchState(new PlayState());
-	}
-	
-	private function nextLevel():Void
-	{
-		//FlxG.switchState(new PlayState());
+		FlxG.switchState(new PlayState(GlobalGameData.levelNbr));
 	}
 	
 	private function BackToMenu():Void

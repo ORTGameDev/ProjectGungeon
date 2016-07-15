@@ -29,13 +29,14 @@ class PlayState extends FlxState {
 
 	
 
-	public function new() {
+	public function new(startLevel:Dynamic) {
 		super();
+		GlobalGameData.levelNbr = startLevel;
 	}
 
 	override public function create():Void {
 		
-		level = new level.LevelManager(4);
+		level = new level.LevelManager(GlobalGameData.levelNbr);
 		// Add floor
 		add(level.floorLayer);
 		add(level.decoLayer);

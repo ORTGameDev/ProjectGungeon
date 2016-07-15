@@ -27,22 +27,23 @@ class GlobalGameData
 
 	public static var explotions: FlxTypedGroup<Explotion>;
 
-
+	public static var levelNbr: Dynamic;
+	
 	public static function clear():Void
 	{
-		player = null;
-		playerBullets.destroy();
-		player = null;
-		enemies.destroy();
-		enemies = null;
-		enemiesBullets.destroy();
-		enemiesBullets = null;
-		pickups.destroy();
-		pickups = null;
-		explotions.destroy();
-		explotions = null;
-		aHud.destroy();
-		aHud = null;
+		//player = null;
+		playerBullets.clear();
+		//player = null;
+		enemies.clear();
+		//enemies = null;
+		enemiesBullets.clear();
+		//enemiesBullets = null;
+		pickups.clear();
+		//pickups = null;
+		explotions.clear();
+		//explotions = null;
+		//aHud.destroy();
+		//aHud = null;
 
 	}
 
