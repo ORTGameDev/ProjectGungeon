@@ -124,10 +124,7 @@ class Enemy extends FlxSprite {
 		}
 	}
 
-	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void {
-		//Each Enemy should redefine this!
-		//enemyGun.shoot(x + width / 2, y + height / 2, player.x, player.y);
-	}
+	private function shootToPlayer(aPlayerX:Float, aPlayerY:Float):Void { }
 
 	public function receiveDamage(damage:Int):Void {
 		if (alive) {
@@ -155,7 +152,12 @@ class Enemy extends FlxSprite {
 			var aPickup = PickupFactory.getPickup("health", this.x - 15, this.y - 5);
 		} 
 		if (pickupProb <= gunPerc) {
-			var aPickup = PickupFactory.getPickup("shotgun", this.x + 15, this.y + 5);
+			pickupProb = Math.random();
+			if (pickupProb > 0.8){
+				var aPickup = PickupFactory.getPickup("smg", this.x + 15, this.y + 5);
+			}else{
+				var aPickup = PickupFactory.getPickup("shotgun", this.x + 15, this.y + 5);
+			}
 		}
 		
 	}

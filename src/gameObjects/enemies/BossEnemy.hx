@@ -54,7 +54,7 @@ class BossEnemy extends Enemy
 		//Skills
 		enemySpeed = 65;
 		enemyChaseDistance = 600;
-		enemyLife = 25;
+		enemyLife = 35;
 		enemyTotalLife = enemyLife;
 		drag.x = drag.y = 1500;
 		maxVelocity.set(550, 400);

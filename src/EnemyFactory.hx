@@ -3,7 +3,7 @@ package;
 import gameObjects.enemies.Enemy;
 import gameObjects.enemies.BossEnemy;
 import gameObjects.enemies.GreenOrc;
-import gameObjects.enemies.PistolPete;
+import gameObjects.enemies.RedOrc;
 import gameObjects.enemies.Skeleton;
 import gameObjects.enemies.Summoner;
 
@@ -24,7 +24,9 @@ class EnemyFactory
       switch(type)
       {
         case "greenOrc":
-            return new GreenOrc(X,Y);
+            return new GreenOrc(X, Y);
+		case "redOrc":
+            return new RedOrc(X,Y);
         case "skelleton":
             return new Skeleton(X,Y);
         case "summoner":

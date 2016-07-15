@@ -18,7 +18,6 @@ class MainMenu extends FlxGroup
 {
 	//Buttons	
 	private var btnPlay: FlxButton;
-	private var btnSettings: FlxButton;
 	private var btnQuit: FlxButton;
 	//Background
 	private var backGround: FlxSprite;
@@ -41,23 +40,13 @@ class MainMenu extends FlxGroup
 		btnPlay.screenCenter(FlxAxes.X);
 		add(btnPlay);
 		
-		btnSettings = new FlxButton(0, btnPlay.y + btnPlay.height +  buttonGap, "Options", runGame);
-		btnSettings.screenCenter(FlxAxes.X);
-		btnSettings.setSize(80, 30);
-		add(btnSettings);
-		
-		btnQuit = new FlxButton(0, btnSettings.y + btnSettings.height +  buttonGap, "Quit game", quitGame);
+		btnQuit = new FlxButton(0, btnPlay.y + btnPlay.height +  buttonGap, "Quit game", quitGame);
 		btnQuit.screenCenter(FlxAxes.X);
 		btnQuit.setSize(80, 30);
 		add(btnQuit);
 		
 	}
 	
-	
-	private function clickSettings():Void {
-		
-		//FlxG.switchState(new SettingState());
-	}
 	
 	private function clickSinglePlay():Void {
 		FlxG.sound.play("sounds/LoadnShot.mp3", 0.5, false, null, true, runGame );		

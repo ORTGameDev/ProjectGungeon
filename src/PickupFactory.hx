@@ -23,9 +23,8 @@ class PickupFactory
 	  var ret = null;
       switch(type)
       {
-        //case "pistol":
-          //  ret = GlobalGameData.pickups.recycle(PistolPickup);
-		  //NO HAY PICKUP DE PISTOL POR SER EL ARMA POR DEFECTO
+        case "smg":
+            ret = GlobalGameData.pickups.recycle(SmgPickup);
         case "shotgun":
             ret = GlobalGameData.pickups.recycle(ShotgunPickup);
         case "health":
